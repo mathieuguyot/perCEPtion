@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listRequest>
+	<!-- request name="VmHighCpuEvent" -->
+	<request name="VmHighRam" 
+		 	 command="insert into VMHighRam select * from VM having vcpuConsumption &gt; 90" 
+		 	 event="Primitive"/> 
+		 
+		 
+	<request name="VmHighCpu"
+		 	 command="insert into VMHighCpu select * from VM having vcpuConsumption &gt; 90" 
+		 	 event="SYMPTOM"
+			 ttl="50000"/> 
+		 	 
+	<request name="CoHighRT"
+			 command="insert into CoHighRT select * from Co.win:length(3) having responseTime &gt; 70" 
+			 event="Primitive"/>
+			 
+			 
+	  <request name="vmHighCpu_CoHighRT"
+			 command="select VHR 
+			 	from VMHighRam.win:time(10 sec) as VHR,
+			 		CoHighRT.win:time(1 sec) as CHR
+			 	where CHR.vm = VHR" 
+			 event="SYMPTOM" 
+			 ttl="50000"/>
+			 
+			 
+	<!--<request name="vmHighCpu_CoHighRT"
+			 command="select VHR 
+			 	from VMHighCpu.win:time(10 sec) as VHR,
+			 		CoHighRT.win:time(1 sec) as CHR
+			 	where CHR.vm = VHR" 
+			 event="SYMPTOM" 
+			 ttl="50000"/>-->
+	<request name="TierOverloaded"
+			 command="select VM.tier from
+			 		VM group by tier having avg(VM.vcpuConsumption) &gt; 95"
+			 event="SYMPTOM"
+			 ttl="50000"
+	/>
+</listRequest>
