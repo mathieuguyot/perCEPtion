@@ -3,24 +3,24 @@ package perception.events;
 import graph.CloudResourceType;
 
 /**
- * Class that represent a primitive event.
+ * Class that represent a simple event.
  * This class is an event so it extends from event.
- * A primitive event contain one monitoring information (eg. ram, disk, cpu) of one cloud resource.
- * A primitive event is generated using primitive event generators (PEG)
+ * A simple event contain one or multiple monitoring information (eg. ram, disk, cpu)
+ * of one cloud resource.
+ * A simple event is generated using simple event generators (SEG)
  */
-public abstract class PrimitiveEvent extends Event {
+public abstract class SimpleEvent extends Event {
 
     final private String cloudResourceName;
     final private CloudResourceType cloudResourceType;
 
     /**
-     * The constructor of the primitive event
+     * The constructor of the simple event
      * @param cloudResourceName The cloud resource name
      * @param cloudResourceType The cloud resource type
      */
-    public PrimitiveEvent(String cloudResourceName, CloudResourceType cloudResourceType)
-    {
-        super(EventType.PRIMITIVE);
+    public SimpleEvent(String cloudResourceName, CloudResourceType cloudResourceType) {
+        super(EventType.SIMPLE);
         this.cloudResourceName = cloudResourceName;
         this.cloudResourceType = cloudResourceType;
     }

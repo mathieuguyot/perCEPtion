@@ -1,7 +1,5 @@
 package graph;
 
-import java.util.Observable;
-
 /**
  * Abstract class that represents a cloud ressource
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT

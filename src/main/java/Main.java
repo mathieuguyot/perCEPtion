@@ -1,47 +1,50 @@
 import graph.PM;
-import org.apache.flink.cep.CEP;
-import org.apache.flink.cep.PatternSelectFunction;
-import org.apache.flink.cep.PatternStream;
-import org.apache.flink.cep.pattern.Pattern;
-import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import perception.FlinkEnvRunner;
-import perception.PrimitiveEventStream;
-import perception.events.PrimitiveEvent;
-import perception.events.primitive_events.PE_Cpu;
-import perception.primitive_events_generator.PrimitiveEventsGenerator;
+import perception.core.CloudResourcesAccess;
+import perception.core.PerceptionCore;
 import perception.primitive_events_generator.implementations.*;
+import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
 
-import java.util.List;
-import java.util.Map;
-
+//TEST CLASS ! weird stuff ahead :)
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-
         //AppliGraphMock appli = new AppliGraphMock();
 
         PM pm1 = null;
-        for(int i = 0; i < 1000000; i++) {
+        PM pm2 = null;
+        for(int i = 0; i < 1; i++) {
             PM pm = new PM("PM-" + String.valueOf(i));
             pm.setCpuConsumption(60);
-            PrimitiveEventsGenerator.addMonitoredResource(pm);
+            CloudResourcesAccess.getInstance().addMonitoredResource(pm);
             if(i==0) {
                 pm1 = pm;
+            } if(i == 100) {
+                pm2 = pm;
             }
         }
 
-        PrimitiveEventStream primitiveEventStream = new PrimitiveEventStream(env);
+        PerceptionCore core = new PerceptionCore();
 
        //primitiveEventStream.addPEG(new PEG_Pm_Ram(1000));
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(1000));
-        primitiveEventStream.addPEG(new PEG_Pm_Cpu(1000));
-        //primitiveEventStream.addPEG(new PEG_Pm_Disk(10));
-/*
+        core.getPrimitiveEventGeneratorManager().setLogStream(false);
+        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu(1000));
+        //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
+       // core.fet().addPEG(new PEG_Pm_Cpu(1000));
+        core.getSimpleEventGeneratorManager().setLogStream(true);
+        core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop());
+        //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
+/*
+        KeyedStream<PrimitiveEvent, String> kStream = core.getPrimitiveEventStream().getStream().keyBy(
+                new KeySelector<PrimitiveEvent, String>() {
+                    @Override
+                    public String getKey(PrimitiveEvent primitiveEvent) throws Exception {
+                        return primitiveEvent.getCloudResourceName();
+                    }
+                }
+        );
+
         Pattern<PrimitiveEvent, ?> cpuPattern = Pattern
                 .<PrimitiveEvent>begin("IDLE")
                 .subtype(PE_Cpu.class)
@@ -53,19 +56,7 @@ public class Main {
                         }
                         return false;
                     }
-                });/*
-                .next("IGNORE")
-                .where(new IterativeCondition<PrimitiveEvent>() {
-                    @Override
-                    public boolean filter(PrimitiveEvent primitiveEvent, Context<PrimitiveEvent> context) throws Exception {
-                        if(primitiveEvent instanceof PE_Cpu) {
-                            return false;
-                        }
-                        return true;
-                    }
                 })
-                .optional()
-                .oneOrMore()
                 .next("CPU DROP")
                 .subtype(PE_Cpu.class)
                 .where(new IterativeCondition<PE_Cpu>() {
@@ -76,10 +67,9 @@ public class Main {
                         }
                         return false;
                     }
-                })
-                .within(Time.milliseconds(1100));*/
-/*
-        PatternStream<PrimitiveEvent> cpuStream = CEP.pattern(primitiveEventStream.getStream(), cpuPattern);
+                });
+
+        PatternStream<PrimitiveEvent> cpuStream = CEP.pattern(kStream, cpuPattern);
 
         DataStream<PrimitiveEvent> oStream = cpuStream.select(new PatternSelectFunction<PrimitiveEvent, PrimitiveEvent>() {
             @Override
@@ -92,24 +82,32 @@ public class Main {
                 return null;
             }
         });
+
+        oStream.print();
 */
-        //oStream.print();
-
         //END TEST SECTION
-        FlinkEnvRunner envRunner = new FlinkEnvRunner(env);
-        envRunner.start();
-
-        primitiveEventStream.setDebugStream(false);
+        core.run();
 
         Thread.sleep(5000);
         System.out.println("CPU DROP");
-        pm1.setCpuConsumption(0);/*
+        pm1.setCpuConsumption(1);
+        //Thread.sleep(5000);
+/*
+        core.endRun();
+        Thread.sleep(6000);
+        core.getPrimitiveEventStream().addPEG(new PEG_Pm_Disk(1000));
+        core.run();
+        core.getPrimitiveEventStream().setLogStream(false);
+        core.getPrimitiveEventStream().setLogStream(true);
+        System.out.println("STOP");
+
         Thread.sleep(3000);
         System.out.println("CPU UP");
-        pm1.setCpuConsumption(60);
+        pm1.setCpuConsumption(55);
         Thread.sleep(3000);
         System.out.println("CPU DROP");
-        pm1.setCpuConsumption(0);*/
+        pm1.setCpuConsumption(0);
+        //pm2.setCpuConsumption(2);*/
     }
 /*
     public static void test2() {

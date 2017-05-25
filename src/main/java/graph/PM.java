@@ -20,6 +20,10 @@ public class PM extends CloudResource {
 	private int ramConsumption;
 	private int diskConsumption;
 
+	/**
+	 * Constructor of a PM
+	 * @param nom The name of the resource
+	 */
 	public PM(String nom) {
 		super(nom, CloudResourceType.PM);
 		this.vms.initResourceList();
@@ -28,38 +32,66 @@ public class PM extends CloudResource {
 		diskConsumption = 0;
 	}
 
+	/**
+	 * Getter on the appli that contains this PM
+	 * @return The appli that contains this PM
+	 */
     public Appli getAppli() {
         return appli;
     }
 
-    public void setAppli(Appli appli) {
+	/**
+	 * Setter on the appli that contains this PM
+	 * @param appli The appli that contains this PM
+	 */
+	public void setAppli(Appli appli) {
         this.appli = appli;
     }
 
-    public int getCpu_consumption() {
+	/**
+	 * Getter on the cpu consumption of the PM
+	 * @return The cpu consumption of the PM
+	 */
+	public int getCpu_consumption() {
 		return cpuConsumption;
 	}
 
-	public int getCpuConsumption() {
-		return cpuConsumption;
-	}
-
+	/**
+	 * Setter on the cpu consumption of the PM
+	 * @param cpuConsumption The new cpu consumption of the PM
+	 */
 	public void setCpuConsumption(int cpuConsumption) {
 		this.cpuConsumption = cpuConsumption;
 	}
 
+    /**
+     * Getter on the ram consumption of the PM
+     * @return The ram consumption of the PM
+     */
 	public int getRamConsumption() {
 		return ramConsumption;
 	}
 
+    /**
+     * Setter on the ram consumption of the PM
+     * @param ramConsumption The ram cpu consumption of the PM
+     */
 	public void setRamConsumption(int ramConsumption) {
 		this.ramConsumption = ramConsumption;
 	}
 
+    /**
+     * Getter on the disk consumption of the PM
+     * @return The disk consumption of the PM
+     */
 	public int getDiskConsumption() {
 		return diskConsumption;
 	}
 
+    /**
+     * Setter on the disk consumption of the PM
+     * @param diskConsumption The disk cpu consumption of the PM
+     */
 	public void setDiskConsumption(int diskConsumption) {
 		this.diskConsumption = diskConsumption;
 	}

@@ -5,11 +5,11 @@ import graph.CloudResourceType;
 import graph.VM;
 import perception.events.PrimitiveEvent;
 import perception.events.primitive_events.PE_Ram;
-import perception.primitive_events_generator.PrimitiveEventsGenerator;
+import perception.primitive_events_generator.PrimitiveEventGenerator;
 
 import java.util.Optional;
 
-public class PEG_Vm_Ram extends PrimitiveEventsGenerator {
+public class PEG_Vm_Ram extends PrimitiveEventGenerator {
 
     public PEG_Vm_Ram(long msRefreshingRate) {
         super(msRefreshingRate);

@@ -5,11 +5,11 @@ import graph.CloudResourceType;
 import graph.Co;
 import perception.events.PrimitiveEvent;
 import perception.events.primitive_events.PE_ResponseTime;
-import perception.primitive_events_generator.PrimitiveEventsGenerator;
+import perception.primitive_events_generator.PrimitiveEventGenerator;
 
 import java.util.Optional;
 
-public class PEG_Co_ResponseTime extends PrimitiveEventsGenerator {
+public class PEG_Co_ResponseTime extends PrimitiveEventGenerator {
 
     public PEG_Co_ResponseTime(long msRefreshingRate) {
         super(msRefreshingRate);

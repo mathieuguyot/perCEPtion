@@ -2,8 +2,6 @@ package perception.events.primitive_events;
 
 import graph.CloudResourceType;
 import perception.events.PrimitiveEvent;
-import utils.Color;
-import utils.SysOutLogger;
 
 public class PE_ResponseTime extends PrimitiveEvent {
 
@@ -16,22 +14,6 @@ public class PE_ResponseTime extends PrimitiveEvent {
 
     public int getResponseTime() {
         return responseTime;
-    }
-
-    @Override
-    public void display() {
-        SysOutLogger.log("[[");
-        SysOutLogger.log("RESPONSE_TIME_PE", Color.CYAN);
-        SysOutLogger.log("]{");
-        SysOutLogger.log(getCloudResourceType().toString(), Color.CYAN);
-        SysOutLogger.log("}{");
-        SysOutLogger.log("response_time", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(String.valueOf(responseTime), Color.MAGENTA);
-        SysOutLogger.log(", name", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(getCloudResourceName(), Color.MAGENTA);
-        SysOutLogger.log("}]\n");
     }
 
     @Override

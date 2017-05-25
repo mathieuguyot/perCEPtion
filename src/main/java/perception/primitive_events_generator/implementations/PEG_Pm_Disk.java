@@ -5,11 +5,11 @@ import graph.CloudResourceType;
 import graph.PM;
 import perception.events.PrimitiveEvent;
 import perception.events.primitive_events.PE_Disk;
-import perception.primitive_events_generator.PrimitiveEventsGenerator;
+import perception.primitive_events_generator.PrimitiveEventGenerator;
 
 import java.util.Optional;
 
-public class PEG_Pm_Disk extends PrimitiveEventsGenerator {
+public class PEG_Pm_Disk extends PrimitiveEventGenerator {
 
     public PEG_Pm_Disk(long msRefreshingRate) {
         super(msRefreshingRate);

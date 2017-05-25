@@ -16,15 +16,27 @@ public class Tier extends CloudResource {
 
 	private Appli appli;
 
+	/**
+	 * Constructor of a tier
+	 * @param nom The name of the cloud resource
+	 */
 	public Tier(String nom) {
 		super(nom, CloudResourceType.TIER);
 		this.vms.initResourceList();
 	}
 
+	/**
+	 * Getter on the appli that contains this Tier
+	 * @return The appli that contains this Tier
+	 */
 	public  Appli getAppli() {
 		return (appli);
 	}
 
+	/**
+	 * Setter on the appli that contains this Tier
+	 * @param a The new appli that contains this Tier
+	 */
 	public void setAppli(Appli a) {
 		this.appli = a;
 		

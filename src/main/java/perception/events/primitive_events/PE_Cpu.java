@@ -2,8 +2,6 @@ package perception.events.primitive_events;
 
 import graph.CloudResourceType;
 import perception.events.PrimitiveEvent;
-import utils.Color;
-import utils.SysOutLogger;
 
 public class PE_Cpu extends PrimitiveEvent {
 
@@ -19,22 +17,6 @@ public class PE_Cpu extends PrimitiveEvent {
 
     public int getCpuValue() {
         return cpuValue;
-    }
-
-    @Override
-    public void display() {
-        SysOutLogger.log("[[");
-        SysOutLogger.log("CPU_PE", Color.CYAN);
-        SysOutLogger.log("]{");
-        SysOutLogger.log(getCloudResourceType().toString(), Color.CYAN);
-        SysOutLogger.log("}{");
-        SysOutLogger.log("cpu", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(String.valueOf(cpuValue), Color.MAGENTA);
-        SysOutLogger.log(", name", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(getCloudResourceName(), Color.MAGENTA);
-        SysOutLogger.log("}]\n");
     }
 
     @Override

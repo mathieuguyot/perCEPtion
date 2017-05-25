@@ -2,8 +2,6 @@ package perception.events.primitive_events;
 
 import graph.CloudResourceType;
 import perception.events.PrimitiveEvent;
-import utils.Color;
-import utils.SysOutLogger;
 
 public class PE_Disk extends PrimitiveEvent {
 
@@ -19,22 +17,6 @@ public class PE_Disk extends PrimitiveEvent {
 
     public int getDiskValue() {
         return diskValue;
-    }
-
-    @Override
-    public void display() {
-        SysOutLogger.log("[[");
-        SysOutLogger.log("DISK_PE", Color.CYAN);
-        SysOutLogger.log("]{");
-        SysOutLogger.log(getCloudResourceType().toString(), Color.CYAN);
-        SysOutLogger.log("}{");
-        SysOutLogger.log("disk", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(String.valueOf(diskValue), Color.MAGENTA);
-        SysOutLogger.log(", name", Color.BLUE);
-        SysOutLogger.log(": ");
-        SysOutLogger.log(getCloudResourceName(), Color.MAGENTA);
-        SysOutLogger.log("}]\n");
     }
 
     @Override
