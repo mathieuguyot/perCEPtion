@@ -1,8 +1,8 @@
-#Framework perCEPtion
+# Framework perCEPtion
 Bienvenu sur le dépot officiel du framework perCEPtion !
 ```diff
-+ Attention, le framework est en phase de développement et n'est pas exploitable pour l'instant !
-+ Readme en travaux !
+- Attention, le framework est en phase de développement et n'est pas exploitable pour l'instant !
+- Readme en travaux !
 ```
 ***
 PerCEPTion est un framework de monitoring basé sur le traitement des événements complexes (Complex Event Processing - CEP) permettant de mettre en place une surveillance avancée d'une architecture matérielle et logicielle (Cloud par exemple). En outre, il permet de détecter des signes d'incohérence au sein d'un ensemble de composants d'une architecture. Si des incohérences sont détectées par le framework, celui-ci fournit un ensemble d'informations permettant d'aider à la reconfiguration des composants affectés.
@@ -15,14 +15,10 @@ Il suit assez fidèlement les concepts de la thèse de Simon Dupont : ["Gestion 
 >- Kendall FOREST
 >- Mathieu GUYOT
 >- Léo PARIS 
-<p align="center">
-![alt text](https://www.imt-atlantique.fr/sites/default/files/logo_mt_0_0.png "Logo Title Text 1")
 
-##Table des matières
+![alt text](https://www.imt-atlantique.fr/sites/default/files/logo_mt_0_0.png)
 
-[TOC]
-
-##Fonctionnement général
+## Fonctionnement général
 
 Voici les différents types d’événements qui sont utilisés dans perCEPtion
 Type d'évènement | Description
@@ -31,7 +27,7 @@ Primitif event(PE) | Un événement primitif contient une information sur un seu
 Simple event (SE) | Un événement simple contient une ou plusieurs informations sur un seul composant de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés simple events generator (SEG).
 Complex event (CE) | Un événement complexe contient une ou plusieurs informations sur un ou plusieurs composants de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés complex events generator (CEG).
 
-##Utilisation du Framework
+## Utilisation du Framework
 
 Nous avons fait en sorte que l'utilisation du framework soit le plus simple possible !
 Les sections ci-dessous détaillent comment utiliser perCEPtion.
