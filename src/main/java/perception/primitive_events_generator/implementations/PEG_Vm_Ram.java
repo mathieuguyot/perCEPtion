@@ -11,8 +11,12 @@ import java.util.Optional;
 
 public class PEG_Vm_Ram extends PrimitiveEventGenerator {
 
+    public PEG_Vm_Ram(String name, long msRefreshingRate) {
+        super(name, msRefreshingRate);
+    }
+
     public PEG_Vm_Ram(long msRefreshingRate) {
-        super(msRefreshingRate);
+        super("PEG_Vm_Ram", msRefreshingRate);
     }
 
     @Override

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <perception
-        xs:noNamespaceSchemaLocation="../../resources/schema.xsd"
+        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 >
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Blank</name>
-                <runtime>coucouJeSuisUneBelleErreur</runtime>
+                <name>PEG_Vm_Disk</name>
+                <runtime>78000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>PEG_Pm_Cpu</name>
-                <runtime>12000</runtime>
+                <name>PEG_Vm_Cpu</name>
+                <runtime>11000</runtime>
             </primitive>
             <primitive enabled="false">
-                <name>PEG_Pm_Disk</name>
-                <runtime>89100</runtime>
+                <name>PEG_Pm_Cpu</name>
+                <runtime>98000</runtime>
             </primitive>
         </primitives>
     </events>

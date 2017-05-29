@@ -25,7 +25,7 @@ public class PrimitiveEventStream implements PerceptionRunResource {
     @Override
     public boolean beforeRun(PerceptionRunContext ctx) {
         //Init the primitive events stream with a blank primitive event generator that generate nothing.
-        stream = ctx.getEnv().addSource(new PEG_Blank());
+        stream = ctx.getEnv().addSource(new PEG_Blank("BLANK"));
 
         for(PrimitiveEventGenerator peg : ctx.getPrimitiveEventGeneratorManager().getGenerators()) {
             DataStream<PrimitiveEvent> tmpStream = ctx.getEnv().addSource(peg);

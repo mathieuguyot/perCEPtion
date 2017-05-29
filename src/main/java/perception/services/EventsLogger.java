@@ -14,14 +14,16 @@ public abstract class EventsLogger {
 
     /**
      * Allow to log a generated primitive event
-     * @param event The generated primitive event
+     * @param primitiveEvent The generated primitive event
+     * @param pegName Name of the primitive event generator that generate this event
      */
-    public abstract void logPrimitiveEvent(PrimitiveEvent event);
+    public abstract void logPrimitiveEvent(PrimitiveEvent primitiveEvent, String pegName);
 
     /**
      * Allow to log a generated simple event
      * @param simpleEvent The generated simple event
+     * @param segName Name of the simple event generator that generate this event
      */
-    public abstract void logSimpleEvent(SimpleEvent simpleEvent);
+    public abstract void logSimpleEvent(SimpleEvent simpleEvent, String segName);
 
 }

@@ -11,8 +11,12 @@ import java.util.Optional;
 
 public class PEG_Vm_Cpu extends PrimitiveEventGenerator {
 
+    public PEG_Vm_Cpu(String name, long msRefreshingRate) {
+        super(name, msRefreshingRate);
+    }
+
     public PEG_Vm_Cpu(long msRefreshingRate) {
-        super(msRefreshingRate);
+        super("PEG_Vm_Cpu", msRefreshingRate);
     }
 
     @Override

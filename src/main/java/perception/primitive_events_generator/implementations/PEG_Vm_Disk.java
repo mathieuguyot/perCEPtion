@@ -11,8 +11,12 @@ import java.util.Optional;
 
 public class PEG_Vm_Disk extends PrimitiveEventGenerator {
 
+    public PEG_Vm_Disk(String name, long msRefreshingRate) {
+        super(name, msRefreshingRate);
+    }
+
     public PEG_Vm_Disk(long msRefreshingRate) {
-        super(msRefreshingRate);
+        super("PEG_Vm_Disk", msRefreshingRate);
     }
 
     @Override

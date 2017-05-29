@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.Deque;
-
 /**
  * Sysout logger wrapper to create color logs
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT

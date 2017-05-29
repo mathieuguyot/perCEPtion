@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
+import perception.configurator.xml.TestConstants;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
 
@@ -42,7 +43,7 @@ public class XMLFileParserToPrimitiveEventTest {
 		primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
 		ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-				.parse("testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml");
+				.parse(TestConstants.XMLFileParserTestFolder + "testParse_valideFile.xml");
 
 		assertEquals("Parsing fichier XML valide", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
 		assertEquals("Liste erreurs fichier - taille", 0, resultatParsing.getFileErrorTypes().size());
@@ -52,7 +53,7 @@ public class XMLFileParserToPrimitiveEventTest {
 	@Test
 	public void testParse_inexistingFile() throws ParserConfigurationException, SAXException, IOException {
 		ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-				.parse("testingXMLFiles/XMLFileParserTest/inexistingFile.csv");
+				.parse(TestConstants.XMLFileParserTestFolder +  "inexistingFile.csv");
 		List<FileErrorType> errList = resultatParsing.getFileErrorTypes();
 		assertTrue("Fichier introuvable - type erreur", errList.contains(FileErrorType.FILE_NOT_FOUND));
 		assertEquals("Liste erreurs fichier - taille", 1, errList.size());
@@ -68,7 +69,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-				.parse("testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt");
+				.parse(TestConstants.XMLFileParserTestFolder +  "testParser_invalidFileFormatTXT.txt");
 		assertEquals("Parsing fichier format invalide (TXT)", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
 		assertEquals("Liste erreurs fichier - taille", 1, resultatParsing.getFileErrorTypes().size());
 		assertEquals("Liste erreurs parsing - taille", 0, resultatParsing.getParsingErrorTypes().size());
@@ -83,7 +84,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-				.parse("testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv");
+				.parse(TestConstants.XMLFileParserTestFolder + "testParse_invalidFileFormatCSV.csv");
 		assertEquals("Parsing fichier format invalide (TXT)", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
 		assertEquals("Liste erreurs fichier - taille", 1, resultatParsing.getFileErrorTypes().size());
 		assertEquals("Liste erreurs parsing - taille", 0, resultatParsing.getParsingErrorTypes().size());
@@ -98,7 +99,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-				.parse("testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatPPT.ppt");
+				.parse(TestConstants.XMLFileParserTestFolder +  "testParser_invalidFileFormatPPT.ppt");
 		assertEquals("Parsing fichier format invalide (TXT)", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
 		assertEquals("Liste erreurs fichier - taille", 1, resultatParsing.getFileErrorTypes().size());
 		assertEquals("Liste erreurs parsing - taille", 0, resultatParsing.getParsingErrorTypes().size());
@@ -112,7 +113,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Pm_Cpu", 98000);
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
-		String filePath = "testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder +  "testParsePrimitiveEvents_OK.xml";
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		XMLFileParserToPrimitiveEvent.parsePrimitivesEvent(xPath, this.getElementRootFromFile(filePath), resultatParsing);
@@ -128,7 +129,7 @@ public class XMLFileParserToPrimitiveEventTest {
 	public void testGetPrimitiveEventInFile_OK()
 			throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-		String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventInFile_OK.xml";
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		NodeList listPrimitiveEventsExpected = (NodeList) xPath.evaluate("//primitives",
@@ -150,7 +151,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testGetPrimitiveEventInFile_NoPrimitiveEventInFile()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml";
 
         ResultatParsing resultatParsing = ResultatParsing.FAB();
         NodeList listPrimitiveEventsExpected = (NodeList) xPath.evaluate("//primitives",
@@ -178,7 +179,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
-		String filePath = "testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testCreateAllPrimitivesEvents_OK.xml";
 
 		NodeList listPrimitiveEventExpected = (NodeList) xPath.evaluate("//primitives",
 				this.getElementRootFromFile(filePath), XPathConstants.NODESET);
@@ -195,7 +196,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testCreateAllPrimitivesEvents_KO_NoPrimitivesNode() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException {
 
         ResultatParsing resultatParsing = ResultatParsing.FAB();
-        String filePath = "testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder +  "testCreateAllPrimitivesEvents_OK.xml";
 
         NodeList listJeuxDeDonneesExpected = (NodeList) xPath.evaluate("//primitives",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
@@ -217,7 +218,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Vm_Cpu", 1000);
 
         ResultatParsing resultatParsing = ResultatParsing.FAB();
-        String filePath = "testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "createAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml";
 
         NodeList listPrimitiveEventExpected = (NodeList) xPath.evaluate("//primitives",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
@@ -240,7 +241,7 @@ public class XMLFileParserToPrimitiveEventTest {
 	public void testGetPrimitiveEventNameFromFile_OK()
 			throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-		String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventNameFromFile_OK.xml";
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 
 		NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -260,7 +261,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testGetPrimitiveEventNameFromFile_KO()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventNameFromFile_KO.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -280,7 +281,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testGetPrimitiveEventRuntimeFromFile_OK()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventRuntimeFromFile_OK.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -300,7 +301,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testGetPrimitiveEventRuntimeFromFile_KO()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventRuntimeFromFile_KO.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -320,7 +321,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testIsEnabledPrimitiveEvent_OK_EnabledTrue()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -339,7 +340,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testIsEnabledPrimitiveEvent_OK_EnabledFalse()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
@@ -359,7 +360,7 @@ public class XMLFileParserToPrimitiveEventTest {
     public void testIsEnabledPrimitiveEvent_KO()
             throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
 
-        String filePath = "testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_KO.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testIsEnabledPrimitiveEvent_KO.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",

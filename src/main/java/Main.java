@@ -1,8 +1,12 @@
 import graph.PM;
+import perception.configurator.activator.PEG.PEG_Activator;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
 import perception.primitive_events_generator.implementations.*;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //TEST CLASS ! weird stuff ahead :)
 public class Main {
@@ -27,12 +31,18 @@ public class Main {
 
        //primitiveEventStream.addPEG(new PEG_Pm_Ram(1000));
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(1000));
-        core.getPrimitiveEventGeneratorManager().setLogStream(false);
-        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu(1000));
+        core.getPrimitiveEventGeneratorManager().setLogStream(true);
+
+        PEG_Activator peg_activator = new PEG_Activator();
+        Map<String, Long> myPEGS = new HashMap<>();
+        myPEGS.put("PEG_Pm_Cpu", 100L);
+        peg_activator.activate(myPEGS, core);
+
+        //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu("My generator", 1000));
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
        // core.fet().addPEG(new PEG_Pm_Cpu(1000));
         core.getSimpleEventGeneratorManager().setLogStream(true);
-        core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop());
+        //core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop());
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
 /*

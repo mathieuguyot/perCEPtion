@@ -3,6 +3,7 @@ package perception.simple_events_generator.implementations;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import perception.core.LoggerAccess;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 import perception.events.primitive_events.PE_Cpu;
@@ -13,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 public class SEG_Cpu_Drop extends SimpleEventGenerator {
+
+    public SEG_Cpu_Drop(String name) {
+        super(name);
+    }
 
     @Override
     public Pattern<PrimitiveEvent, ?> getPattern() {
@@ -50,7 +55,7 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
                     for (PrimitiveEvent pe : p) {
                         SE_Cpu_Drop se = new SE_Cpu_Drop(pe.getCloudResourceName(), pe.getCloudResourceType(), ((PE_Cpu) pe).getCpuValue(), 0);
                         if(SEG_Cpu_Drop.super.isLogGeneratedEvents()) {
-                            System.out.println(se.toString());
+                            LoggerAccess.getLogger().logSimpleEvent(se, getName());
                         }
                         //return se;
                     }

@@ -11,8 +11,12 @@ import java.util.Optional;
 
 public class PEG_Co_ResponseTime extends PrimitiveEventGenerator {
 
+    public PEG_Co_ResponseTime(String name, long msRefreshingRate) {
+        super(name, msRefreshingRate);
+    }
+
     public PEG_Co_ResponseTime(long msRefreshingRate) {
-        super(msRefreshingRate);
+        super("PEG_Co_ResponseTime", msRefreshingRate);
     }
 
     @Override

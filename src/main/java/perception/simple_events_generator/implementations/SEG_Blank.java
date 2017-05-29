@@ -12,6 +12,10 @@ import java.util.Map;
 
 public class SEG_Blank extends SimpleEventGenerator {
 
+    public SEG_Blank(String name) {
+        super(name);
+    }
+
     @Override
     public Pattern<PrimitiveEvent, ?> getPattern() {
         return Pattern

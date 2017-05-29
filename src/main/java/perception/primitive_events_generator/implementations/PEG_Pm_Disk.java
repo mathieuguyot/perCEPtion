@@ -11,9 +11,14 @@ import java.util.Optional;
 
 public class PEG_Pm_Disk extends PrimitiveEventGenerator {
 
-    public PEG_Pm_Disk(long msRefreshingRate) {
-        super(msRefreshingRate);
+    public PEG_Pm_Disk(String name, long msRefreshingRate) {
+        super(name, msRefreshingRate);
     }
+
+    public PEG_Pm_Disk(long msRefreshingRate) {
+        super("PEG_Pm_Disk", msRefreshingRate);
+    }
+
 
     @Override
     protected Optional<PrimitiveEvent> processResource(CloudResource cr) {

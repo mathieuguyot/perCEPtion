@@ -28,7 +28,7 @@ public class SACEventStream implements PerceptionRunResource {
     @Override
     public boolean beforeRun(PerceptionRunContext ctx) {
         //Add blank event
-        SEG_Blank seg_blank = new SEG_Blank();
+        SEG_Blank seg_blank = new SEG_Blank("BLANK");
         Pattern<PrimitiveEvent, ?> pattern = seg_blank.getPattern();
         PatternStream<PrimitiveEvent> pStream = CEP.pattern(ctx.getPrimitiveEventStream().getKeyedStream(), pattern);
         stream = pStream.select(seg_blank.getPatternSelectFunction());

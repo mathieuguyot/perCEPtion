@@ -15,8 +15,8 @@ import java.io.Serializable;
 
 public abstract class SimpleEventGenerator extends EventGenerator implements PerceptionRunResource {
 
-    public SimpleEventGenerator() {
-
+    public SimpleEventGenerator(String name) {
+        super(name);
     }
 
     public abstract Pattern<PrimitiveEvent, ?> getPattern();

@@ -4,6 +4,7 @@ import graph.CloudResource;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import perception.core.CloudResourcesAccess;
 import perception.core.EventGenerator;
+import perception.core.LoggerAccess;
 import perception.events.PrimitiveEvent;
 
 import java.util.Optional;
@@ -13,7 +14,8 @@ public abstract class PrimitiveEventGenerator extends EventGenerator implements 
     private boolean isRunning;
     private long msRefreshingRate;
 
-    public PrimitiveEventGenerator(long msRefreshingRate) {
+    public PrimitiveEventGenerator(String name, long msRefreshingRate) {
+        super(name);
         this.msRefreshingRate = msRefreshingRate;
         this.isRunning = true;
     }
@@ -37,7 +39,7 @@ public abstract class PrimitiveEventGenerator extends EventGenerator implements 
             if(optEvent.isPresent()) {
                 ctx.collect(optEvent.get());
                 if(this.isLogGeneratedEvents()) {
-                    System.out.println(optEvent.get().toString());
+                    LoggerAccess.getLogger().logPrimitiveEvent(optEvent.get(), getName());
                 }
             }
         }

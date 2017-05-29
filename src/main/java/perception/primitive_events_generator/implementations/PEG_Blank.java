@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public class PEG_Blank extends PrimitiveEventGenerator {
 
-    public PEG_Blank() {
-        super(Long.MAX_VALUE);
+    public PEG_Blank(String name) {
+        super(name, Long.MAX_VALUE);
     }
 
     @Override

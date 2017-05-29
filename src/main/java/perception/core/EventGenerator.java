@@ -10,13 +10,15 @@ public abstract class EventGenerator implements Serializable {
 
     private boolean logGeneratedEvents;
     private boolean hasToGenerateEvents;
+    private String name;
 
     /**
      * Constructor of the event generator
      */
-    public EventGenerator() {
+    public EventGenerator(String name) {
         this.hasToGenerateEvents = true;
         this.logGeneratedEvents = false;
+        this.name = name;
     }
 
     /**
@@ -51,4 +53,11 @@ public abstract class EventGenerator implements Serializable {
         this.hasToGenerateEvents = hasToGenerateEvents;
     }
 
+    /**
+     * Getter on the name of the event generator
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
 }
