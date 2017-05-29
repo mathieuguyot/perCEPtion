@@ -113,7 +113,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventMap.put("PEG_Pm_Cpu", 98000);
         primitiveEventMap.put("PEG_Vm_Cpu", 11000);
 
-		String filePath = TestConstants.XMLFileParserTestFolder +  "testParsePrimitiveEvents_OK.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testParsePrimitiveEvents_OK.xml";
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		XMLFileParserToPrimitiveEvent.parsePrimitivesEvent(xPath, this.getElementRootFromFile(filePath), resultatParsing);

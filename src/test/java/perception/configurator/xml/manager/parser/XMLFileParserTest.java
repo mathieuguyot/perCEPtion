@@ -2,6 +2,7 @@ package perception.configurator.xml.manager.parser;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
+import perception.configurator.xml.TestConstants;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
 
@@ -20,7 +21,7 @@ public class XMLFileParserTest {
 	@Test
 	public void testParse_XMLFileParser_OK() throws ParserConfigurationException, SAXException, IOException {
 		
-		String xMLFilePath = "testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml";
+		String xMLFilePath = TestConstants.XMLFileParserTestFolder + "testParse_XMLFileParser_OK.xml";
 		
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
 
@@ -41,7 +42,7 @@ public class XMLFileParserTest {
 	@Test
 	public void testInvalidFile_NoParsing() throws ParserConfigurationException, SAXException, IOException {
 
-		String xMLFilePath = "testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml";
+		String xMLFilePath = TestConstants.XMLFileParserTestFolder + "testInvalidFile_NoParsing.xml";
 		
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
 
@@ -64,7 +65,7 @@ public class XMLFileParserTest {
 	@Test
 	public void testDoNotParseIfValidPatternFile() throws ParserConfigurationException, SAXException, IOException {
 		
-		String filePath = "testingXMLFiles/XMLFileParserTest/testDoNotParseIfValidPatternFile.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testDoNotParseIfValidPatternFile.xml";
 		
 		ResultatParsing actualRes = XMLFileParser.parse(filePath, xSDFilePath);
 		
