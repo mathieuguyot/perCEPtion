@@ -1,4 +1,4 @@
-package configurator.xml.enums;
+package perception.configurator.xml.enums;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
