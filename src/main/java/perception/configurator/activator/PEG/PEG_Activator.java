@@ -1,5 +1,6 @@
 package perception.configurator.activator.PEG;
 
+import perception.configurator.activator.enums.PEGTypes;
 import perception.core.PerceptionCore;
 import perception.core.PrimitiveEventStream;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
@@ -27,7 +28,7 @@ public class PEG_Activator {
 
         for (String peg : map.keySet()) {
             try {
-                Class<?> event = Class.forName("perception.primitive_events_generator.implementations." + peg);
+                Class<?> event = PEGTypes.getClassForPEGName(peg);
                 Constructor<?> constructor = event.getConstructor(long.class);
                 Object instance = constructor.newInstance(map.get(peg).longValue());
                 core.getPrimitiveEventGeneratorManager().addEventGenerator((PrimitiveEventGenerator) instance);
