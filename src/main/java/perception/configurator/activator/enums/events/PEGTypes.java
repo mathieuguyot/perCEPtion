@@ -1,4 +1,4 @@
-package perception.configurator.activator.enums;
+package perception.configurator.activator.enums.events;
 
 import perception.primitive_events_generator.implementations.*;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Enumération les types de PEG couplé à leur classe d'implémentation.
+ * Enumération des types de PEG couplés à leur classe d'implémentation.
  * Permet de lier le système de validation et de parse à l'activation
  * des primitives events.
  *
