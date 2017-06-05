@@ -14,8 +14,8 @@ public enum FileErrorType {
 
 	FILE_NOT_FOUND("Fichier introuvable."),
 	EMPTY_FILE("Fichier vide."),
-	INVALID_FILE_FORMAT("Fichier fournit d'extention autre que.xml."),
-	SCHEMA_ERROR("Erreur lié au schéma XSD."),
+	INVALID_FILE_FORMAT("Fichier fourni d'extension autre que.xml."),
+	SCHEMA_ERROR("Erreur liée au schéma XSD."),
 	FILE_READING("Erreur au moment du parsing du fichier.");
 
 	// Attributs

@@ -1,13 +1,9 @@
 import graph.PM;
-import perception.configurator.activator.PEG.PEG_Activator;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
 import perception.primitive_events_generator.implementations.*;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
 import perception.simple_events_generator.implementations.SEG_Ram_Drop;
-
-import java.util.HashMap;
-import java.util.Map;
 
 //TEST CLASS ! weird stuff ahead :)
 public class Main {
