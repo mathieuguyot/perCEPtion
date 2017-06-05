@@ -13,16 +13,18 @@ public abstract class SimpleEvent extends Event {
 
     final private String cloudResourceName;
     final private CloudResourceType cloudResourceType;
+    final private int score;
 
     /**
      * The constructor of the simple event
      * @param cloudResourceName The cloud resource name
      * @param cloudResourceType The cloud resource type
      */
-    public SimpleEvent(String cloudResourceName, CloudResourceType cloudResourceType) {
+    public SimpleEvent(String cloudResourceName, CloudResourceType cloudResourceType, int score) {
         super(EventType.SIMPLE);
         this.cloudResourceName = cloudResourceName;
         this.cloudResourceType = cloudResourceType;
+        this.score = score;
     }
 
     /**
@@ -39,6 +41,14 @@ public abstract class SimpleEvent extends Event {
      */
     public CloudResourceType getCloudResourceType() {
         return cloudResourceType;
+    }
+
+    /**
+     * Getter on the score of the simple event
+     * @return The score of the simple event
+     */
+    public int getScore() {
+        return score;
     }
 
 }

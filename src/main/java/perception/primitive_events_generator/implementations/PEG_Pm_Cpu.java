@@ -22,7 +22,7 @@ public class PEG_Pm_Cpu extends PrimitiveEventGenerator {
     @Override
     protected Optional<PrimitiveEvent> processResource(CloudResource cr) {
         if(cr.getType() == CloudResourceType.PM) {
-            PE_Cpu pe_cpu = new PE_Cpu(cr.getName(), cr.getType(), ((PM)cr).getCpu_consumption());
+            PE_Cpu pe_cpu = new PE_Cpu(cr.getName(), cr.getType(), cr.getScore(), ((PM)cr).getCpu_consumption());
             return Optional.of(pe_cpu);
         }
         return Optional.empty();

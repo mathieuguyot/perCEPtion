@@ -22,7 +22,7 @@ public class PEG_Co_ResponseTime extends PrimitiveEventGenerator {
     @Override
     protected Optional<PrimitiveEvent> processResource(CloudResource cr) {
         if(cr.getType() == CloudResourceType.CO) {
-            PE_ResponseTime pe_responseTime = new PE_ResponseTime(cr.getName(), cr.getType(), ((Co)cr).getResponseTime());
+            PE_ResponseTime pe_responseTime = new PE_ResponseTime(cr.getName(), cr.getType(), cr.getScore(), ((Co)cr).getResponseTime());
             return Optional.of(pe_responseTime);
         }
         return Optional.empty();

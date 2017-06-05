@@ -2,9 +2,9 @@ package perception.services.implementations;
 
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
-import perception.services.EventsLogger;
+import perception.services.PerceptionLogger;
 
-public class SysoutEventsLogger extends EventsLogger {
+public class SysoutPerceptionLogger extends PerceptionLogger {
 
     @Override
     public void logPrimitiveEvent(PrimitiveEvent event, String pegName) {

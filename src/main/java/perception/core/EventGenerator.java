@@ -1,13 +1,17 @@
 package perception.core;
 
+import perception.services.PerceptionLogger;
+import perception.services.PerceptionRunResource;
+
 import java.io.Serializable;
 
 /**
  * Abstract class that represents an event generator.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT1
  */
-public abstract class EventGenerator implements Serializable {
+public abstract class EventGenerator implements Serializable, PerceptionRunResource {
 
+    private PerceptionLogger perceptionLogger;
     private boolean logGeneratedEvents;
     private boolean hasToGenerateEvents;
     private String name;
@@ -19,6 +23,7 @@ public abstract class EventGenerator implements Serializable {
         this.hasToGenerateEvents = true;
         this.logGeneratedEvents = false;
         this.name = name;
+        perceptionLogger = null;
     }
 
     /**
@@ -60,4 +65,24 @@ public abstract class EventGenerator implements Serializable {
     public String getName() {
         return name;
     }
+
+    public PerceptionLogger getPerceptionLogger() {
+        return perceptionLogger;
+    }
+
+    public void setPerceptionLogger(PerceptionLogger perceptionLogger) {
+        this.perceptionLogger = perceptionLogger;
+    }
+
+    @Override
+    public boolean beforeRun(PerceptionRunContext ctx) {
+        this.perceptionLogger = ctx.getPerceptionLogger();
+        return true;
+    }
+
+    @Override
+    public void endRun() {
+
+    }
+
 }

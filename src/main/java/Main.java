@@ -4,6 +4,7 @@ import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
 import perception.primitive_events_generator.implementations.*;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
+import perception.simple_events_generator.implementations.SEG_Ram_Drop;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +18,9 @@ public class Main {
         PM pm1 = null;
         PM pm2 = null;
         for(int i = 0; i < 1; i++) {
-            PM pm = new PM("PM-" + String.valueOf(i));
+            PM pm = new PM("PM-" + String.valueOf(i), 0);
             pm.setCpuConsumption(60);
+            pm.setRamConsumption(70);
             CloudResourcesAccess.getInstance().addMonitoredResource(pm);
             if(i==0) {
                 pm1 = pm;
@@ -29,20 +31,22 @@ public class Main {
 
         PerceptionCore core = new PerceptionCore();
 
-       //primitiveEventStream.addPEG(new PEG_Pm_Ram(1000));
-        //primitiveEventStream.addPEG(new PEG_Pm_Disk(1000));
+        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu(1000));
+        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Ram(1000));
+        //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
         core.getPrimitiveEventGeneratorManager().setLogStream(true);
 
-        PEG_Activator peg_activator = new PEG_Activator();
-        Map<String, Long> myPEGS = new HashMap<>();
-        myPEGS.put("PEG_Pm_Cpu", 100L);
-        peg_activator.activate(myPEGS, core);
+        //PEG_Activator peg_activator = new PEG_Activator();
+        //Map<String, Long> myPEGS = new HashMap<>();
+        //myPEGS.put("PEG_Pm_Cpu", 1000L);
+        //peg_activator.activate(myPEGS, core);
 
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu("My generator", 1000));
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
        // core.fet().addPEG(new PEG_Pm_Cpu(1000));
         core.getSimpleEventGeneratorManager().setLogStream(true);
-        //core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop());
+        core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop("My seg"));
+        core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Ram_Drop("My ram seg"));
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
 /*
@@ -101,7 +105,30 @@ public class Main {
         Thread.sleep(5000);
         System.out.println("CPU DROP");
         pm1.setCpuConsumption(1);
-        //Thread.sleep(5000);
+        Thread.sleep(3000);
+        System.out.println("CPU UP");
+        pm1.setCpuConsumption(70);
+        Thread.sleep(3000);
+        System.out.println("CPU DROP AND RAM DROP");
+        pm1.setCpuConsumption(2);
+        pm1.setRamConsumption(6);
+        Thread.sleep(3000);
+        System.out.println("CPU UP");
+        pm1.setCpuConsumption(80);
+        Thread.sleep(3000);
+        System.out.println("CPU DROP");
+        pm1.setCpuConsumption(3);
+        Thread.sleep(3000);
+        System.out.println("CPU UP");
+        pm1.setCpuConsumption(65);
+        Thread.sleep(3000);
+        System.out.println("CPU DROP");
+        pm1.setCpuConsumption(7);
+        Thread.sleep(3000);
+        System.out.println("CPU UP");
+        pm1.setCpuConsumption(100);
+
+
 /*
         core.endRun();
         Thread.sleep(6000);

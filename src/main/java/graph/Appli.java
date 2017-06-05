@@ -18,10 +18,22 @@ public class Appli extends CloudResource {
      * Constructor of an appli cloud resource
      * @param name The name of the appli
      */
-    public Appli(String name) {
-        super(name, CloudResourceType.APPLI);
+    public Appli(String name, int score) {
+        super(name, CloudResourceType.APPLI, score);
         this.pms.initResourceList();
         this.tiers.initResourceList();
+    }
+
+    @Override
+    public int getTotalScore() {
+        int retScore = this.getScore();
+        for(CloudResource co : this.pms.getResourceList()) {
+            retScore += co.getTotalScore();
+        }
+        for(CloudResource co : this.tiers.getResourceList()) {
+            retScore += co.getTotalScore();
+        }
+        return retScore;
     }
 
     @Override

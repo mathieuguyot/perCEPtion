@@ -12,17 +12,19 @@ public abstract class PrimitiveEvent extends Event {
 
     final private String cloudResourceName;
     final private CloudResourceType cloudResourceType;
+    final private int score;
 
     /**
      * The constructor of the primitive event
      * @param cloudResourceName The cloud resource name
      * @param cloudResourceType The cloud resource type
      */
-    public PrimitiveEvent(String cloudResourceName, CloudResourceType cloudResourceType)
+    public PrimitiveEvent(String cloudResourceName, CloudResourceType cloudResourceType, int score)
     {
         super(EventType.PRIMITIVE);
         this.cloudResourceName = cloudResourceName;
         this.cloudResourceType = cloudResourceType;
+        this.score = score;
     }
 
     /**
@@ -39,6 +41,14 @@ public abstract class PrimitiveEvent extends Event {
      */
     public CloudResourceType getCloudResourceType() {
         return cloudResourceType;
+    }
+
+    /**
+     * Getter on the score of the primitive event
+     * @return The score of the primitive event
+     */
+    public int getScore() {
+        return score;
     }
 
 }

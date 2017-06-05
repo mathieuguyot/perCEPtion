@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.Serializable;
+
 /**
  * Sysout logger wrapper to create color logs
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT

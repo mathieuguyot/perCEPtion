@@ -20,8 +20,8 @@ public class Tier extends CloudResource {
 	 * Constructor of a tier
 	 * @param nom The name of the cloud resource
 	 */
-	public Tier(String nom) {
-		super(nom, CloudResourceType.TIER);
+	public Tier(String nom, int score) {
+		super(nom, CloudResourceType.TIER, score);
 		this.vms.initResourceList();
 	}
 
@@ -40,6 +40,15 @@ public class Tier extends CloudResource {
 	public void setAppli(Appli a) {
 		this.appli = a;
 		
+	}
+
+	@Override
+	public int getTotalScore() {
+		int retScore = this.getScore();
+		for(CloudResource co : this.vms.getResourceList()) {
+			retScore += co.getTotalScore();
+		}
+		return retScore;
 	}
 
 	@Override

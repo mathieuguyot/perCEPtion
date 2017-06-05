@@ -24,8 +24,8 @@ public class PM extends CloudResource {
 	 * Constructor of a PM
 	 * @param nom The name of the resource
 	 */
-	public PM(String nom) {
-		super(nom, CloudResourceType.PM);
+	public PM(String nom, int score) {
+		super(nom, CloudResourceType.PM, score);
 		this.vms.initResourceList();
 		cpuConsumption = 0;
 		ramConsumption = 0;
@@ -94,6 +94,15 @@ public class PM extends CloudResource {
      */
 	public void setDiskConsumption(int diskConsumption) {
 		this.diskConsumption = diskConsumption;
+	}
+
+	@Override
+	public int getTotalScore() {
+		int retScore = this.getScore();
+		for(CloudResource co : this.vms.getResourceList()) {
+			retScore += co.getTotalScore();
+		}
+		return retScore;
 	}
 
 	@Override

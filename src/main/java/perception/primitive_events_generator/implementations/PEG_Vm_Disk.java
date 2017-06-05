@@ -22,7 +22,7 @@ public class PEG_Vm_Disk extends PrimitiveEventGenerator {
     @Override
     protected Optional<PrimitiveEvent>  processResource(CloudResource cr) {
         if(cr.getType() == CloudResourceType.VM) {
-            PE_Disk pe_Disk = new PE_Disk(cr.getName(), cr.getType(), ((VM)cr).getDiskConsumption());
+            PE_Disk pe_Disk = new PE_Disk(cr.getName(), cr.getType(), cr.getScore(), ((VM)cr).getDiskConsumption());
             return Optional.of(pe_Disk);
         }
         return Optional.empty();

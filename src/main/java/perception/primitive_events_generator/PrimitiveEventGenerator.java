@@ -4,7 +4,6 @@ import graph.CloudResource;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import perception.core.CloudResourcesAccess;
 import perception.core.EventGenerator;
-import perception.core.LoggerAccess;
 import perception.events.PrimitiveEvent;
 
 import java.util.Optional;
@@ -38,8 +37,8 @@ public abstract class PrimitiveEventGenerator extends EventGenerator implements 
             Optional<PrimitiveEvent> optEvent = processResource(cr);
             if(optEvent.isPresent()) {
                 ctx.collect(optEvent.get());
-                if(this.isLogGeneratedEvents()) {
-                    LoggerAccess.getLogger().logPrimitiveEvent(optEvent.get(), getName());
+                if(this.isLogGeneratedEvents() && this.getPerceptionLogger() != null) {
+                    this.getPerceptionLogger().logPrimitiveEvent(optEvent.get(), getName());
                 }
             }
         }
@@ -51,5 +50,4 @@ public abstract class PrimitiveEventGenerator extends EventGenerator implements 
     }
 
     protected abstract Optional<PrimitiveEvent> processResource(CloudResource cr);
-
 }

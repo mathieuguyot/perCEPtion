@@ -7,13 +7,11 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
+import perception.core.SymptomQueue;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
-import perception.services.PerceptionRunResource;
 
-import java.io.Serializable;
-
-public abstract class SimpleEventGenerator extends EventGenerator implements PerceptionRunResource {
+public abstract class SimpleEventGenerator extends EventGenerator {
 
     public SimpleEventGenerator(String name) {
         super(name);
@@ -23,9 +21,9 @@ public abstract class SimpleEventGenerator extends EventGenerator implements Per
 
     public abstract PatternSelectFunction<PrimitiveEvent, SimpleEvent> getPatternSelectFunction();
 
-
     @Override
     public boolean beforeRun(PerceptionRunContext ctx) {
+        super.beforeRun(ctx);
         Pattern<PrimitiveEvent, ?> pattern = this.getPattern();
         PatternStream<PrimitiveEvent> pStream = CEP.pattern(ctx.getPrimitiveEventStream().getKeyedStream(), pattern);
         DataStream<SimpleEvent> outStream = pStream.select(this.getPatternSelectFunction());
@@ -35,6 +33,7 @@ public abstract class SimpleEventGenerator extends EventGenerator implements Per
 
     @Override
     public void endRun() {
+        super.endRun();
     }
 
 }
