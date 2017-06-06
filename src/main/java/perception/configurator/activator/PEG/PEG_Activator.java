@@ -1,14 +1,11 @@
 package perception.configurator.activator.PEG;
 
-import perception.configurator.activator.enums.PEGTypes;
+import perception.configurator.activator.enums.events.PEGTypes;
 import perception.core.PerceptionCore;
-import perception.core.PrimitiveEventStream;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -33,10 +33,10 @@
 	<xsd:element name="primitive">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="name" type="event_name_type"  minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
 				<xsd:element name="runtime" type="event_name_runtime" minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
-			<xsd:attribute name="enabled" use="required" type="event_activated"/>
+            <xsd:attribute name="enabled" use="required" type="event_activated"/>
 		</xsd:complexType>
 	</xsd:element>
 	
