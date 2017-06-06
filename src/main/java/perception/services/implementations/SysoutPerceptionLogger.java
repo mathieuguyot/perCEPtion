@@ -25,4 +25,14 @@ public class SysoutPerceptionLogger extends PerceptionLogger {
         System.out.println(complexEvent.toString());
     }
 
+    @Override
+    public void logMessage(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void logError(String error) {
+        System.err.println(error);
+    }
+
 }
