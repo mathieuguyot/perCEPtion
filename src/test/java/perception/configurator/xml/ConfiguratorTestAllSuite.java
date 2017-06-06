@@ -17,7 +17,6 @@ import perception.configurator.xml.manager.XMLManagerTestSuite;
         EnumsTestSuite.class,
         XMLManagerTestSuite.class
 })
-
 public class ConfiguratorTestAllSuite {
 
 	/* empty class */

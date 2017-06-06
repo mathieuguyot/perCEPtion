@@ -29,8 +29,8 @@ public class PEG_Activator {
         for (String peg : map.keySet()) {
             try {
                 Class<?> event = PEGTypes.getClassForPEGName(peg);
-                Constructor<?> constructor = event.getConstructor(long.class);
-                Object instance = constructor.newInstance(map.get(peg).longValue());
+                Constructor<?> constructor = event.getConstructor(String.class, long.class);
+                Object instance = constructor.newInstance(" TEST", map.get(peg).longValue());
                 core.getPrimitiveEventGeneratorManager().addEventGenerator((PrimitiveEventGenerator) instance);
                 System.out.println("PEG " + peg + " activé");
             } catch (ClassNotFoundException ex) {
