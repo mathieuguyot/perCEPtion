@@ -28,9 +28,11 @@ public class PrimitiveEventStream implements PerceptionRunResource {
         stream = ctx.getEnv().addSource(new PEG_Blank("BLANK"));
 
         for(PrimitiveEventGenerator peg : ctx.getPrimitiveEventGeneratorManager().getGenerators()) {
-            peg.beforeRun(ctx);
-            DataStream<PrimitiveEvent> tmpStream = ctx.getEnv().addSource(peg);
-            stream = stream.union(tmpStream);
+            if(peg.isHasToGenerateEvents()) {
+                peg.beforeRun(ctx);
+                DataStream<PrimitiveEvent> tmpStream = ctx.getEnv().addSource(peg);
+                stream = stream.union(tmpStream);
+            }
         }
         keyStream();
         return true;

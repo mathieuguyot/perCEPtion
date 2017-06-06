@@ -5,7 +5,6 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import perception.events.Event;
 import perception.events.PrimitiveEvent;
-import perception.events.SimpleEvent;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 import java.util.List;

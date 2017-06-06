@@ -1,8 +1,5 @@
 package graph;
 
-import utils.Color;
-import utils.SysOutLogger;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,24 +31,6 @@ public class Appli extends CloudResource {
             retScore += co.getTotalScore();
         }
         return retScore;
-    }
-
-    @Override
-    protected void display(int indent) {
-        String indentL = this.getIndent(indent);
-        SysOutLogger.log(indentL + "[[");
-        SysOutLogger.log("APPLI", Color.CYAN);
-        SysOutLogger.log("]{");
-        SysOutLogger.log("name", Color.BLUE);
-        SysOutLogger.log(":");
-        SysOutLogger.log("\"" + name + "\"", Color.CYAN);
-        SysOutLogger.log("}]\n");
-        for(int i = 0; i < this.getPMNumber(); i++) {
-            this.getPM(i).get().display(indent + 1);
-        }
-        for(int i = 0; i < this.getTierNumber(); i++) {
-            this.getTier(i).get().display(indent + 1);
-        }
     }
 
     //--PM---------------------------------------------------------------------

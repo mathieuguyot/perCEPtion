@@ -4,14 +4,11 @@ import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import perception.core.PerceptionRunContext;
 import perception.events.Event;
 import perception.events.PrimitiveEvent;
-import perception.events.SimpleEvent;
 import perception.events.primitive_events.PE_Cpu;
 import perception.events.primitive_events.PE_Ram;
 import perception.events.simple_events.SE_Ram_Drop;
-import perception.events.symptoms.SY_Ram_Drop;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 import java.util.List;
@@ -83,7 +80,6 @@ public class SEG_Ram_Drop extends SimpleEventGenerator {
                                     pe.getScore(),
                                     ramHigh,
                                     ramLow);
-                            System.out.println(se_ram_drop);
                             return se_ram_drop;
                         }
                     }

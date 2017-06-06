@@ -1,5 +1,6 @@
 package perception.services;
 
+import perception.events.ComplexEvent;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 
@@ -27,5 +28,12 @@ public abstract class PerceptionLogger implements Serializable {
      * @param segName Name of the simple event generator that generate this event
      */
     public abstract void logSimpleEvent(SimpleEvent simpleEvent, String segName);
+
+    /**
+     * Allow to log a generated complex event
+     * @param complexEvent The generated complex event
+     * @param cegName Name of the complex event generator that generate this event
+     */
+    public abstract void logComplexEvent(ComplexEvent complexEvent, String cegName);
 
 }

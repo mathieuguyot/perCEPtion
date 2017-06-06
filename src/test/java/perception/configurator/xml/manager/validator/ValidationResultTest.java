@@ -4,9 +4,7 @@ import org.junit.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.validator.ValidatorErrorType;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ValidationResultTest {
 

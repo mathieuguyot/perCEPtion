@@ -59,19 +59,6 @@ public abstract class CloudResource {
         this.score = score;
     }
 
-    /**
-	 * Display general information about cloud resource
-	 */
-	public void display() {
-	    this.display(0);
-    }
-
-	/**
-	 * Display the cloud resource
-	 * @param indent The indent factor of the display
-	 */
-	protected abstract void display(int indent);
-
 	/**
 	 * Method get a string of indent (eg. "\t\t\t\t" for a 4 indent factor)
 	 * @param indent The indent factor

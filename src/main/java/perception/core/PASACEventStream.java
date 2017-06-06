@@ -6,7 +6,6 @@ import perception.complex_event_generator.ComplexEventGenerator;
 import perception.events.Event;
 import perception.events.PrimitiveEvent;
 import perception.services.PerceptionRunResource;
-import perception.simple_events_generator.SimpleEventGenerator;
 
 public class PASACEventStream implements PerceptionRunResource {
 
@@ -30,7 +29,9 @@ public class PASACEventStream implements PerceptionRunResource {
         });
         this.stream = this.stream.union(ctx.getSacEventStream().getStream());
         for(ComplexEventGenerator ceg : ctx.getComplexEventGeneratorManager().getGenerators()) {
-            ceg.beforeRun(ctx);
+            if(ceg.isHasToGenerateEvents()) {
+                ceg.beforeRun(ctx);
+            }
         }
         return true;
     }

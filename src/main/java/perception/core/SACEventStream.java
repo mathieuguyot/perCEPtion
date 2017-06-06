@@ -6,7 +6,6 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import perception.events.Event;
 import perception.events.PrimitiveEvent;
-import perception.events.SimpleEvent;
 import perception.services.PerceptionRunResource;
 import perception.simple_events_generator.SimpleEventGenerator;
 import perception.simple_events_generator.implementations.SEG_Blank;
@@ -35,7 +34,9 @@ public class SACEventStream implements PerceptionRunResource {
         PatternStream<PrimitiveEvent> pStream = CEP.pattern(ctx.getPrimitiveEventStream().getKeyedStream(), pattern);
         stream = pStream.select(seg_blank.getPatternSelectFunction());
         for(SimpleEventGenerator seg : ctx.getSimpleEventGeneratorManager().getGenerators()) {
-            seg.beforeRun(ctx);
+            if(seg.isHasToGenerateEvents()) {
+                seg.beforeRun(ctx);
+            }
         }
         return true;
     }

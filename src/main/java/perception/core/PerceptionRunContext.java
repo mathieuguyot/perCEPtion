@@ -29,10 +29,11 @@ public class PerceptionRunContext {
     private SACEventStream sacEventStream; //simple and complex event stream
     private PASACEventStream pasacEventStream;
 
-    //Perception logger that we use to log things during flink execution
-    private PerceptionLogger perceptionLogger;
     //Symptom queue
     private static SymptomQueue symptomQueue;
+    //Logging system
+    private static PerceptionLogger perceptionLogger;
+
 
     /**
      * Constructor of the perception run context
@@ -118,16 +119,16 @@ public class PerceptionRunContext {
      * Getter on the perception logger that we use to log infos during the test
      * @return The perception logger
      */
-    public PerceptionLogger getPerceptionLogger() {
-        return perceptionLogger;
+    public static PerceptionLogger getPerceptionLogger() {
+        return PerceptionRunContext.perceptionLogger;
     }
 
     /**
      * Setter on the perceptiuon logger that we use to log infos during the test
      * @param perceptionLogger The new perception logger
      */
-    public void setPerceptionLogger(PerceptionLogger perceptionLogger) {
-        this.perceptionLogger = perceptionLogger;
+    public static void setPerceptionLogger(PerceptionLogger perceptionLogger) {
+        PerceptionRunContext.perceptionLogger = perceptionLogger;
     }
 
     public PASACEventStream getPasacEventStream() {

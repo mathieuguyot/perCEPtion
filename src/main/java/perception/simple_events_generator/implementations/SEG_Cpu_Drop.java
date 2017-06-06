@@ -4,13 +4,10 @@ import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import perception.core.PerceptionRunContext;
 import perception.events.Event;
 import perception.events.PrimitiveEvent;
-import perception.events.SimpleEvent;
 import perception.events.primitive_events.PE_Cpu;
 import perception.events.simple_events.SE_Cpu_Drop;
-import perception.events.symptoms.SY_Cpu_Drop;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 import java.util.List;
@@ -82,7 +79,6 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
                                                                      pe.getScore(),
                                                                      cpuHigh,
                                                                       cpuLow);
-                            System.out.println(seCpuDrop);
                             return seCpuDrop;
                         }
                     }

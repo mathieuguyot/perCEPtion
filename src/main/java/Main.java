@@ -2,7 +2,8 @@ import graph.PM;
 import perception.complex_event_generator.implementations.CEG_DeadCpu;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
-import perception.primitive_events_generator.implementations.*;
+import perception.primitive_events_generator.implementations.PEG_Pm_Cpu;
+import perception.primitive_events_generator.implementations.PEG_Pm_Ram;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
 import perception.simple_events_generator.implementations.SEG_Ram_Drop;
 
@@ -41,7 +42,6 @@ public class Main {
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu("My generator", 1000));
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
        // core.fet().addPEG(new PEG_Pm_Cpu(1000));
-
 
         core.getSimpleEventGeneratorManager().setLogStream(true);
         core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop("My seg"));
