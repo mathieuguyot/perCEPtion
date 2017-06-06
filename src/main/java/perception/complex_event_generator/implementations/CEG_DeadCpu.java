@@ -43,7 +43,6 @@ public class CEG_DeadCpu extends ComplexEventGenerator {
                         if(e instanceof SE_Cpu_Drop) {
                             SE_Cpu_Drop se = (SE_Cpu_Drop)e;
                             CE_Cpu_Dead ce = new CE_Cpu_Dead(se.getCloudResourceType(), se.getCloudResourceName(), se.getScore());
-                            System.out.println(ce);
                             return ce;
                         }
                     }

@@ -7,7 +7,12 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
+import perception.events.ComplexEvent;
 import perception.events.Event;
+import perception.events.SimpleEvent;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Abstract class that represent a complex event generator (CEG).
@@ -49,7 +54,16 @@ public abstract class ComplexEventGenerator extends EventGenerator {
         if(initOk) {
             Pattern<Event, ?> pattern = this.getPattern();
             PatternStream<Event> pStream = CEP.pattern(ctx.getPasacEventStream().getStream(), pattern);
-            DataStream<Event> outStream = pStream.select(this.getPatternSelectFunction());
+            DataStream<Event> outStream = pStream.select(new PatternSelectFunction<Event, Event>() {
+                @Override
+                public Event select(Map<String, List<Event>> map) throws Exception {
+                    Event e = getPatternSelectFunction().select(map);
+                    if (isLogGeneratedEvents() && e != null) {
+                        PerceptionRunContext.getPerceptionLogger().logComplexEvent((ComplexEvent) e, getName());
+                    }
+                    return e;
+                }
+            });
             ctx.getSacEventStream().mergeStream(outStream);
         }
         return initOk;

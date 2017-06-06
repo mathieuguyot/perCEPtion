@@ -62,10 +62,10 @@ public abstract class SimpleEventGenerator extends EventGenerator {
                 @Override
                 public Event select(Map<String, List<PrimitiveEvent>> map) throws Exception {
                     Event e = getPatternSelectFunction().select(map);
-                    if(isLogGeneratedEvents()) {
+                    if(isLogGeneratedEvents() && e != null) {
                         PerceptionRunContext.getPerceptionLogger().logSimpleEvent((SimpleEvent)e, getName());
                     }
-                    return null;
+                    return e;
                 }
             });
             ctx.getSacEventStream().mergeStream(outStream);
