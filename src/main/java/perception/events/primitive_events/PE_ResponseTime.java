@@ -7,8 +7,8 @@ public class PE_ResponseTime extends PrimitiveEvent {
 
     final private int responseTime;
 
-    public PE_ResponseTime(String cloudResourceName, CloudResourceType cloudResourceType, int responseTime) {
-        super(cloudResourceName, cloudResourceType);
+    public PE_ResponseTime(String cloudResourceName, CloudResourceType cloudResourceType, int score, int responseTime) {
+        super(cloudResourceName, cloudResourceType, score);
         this.responseTime = responseTime;
     }
 

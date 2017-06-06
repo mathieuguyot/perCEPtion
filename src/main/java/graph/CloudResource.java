@@ -8,15 +8,17 @@ public abstract class CloudResource {
 
 	protected String name; //The name of the cloud resource
 	protected CloudResourceType type;
+	protected int score;
 
 	/**
 	 * Constructor of the cloud resource
 	 * @param name The name of the cloud resource
 	 */
-	public CloudResource(String name, CloudResourceType type) {
+	public CloudResource(String name, CloudResourceType type, int score) {
 		super();
 		this.name = name;
 		this.type = type;
+		this.score = score;
 	}
 
 	/**
@@ -35,7 +37,29 @@ public abstract class CloudResource {
 		return type;
 	}
 
-	/**
+    /**
+     * Getter on the score of the cloud resource
+     * @return The score of the cloud resource
+     */
+    public int getScore() {
+        return score;
+    }
+
+    /**
+     * Getter on the total score of the cloud resource (score of this resources + score of all child resources)
+     * @return The total score of the cloud resource
+     */
+    public abstract int getTotalScore();
+
+    /**
+     * Setter on the score of the cloud resource
+     * @param score The new score of the cloud resources
+     */
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
 	 * Display general information about cloud resource
 	 */
 	public void display() {

@@ -2,6 +2,8 @@ package perception.core;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
+import perception.services.PerceptionLogger;
+import perception.services.implementations.SysoutPerceptionLogger;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 /**
@@ -13,11 +15,17 @@ import perception.simple_events_generator.SimpleEventGenerator;
  */
 public class PerceptionRunContext {
 
-    private EventGeneratorManager<PrimitiveEventGenerator> primitiveEventGeneratorManager; //Manager who manage our PEG
-    private EventGeneratorManager<SimpleEventGenerator> simpleEventGeneratorManager; //Manager who manager our SEG
+    //Manager who manage our PEG
+    private EventGeneratorManager<PrimitiveEventGenerator> primitiveEventGeneratorManager;
+    //Manager who manager our SEG
+    private EventGeneratorManager<SimpleEventGenerator> simpleEventGeneratorManager;
     private StreamExecutionEnvironment env; //Flink run environment.
     private PrimitiveEventStream primitiveEventStream; //Primitive event stream
     private SACEventStream sacEventStream; //simple and complex event stream
+    //Perception logger that we use to log things during flink execution
+    private PerceptionLogger perceptionLogger;
+    //Symptom queue
+    private static SymptomQueue symptomQueue;
 
     /**
      * Constructor of the perception run context
@@ -27,7 +35,14 @@ public class PerceptionRunContext {
         this.simpleEventGeneratorManager = new EventGeneratorManager<>();
         this.primitiveEventStream = new PrimitiveEventStream();
         this.sacEventStream = new SACEventStream();
+        this.perceptionLogger = new SysoutPerceptionLogger();
+        this.symptomQueue = new SymptomQueue();
         this.env = null;
+    }
+
+
+    public static SymptomQueue getSymptomQueue() {
+        return symptomQueue;
     }
 
     /**
@@ -76,5 +91,21 @@ public class PerceptionRunContext {
      */
     public EventGeneratorManager<SimpleEventGenerator> getSimpleEventGeneratorManager() {
         return simpleEventGeneratorManager;
+    }
+
+    /**
+     * Getter on the perception logger that we use to log infos during the test
+     * @return The perception logger
+     */
+    public PerceptionLogger getPerceptionLogger() {
+        return perceptionLogger;
+    }
+
+    /**
+     * Setter on the perceptiuon logger that we use to log infos during the test
+     * @param perceptionLogger The new perception logger
+     */
+    public void setPerceptionLogger(PerceptionLogger perceptionLogger) {
+        this.perceptionLogger = perceptionLogger;
     }
 }

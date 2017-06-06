@@ -10,10 +10,11 @@ public class SE_Cpu_Drop extends SimpleEvent {
 
     public SE_Cpu_Drop(String cloudResourceName,
                        CloudResourceType cloudResourceType,
+                       int score,
                        int cpuValueBeforeDrop,
                        int cpuValueAfterDrop)
     {
-        super(cloudResourceName, cloudResourceType);
+        super(cloudResourceName, cloudResourceType, score);
         this.cpuValueBeforeDrop = cpuValueBeforeDrop;
         this.cpuValueAfterDrop = cpuValueAfterDrop;
     }

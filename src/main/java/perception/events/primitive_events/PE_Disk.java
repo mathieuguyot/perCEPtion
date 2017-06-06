@@ -9,9 +9,10 @@ public class PE_Disk extends PrimitiveEvent {
 
     public PE_Disk(String cloudResourceName,
                    CloudResourceType cloudResourceType,
+                   int score,
                    int diskValue)
     {
-        super(cloudResourceName, cloudResourceType);
+        super(cloudResourceName, cloudResourceType, score);
         this.diskValue = diskValue;
     }
 

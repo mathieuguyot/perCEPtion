@@ -9,9 +9,10 @@ public class PE_Ram extends PrimitiveEvent {
 
     public PE_Ram(String cloudResourceName,
                   CloudResourceType cloudResourceType,
+                  int score,
                   int ramValue)
     {
-        super(cloudResourceName, cloudResourceType);
+        super(cloudResourceName, cloudResourceType, score);
         this.ramValue = ramValue;
     }
 

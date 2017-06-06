@@ -3,6 +3,8 @@ package perception.services;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 
+import java.io.Serializable;
+
 /**
  * Abstract class that define the Events logger service used to log informations about
  * generated events.
@@ -10,7 +12,7 @@ import perception.events.SimpleEvent;
  * perCEPtion core stuff.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public abstract class EventsLogger {
+public abstract class PerceptionLogger implements Serializable {
 
     /**
      * Allow to log a generated primitive event

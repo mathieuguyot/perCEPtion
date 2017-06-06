@@ -25,8 +25,8 @@ public class VM extends CloudResource {
      * Constructor of a VM
      * @param name The name of the cloud resource
      */
-	public VM(String name) {
-		super(name, CloudResourceType.VM);
+	public VM(String name, int score) {
+		super(name, CloudResourceType.VM, score);
         this.cos.initResourceList();
 	}
 
@@ -110,28 +110,14 @@ public class VM extends CloudResource {
 		this.tier = t;
 	}
 
-    //--CO---------------------------------------------------------------------
-    //An VM hold multiple Co Cloud Resources
-    private CloudResourceHolder<Co> cos = new CloudResourceHolder<Co>() {
-
-        private List<Co> cos;
-
-        @Override
-        public List<Co> getResourceList() {
-            return cos;
+    @Override
+    public int getTotalScore() {
+        int retScore = this.getScore();
+        for(CloudResource co : this.cos.getResourceList()) {
+            retScore += co.getTotalScore();
         }
-
-        @Override
-        public void initResourceList() {
-            cos = new ArrayList<>();
-        }
-    };
-    public boolean addCo(Co co) { return this.cos.addResource(co); }
-    public Optional<Co> getCo(String coName) { return this.cos.getResource(coName); }
-    public Optional<Co> getCo(int coId) { return this.cos.getResource(coId); }
-    public boolean isCoExists(String coName) { return this.cos.isResourceExists(coName); }
-    public int getCoNumber() { return this.cos.getResourceNumber(); }
-    //--Co---------------------------------------------------------------------
+        return retScore;
+    }
 
     @Override
     public void display(int indent) {
@@ -175,5 +161,28 @@ public class VM extends CloudResource {
             this.getCo(i).get().display(indent + 1);
         }
     }
+
+    //--CO---------------------------------------------------------------------
+    //An VM hold multiple Co Cloud Resources
+    private CloudResourceHolder<Co> cos = new CloudResourceHolder<Co>() {
+
+        private List<Co> cos;
+
+        @Override
+        public List<Co> getResourceList() {
+            return cos;
+        }
+
+        @Override
+        public void initResourceList() {
+            cos = new ArrayList<>();
+        }
+    };
+    public boolean addCo(Co co) { return this.cos.addResource(co); }
+    public Optional<Co> getCo(String coName) { return this.cos.getResource(coName); }
+    public Optional<Co> getCo(int coId) { return this.cos.getResource(coId); }
+    public boolean isCoExists(String coName) { return this.cos.isResourceExists(coName); }
+    public int getCoNumber() { return this.cos.getResourceNumber(); }
+    //--Co---------------------------------------------------------------------
 
 }

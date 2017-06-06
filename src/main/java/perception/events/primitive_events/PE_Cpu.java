@@ -9,9 +9,10 @@ public class PE_Cpu extends PrimitiveEvent {
 
     public PE_Cpu(String cloudResourceName,
                   CloudResourceType cloudResourceType,
+                  int score,
                   int cpuValue)
     {
-        super(cloudResourceName, cloudResourceType);
+        super(cloudResourceName, cloudResourceType, score);
         this.cpuValue = cpuValue;
     }
 

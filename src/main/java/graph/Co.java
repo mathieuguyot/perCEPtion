@@ -20,8 +20,8 @@ public class Co extends CloudResource {
 	 * @param typeCO The type of CO
 	 * @param responseTime The response time of the CO
 	 */
-	public Co(String nom, String typeCO, int responseTime) {
-		super(nom, CloudResourceType.CO);
+	public Co(String nom, String typeCO, int score, int responseTime) {
+		super(nom, CloudResourceType.CO, score);
 		this.typeCO = typeCO;
 		this.responseTime = responseTime;
 	}
@@ -72,6 +72,11 @@ public class Co extends CloudResource {
      */
 	public void setVm(VM vm) {
 		this.vm = vm;
+	}
+
+	@Override
+	public int getTotalScore() {
+		return this.getScore();
 	}
 
 	@Override

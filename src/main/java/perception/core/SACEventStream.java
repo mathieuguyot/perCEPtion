@@ -10,9 +10,6 @@ import perception.services.PerceptionRunResource;
 import perception.simple_events_generator.SimpleEventGenerator;
 import perception.simple_events_generator.implementations.SEG_Blank;
 
-import java.util.Deque;
-import java.util.LinkedList;
-
 public class SACEventStream implements PerceptionRunResource {
 
     private DataStream<SimpleEvent> stream;

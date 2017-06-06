@@ -22,7 +22,7 @@ public class PEG_Pm_Ram extends PrimitiveEventGenerator {
     @Override
     protected Optional<PrimitiveEvent>  processResource(CloudResource cr) {
         if(cr.getType() == CloudResourceType.PM) {
-            PE_Ram pe_Ram = new PE_Ram(cr.getName(), cr.getType(), ((PM)cr).getRamConsumption());
+            PE_Ram pe_Ram = new PE_Ram(cr.getName(), cr.getType(), cr.getScore(), ((PM)cr).getRamConsumption());
             return Optional.of(pe_Ram);
         }
         return Optional.empty();

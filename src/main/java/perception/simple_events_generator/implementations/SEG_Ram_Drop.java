@@ -8,15 +8,16 @@ import perception.core.PerceptionRunContext;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 import perception.events.primitive_events.PE_Cpu;
-import perception.events.symptoms.SY_Cpu_Drop;
+import perception.events.primitive_events.PE_Ram;
+import perception.events.symptoms.SY_Ram_Drop;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 import java.util.List;
 import java.util.Map;
 
-public class SEG_Cpu_Drop extends SimpleEventGenerator {
+public class SEG_Ram_Drop extends SimpleEventGenerator {
 
-    public SEG_Cpu_Drop(String name) {
+    public SEG_Ram_Drop(String name) {
         super(name);
     }
 
@@ -24,11 +25,11 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
     public Pattern<PrimitiveEvent, ?> getPattern() {
         return Pattern
                 .<PrimitiveEvent>begin("IDLE")
-                .subtype(PE_Cpu.class)
-                .where(new IterativeCondition<PE_Cpu>() {
+                .subtype(PE_Ram.class)
+                .where(new IterativeCondition<PE_Ram>() {
                     @Override
-                    public boolean filter(PE_Cpu pe_cpu, Context<PE_Cpu> context) throws Exception {
-                        if(pe_cpu.getCpuValue() > 50) {
+                    public boolean filter(PE_Ram pe_ram, Context<PE_Ram> context) throws Exception {
+                        if(pe_ram.getRamValue() > 50) {
                             return true;
                         }
                         return false;
@@ -40,19 +41,19 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
                 .where(new IterativeCondition<PrimitiveEvent>() {
                     @Override
                     public boolean filter(PrimitiveEvent pe, Context<PrimitiveEvent> context) throws Exception {
-                        if(pe.getClass() == PE_Cpu.class) {
+                        if(pe.getClass() == PE_Ram.class) {
                             return false;
                         } else {
                             return true;
                         }
                     }
                 })
-                .next("CPU DROP")
-                .subtype(PE_Cpu.class)
-                .where(new IterativeCondition<PE_Cpu>() {
+                .next("RAM DROP")
+                .subtype(PE_Ram.class)
+                .where(new IterativeCondition<PE_Ram>() {
                     @Override
-                    public boolean filter(PE_Cpu pe_cpu, Context<PE_Cpu> context) throws Exception {
-                        if(pe_cpu.getCpuValue() < 10) {
+                    public boolean filter(PE_Ram pe_ram, Context<PE_Ram> context) throws Exception {
+                        if(pe_ram.getRamValue() < 10) {
                             return true;
                         }
                         return false;
@@ -67,20 +68,19 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
             @Override
             public SimpleEvent select(Map<String, List<PrimitiveEvent>> map) throws Exception {
                 boolean isSecondPE = false;
-                int cpuHigh = 0, cpuLow = 0;
+                int ramHigh = 0, ramLow = 0;
                 for (List<PrimitiveEvent> p : map.values()) {
                     for (PrimitiveEvent pe : p) {
-                        if(pe.getClass() == PE_Cpu.class && !isSecondPE) {
-                            //SE_Cpu_Drop se = new SE_Cpu_Drop(pe.getCloudResourceName(), pe.getCloudResourceType(), ((PE_Cpu) pe).getCpuValue(), 0);
-                            cpuHigh = ((PE_Cpu) pe).getCpuValue();
+                        if(pe.getClass() == PE_Ram.class && !isSecondPE) {
+                            ramHigh = ((PE_Ram) pe).getRamValue();
                             isSecondPE = true;
                         } else if(pe.getClass() == PE_Cpu.class && isSecondPE) {
-                            cpuLow = ((PE_Cpu) pe).getCpuValue();
-                            SY_Cpu_Drop sy = new SY_Cpu_Drop(pe.getCloudResourceName(),
-                                                             pe.getCloudResourceType(),
-                                                             pe.getScore(),
-                                                             cpuHigh,
-                                                             cpuLow);
+                            ramLow = ((PE_Cpu) pe).getCpuValue();
+                            SY_Ram_Drop sy = new SY_Ram_Drop(pe.getCloudResourceName(),
+                                    pe.getCloudResourceType(),
+                                    pe.getScore(),
+                                    ramHigh,
+                                    ramLow);
                             PerceptionRunContext.getSymptomQueue().pushSymptom(sy);
                         }
                     }
