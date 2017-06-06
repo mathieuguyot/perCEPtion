@@ -19,6 +19,14 @@ public class SE_Cpu_Drop extends SimpleEvent {
         this.cpuValueAfterDrop = cpuValueAfterDrop;
     }
 
+    public int getCpuValueBeforeDrop() {
+        return cpuValueBeforeDrop;
+    }
+
+    public int getCpuValueAfterDrop() {
+        return cpuValueAfterDrop;
+    }
+
     @Override
     public String toString() {
         return "SE_Cpu_Drop{" +

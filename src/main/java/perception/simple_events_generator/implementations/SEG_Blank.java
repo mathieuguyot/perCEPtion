@@ -3,6 +3,7 @@ package perception.simple_events_generator.implementations;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import perception.events.Event;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 import perception.simple_events_generator.SimpleEventGenerator;
@@ -29,10 +30,10 @@ public class SEG_Blank extends SimpleEventGenerator {
     }
 
     @Override
-    public PatternSelectFunction<PrimitiveEvent, SimpleEvent> getPatternSelectFunction() {
-        return new PatternSelectFunction<PrimitiveEvent, SimpleEvent>() {
+    public PatternSelectFunction<PrimitiveEvent, Event> getPatternSelectFunction() {
+        return new PatternSelectFunction<PrimitiveEvent, Event>() {
             @Override
-            public SimpleEvent select(Map<String, List<PrimitiveEvent>> map) throws Exception {
+            public Event select(Map<String, List<PrimitiveEvent>> map) throws Exception {
                 return null;
             }
         };

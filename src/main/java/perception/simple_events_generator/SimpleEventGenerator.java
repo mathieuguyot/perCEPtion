@@ -7,9 +7,8 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
-import perception.core.SymptomQueue;
+import perception.events.Event;
 import perception.events.PrimitiveEvent;
-import perception.events.SimpleEvent;
 
 public abstract class SimpleEventGenerator extends EventGenerator {
 
@@ -19,16 +18,18 @@ public abstract class SimpleEventGenerator extends EventGenerator {
 
     public abstract Pattern<PrimitiveEvent, ?> getPattern();
 
-    public abstract PatternSelectFunction<PrimitiveEvent, SimpleEvent> getPatternSelectFunction();
+    public abstract PatternSelectFunction<PrimitiveEvent, Event> getPatternSelectFunction();
 
     @Override
     public boolean beforeRun(PerceptionRunContext ctx) {
-        super.beforeRun(ctx);
-        Pattern<PrimitiveEvent, ?> pattern = this.getPattern();
-        PatternStream<PrimitiveEvent> pStream = CEP.pattern(ctx.getPrimitiveEventStream().getKeyedStream(), pattern);
-        DataStream<SimpleEvent> outStream = pStream.select(this.getPatternSelectFunction());
-        ctx.getSacEventStream().mergeStream(outStream);
-        return true;
+        boolean initOk = super.beforeRun(ctx);
+        if(initOk) {
+            Pattern<PrimitiveEvent, ?> pattern = this.getPattern();
+            PatternStream<PrimitiveEvent> pStream = CEP.pattern(ctx.getPrimitiveEventStream().getKeyedStream(), pattern);
+            DataStream<Event> outStream = pStream.select(this.getPatternSelectFunction());
+            ctx.getSacEventStream().mergeStream(outStream);
+        }
+        return initOk;
     }
 
     @Override

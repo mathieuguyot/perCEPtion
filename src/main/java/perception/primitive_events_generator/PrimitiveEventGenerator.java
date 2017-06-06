@@ -8,7 +8,8 @@ import perception.events.PrimitiveEvent;
 
 import java.util.Optional;
 
-public abstract class PrimitiveEventGenerator extends EventGenerator implements SourceFunction<PrimitiveEvent> {
+public abstract class
+PrimitiveEventGenerator extends EventGenerator implements SourceFunction<PrimitiveEvent> {
 
     private boolean isRunning;
     private long msRefreshingRate;

@@ -4,6 +4,7 @@ import graph.CloudResourceType;
 import utils.Triplet;
 
 import java.util.Deque;
+import java.util.LinkedList;
 
 public abstract class ComplexEvent extends Event {
 
@@ -18,6 +19,12 @@ public abstract class ComplexEvent extends Event {
     public ComplexEvent(Deque<Triplet<CloudResourceType, String, Integer>> resources) {
         super(EventType.COMPLEX);
         this.resources = resources;
+    }
+
+    public ComplexEvent(CloudResourceType type, String name, Integer score) {
+        super(EventType.COMPLEX);
+        this.resources = new LinkedList<>();
+        this.resources.push(new Triplet<>(type, name, score));
     }
 
     public Deque<Triplet<CloudResourceType, String, Integer>> getResources() {

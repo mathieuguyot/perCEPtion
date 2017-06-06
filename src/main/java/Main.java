@@ -1,4 +1,5 @@
 import graph.PM;
+import perception.complex_event_generator.implementations.CEG_DeadCpu;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
 import perception.primitive_events_generator.implementations.*;
@@ -27,10 +28,10 @@ public class Main {
 
         PerceptionCore core = new PerceptionCore();
 
+        core.getPrimitiveEventGeneratorManager().setLogStream(true);
         core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu(1000));
         core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Ram(1000));
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
-        core.getPrimitiveEventGeneratorManager().setLogStream(true);
 
         //PEG_Activator peg_activator = new PEG_Activator();
         //Map<String, Long> myPEGS = new HashMap<>();
@@ -40,9 +41,15 @@ public class Main {
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu("My generator", 1000));
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
        // core.fet().addPEG(new PEG_Pm_Cpu(1000));
+
+
         core.getSimpleEventGeneratorManager().setLogStream(true);
         core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop("My seg"));
         core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Ram_Drop("My ram seg"));
+
+        core.getComplexEventGeneratorManager().setLogStream(true);
+        core.getComplexEventGeneratorManager().addEventGenerator(new CEG_DeadCpu("cpu dead"));
+
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
 /*
@@ -100,7 +107,7 @@ public class Main {
 
         Thread.sleep(5000);
         System.out.println("CPU DROP");
-        pm1.setCpuConsumption(1);
+        pm1.setCpuConsumption(0);
         Thread.sleep(3000);
         System.out.println("CPU UP");
         pm1.setCpuConsumption(70);
@@ -123,6 +130,9 @@ public class Main {
         Thread.sleep(3000);
         System.out.println("CPU UP");
         pm1.setCpuConsumption(100);
+        Thread.sleep(3000);
+        System.out.println("CPU DEAD");
+        pm1.setCpuConsumption(0);
 
 
 /*
