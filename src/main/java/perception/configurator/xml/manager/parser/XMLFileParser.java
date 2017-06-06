@@ -34,6 +34,7 @@ public class XMLFileParser {
         // Validation du fichier XML
         ValidationResult validationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
 
+        // Instanciation du l'objet contenant les résultats de parsing
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         // Enregistrement du résultat de validation

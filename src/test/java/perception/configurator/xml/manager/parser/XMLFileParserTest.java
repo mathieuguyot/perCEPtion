@@ -22,7 +22,8 @@ public class XMLFileParserTest {
 	public void testParse_XMLFileParser_OK() throws ParserConfigurationException, SAXException, IOException {
 		
 		String xMLFilePath = TestConstants.XMLFileParserTestFolder + "testParse_XMLFileParser_OK.xml";
-		
+
+		// Expected
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
 
 		Map<String, Long> expectedPrimitiveEvents = new HashMap<>();
@@ -32,7 +33,8 @@ public class XMLFileParserTest {
 		expectedResultatParsing.setPrimitiveEventMap(expectedPrimitiveEvents);
 		ValidationResult validationResult = ValidationResult.FAB();
 		expectedResultatParsing.setValidationResult(validationResult);
-		
+
+		// Actual
 		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, xSDFilePath);
 		
 		assertEquals(expectedResultatParsing, actualResultat);

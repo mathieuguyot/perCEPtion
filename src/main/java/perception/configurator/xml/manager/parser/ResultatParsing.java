@@ -105,7 +105,9 @@ public class ResultatParsing {
      * @return vrai si des erreurs sont survenu et false dans le cas contraire.
      */
     public boolean hasErrors() {
-        return ((!getFileErrorTypes().isEmpty()) || (!this.getParsingErrorTypes().isEmpty()));
+        return ((!getFileErrorTypes().isEmpty()) ||
+                (!this.getParsingErrorTypes().isEmpty()) ||
+                (this.getValidationResult().hasErrors()));
     }
 
     // Accesseurs
@@ -198,8 +200,11 @@ public class ResultatParsing {
 
     @Override
     public String toString() {
-        return "ResultatParsing [fileErrorTypes=" + fileErrorTypes + ", parsingErrorTypes=" + parsingErrorTypes
-                + ", primitiveEventMap=" + primitiveEventMap + "]";
+        return "ResultatParsing{" +
+                "fileErrorTypes=" + fileErrorTypes +
+                ", parsingErrorTypes=" + parsingErrorTypes +
+                ", validationResult=" + validationResult +
+                ", primitiveEventMap=" + primitiveEventMap +
+                '}';
     }
-
 }
