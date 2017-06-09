@@ -4,6 +4,7 @@ import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.activator.manager.PEG.PEGActivator;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
+import perception.pluginManager.PerceptionPlugin;
 import perception.pluginManager.PluginManager;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
 import perception.simple_events_generator.implementations.SEG_Ram_Drop;
@@ -41,8 +42,8 @@ public class Main {
         map.put("PEG_Pm_Ram", 1000L);
         ActivationResult activationResult = PEGActivator.activate(map, core);
         if(activationResult.hasErrors()) {
-            System.out.println("Activation errors :");
-            System.out.println(activationResult.getErrorMsg());
+            System.out.println("Activation errors !!!");
+            activationResult.getErrorMsg();
             return;
         }
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
