@@ -1,11 +1,15 @@
 import graph.PM;
 import perception.complex_event_generator.implementations.CEG_DeadCpu;
+import perception.configurator.activator.manager.ActivationResult;
+import perception.configurator.activator.manager.PEG.PEGActivator;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
-import perception.primitive_events_generator.implementations.PEG_Pm_Cpu;
-import perception.primitive_events_generator.implementations.PEG_Pm_Ram;
+import perception.pluginManager.PluginManager;
 import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
 import perception.simple_events_generator.implementations.SEG_Ram_Drop;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //TEST CLASS ! weird stuff ahead :)
 public class Main {
@@ -27,11 +31,20 @@ public class Main {
             }
         }
 
+        PluginManager.registerPlugin(MainPerceptionPlugin.getPlugin());
+
         PerceptionCore core = new PerceptionCore();
 
         core.getPrimitiveEventGeneratorManager().setLogStream(true);
-        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Cpu(1000));
-        core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Ram(1000));
+        Map<String, Long> map = new HashMap<>();
+        map.put("PEG_Pm_Cpu", 1000L);
+        map.put("PEG_Pm_Ram", 1000L);
+        ActivationResult activationResult = PEGActivator.activate(map, core);
+        if(activationResult.hasErrors()) {
+            System.out.println("Activation errors :");
+            System.out.println(activationResult.getErrorMsg());
+            return;
+        }
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
 
         //PEG_Activator peg_activator = new PEG_Activator();

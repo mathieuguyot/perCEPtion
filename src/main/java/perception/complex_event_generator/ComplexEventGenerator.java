@@ -9,7 +9,6 @@ import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
 import perception.events.ComplexEvent;
 import perception.events.Event;
-import perception.events.SimpleEvent;
 
 import java.util.List;
 import java.util.Map;
