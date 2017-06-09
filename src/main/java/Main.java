@@ -1,13 +1,11 @@
 import graph.PM;
-import perception.complex_event_generator.implementations.CEG_DeadCpu;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.activator.manager.PEG.PEGActivator;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
-import perception.pluginManager.PerceptionPlugin;
 import perception.pluginManager.PluginManager;
-import perception.simple_events_generator.implementations.SEG_Cpu_Drop;
-import perception.simple_events_generator.implementations.SEG_Ram_Drop;
+import simple_events_generator.SEG_Cpu_Drop;
+import simple_events_generator.SEG_Ram_Drop;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,10 +30,11 @@ public class Main {
             }
         }
 
-        PluginManager.registerPlugin(MainPerceptionPlugin.getPlugin());
-
         PerceptionCore core = new PerceptionCore();
 
+        PluginManager.getPluginManager().registerPlugin(MainPerceptionPlugin.getPlugin());
+
+        //Activation of PEG
         core.getPrimitiveEventGeneratorManager().setLogStream(true);
         Map<String, Long> map = new HashMap<>();
         map.put("PEG_Pm_Cpu", 1000L);
@@ -46,7 +45,6 @@ public class Main {
             activationResult.getErrorMsg();
             return;
         }
-        //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
 
         //PEG_Activator peg_activator = new PEG_Activator();
         //Map<String, Long> myPEGS = new HashMap<>();
@@ -57,12 +55,15 @@ public class Main {
         //core.getPrimitiveEventGeneratorManager().addEventGenerator(new PEG_Pm_Disk(1000));
        // core.fet().addPEG(new PEG_Pm_Cpu(1000));
 
+
+        //SEG
         core.getSimpleEventGeneratorManager().setLogStream(true);
         core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Cpu_Drop("My seg"));
         core.getSimpleEventGeneratorManager().addEventGenerator(new SEG_Ram_Drop("My ram seg"));
 
+        //CEG
         core.getComplexEventGeneratorManager().setLogStream(true);
-        core.getComplexEventGeneratorManager().addEventGenerator(new CEG_DeadCpu("cpu dead"));
+        //core.getComplexEventGeneratorManager().addEventGenerator(new CEG_DeadCpu("cpu dead"));
 
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION

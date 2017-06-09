@@ -2,10 +2,10 @@ package perception.configurator.activator.manager.SEG;
 
 import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
-import perception.configurator.activator.enums.events.SEGTypes;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.xml.manager.model.SACData;
 import perception.core.PerceptionCore;
+import perception.pluginManager.PluginManager;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
@@ -15,7 +15,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Activates SEGs from XML configuration file
@@ -40,7 +39,7 @@ public class SEGActivator {
         for (SACData seg : segs) {
             try {
                 // Chargement de la classe correspondant au type (nom de la classe) du SEG
-                Class<?> event = SEGTypes.getClassForSEGName(seg.getEventType());
+                Class<?> event = PluginManager.getPluginManager().getSegBank().getClassForEGName(seg.getEventType());
 
                 List<Object> liste = new ArrayList<Object>();
                 // Récupération du constructeur

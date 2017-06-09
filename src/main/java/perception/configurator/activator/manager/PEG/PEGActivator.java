@@ -3,7 +3,8 @@ package perception.configurator.activator.manager.PEG;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.core.PerceptionCore;
-import perception.pluginManager.PEGBank;
+import perception.pluginManager.EGBank;
+import perception.pluginManager.PluginManager;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
@@ -36,16 +37,10 @@ public class PEGActivator {
         for (String peg : map.keySet()) {
             try {
                 // Chargement de la classe correspondant au nom du PEG
-                Optional<Class<? extends PrimitiveEventGenerator>> eventOpt = PEGBank.getClassForPEGName(peg);
-                //Check if the PEG exists
-                if(!eventOpt.isPresent()) {
-                    activationResult.setActivationErrorType(ActivationErrorType.CLASS_NOT_FOUND);
-                    activationResult.setErrorMsg("\n" + "Classe " + peg + " inexistante. Vérifiez que cet évènement est bien implémentée dans le système.");
-                    return activationResult;
-                }
+                Class<? extends PrimitiveEventGenerator> event = PluginManager.getPluginManager().getPegBank().getClassForEGName(peg);
 
                 // Récupération du constructeur
-                Constructor<?> constructor = eventOpt.get().getConstructor(long.class);
+                Constructor<?> constructor = event.getConstructor(long.class);
 
                 // Instanciation du Primitive Event Generator
                 Object instance = constructor.newInstance(map.get(peg).longValue());
@@ -65,6 +60,10 @@ public class PEGActivator {
             } catch (InstantiationException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.WRONG_PARAMETERS);
                 activationResult.setErrorMsg(ex.getMessage() + "\n" + "Impossible d'instancier la classe " + peg + ".");
+            } catch (ClassNotFoundException ex) {
+                activationResult.setActivationErrorType(ActivationErrorType.CLASS_NOT_FOUND);
+                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Classe " + peg + " inexistante. Vérifiez que cet évènement est bien implémentée dans le système.");
+                return activationResult;
             }
         }
         return activationResult;
