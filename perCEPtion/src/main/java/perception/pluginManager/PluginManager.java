@@ -19,6 +19,7 @@ public class PluginManager {
     private PluginManager() {
         this.createPEGBank();
         this.createSEGBank();
+        this.createCEGBank();
     }
 
     public EGBank<PrimitiveEventGenerator> getPegBank() {

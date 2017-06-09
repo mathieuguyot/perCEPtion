@@ -1,6 +1,6 @@
 package perception.configurator.xml.manager.parser;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
 import perception.configurator.xml.manager.validator.ValidationError;

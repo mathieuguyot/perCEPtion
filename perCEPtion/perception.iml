@@ -12,10 +12,27 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="flink-cep_2.10-1.4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="flink-dist_2.10-1.4-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="flink-cep_2.10-1.4-SNAPSHOT (2)" level="project" />
-    <orderEntry type="library" name="flink-cep_2.10-1.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module-library" scope="TEST">
+      <library name="JUnit5">
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/junit/lib/junit-jupiter-api-5.0.0-M4.jar!/" />
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/junit/lib/opentest4j-1.0.0-M2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="testng">
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng.jar!/" />
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/jcommander.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -26,7 +43,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="xmlunit-1.6" level="project" />
-    <orderEntry type="library" name="mainPerceptionPlugin" level="project" />
   </component>
 </module>
