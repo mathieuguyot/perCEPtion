@@ -105,8 +105,12 @@ public class ResultatParsing {
      * @return vrai si des erreurs sont survenu et false dans le cas contraire.
      */
     public boolean hasErrors() {
-        return ((!getFileErrorTypes().isEmpty()) ||
-                (!this.getParsingErrorTypes().isEmpty()) ||
+        boolean test = (!getFileErrorTypes().isEmpty()) ||
+                (!this.getParsingErrorTypes().isEmpty());
+        if(this.getValidationResult()==null) {
+            return test;
+        }
+        return (test ||
                 (this.getValidationResult().hasErrors()));
     }
 
@@ -205,6 +209,6 @@ public class ResultatParsing {
                 ", parsingErrorTypes=" + parsingErrorTypes +
                 ", validationResult=" + validationResult +
                 ", primitiveEventMap=" + primitiveEventMap +
-                '}';
+                "}";
     }
 }

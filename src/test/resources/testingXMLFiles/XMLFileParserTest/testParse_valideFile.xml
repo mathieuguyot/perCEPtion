@@ -13,7 +13,7 @@
                 <name>PEG_Vm_Cpu</name>
                 <runtime>11000</runtime>
             </primitive>
-            <primitive enabled="false">
+            <primitive enabled="true">
                 <name>PEG_Pm_Cpu</name>
                 <runtime>98000</runtime>
             </primitive>

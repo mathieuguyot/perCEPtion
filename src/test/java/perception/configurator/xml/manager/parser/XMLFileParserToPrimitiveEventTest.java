@@ -37,10 +37,10 @@ public class XMLFileParserToPrimitiveEventTest {
 	@Test
 	public void testParse_valideFile() throws ParserConfigurationException, SAXException, IOException {
 
-		Map<String, Integer> primitiveEventMap = new HashMap<>();
-		primitiveEventMap.put("PEG_Co_ResponseTime", 78000);
-		primitiveEventMap.put("PEG_Pm_Cpu", 98000);
-		primitiveEventMap.put("PEG_Vm_Cpu", 11000);
+		Map<String, Long> primitiveEventMap = new HashMap<>();
+		primitiveEventMap.put("PEG_Co_ResponseTime", 78000L);
+		primitiveEventMap.put("PEG_Pm_Cpu", 98000L);
+		primitiveEventMap.put("PEG_Vm_Cpu", 11000L);
 
 		ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
 				.parse(TestConstants.XMLFileParserTestFolder + "testParse_valideFile.xml");
@@ -108,10 +108,10 @@ public class XMLFileParserToPrimitiveEventTest {
 	@Test
 	public void testParsePrimitiveEvents_OK() throws SAXException, IOException, ParserConfigurationException {
 
-        Map<String, Integer> primitiveEventMap = new HashMap<>();
-        primitiveEventMap.put("PEG_Co_ResponseTime", 78000);
-        primitiveEventMap.put("PEG_Pm_Cpu", 98000);
-        primitiveEventMap.put("PEG_Vm_Cpu", 11000);
+        Map<String, Long> primitiveEventMap = new HashMap<>();
+        primitiveEventMap.put("PEG_Co_ResponseTime", 78000L);
+        primitiveEventMap.put("PEG_Pm_Cpu", 98000L);
+        primitiveEventMap.put("PEG_Vm_Cpu", 11000L);
 
 		String filePath = TestConstants.XMLFileParserTestFolder + "testParsePrimitiveEvents_OK.xml";
 
@@ -244,10 +244,12 @@ public class XMLFileParserToPrimitiveEventTest {
 		String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventNameFromFile_OK.xml";
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 
-		NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
+		NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
 				this.getElementRootFromFile(filePath), XPathConstants.NODESET);
 		// Récupération du premier primitive event
-		Node node = nodeListJeuxDeDonneesFromFile.item(1);
+		Node node = nodeListJeuxDeDonneesFromFile.item(0);
+
+		// Appel de la méthode à tester
         String primitiveEventNameActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
 
 		assertEquals("Recupération du nom du primitive event", "PEG_Vm_Disk", primitiveEventNameActual);
@@ -284,13 +286,14 @@ public class XMLFileParserToPrimitiveEventTest {
         String filePath = TestConstants.XMLFileParserTestFolder + "testGetPrimitiveEventRuntimeFromFile_OK.xml";
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
-        NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitives",
+        NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+
         // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(1);
+        Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Long primitiveEventRuntimeActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
 
-        assertEquals("Recupération du runtime du primitive event", new Long(900), primitiveEventRuntimeActual);
+        assertEquals("Recupération du runtime du primitive event", new Long(78000), primitiveEventRuntimeActual);
         assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventMap().isEmpty());
         assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());

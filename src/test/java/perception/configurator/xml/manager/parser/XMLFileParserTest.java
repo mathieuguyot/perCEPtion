@@ -49,13 +49,13 @@ public class XMLFileParserTest {
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
 
         Map<String, Long> expectedPrimitiveEvents = new HashMap<>();
-        expectedPrimitiveEvents.put("PEG_Blank", 78945L);
-        expectedPrimitiveEvents.put("PEG_Pm_Cpu", 12000L);
+        //expectedPrimitiveEvents.put("PEG_Blank", 78945L);
+        //expectedPrimitiveEvents.put("PEG_Pm_Cpu", 12000L);
 
 		expectedResultatParsing.setPrimitiveEventMap(expectedPrimitiveEvents);
 
-		ValidationResult extectedValidationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
-		expectedResultatParsing.setValidationResult(extectedValidationResult);
+		ValidationResult expectedValidationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
+		expectedResultatParsing.setValidationResult(expectedValidationResult);
 		
 		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, xSDFilePath);
 		
@@ -65,13 +65,13 @@ public class XMLFileParserTest {
 	
 	
 	@Test
-	public void testDoNotParseIfValidPatternFile() throws ParserConfigurationException, SAXException, IOException {
+	public void testDoNotParseIfInvalidPatternFile() throws ParserConfigurationException, SAXException, IOException {
 		
-		String filePath = TestConstants.XMLFileParserTestFolder + "testDoNotParseIfValidPatternFile.xml";
+		String filePath = TestConstants.XMLFileParserTestFolder + "testDoNotParseIfInvalidPatternFile.xml";
 		
 		ResultatParsing actualRes = XMLFileParser.parse(filePath, xSDFilePath);
 		
-		assertEquals(null, actualRes.getPrimitiveEventMap());
+		assertEquals(new HashMap<String, Long>(), actualRes.getPrimitiveEventMap());
 		
 	}
 

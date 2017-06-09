@@ -43,7 +43,7 @@
 	<xsd:element name="primitives">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="primitive"/>
+				<xsd:element ref="primitive" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

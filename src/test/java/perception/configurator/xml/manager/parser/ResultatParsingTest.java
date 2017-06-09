@@ -3,7 +3,9 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.validator.ValidationError;
 import perception.configurator.xml.manager.validator.ValidationResult;
+import scopt.Validation;
 
 import java.util.*;
 
@@ -129,7 +131,16 @@ public class ResultatParsingTest {
 		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
 		assertFalse(resultatParsing.hasErrors());
 	}
-	
+
+	@Test
+	public void testHasErrors_NoErrors3() {
+		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
+		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		resultatParsing.setValidationResult(ValidationResult.FAB());
+		assertFalse(resultatParsing.hasErrors());
+	}
+
 	@Test
 	public void testhasErrors_OnlyParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
@@ -144,6 +155,19 @@ public class ResultatParsingTest {
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
 		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
 		assertTrue(resultatParsing.hasErrors());
+	}
+
+	@Test
+	public void testhasErrors_OnlyValidationResult() {
+
+		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
+		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
+
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		resultatParsing.setValidationResult(ValidationResult.FAB(ValidationError.FAB(), FileErrorType.EMPTY_FILE));
+
+		assertTrue(resultatParsing.hasErrors());
+
 	}
 	
 	@Test
