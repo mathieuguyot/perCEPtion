@@ -1,6 +1,7 @@
 package perception.core;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import perception.complex_event_generator.ComplexEventGenerator;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.simple_events_generator.SimpleEventGenerator;
 
@@ -38,6 +39,9 @@ public class PerceptionCore {
         if(isPrepareOk) {
             isPrepareOk = this.ctx.getSacEventStream().beforeRun(this.ctx);
         }
+        if(isPrepareOk) {
+            isPrepareOk = this.ctx.getPasacEventStream().beforeRun(this.ctx);
+        }
         return isPrepareOk;
     }
 
@@ -65,6 +69,10 @@ public class PerceptionCore {
      */
     public EventGeneratorManager<SimpleEventGenerator> getSimpleEventGeneratorManager() {
         return ctx.getSimpleEventGeneratorManager();
+    }
+
+    public EventGeneratorManager<ComplexEventGenerator> getComplexEventGeneratorManager() {
+        return ctx.getComplexEventGeneratorManager();
     }
 
 }

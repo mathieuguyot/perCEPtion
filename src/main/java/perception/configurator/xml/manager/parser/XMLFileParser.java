@@ -1,8 +1,8 @@
 package perception.configurator.xml.manager.parser;
 
+import org.xml.sax.SAXException;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;

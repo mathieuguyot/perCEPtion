@@ -27,5 +27,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="xmlunit-1.6" level="project" />
+    <orderEntry type="library" name="mainPerceptionPlugin" level="project" />
   </component>
 </module>

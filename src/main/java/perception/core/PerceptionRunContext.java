@@ -1,6 +1,7 @@
 package perception.core;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import perception.complex_event_generator.ComplexEventGenerator;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
@@ -15,17 +16,24 @@ import perception.simple_events_generator.SimpleEventGenerator;
  */
 public class PerceptionRunContext {
 
-    //Manager who manage our PEG
+    //Manager who manage our PEGs
     private EventGeneratorManager<PrimitiveEventGenerator> primitiveEventGeneratorManager;
-    //Manager who manager our SEG
+    //Manager who manage our SEGs
     private EventGeneratorManager<SimpleEventGenerator> simpleEventGeneratorManager;
+    //Manager whi manage our CEGs
+    private EventGeneratorManager<ComplexEventGenerator> complexEventGeneratorManager;
+
     private StreamExecutionEnvironment env; //Flink run environment.
+
     private PrimitiveEventStream primitiveEventStream; //Primitive event stream
     private SACEventStream sacEventStream; //simple and complex event stream
-    //Perception logger that we use to log things during flink execution
-    private PerceptionLogger perceptionLogger;
+    private PASACEventStream pasacEventStream;
+
     //Symptom queue
     private static SymptomQueue symptomQueue;
+    //Logging system
+    private static PerceptionLogger perceptionLogger;
+
 
     /**
      * Constructor of the perception run context
@@ -33,10 +41,16 @@ public class PerceptionRunContext {
     public PerceptionRunContext() {
         this.primitiveEventGeneratorManager = new EventGeneratorManager<>();
         this.simpleEventGeneratorManager = new EventGeneratorManager<>();
+        this.complexEventGeneratorManager = new EventGeneratorManager<>();
+
         this.primitiveEventStream = new PrimitiveEventStream();
+        this.pasacEventStream = new PASACEventStream();
         this.sacEventStream = new SACEventStream();
+
         this.perceptionLogger = new SysoutPerceptionLogger();
+
         this.symptomQueue = new SymptomQueue();
+
         this.env = null;
     }
 
@@ -94,18 +108,30 @@ public class PerceptionRunContext {
     }
 
     /**
+     * Getter on the complex event generator manager
+     * @return The complex event generator manager
+     */
+    public EventGeneratorManager<ComplexEventGenerator> getComplexEventGeneratorManager() {
+        return complexEventGeneratorManager;
+    }
+
+    /**
      * Getter on the perception logger that we use to log infos during the test
      * @return The perception logger
      */
-    public PerceptionLogger getPerceptionLogger() {
-        return perceptionLogger;
+    public static PerceptionLogger getPerceptionLogger() {
+        return PerceptionRunContext.perceptionLogger;
     }
 
     /**
      * Setter on the perceptiuon logger that we use to log infos during the test
      * @param perceptionLogger The new perception logger
      */
-    public void setPerceptionLogger(PerceptionLogger perceptionLogger) {
-        this.perceptionLogger = perceptionLogger;
+    public static void setPerceptionLogger(PerceptionLogger perceptionLogger) {
+        PerceptionRunContext.perceptionLogger = perceptionLogger;
+    }
+
+    public PASACEventStream getPasacEventStream() {
+        return pasacEventStream;
     }
 }

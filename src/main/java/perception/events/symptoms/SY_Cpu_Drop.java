@@ -1,6 +1,5 @@
 package perception.events.symptoms;
 
-import graph.CloudResource;
 import graph.CloudResourceType;
 import perception.events.Symptom;
 

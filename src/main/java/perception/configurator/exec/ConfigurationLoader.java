@@ -6,6 +6,8 @@ import perception.configurator.activator.manager.PEG.PEGActivator;
 import perception.configurator.xml.manager.parser.ResultatParsing;
 import perception.configurator.xml.manager.parser.XMLFileParser;
 import perception.core.PerceptionCore;
+import perception.services.PerceptionLogger;
+import perception.services.implementations.SysoutPerceptionLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -26,19 +28,22 @@ public class ConfigurationLoader {
      */
     public static void loadConfiguration(String xmlFilePath, PerceptionCore core) {
         try {
+            // Instanciation du logger
+            PerceptionLogger logger = new SysoutPerceptionLogger();
+
             // Validation et Parcours du fichier XML
             ResultatParsing parsingResult = XMLFileParser.parse(xmlFilePath,"schema.xsd");
 
             if (parsingResult.hasErrors()) {
                 // Affichage des erreurs (en rouge) dans la console
-                System.err.println(parsingResult.toString());
+                logger.logError(parsingResult.toString());
             } else {
                 // Activation des Event Generators
                 ActivationResult activationResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
 
                 if (activationResult.hasErrors()) {
                     // Affichage des erreurs (en rouge) dans la console
-                    System.err.println(activationResult.toString());
+                    logger.logError(activationResult.toString());
                 }
             }
         } catch (ParserConfigurationException e) {

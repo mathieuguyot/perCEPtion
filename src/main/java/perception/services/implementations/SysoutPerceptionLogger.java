@@ -1,9 +1,13 @@
 package perception.services.implementations;
 
+import perception.events.ComplexEvent;
 import perception.events.PrimitiveEvent;
 import perception.events.SimpleEvent;
 import perception.services.PerceptionLogger;
 
+/**
+ * Default sysout implementation class for perception logger
+ */
 public class SysoutPerceptionLogger extends PerceptionLogger {
 
     @Override
@@ -14,6 +18,21 @@ public class SysoutPerceptionLogger extends PerceptionLogger {
     @Override
     public void logSimpleEvent(SimpleEvent simpleEvent, String segName) {
         System.out.println(simpleEvent.toString());
+    }
+
+    @Override
+    public void logComplexEvent(ComplexEvent complexEvent, String cegName) {
+        System.out.println(complexEvent.toString());
+    }
+
+    @Override
+    public void logMessage(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void logError(String error) {
+        System.err.println(error);
     }
 
 }

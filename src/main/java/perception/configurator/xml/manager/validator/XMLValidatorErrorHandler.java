@@ -1,9 +1,9 @@
 package perception.configurator.xml.manager.validator;
 
-import perception.configurator.xml.enums.validator.ValidatorErrorType;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+import perception.configurator.xml.enums.validator.ValidatorErrorType;
 
 /**
  * Permet la gestion des erreurs remonté au moment du parsing du fichier XML à

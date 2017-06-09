@@ -1,8 +1,5 @@
 package graph;
 
-import utils.Color;
-import utils.SysOutLogger;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -103,41 +100,6 @@ public class PM extends CloudResource {
 			retScore += co.getTotalScore();
 		}
 		return retScore;
-	}
-
-	@Override
-	public void display(int indent) {
-		String indentL = this.getIndent(indent);
-		SysOutLogger.log(indentL + "[[");
-		SysOutLogger.log("PM", Color.CYAN);
-		SysOutLogger.log("]{");
-		SysOutLogger.log("cpu", Color.BLUE);
-		SysOutLogger.log(":");
-		SysOutLogger.log(String.valueOf(cpuConsumption), Color.MAGENTA);
-		SysOutLogger.log(", ");
-		SysOutLogger.log("ram", Color.BLUE);
-		SysOutLogger.log(":");
-		SysOutLogger.log(String.valueOf(ramConsumption), Color.MAGENTA);
-		SysOutLogger.log(", ");
-		SysOutLogger.log("disk", Color.BLUE);
-		SysOutLogger.log(":");
-		SysOutLogger.log(String.valueOf(diskConsumption), Color.MAGENTA);
-		SysOutLogger.log("}{");
-		SysOutLogger.log("name", Color.BLUE);
-		SysOutLogger.log(":");
-		SysOutLogger.log("\"" + name + "\"", Color.CYAN);
-		SysOutLogger.log("}{");
-		SysOutLogger.log("parent APPLI", Color.BLUE);
-		SysOutLogger.log(":");
-		if(this.getAppli() == null) {
-			SysOutLogger.log("NO APPLI", Color.RED);
-		} else {
-			SysOutLogger.log("\"" + appli.getName() + "\"", Color.CYAN);
-		}
-		SysOutLogger.log("}]\n");
-		for(int i = 0; i < this.getVMNumber(); i++) {
-			this.getVM(i).get().display(indent + 1);
-		}
 	}
 
 	//--VM---------------------------------------------------------------------

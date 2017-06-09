@@ -1,8 +1,8 @@
 package perception.configurator.xml.manager.validator;
 
-import java.io.File;
-
-import java.io.IOException;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import perception.configurator.xml.enums.general.FileErrorType;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -10,10 +10,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import perception.configurator.xml.enums.general.FileErrorType;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
+import java.io.File;
+import java.io.IOException;
 /**
  * Classe utilitaire permettant la validation d'un fichier XML selon, notamment,
  * deux critères :
