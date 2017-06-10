@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Class that represents a PM.
- * A PM is a cloud resource, so this class extends from CloudResource.
+ * Classe représentant une PM (Machine Physique).
+ * Une PM est une ressource de Cloud, donc il s'agit d'une extension de {@link CloudResource}.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class PM extends CloudResource {
 
 	private Appli appli;
-	//PM technicals details
+	//Détails techniques de la PM
 	private int cpuConsumption;
 	private int ramConsumption;
 	private int diskConsumption;
 
 	/**
-	 * Constructor of a PM
-	 * @param nom The name of the resource
+	 * Constructeur de la classe {@link PM}
+	 * @param nom - Le nom de la ressource
 	 */
 	public PM(String nom, int score) {
 		super(nom, CloudResourceType.PM, score);
@@ -30,64 +30,64 @@ public class PM extends CloudResource {
 	}
 
 	/**
-	 * Getter on the appli that contains this PM
-	 * @return The appli that contains this PM
+	 * Accesseur de l'application contenant la PM
+	 * @return L'application contenant la PM
 	 */
     public Appli getAppli() {
         return appli;
     }
 
 	/**
-	 * Setter on the appli that contains this PM
-	 * @param appli The appli that contains this PM
+	 * Modificateur de l'application contenant la PM
+	 * @param appli - La nouvelle application contenant la PM
 	 */
 	public void setAppli(Appli appli) {
         this.appli = appli;
     }
 
 	/**
-	 * Getter on the cpu consumption of the PM
-	 * @return The cpu consumption of the PM
+	 * Accesseur de la consommation CPU de la PM
+	 * @return La consommation CPU de la PM
 	 */
 	public int getCpu_consumption() {
 		return cpuConsumption;
 	}
 
 	/**
-	 * Setter on the cpu consumption of the PM
-	 * @param cpuConsumption The new cpu consumption of the PM
+	 * Modificateur de la consommaiton CPU de la PM
+	 * @param cpuConsumption - La nouvelle consommation CPU de la PM
 	 */
 	public void setCpuConsumption(int cpuConsumption) {
 		this.cpuConsumption = cpuConsumption;
 	}
 
     /**
-     * Getter on the ram consumption of the PM
-     * @return The ram consumption of the PM
+     * Accesseur de la consommation RAM de la PM
+     * @return La consommation RAM de la PM
      */
 	public int getRamConsumption() {
 		return ramConsumption;
 	}
 
     /**
-     * Setter on the ram consumption of the PM
-     * @param ramConsumption The ram cpu consumption of the PM
+     * Modificateur de la consommation RAM de la PM
+     * @param ramConsumption - La nouvelle consommation RAM de la PM
      */
 	public void setRamConsumption(int ramConsumption) {
 		this.ramConsumption = ramConsumption;
 	}
 
     /**
-     * Getter on the disk consumption of the PM
-     * @return The disk consumption of the PM
+     * Accesseur de la consommation Disque de la PM
+     * @return La consommation Disque de la PM
      */
 	public int getDiskConsumption() {
 		return diskConsumption;
 	}
 
     /**
-     * Setter on the disk consumption of the PM
-     * @param diskConsumption The disk cpu consumption of the PM
+     * Modificateur de la consommation Disque de la PM
+     * @param diskConsumption - La consommation Disque de la PM
      */
 	public void setDiskConsumption(int diskConsumption) {
 		this.diskConsumption = diskConsumption;
@@ -103,7 +103,7 @@ public class PM extends CloudResource {
 	}
 
 	//--VM---------------------------------------------------------------------
-	//An PM hold multiple VM Cloud Resources
+	//Une PM contient de multiples Ressources de Cloud VM
 	private CloudResourceHolder<VM> vms = new CloudResourceHolder<VM>() {
 
 		private List<VM> vms;

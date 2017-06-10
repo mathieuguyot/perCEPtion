@@ -6,8 +6,8 @@ import org.xml.sax.SAXParseException;
 import perception.configurator.xml.enums.validator.ValidatorErrorType;
 
 /**
- * Permet la gestion des erreurs remonté au moment du parsing du fichier XML à
- * travers les exceptions qui y sont levée.
+ * Permet la gestion des erreurs remontées au moment du parsing du fichier XML à
+ * travers les exceptions qui y sont levées.
  * 
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  *
@@ -35,11 +35,10 @@ class XMLValidatorErrorHandler implements ErrorHandler {
 	// Services
 
 	/**
-	 * Méthode invoquée si la grammaire du fichier XML n'est pas respectée.
+	 * Méthode invoquée si la grammaire du fichier XML n'est pas respectée,
 	 * conformément à la DTD ou au XSD.
 	 * 
-	 * @param arg0
-	 *            exception levée au moment du parsing
+	 * @param arg0 - exception levée au moment du parsing
 	 */
 	@Override
 	public void error(SAXParseException arg0) throws SAXException {
@@ -49,11 +48,10 @@ class XMLValidatorErrorHandler implements ErrorHandler {
 
 	/**
 	 * Méthode invoquée si le document XML ne respecte pas les règles de
-	 * formatage : les noms de balises ouvrantes et fermantes doivent être
-	 * identiques, pas de caractère spéciaux dans les balises (<, >, ...).
+	 * formattage : les noms de balises ouvrantes et fermantes doivent être
+	 * identiques, pas de caractères spéciaux dans les balises (<, >, ...).
 	 * 
-	 * @param arg0
-	 *            exception levée au moment du parsing
+	 * @param arg0 - exception levée au moment du parsing
 	 */
 	@Override
 	public void fatalError(SAXParseException arg0) throws SAXException {
@@ -62,10 +60,9 @@ class XMLValidatorErrorHandler implements ErrorHandler {
 	}
 
 	/**
-	 * Permet de gérer les différentes alarmes que peut remonter le parseur.
+	 * Permet de gérer les différentes alertes que peut remonter le parseur.
 	 * 
-	 * @param arg0
-	 *            exception levée au moment du parsing
+	 * @param arg0 - exception levée au moment du parsing
 	 */
 	@Override
 	public void warning(SAXParseException arg0) throws SAXException {

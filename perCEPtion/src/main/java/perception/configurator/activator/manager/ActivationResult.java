@@ -3,6 +3,7 @@ package perception.configurator.activator.manager;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 
 /**
+ * Objet contenant les potentiels messages d'erreurs survenues lors de l'activation des EG
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class ActivationResult {
@@ -18,7 +19,7 @@ public class ActivationResult {
      * Note : l'instanciation de la classe se réalise à travers la fabrique
      *
      * @param errorMsg
-     *            message d'erreur lié généré par l'exception
+     *            message d'erreur généré par l'exception
      * @param activationErrorType
      *            erreur propre à l'instanciation du module
      */

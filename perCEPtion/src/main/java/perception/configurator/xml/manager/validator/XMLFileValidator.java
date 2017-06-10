@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Classe utilitaire permettant la validation d'un fichier XML selon, notamment,
  * deux critères :
- * - le respect des règles de formatage attendu pour un fichier XML,
+ * - le respect des règles de formattage attendu pour un fichier XML,
  * - la conformité au schéma XSD.
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
@@ -25,17 +25,17 @@ public class XMLFileValidator {
     /**
      * Permet la validation d'un fichier XML selon les deux critères.
      * <p>Note :
-     * seul la première erreur rencontrée lors de la validation est retrounée</p>
+     * seule la première erreur rencontrée lors de la validation est retournée</p>
      *
-     * @param xMLFilePath chemin vers le fichier XML à valider
-     * @param xSDFilePath chemin vers le schéma XSD
+     * @param xMLFilePath - chemin vers le fichier XML à valider
+     * @param xSDFilePath - chemin vers le schéma XSD
      * @return objet représentant un résultat de validation qui est complété
      * si des erreurs de validation ou de traitement de fichiers sont
-     * rencontrée.
+     * rencontrées.
      */
     public static ValidationResult validate(String xMLFilePath, String xSDFilePath) {
 
-        // Création de la liste de message d'erreur que le handler va modifier
+        // Création de la liste de messages d'erreurs que le handler va modifier
         // si le fichier n'est pas valide
         ValidationResult validationResult = ValidationResult.FAB();
 
@@ -73,7 +73,7 @@ public class XMLFileValidator {
             // Recupération du parseur
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // Affectation du gestionnaire d'erreur au document pour
+            // Affectation du gestionnaire d'erreurs au document pour
             // interception des erreurs éventuelles
             builder.setErrorHandler(errHandler);
 

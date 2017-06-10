@@ -33,7 +33,6 @@ class XMLFileParserToPrimitiveEvent {
      * Extrait les informations pour l'instanciation des primitives events.
      * Permet de passer d'un fichier XML à des objets métiers.
      *
-     * @param filePath le chemin vers de le fichier de scénario
      * @return {@link ResultatParsing} comprenant les informations résultant du traitement du fichier, de sa validation
      * et le tableau associatif permettant l'instanciation des primitives events
      * @throws ParserConfigurationException {@link ParserConfigurationException}
@@ -50,7 +49,7 @@ class XMLFileParserToPrimitiveEvent {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         // Parsing du fichier xml via un objet File et récupération d'un objet
-        // Document qui permet de représenter la hiérarchie d'objet créee pendant le
+        // Document qui permet de représenter la hiérarchie d'objet créée pendant le
         // parsing
         Document xml = null;
         boolean test = true;
@@ -68,7 +67,7 @@ class XMLFileParserToPrimitiveEvent {
             test = false;
         }
 
-        // Si le ficher est introuvable, le parsing est arrété
+        // Si le ficher est introuvable, le parsing est arrêté
         if (test) {
             // Récupération d'un objet Element qui représente un élément XML
             // Ici, cet élément sera la racine du document
@@ -87,12 +86,12 @@ class XMLFileParserToPrimitiveEvent {
     }
 
     /**
-     * Parse tous les primitives events du fichier XML fournit de configuration des modules du sytème. Un
-     * {@link ResultatParsing} est passé en paramètres et sera mis à jour au cours du traitement.
+     * Parse tous les primitives events du fichier XML fourni de configuration des évènements du sytème. Un
+     * {@link ResultatParsing} est passé en paramètre et sera mis à jour au cours du traitement.
      *
-     * @param xPath           le xPath
-     * @param root            la racine du fichier XML de configuration des modules du système
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
+     * @param xPath           - le xPath
+     * @param root            - la racine du fichier XML de configuration des modules du système
+     * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
      */
     protected static void parsePrimitivesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
@@ -106,12 +105,12 @@ class XMLFileParserToPrimitiveEvent {
     }
 
     /**
-     * Récupération de tous les primitives events dans le fichier XML fournit. Un {@link ResultatParsing} est passé en
-     * paramètres et sera mis à jour au cours du traitement.
+     * Récupération de tous les primitives events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
+     * paramètre et sera mis à jour au cours du traitement.
      *
-     * @param xPath           le xPath
-     * @param root            l'élément racine du fichier XML
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
+     * @param xPath           - le xPath
+     * @param root            - l'élément racine du fichier XML
+     * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
      * @return une liste de primitive events ou null si le fichier n'en comporte pas, dans ce cas, le
      * {@link ResultatParsing} est mis à jour
      */
@@ -134,9 +133,9 @@ class XMLFileParserToPrimitiveEvent {
     /**
      * Création de toutes les informations permettant l'instanciation des primitives events à partir du fichier XML.
      *
-     * @param xPath                       le xPath
-     * @param listPrimitiveEventsFromFile la liste des primitives events du fichier
-     * @param resultatParsing             le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
+     * @param xPath                       - le xPath
+     * @param listPrimitiveEventsFromFile - la liste des primitives events du fichier
+     * @param resultatParsing             - le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
      *                                    le {@link ResultatParsing} est mis à jour
      */
     protected static void createAllPrimitivesEvents(XPath xPath, NodeList listPrimitiveEventsFromFile,
@@ -154,20 +153,20 @@ class XMLFileParserToPrimitiveEvent {
                 resultatParsing.addPrimitiveEvent(primitiveEventName, primitiveEventRuntime);
             }
 
-            // Si on a aucune erreur dans le fichier les informations d'instanciation du primitive event courant est
-            // ajouté au résultat du parsing
+            // Si on a aucune erreur dans le fichier, les informations d'instanciation du primitive event courant sont
+            // ajoutées au résultat du parsing
 
         }
 
     }
 
     /**
-     * Récupére du nom donnée dans le fichier XML pour le primitive event spécifié.
+     * Récupére le nom donné dans le fichier XML pour le primitive event spécifié.
      *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au primitive event
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return le nom du primitive event ou null s'il est impossible de trouver l'information dans le fichier, dans ce cas,
+     * @param xPath           - le XPath
+     * @param node            - le noeud dans le fichier correspondant au primitive event
+     * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
+     * @return le nom du primitive event ou <code>null</code> s'il est impossible de trouver l'information dans le fichier, dans ce cas,
      * le {@link ResultatParsing} est mis à jour
      */
     protected static String getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -184,12 +183,12 @@ class XMLFileParserToPrimitiveEvent {
     }
 
     /**
-     * Récupére du runtime donnée dans le fichier XML pour le primitive event spécifié.
+     * Récupére le runtime donné dans le fichier XML pour le primitive event spécifié.
      *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au primitive event
-     * @param resultatParsing le résultat du parsing
-     * @return le nom du primitive event ou null s'il est impossible de trouver l'information dans le fichier, dans ce
+     * @param xPath           - le XPath
+     * @param node            - le noeud dans le fichier correspondant au primitive event
+     * @param resultatParsing - le résultat du parsing
+     * @return le nom du primitive event ou <code>null</code> s'il est impossible de trouver l'information dans le fichier, dans ce
      * cas, le {@link ResultatParsing} est mis à jour
      */
     protected static Long getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -212,7 +211,7 @@ class XMLFileParserToPrimitiveEvent {
      * @param xPath           - le XPath
      * @param node            - le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing - le résultat du parsing
-     * @return vrai si le primitive event est activé et false dans le cas contraire, dans ce cas, le
+     * @return <code>true</code> si le primitive event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
      * {@link ResultatParsing} n'est pas mis à jour
      */
     protected static boolean isEnabledPrimitiveEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {

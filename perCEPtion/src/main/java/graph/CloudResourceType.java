@@ -1,7 +1,7 @@
 package graph;
 
 /**
- * Enum that list different types of cloud resources
+ * Enumération qui liste les différents types de Ressource du Cloud
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public enum CloudResourceType {

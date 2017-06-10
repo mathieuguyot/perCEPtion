@@ -4,8 +4,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * Class that allow to create a manager of event generator.
- * @param <EventGeneratorT> The type of the event generator managed
+ * Classe permettant de créer un Gestionnaire d'Event Generator
+ * @param <EventGeneratorT> - Le type d'évènements à gérer
  */
 public class EventGeneratorManager<EventGeneratorT extends EventGenerator>  {
 
@@ -13,7 +13,7 @@ public class EventGeneratorManager<EventGeneratorT extends EventGenerator>  {
     private boolean logStream;
 
     /**
-     * Constructor of the event generator
+     * Constructeur de la classe {@link EventGeneratorManager}
      */
     public EventGeneratorManager() {
         generators = new LinkedList<>();
@@ -21,8 +21,8 @@ public class EventGeneratorManager<EventGeneratorT extends EventGenerator>  {
     }
 
     /**
-     * Add a event generator to manage
-     * @param eventGenerator The event generator to manage
+     * Ajoute un Event Generator à gérer
+     * @param eventGenerator - L'Event Generator à gérer
      */
     public void addEventGenerator(EventGeneratorT eventGenerator) {
         eventGenerator.setLogGeneratedEvents(logStream);
@@ -30,16 +30,16 @@ public class EventGeneratorManager<EventGeneratorT extends EventGenerator>  {
     }
 
     /**
-     * Getter on the managed event generator
-     * @return The managed events generators
+     * Accesseur des {@link EventGenerator} gérés
+     * @return Les Event Generator gérés
      */
     public Deque<EventGeneratorT> getGenerators() {
         return generators;
     }
 
     /**
-     * Allow to log the stream of the generated events
-     * @param logStream true allow to log the stream of the generated events
+     * Active le logging pour les évènements générés
+     * @param logStream - <code>true</code> si l'on permet de logger le flux d'évènements générés, <code>false</code> sinon
      */
     public void setLogStream(boolean logStream) {
         if(logStream != this.logStream) {

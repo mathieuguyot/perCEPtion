@@ -5,26 +5,26 @@ import graph.CloudResource;
 import java.util.HashMap;
 
 /**
- * Static access point to the graph resources
+ * Point d'accès statique aux graph de ressources
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class CloudResourcesAccess {
 
     /**
-     * Single instance of the graph resources access
+     * Singleton de l'accès au graph de ressources
      */
     public static CloudResourcesAccess instance = new CloudResourcesAccess();
 
     /**
-     * Private constructor of the cloud resources access
+     * Constructeur privé de l'accès au graph de ressources
      */
     private CloudResourcesAccess() {
 
     }
 
     /**
-     * Single instance of the universal access to the graph resources access
-     * @return The universal access to the graph resources access
+     * Singleton du point d'accès universel au graph ressources
+     * @return Le point d'accès universel au graph de ressources
      */
     public static CloudResourcesAccess getInstance() {
         return CloudResourcesAccess.instance;
@@ -33,9 +33,9 @@ public class CloudResourcesAccess {
     private HashMap<String, CloudResource> resources = new HashMap<>();
 
     /**
-     * Add a cloud resource to monitor
-     * @param cr The cloud resource to monitor
-     * @return True if the cloud resources will be monitored, false otherwise (eg. name already used)
+     * Ajoute une ressource de cloud à surveiller
+     * @param cr - La ressource à surveiller
+     * @return <code>True</code> si la ressource a bien été ajoutée, <code>false</code> sinon (cad. nom déjà utilisé)
      */
     public boolean addMonitoredResource(CloudResource cr) {
         if(resources.containsKey(cr.getName())) {
@@ -46,8 +46,8 @@ public class CloudResourcesAccess {
     }
 
     /**
-     * Getter on the cloud resources monitored
-     * @return The cloud resources monitored
+     * Accesseur des ressources surveillées
+     * @return - Les ressources surveillées
      */
     public HashMap<String, CloudResource> getResources() {
         return resources;

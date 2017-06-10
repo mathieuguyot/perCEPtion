@@ -17,12 +17,12 @@ import java.util.Map;
 public class XMLFileParser {
 
     /**
-     * Parse le fichier XML spécifié tableau associatif permettant l'initialisation des primitives events. Avant le
-     * parsing la validité du fichier XML est valider à l'aide du {@link XMLFileValidator}. Si le fichier XML n'est
+     * Parse le fichier XML spécifié en tableau associatif permettant l'initialisation des primitives events. Avant le
+     * parsing, la validité du fichier XML est vérifiée à l'aide du {@link XMLFileValidator}. Si le fichier XML n'est
      * pas valide, le parsing n'est pas réalisé.
      *
-     * @param xMLFilePath chemin vers le fichier XML
-     * @param xSDFilePath chemin vers le schéma XSD
+     * @param xMLFilePath - chemin vers le fichier XML
+     * @param xSDFilePath - chemin vers le schéma XSD
      * @return représentation du résultat du parsing
      * @throws IOException                  {@link IOException}
      * @throws SAXException                 {@link SAXException}

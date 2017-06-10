@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by asus on 06/06/2017.
+ * Enumération des types de paramètres pouvant être affectés à un EG
+ * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public enum ParamTypes {
 
@@ -24,8 +25,8 @@ public enum ParamTypes {
     /**
      * Constructeur de la classe {@link ParamTypes}.
      *
-     * @param paramName             nom du PEG
-     * @param implementationClass classe d'implémentation du PEG
+     * @param paramName             nom du paramètre
+     * @param implementationClass classe d'implémentation du paramètre
      */
     ParamTypes(String paramName, Class<?> implementationClass) {
         this.paramName = paramName;
@@ -47,9 +48,9 @@ public enum ParamTypes {
     }
 
     /**
-     * Permet de récupérer la classe d'implémentation pour le nom de PEG fournit.
-     * @param paramName nom du PEG dont on souhaite récupérer le classe d'implémentation
-     * @return la classe d'implémentation correspondant au type de PEG fournit
+     * Permet de récupérer la classe d'implémentation pour le nom de paramètre fourni.
+     * @param paramName nom du paramètre dont on souhaite récupérer la classe d'implémentation
+     * @return la classe d'implémentation correspondant au type de paramètre fourni
      */
     public static Class<?> getClassForParamName(String paramName) throws ClassNotFoundException {
         Class<?> implementationClass = ParamTypes.fromLabel(paramName).getClass();
@@ -63,7 +64,7 @@ public enum ParamTypes {
      * Permet d'obtenir une liste des valeurs de l'énumération
      * {@link ParamTypes}.
      *
-     * @return la liste des valeur de l'énumération {@link ParamTypes}
+     * @return la liste des valeurs de l'énumération {@link ParamTypes}
      */
     public static List<ParamTypes> valuesAsList() {
         return Arrays.asList(values());

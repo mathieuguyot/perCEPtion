@@ -43,7 +43,7 @@ public class SEGActivator {
         // Récupération de la banque de SEG
         EGBank<SimpleEventGenerator> bank = PluginManager.getPluginManager().getSegBank();
 
-        // Parcours de l'ensemble des Primitive Event Generator trouvé par le module de parcours
+        // Parcours de l'ensemble des Simple Event Generator trouvés par le module de parcours
         for (SACData seg : segs) {
             try {
                 // Chargement de la classe correspondant au type (nom de la classe) du SEG
@@ -70,10 +70,10 @@ public class SEGActivator {
                 }
                 Constructor<?> constructor = event.getConstructor(types);
 
-                // Instanciation du Primitive Event Generator
+                // Instanciation du Simple Event Generator
                 Object instance = constructor.newInstance(param);
 
-                // Ajout du PEG au core du framework
+                // Ajout du SEG au core du framework
                 core.getSimpleEventGeneratorManager().addEventGenerator((SimpleEventGenerator) instance);
                 logger.logMessage("SEG " + seg.getEventName() + " activé");
             } catch (ClassNotFoundException ex) {

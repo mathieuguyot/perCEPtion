@@ -11,12 +11,12 @@ import java.util.Map;
 
 /**
  * Représentation du résultat du parsing d'un fichier XML comprenant les
- * erreurs liées au traitement du fichier et celle directement liées au parsing.
+ * erreurs liées au traitement du fichier et celles directement liées au parsing.
  * <p>
  * Note :
  * <p>
  * - cette classe comprend la liste des informations extraites du fichier XML et
- * permettant l'instanciation évenements primitifs
+ * permettant l'instanciation d'évenements primitifs
  * <p>
  * - le résultat de la validation est aussi sauvegardé, ce qui permet d'accéder
  * aux éventuelles erreurs survenues lors de la validation du fichier XML par le
@@ -35,7 +35,7 @@ public class ResultatParsing {
         // Résultat de validation
     private ValidationResult validationResult;
 
-        // Tableau association contenant les informations d'instanciation des primitives events
+        // Tableau d'association contenant les informations d'instanciation des primitives events
     private Map<String, Long> primitiveEventMap;
 
     // Constructeur
@@ -59,7 +59,7 @@ public class ResultatParsing {
 
     /**
      * Constructeur de la classe {@link ResultatParsing} permettant
-     * l'initialisation des deux listes d'erreur et du tableau associatif contenant
+     * l'initialisation des deux listes d'erreurs et du tableau associatif contenant
      * les informations pour l'initialisation des primitives events.
      */
     private ResultatParsing() {
@@ -90,19 +90,19 @@ public class ResultatParsing {
     }
 
     /**
-     * Ajoute les informations pour l'instanciation d'un primitives events.
+     * Ajoute les informations pour l'instanciation d'un primitive event.
      *
-     * @param eventName    nom de du primitive event
-     * @param eventRunTime runtime du primitive event
+     * @param eventName  -   nom du primitive event
+     * @param eventRunTime - runtime du primitive event
      */
     public void addPrimitiveEvent(String eventName, Long eventRunTime) {
         this.getPrimitiveEventMap().put(eventName, eventRunTime);
     }
 
     /**
-     * Indique si des erreurs de parsing ont eux lieu.
+     * Indique si des erreurs de parsing ont eues lieu.
      *
-     * @return vrai si des erreurs sont survenu et false dans le cas contraire.
+     * @return <code>true</code> si des erreurs sont survenues et <code>false</code> dans le cas contraire.
      */
     public boolean hasErrors() {
         boolean test = (!getFileErrorTypes().isEmpty()) ||
@@ -155,7 +155,7 @@ public class ResultatParsing {
      *
      * @param fileErrorTypes    liste des erreurs liées au traitement de fichier
      * @param parsingErrorTypes liste des erreurs liées au parsing du fichier
-     * @param primitiveEventMap map permetttant l'instanciation des primitives events extrait du fichier XML
+     * @param primitiveEventMap map permetttant l'instanciation des primitives events extraits du fichier XML
      * @return instance de {@link ResultatParsing}
      */
     public static ResultatParsing FAB(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
@@ -164,8 +164,8 @@ public class ResultatParsing {
     }
 
     /**
-     * Fabrique de {@link ResultatParsing} permettant d'instancier la classe en initialisant les deux listes d'erreur
-     * et du tableau associatif permetttant l'instanciation des primitives events extrait du fichier XML
+     * Fabrique de {@link ResultatParsing} permettant d'instancier la classe en initialisant les deux listes d'erreurs
+     * et du tableau associatif permetttant l'instanciation des primitives events extraits du fichier XML
      *
      * @return instance de {@link ResultatParsing}
      */

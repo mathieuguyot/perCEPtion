@@ -21,8 +21,8 @@ public class ValidationError {
 	 * 
 	 * Note : l'instanciation de la classe se réalise à travers la fabrique
 	 * 
-	 * @param errorMsg message d'erreur correspondant à l'erreur
-	 * @param validatorErrorType type d'erreur de validation rencontré
+	 * @param errorMsg - message d'erreur correspondant à l'erreur
+	 * @param validatorErrorType - type d'erreur de validation rencontré
 	 */
 	private ValidationError(String errorMsg, ValidatorErrorType validatorErrorType) {
 		this.errorMsg = errorMsg;
@@ -47,8 +47,8 @@ public class ValidationError {
 	/**
 	 * Fabrique de {@link ValidationError} permettant d'instancier la classe.
 	 * 
-	 * @param errorMsg message d'erreur correspondant à l'erreur
-	 * @param validatorErrorType type d'erreur de validation rencontré
+	 * @param errorMsg - message d'erreur correspondant à l'erreur
+	 * @param validatorErrorType - type d'erreur de validation rencontré
 	 * @return instance de {@link ValidationError}
 	 */
 	public static ValidationError FAB(String errorMsg, ValidatorErrorType validatorErrorType) {

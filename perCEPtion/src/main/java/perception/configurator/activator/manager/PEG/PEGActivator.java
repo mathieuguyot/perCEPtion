@@ -33,7 +33,7 @@ public class PEGActivator {
         // Instanciation du résultat
         ActivationResult activationResult = ActivationResult.FAB();
 
-        // Parcours de l'ensemble des Primitive Event Generator trouvé par le module de parcours
+        // Parcours de l'ensemble des Primitive Event Generator trouvés par le module de parcours
         for (String peg : map.keySet()) {
             try {
                 // Chargement de la classe correspondant au nom du PEG

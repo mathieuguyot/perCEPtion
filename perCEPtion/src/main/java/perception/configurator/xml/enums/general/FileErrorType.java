@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Enumération listant les erreurs possible propre au traitement de fichiers par
+ * Enumération listant les erreurs possibles propres au traitement de fichiers par
  * le parser de fichiers XML.
  * 
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
@@ -36,11 +36,11 @@ public enum FileErrorType {
 
 	/**
 	 * Permet la récupération du {@link FileErrorType} à partir de son libellé.
-	 * Note : la recherche du libellé se fait en ignorant la case
+	 * Note : la recherche du libellé se fait en ignorant la casse
 	 * 
 	 * @param lab
 	 *            le libellé de l'objet recherché
-	 * @return l'objet de l'énumération correspondant au libellé fournit ou null
+	 * @return l'objet de l'énumération correspondant au libellé fourni ou <code>null</code>
 	 *         si le libellé est inconnu
 	 */
 	public static FileErrorType fromLabel(String lab) {
@@ -51,7 +51,7 @@ public enum FileErrorType {
 	 * Permet d'obtenir une liste des valeurs de l'énumération
 	 * {@link FileErrorType}.
 	 * 
-	 * @return la liste des valeur de l'énumération {@link FileErrorType}
+	 * @return la liste des valeurs de l'énumération {@link FileErrorType}
 	 */
 	public static List<FileErrorType> valuesAsList() {
 		return Arrays.asList(values());

@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Class that represents a cloud application.
- * A cloud application is a cloud resource, so this class extends from CloudResource.
+ * Classe représentant un cloud d'application.
+ * Un cloud d'application est une ressource du cloud, donc il s'agit d'une extension de {@link CloudResource}
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class Appli extends CloudResource {
 
     /**
-     * Constructor of an appli cloud resource
-     * @param name The name of the appli
+     * Constructeur d'une ressource du cloud d'applicationConstructor of an appli cloud resource
+     * @param name - Le nom de l'application
      */
     public Appli(String name, int score) {
         super(name, CloudResourceType.APPLI, score);
@@ -34,7 +34,7 @@ public class Appli extends CloudResource {
     }
 
     //--PM---------------------------------------------------------------------
-    //An appli hold multiple PM Cloud Resources
+    //Une application contient de multiples Ressources de Cloud PM
     private CloudResourceHolder<PM> pms = new CloudResourceHolder<PM>() {
 
         private List<PM> pms;
@@ -57,7 +57,7 @@ public class Appli extends CloudResource {
     //--PM---------------------------------------------------------------------
 
     //--TIER-------------------------------------------------------------------
-    //An appli hold multiple Tier Cloud Resources
+    //Une application contient de multiples Ressources de Cloud Tier
     private CloudResourceHolder<Tier> tiers = new CloudResourceHolder<Tier>() {
 
         private List<Tier> tiers;

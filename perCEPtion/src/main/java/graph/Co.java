@@ -1,8 +1,8 @@
 package graph;
 
 /**
- * Class that represents a Co.
- * A Co is a cloud resource, so this class extends from CloudResource.
+ * Classe représentant un Co.
+ * Un Co est une ressource de cloud, donc il s'agit d'une extension de {@link CloudResource}.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class Co extends CloudResource {
@@ -12,10 +12,10 @@ public class Co extends CloudResource {
 	private int responseTime;
 
 	/**
-	 * Constructor of a co resource
-	 * @param nom The name of the resource
-	 * @param typeCO The type of CO
-	 * @param responseTime The response time of the CO
+	 * Constructeur de la classe {@link Co}
+	 * @param nom - Le nom de la ressource
+	 * @param typeCO - Le type du Co
+	 * @param responseTime - Le temps de réponse du Co
 	 */
 	public Co(String nom, String typeCO, int score, int responseTime) {
 		super(nom, CloudResourceType.CO, score);
@@ -24,48 +24,48 @@ public class Co extends CloudResource {
 	}
 
     /**
-     * Getter on the response time of the CO
-     * @return The response time of the CO
+     * Accesseur du temps de réponse du Co
+     * @return Le temps de réponse du Co
      */
 	public int getResponseTime() {
 		return responseTime;
 	}
 
     /**
-     * Setter on the response time of the CO
-     * @param responseTime The new response time
+     * Modificateur du temps de réponse du Co
+     * @param responseTime - Le nouveau temps de réponse
      */
 	public void setResponseTime(int responseTime) {
 		this.responseTime = responseTime;
 	}
 
     /**
-     * Getter on the type of the CO
-     * @return The type of the CO
+     * Récupère le type du Co
+     * @return Le type du CO
      */
 	public String getTypeCO() {
 		return typeCO;
 	}
 
     /**
-     * Setter on the type of the CO
-     * @param typeCO The new type of the CO
+     * Modificateur du type du Co
+     * @param typeCO - Le nouveau type du Co
      */
 	public void setTypeCO(String typeCO) {
 		this.typeCO = typeCO;
 	}
 
     /**
-     * Getter on the VM that contains this CO
-     * @return The VM that contains this CO
+     * Accesseur de la VM contenant le Co
+     * @return La VM contenant le Co
      */
 	public VM getVm() {
 		return (vm);
 	}
 
     /**
-     * Setter on the VM that contains this CO
-     * @param vm The new VM that contains this CO
+     * Modificateur de la VM contenant le Co
+     * @param vm La nouvelle VM contenant le Co
      */
 	public void setVm(VM vm) {
 		this.vm = vm;

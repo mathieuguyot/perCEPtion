@@ -8,19 +8,18 @@ import perception.services.implementations.SysoutPerceptionLogger;
 import perception.simple_events_generator.SimpleEventGenerator;
 
 /**
- * This class is the perception run context.
- * Before each flink env run, we have to construct some flink-link resources
- * like datastreams, PEG, SEG, CEG, ... and many more.
- * This class is moved to each resources that need to be initialized in order to share flink-based
- * resources.
+ * Cette classe correspond au Contexte d'exécution de perCEPtion.
+ * Avant chaque exécution de {@link FlinkEnvRunner}, il faut construire quelques ressources liées à Apache Flink
+ * (DataStreams, PEG, SEG, CEG, etc.).
+ * Cette classe est déplacée vers chaque ressources devant être initialisée, afin de partager les ressources basées sur Flink.
  */
 public class PerceptionRunContext {
 
-    //Manager who manage our PEGs
+    //Gestionnaire des PEGs
     private EventGeneratorManager<PrimitiveEventGenerator> primitiveEventGeneratorManager;
-    //Manager who manage our SEGs
+    //Gestionnaire des SEGs
     private EventGeneratorManager<SimpleEventGenerator> simpleEventGeneratorManager;
-    //Manager whi manage our CEGs
+    //Gestionnaire des CEGs
     private EventGeneratorManager<ComplexEventGenerator> complexEventGeneratorManager;
 
     private StreamExecutionEnvironment env; //Flink run environment.
@@ -36,7 +35,7 @@ public class PerceptionRunContext {
 
 
     /**
-     * Constructor of the perception run context
+     * Constructeur de la classe {@link PerceptionRunContext}
      */
     public PerceptionRunContext() {
         this.primitiveEventGeneratorManager = new EventGeneratorManager<>();
@@ -60,72 +59,73 @@ public class PerceptionRunContext {
     }
 
     /**
-     * Setter on the stream execution environment
-     * @param env The stream execution environment
+     * Modificateur du {@link StreamExecutionEnvironment}
+     * @param env - Le nouveau StreamExecutionEnvironment
      */
     public void setEnv(StreamExecutionEnvironment env) {
         this.env = env;
     }
 
     /**
-     * Getter on the stream execution environment
-     * @return The stream execution environment
+     * Accesseur du {@link StreamExecutionEnvironment}
+     * @return Le StreamExecutionEnvironment
      */
     public StreamExecutionEnvironment getEnv() {
         return env;
     }
 
     /**
-     * Getter on the primitive event stream
-     * @return Setter on the primitive event stream
+     * Accesseur du {@link PrimitiveEventStream}
+     * @return Le PrimitiveEventStream
      */
     public PrimitiveEventStream getPrimitiveEventStream() {
         return primitiveEventStream;
     }
 
     /**
-     * Getter on the simple and complex event stream
-     * @return The simple and complex event stream
+     * Accesseur du {@link SACEventStream}
+     * @return Le SACEventStream
      */
     public SACEventStream getSacEventStream() {
         return sacEventStream;
     }
 
     /**
-     * Getter on the primitive event generator manager
-     * @return The primitive event generator manager
+     * Accesseur du Gestionnaire de PEGs
+     * @return Le gestionnaire de PEGs
      */
     public EventGeneratorManager<PrimitiveEventGenerator>  getPrimitiveEventGeneratorManager() {
         return primitiveEventGeneratorManager;
     }
 
     /**
-     * Getter on the simple event generator manager
-     * @return The simple event generator manager
+     * Accesseur du Gestionnaire de SEGs
+     * @return Le gestionnaire de SEGs
      */
     public EventGeneratorManager<SimpleEventGenerator> getSimpleEventGeneratorManager() {
         return simpleEventGeneratorManager;
     }
 
     /**
-     * Getter on the complex event generator manager
-     * @return The complex event generator manager
+     * Accesseur du Gestionnaire de CEGs
+     * @return Le gestionnaire de CEGs
      */
     public EventGeneratorManager<ComplexEventGenerator> getComplexEventGeneratorManager() {
         return complexEventGeneratorManager;
     }
 
     /**
-     * Getter on the perception logger that we use to log infos during the test
-     * @return The perception logger
+     * Accesseur du {@link PerceptionLogger} utilisé pour afficher des informations en phase de test
+     * @return Le PerceptionLogger
      */
     public static PerceptionLogger getPerceptionLogger() {
         return PerceptionRunContext.perceptionLogger;
     }
 
     /**
+     * Modificateur du {@link PerceptionLogger} utilisé pour afficher des informations en phase de test
      * Setter on the perceptiuon logger that we use to log infos during the test
-     * @param perceptionLogger The new perception logger
+     * @param perceptionLogger - Le nouveau PerceptionLogger
      */
     public static void setPerceptionLogger(PerceptionLogger perceptionLogger) {
         PerceptionRunContext.perceptionLogger = perceptionLogger;

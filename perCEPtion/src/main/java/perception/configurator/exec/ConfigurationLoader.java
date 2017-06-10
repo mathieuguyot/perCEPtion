@@ -16,7 +16,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 /**
- * Permet le chargement du fichier XML de configuration, son parcours et l'activation des modules décrits dans le fichier
+ * Permet le chargement du fichier XML de configuration, son parcours et l'activation des modules décrits
+ * dans le fichier.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class ConfigurationLoader {

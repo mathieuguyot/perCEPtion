@@ -6,7 +6,7 @@ import perception.events.SimpleEvent;
 import perception.services.PerceptionLogger;
 
 /**
- * Default sysout implementation class for perception logger
+ * Implémentation du logger dans la console par défaut
  */
 public class SysoutPerceptionLogger extends PerceptionLogger {
 

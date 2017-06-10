@@ -56,21 +56,25 @@ public class PerceptionCore {
     }
 
     /**
-     * Getter on the primitive event generator manager
-     * @return The primitive event generator manager
+     * Accesseur du {@link EventGeneratorManager} pour les {@link PrimitiveEventGenerator}
+     * @return Le gestionnaire des PEG
      */
     public EventGeneratorManager<PrimitiveEventGenerator>  getPrimitiveEventGeneratorManager() {
         return ctx.getPrimitiveEventGeneratorManager();
     }
 
     /**
-     * Getter on the simple event generator manager
-     * @return The simple event generator manager
+     * Accesseur du {@link EventGeneratorManager} pour les {@link SimpleEventGenerator}
+     * @return Le gestionnaire des SEG
      */
     public EventGeneratorManager<SimpleEventGenerator> getSimpleEventGeneratorManager() {
         return ctx.getSimpleEventGeneratorManager();
     }
 
+    /**
+     * Accesseur du {@link EventGeneratorManager} pour les {@link ComplexEventGenerator}
+     * @return Le gestionnaire des CEG
+     */
     public EventGeneratorManager<ComplexEventGenerator> getComplexEventGeneratorManager() {
         return ctx.getComplexEventGeneratorManager();
     }

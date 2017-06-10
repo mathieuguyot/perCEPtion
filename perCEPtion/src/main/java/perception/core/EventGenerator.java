@@ -5,7 +5,7 @@ import perception.services.PerceptionRunResource;
 import java.io.Serializable;
 
 /**
- * Abstract class that represents an event generator.
+ * Classe abstraite représenant un Event Generator.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT1
  */
 public abstract class EventGenerator implements Serializable, PerceptionRunResource {
@@ -15,7 +15,8 @@ public abstract class EventGenerator implements Serializable, PerceptionRunResou
     private String name;
 
     /**
-     * Constructor of the event generator
+     * Constructeur de la classe {@link EventGenerator}
+     * @param name - Nom du générateur à créer
      */
     public EventGenerator(String name) {
         this.hasToGenerateEvents = true;
@@ -24,40 +25,40 @@ public abstract class EventGenerator implements Serializable, PerceptionRunResou
     }
 
     /**
-     * Allow to log or not the generated events
-     * @param logGeneratedEvents true if the generated events are logged, false otherwise
+     * Active ou non le logging pour les évènement générés.
+     * @param logGeneratedEvents - <code>true</code> si le logging est activé, <code>false</code> sinon
      */
     public void setLogGeneratedEvents(boolean logGeneratedEvents) {
         this.logGeneratedEvents = logGeneratedEvents;
     }
 
     /**
-     * Getter on the log of generated events
-     * @return true if the events are logged, false otherwise
+     * Accesseur de l'activation des logs.
+     * @return <code>true</code> si les évènements sont loggés, <code>false</code> sinon
      */
     public boolean isLogGeneratedEvents() {
         return logGeneratedEvents;
     }
 
     /**
-     * Getter on the generation of events
-     * @return true if the events have to be generated, false otherwise
+     * Accesseur de la génération d'évènements
+     * @return <code>true</code> si les évènements doivent être générés, <code>false</code> sinon
      */
     public boolean isHasToGenerateEvents() {
         return hasToGenerateEvents;
     }
 
     /**
-     * Allow to generate or not the events
-     * @param hasToGenerateEvents true if the events have to be generated, false otherwise
+     * Active ou non la génération d'évènements
+     * @param hasToGenerateEvents - <code>true</code> si les évènements doivent être générés, <code>false</code> sinon
      */
     public void setHasToGenerateEvents(boolean hasToGenerateEvents) {
         this.hasToGenerateEvents = hasToGenerateEvents;
     }
 
     /**
-     * Getter on the name of the event generator
-     * @return The name of the event generator
+     * Acceseur du nom de l'Event Generator
+     * @return Le nom de l'Event Generator
      */
     public String getName() {
         return name;

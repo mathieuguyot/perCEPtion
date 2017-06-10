@@ -3,8 +3,8 @@ package perception.configurator.xml.manager.validator;
 import perception.configurator.xml.enums.general.FileErrorType;
 
 /**
- * Représentation du résultat de la validation de fichier composer des
- * eventuelles erreur propre au traitement du fichier ou/et à la validation du
+ * Représentation du résultat de la validation de fichier composée des
+ * éventuelles erreurs propres au traitement du fichier ou/et à la validation du
  * fichier.
  * 
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
@@ -22,10 +22,8 @@ public class ValidationResult {
 	 * 
 	 * Note : l'instanciation de la classe se réalise à travers la fabrique
 	 * 
-	 * @param validationError
-	 *            erreur propre à la validation
-	 * @param fileErrorType
-	 *            erreur propre au traitement de fichier
+	 * @param validationError - erreur propre à la validation
+	 * @param fileErrorType - erreur propre au traitement de fichier
 	 */
 	private ValidationResult(ValidationError validationError, FileErrorType fileErrorType) {
 		this.validationError = validationError;
@@ -57,10 +55,8 @@ public class ValidationResult {
 	/**
 	 * Fabrique de {@link ValidationResult} permettant d'instancier la classe.
 	 * 
-	 * @param validationError
-	 *            erreur propre à la validation
-	 * @param fileErrorType
-	 *            erreur propre au traitement de fichier
+	 * @param validationError - erreur propre à la validation
+	 * @param fileErrorType - erreur propre au traitement de fichier
 	 * @return instance de {@link ValidationResult}
 	 */
 	public static ValidationResult FAB(ValidationError validationError, FileErrorType fileErrorType) {
@@ -79,8 +75,7 @@ public class ValidationResult {
 	/**
 	 * Fabrique de {@link ValidationResult} permettant d'instancier la classe.
 	 *
-	 * @param fileErrorType
-	 *            erreur propre au traitement de fichier
+	 * @param fileErrorType - erreur propre au traitement de fichier
 	 * @return instance de {@link ValidationResult}
 	 */
 	public static ValidationResult FAB(FileErrorType fileErrorType) {
@@ -90,8 +85,7 @@ public class ValidationResult {
 	/**
 	 * Fabrique de {@link ValidationResult} permettant d'instancier la classe.
 	 *
-	 * @param validationError
-	 *            erreur propre à la validation
+	 * @param validationError - erreur propre à la validation
 	 * @return instance de {@link ValidationResult}
 	 */
 	public static ValidationResult FAB(ValidationError validationError) {
@@ -103,7 +97,7 @@ public class ValidationResult {
 	 * Indique si le résultat de la validation comporte des erreurs de
 	 * traitement de fichier ou de validation.
 	 * 
-	 * @return vrai si le résultat comporte des erreurs et false dans le cas
+	 * @return <code>true</code> si le résultat comporte des erreurs et <code>false</code> dans le cas
 	 *         contraire
 	 */
 	public boolean hasErrors() {

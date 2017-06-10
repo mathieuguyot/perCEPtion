@@ -14,18 +14,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Abstract class that represent a complex event generator (CEG).
- * A CEG generate complex events (CE) in a simple and complex event stream.
- * A CEG gets its data from PE, SE, CE that are generated
- * The execution of a CEG is called when a pattern is recognize (this pattern is defined by the CEG
- * with the getPattern() function.
- * After a regognition (using the pattern), the getPatternSelectFunction() is called to apply a
- * treatment on the recognized events stream.
+ * Classe abstraite représentant un {@link ComplexEventGenerator}.
+ * Un CEG génère des évènement complexes et les ajoute à un {@link perception.core.SACEventStream}.
+ * Un CEG récupère ses données des {@link perception.events.PrimitiveEvent}, {@link perception.events.SimpleEvent} et
+ * {@link perception.events.ComplexEvent} générés.
+ * L'exécution d'un CEG est appelée quand un schéma est reconnu (ce schéma est défini par la méthode getPattern()).
+ * Après une détection (en utilisant le schéma), la méthode getPatternSelectFunction() est appelé pour
+ * appliquer le traitement adéquat sur le {@link perception.core.SACEventStream}.
  *
  * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\CEG
- * Warning, a CEG is a Perception run resource that means that its members can be modified during flink
- * execution, but nothing will append. If you want to update members of a CEG, you have to
- * shutdown flink execution, apply your changes and restart flink execution (via PerceptionCore)
+ * Attention, un CEG est {@link perception.services.PerceptionRunResource}, cela signifie que les modifications
+ * effectuées pendant l'exécution sur lui n'aura aucun effet avant le redémarrage du {@link perception.core.PerceptionCore}.
  *  !\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
  */
 public abstract class ComplexEventGenerator extends EventGenerator {
@@ -35,14 +34,14 @@ public abstract class ComplexEventGenerator extends EventGenerator {
     }
 
     /**
-     * Recognition pattern of this CEG
-     * @return the pattern of this CEG
+     * Schéma de détection de ce CEG
+     * @return le schéma de détection du CEG
      */
     public abstract Pattern<Event, ?> getPattern();
 
     /**
-     * The treatment function of this CEG
-     * @return The treatment function of this CEG
+     * Traitement de la fonction de CEG
+     * @return Le traitement à opérer sur ce CEG
      */
     public abstract PatternSelectFunction<Event, Event> getPatternSelectFunction();
 

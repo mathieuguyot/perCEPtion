@@ -5,6 +5,7 @@ import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import perception.simple_events_generator.SimpleEventGenerator;
 import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
 import perception.events.Event;
@@ -15,39 +16,37 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Abstract class that represent a simple event generator (SEG).
- * A SEG generate Simple event (SE) in a simple and complex event stream.
- * A SEG gets its data from primitive events (PE) that are generated
- * The execution of a SEG is called when a pattern is recognize (this pattern is defined by the SEG
- * with the getPattern() function.
- * After a regognition (using the pattern), the getPatternSelectFunction() is called to apply a
- * treatment on the recognized events stream.
+ * Classe abstraite représentant un {@link SimpleEventGenerator}.
+ * Un SEG génère des évènement simples et les ajoute à un {@link perception.core.SACEventStream}.
+ * Un SEG récupère ses données des {@link perception.events.PrimitiveEvent} générés.
+ * L'exécution d'un SEG est appelée quand un schéma est reconnu (ce schéma est défini par la méthode getPattern()).
+ * Après une détection (en utilisant le schéma), la méthode getPatternSelectFunction() est appelé pour
+ * appliquer le traitement adéquat sur le {@link perception.core.SACEventStream}.
  *
- * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
- * Warning, a SEG is a Perception run resource that means that its members can be modified during flink
- * execution, but nothing will append. If you want to update members of a SEG, you have to
- * shutdown flink execution, apply your changes and restart flink execution (via PerceptionCore)
+ * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\CEG
+ * Attention, un SEG est {@link perception.services.PerceptionRunResource}, cela signifie que les modifications
+ * effectuées pendant l'exécution sur lui n'aura aucun effet avant le redémarrage du {@link perception.core.PerceptionCore}.
  *  !\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
  */
 public abstract class SimpleEventGenerator extends EventGenerator {
 
     /**
-     * Constructor of a SimpleEventGenerator
-     * @param name the name of the SimpleEventGenerator
+     * Constructeur de la classe {@link SimpleEventGenerator}
+     * @param name - le nom du SimpleEventGenerator
      */
     public SimpleEventGenerator(String name) {
         super(name);
     }
 
     /**
-     * Recognition pattern of this SEG
-     * @return the pattern of this SEG
+     * Schéma de détection du SEG
+     * @return Schéma du SEG
      */
     public abstract Pattern<PrimitiveEvent, ?> getPattern();
 
     /**
-     * The treatment function of this SEG
-     * @return The treatment function of this SEG
+     * La méthode de traitement du SEG
+     * @return La méthode de traitement du SEG
      */
     public abstract PatternSelectFunction<PrimitiveEvent, Event> getPatternSelectFunction();
 

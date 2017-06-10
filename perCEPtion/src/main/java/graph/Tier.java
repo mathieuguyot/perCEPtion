@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Class that represents a Tier.
- * A Tier is a cloud resource, so this class extends from CloudResource.
+ * Classe représentant un Tier.
+ * Un Tier est une ressource de Cloud, donc il s'agit d'une extension de {@link CloudResource}.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class Tier extends CloudResource {
@@ -14,8 +14,8 @@ public class Tier extends CloudResource {
 	private Appli appli;
 
 	/**
-	 * Constructor of a tier
-	 * @param nom The name of the cloud resource
+	 * Constructeur de la classe {@link Tier}
+	 * @param nom - Le nom de la ressource de cloud
 	 */
 	public Tier(String nom, int score) {
 		super(nom, CloudResourceType.TIER, score);
@@ -23,16 +23,16 @@ public class Tier extends CloudResource {
 	}
 
 	/**
-	 * Getter on the appli that contains this Tier
-	 * @return The appli that contains this Tier
+	 * Accesseur de l'{@link Appli} contenant le Tier
+	 * @return L'application contenant le Tier
 	 */
 	public  Appli getAppli() {
 		return (appli);
 	}
 
 	/**
-	 * Setter on the appli that contains this Tier
-	 * @param a The new appli that contains this Tier
+	 * Modificateur de l'{@link Appli} contenant le Tier
+	 * @param a - La nouvelle application contenant le Tier
 	 */
 	public void setAppli(Appli a) {
 		this.appli = a;
@@ -49,7 +49,7 @@ public class Tier extends CloudResource {
 	}
 
 	//--VM---------------------------------------------------------------------
-	//An PM hold multiple VM Cloud Resources
+	//Une PM contient de multiples Ressources de Cloud VM
 	private CloudResourceHolder<VM> vms = new CloudResourceHolder<VM>() {
 
 		private List<VM> vms;

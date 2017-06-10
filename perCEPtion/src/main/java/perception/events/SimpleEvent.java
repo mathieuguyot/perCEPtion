@@ -3,11 +3,10 @@ package perception.events;
 import graph.CloudResourceType;
 
 /**
- * Class that represent a simple event.
- * This class is an event so it extends from event.
- * A simple event contain one or multiple monitoring information (eg. ram, disk, cpu)
- * of one cloud resource.
- * A simple event is generated using simple event generators (SEG)
+ * Classe représentant un évènement simple.
+ * Cette classe est un évènement, donc il s'agit d'une extension de {@link Event}.
+ * Un évènement simple contient une ou plusieurs informations système (RAM, Disque, CPU) d'une ressource.
+ * Un évènement simple est généré via un {@link perception.simple_events_generator.SimpleEventGenerator}
  */
 public abstract class SimpleEvent extends Event {
 
@@ -16,9 +15,9 @@ public abstract class SimpleEvent extends Event {
     final private int score;
 
     /**
-     * The constructor of the simple event
-     * @param cloudResourceName The cloud resource name
-     * @param cloudResourceType The cloud resource type
+     * Le constructeur de la classe {@link SimpleEvent}
+     * @param cloudResourceName - Le nom de la ressource
+     * @param cloudResourceType - Le type de la ressource
      */
     public SimpleEvent(String cloudResourceName, CloudResourceType cloudResourceType, int score) {
         super(EventType.SIMPLE);
@@ -28,24 +27,24 @@ public abstract class SimpleEvent extends Event {
     }
 
     /**
-     * Getter on the name of the cloud resource name
-     * @return The cloud resource name
+     * Accesseur du nom de la ressource
+     * @return Le nom de la ressource
      */
     public String getCloudResourceName() {
         return cloudResourceName;
     }
 
     /**
-     * Getter on the name of the cloud resource type
-     * @return The cloud resource type
+     * Accesseur du type de la ressource
+     * @return Le type de la ressource
      */
     public CloudResourceType getCloudResourceType() {
         return cloudResourceType;
     }
 
     /**
-     * Getter on the score of the simple event
-     * @return The score of the simple event
+     * Accesseur du score de la ressource
+     * @return Le score de la ressource
      */
     public int getScore() {
         return score;

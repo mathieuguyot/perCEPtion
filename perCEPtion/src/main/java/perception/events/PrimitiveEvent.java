@@ -3,10 +3,10 @@ package perception.events;
 import graph.CloudResourceType;
 
 /**
- * Class that represent a primitive event.
- * This class is an event so it extends from event.
- * A primitive event contain one monitoring information (eg. ram, disk, cpu) of one cloud resource.
- * A primitive event is generated using primitive event generators (PEG)
+ * Classe représentant un évènement primitif.
+ * Cette classe est un évènement, donc il s'agit d'une extension de {@link Event}.
+ * Un évènement primitif contient une information système (RAM, CPU, Disque) d'une ressource.
+ * Un évènement primitif est généré via un {@link perception.primitive_events_generator.PrimitiveEventGenerator}
  */
 public abstract class PrimitiveEvent extends Event {
 
@@ -15,9 +15,9 @@ public abstract class PrimitiveEvent extends Event {
     final private int score;
 
     /**
-     * The constructor of the primitive event
-     * @param cloudResourceName The cloud resource name
-     * @param cloudResourceType The cloud resource type
+     * Le constructeur de la classe {@link PrimitiveEvent}
+     * @param cloudResourceName - Le nom de la ressource
+     * @param cloudResourceType - Le type de la ressource
      */
     public PrimitiveEvent(String cloudResourceName, CloudResourceType cloudResourceType, int score)
     {
@@ -28,24 +28,24 @@ public abstract class PrimitiveEvent extends Event {
     }
 
     /**
-     * Getter on the name of the cloud resource name
-     * @return The cloud resource name
+     * Accesseur du nom de la ressource
+     * @return Le nom de la ressource
      */
     public String getCloudResourceName() {
         return cloudResourceName;
     }
 
     /**
-     * Getter on the name of the cloud resource type
-     * @return The cloud resource type
+     * Accesseur du type de la ressource
+     * @return Le nom du type de la ressource
      */
     public CloudResourceType getCloudResourceType() {
         return cloudResourceType;
     }
 
     /**
-     * Getter on the score of the primitive event
-     * @return The score of the primitive event
+     * Accesseur du score de l'évènement primitif
+     * @return Le score de l'évènement primitif
      */
     public int getScore() {
         return score;

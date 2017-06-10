@@ -1,5 +1,5 @@
 /**
- * Package contenant les énumérations utilie au module de parsing de fichier
- * XML de configuration des modules du système.
+ * Package contenant les énumérations utiles au module de parsing de fichiers
+ * XML de configuration des évènements du système.
  */
 package perception.configurator.xml.enums.parser;

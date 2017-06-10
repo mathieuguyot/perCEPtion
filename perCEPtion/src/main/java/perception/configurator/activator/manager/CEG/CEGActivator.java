@@ -22,15 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by asus on 10/06/2017.
+ * Active les Complex Event Generator déclarés dans le fichier de configuration XML
+ * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
 public class CEGActivator {
 
     /**
-     * Activates event generators listed in the xml configuration file.
-     * @param cegs - List of SACData objects containing informations about SEGs to activate
-     * @param core - PerceptionCore which will get the new PEG
-     * @return <code>true</code> if all generators could be added, else <code>false</code>
+     * Active les Complex Event Generator listés dans le fichier XML en fonction des paramètres fournis
+     * @param cegs - Liste d'objets SACData contenant les informations des SimpleEventGenerator à activer
+     * @param core - PerceptionCore auquel on ajoutera les SEG activés
+     * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
      */
     public static ActivationResult activate(List<SACData> cegs, PerceptionCore core) {
         // Instanciation du logger
@@ -42,10 +43,10 @@ public class CEGActivator {
         // Récupération de la banque de SEG
         EGBank<ComplexEventGenerator> bank = PluginManager.getPluginManager().getCegBank();
 
-        // Parcours de l'ensemble des Primitive Event Generator trouvé par le module de parcours
+        // Parcours de l'ensemble des Complex Event Generator trouvés par le module de parcours
         for (SACData ceg : cegs) {
             try {
-                // Chargement de la classe correspondant au type (nom de la classe) du SEG
+                // Chargement de la classe correspondant au type (nom de la classe) du CEG
                 Class<?> event = bank.getClassForEGName(ceg.getEventType());
 
                 List<Object> liste = new ArrayList<Object>();
@@ -71,10 +72,10 @@ public class CEGActivator {
                 }
                 Constructor<?> constructor = event.getConstructor(types);
 
-                // Instanciation du Primitive Event Generator
+                // Instanciation du Complex Event Generator
                 Object instance = constructor.newInstance(param);
 
-                // Ajout du PEG au core du framework
+                // Ajout du CEG au core du framework
                 core.getComplexEventGeneratorManager().addEventGenerator((ComplexEventGenerator) instance);
                 logger.logMessage("CEG " + ceg.getEventName() + " activé");
             } catch (ClassNotFoundException ex) {

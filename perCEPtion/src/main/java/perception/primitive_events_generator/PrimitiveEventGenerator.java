@@ -2,6 +2,7 @@ package perception.primitive_events_generator;
 
 import graph.CloudResource;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
+import perception.complex_event_generator.ComplexEventGenerator;
 import perception.core.CloudResourcesAccess;
 import perception.core.EventGenerator;
 import perception.core.PerceptionRunContext;
@@ -10,27 +11,27 @@ import perception.events.PrimitiveEvent;
 import java.util.Optional;
 
 /**
- * Abstract class that represent a primitive event generator (PEG).
- * A PEG generate Primitive event (PE) in a primitive event stream.
- * The execution of a PEG is called every x milliseconds specified by the user who used the PEG.
+ * Classe abstraite représentant un {@link PrimitiveEventGenerator}.
+ * Un PEG génère des évènements primitifs et les ajoute à un {@link perception.core.PrimitiveEventStream}.
+ * L'exécution d'un PEG est appelée de façon périodique, le temps (en millisecondes) entre chaque exécution
+ * étant défini par l'utilisateur.
  *
- * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
- * Warning, a PEG is a Perception run resource that means that its members can be modified during flink
- * execution, but nothing will append. If you want to update members of a PEG, you have to
- * shutdown flink execution, apply your changes and restart flink execution (via PerceptionCore)
- * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
+ * /!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\CEG
+ * Attention, un PEG est {@link perception.services.PerceptionRunResource}, cela signifie que les modifications
+ * effectuées pendant l'exécution sur lui n'aura aucun effet avant le redémarrage du {@link perception.core.PerceptionCore}.
+ *  !\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\_/!\
  */
 public abstract class PrimitiveEventGenerator extends EventGenerator
         implements SourceFunction<PrimitiveEvent>
 {
 
-    private boolean isRunning; //Indicates if the PEG run or not
-    private long msRefreshingRate; //Refreshing rate of the PEG (called every msRefreshingRate)
+    private boolean isRunning; //Indique si le PEG est exécuté ou non
+    private long msRefreshingRate; //Période d'exécution du PEG (appel toutes les msRefreshingRate millisecondes)
 
     /**
-     * Constructor of a PrimitiveEventGenerator
-     * @param name the name of the PrimitiveEventGenerator
-     * @param msRefreshingRate refreshing rate of the PrimitiveEventGenerator (called every msRefreshingRate)
+     * Constructeur de la classe {@link PrimitiveEventGenerator}
+     * @param name - Nom du PrimitiveEventGenerator
+     * @param msRefreshingRate - Période d'exécution PrimitiveEventGenerator (appel toutes les msRefreshingRate millisecondes)
      */
     public PrimitiveEventGenerator(String name, long msRefreshingRate) {
         super(name);
@@ -53,8 +54,8 @@ public abstract class PrimitiveEventGenerator extends EventGenerator
     }
 
     /**
-     * Execution loop of the PEG, For each cloud resource the processResource method will be called
-     * @param ctx The source context that collect generated primitive events
+     * Boucle d'exécution du PEG. Pour chaque ressource, la méthode processResource() sera appelée
+     * @param ctx - Le {@link org.apache.flink.streaming.api.functions.source.SourceFunction.SourceContext} qui collecte les PE générés
      */
     private void exec(SourceContext ctx) {
         //TODO Improve doc of this function !
@@ -73,10 +74,10 @@ public abstract class PrimitiveEventGenerator extends EventGenerator
     public void cancel() {}
 
     /**
-     * Abstract fonctions that non-abstract PEG has to define.
-     * Here the PEG will decide to return a PE or nothing depending of the given cloud resource.
-     * @param cr The cloud resource to process
-     * @return A primitive event to put in Primitive event stream or Optional.empty
+     * Méthode abstraite à définir par les PEG.
+     * Définit si le PEG doit retourner un {@link PrimitiveEvent} ou rien, en fonction de la ressource donnée.
+     * @param cr - La ressource à traiter
+     * @return Un évènement primitif à ajouter à la {@link perception.core.PrimitiveEventStream} ou un Optional.empty
      */
     protected abstract Optional<PrimitiveEvent> processResource(CloudResource cr);
 }

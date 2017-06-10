@@ -1,7 +1,7 @@
 package perception.events;
 
 /**
- * Enum that list all event types used in perCEPtion framework
+ * Enumération listant l'ensemble des types d'évènements utilisés dans le framework perCEPtion
  */
 public enum EventType {
     PRIMITIVE,

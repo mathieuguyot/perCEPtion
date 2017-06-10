@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Enumération listant les erreurs possible propre au parsing du fichier XML.
+ * Enumération listant les erreurs possibles propres au parsing du fichier XML.
  * 
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  *
@@ -12,7 +12,7 @@ import java.util.List;
 public enum ParsingErrorType {
 
 	INVALID_PRIMITIVES_NODE(
-			"Impossible de trouver les primitives events dans le fichier XML fournit. Arrêt du traitement du fichier."),
+			"Impossible de trouver les primitives events dans le fichier XML fourni. Arrêt du traitement du fichier."),
 
 	INVALID_PRIMITIVE_NAME("Impossible de trouver le nom du primitive event."),
 
@@ -27,8 +27,7 @@ public enum ParsingErrorType {
 	/**
 	 * Constructeur de la classe {@link ParsingErrorType}.
 	 * 
-	 * @param errorInfo
-	 *            message explicatif de l'erreur
+	 * @param errorInfo - message explicatif de l'erreur
 	 */
 	ParsingErrorType(String errorInfo) {
 		this.errorInfo = errorInfo;
@@ -42,9 +41,8 @@ public enum ParsingErrorType {
 	 *
 	 * Note : la recherche du libellé se fait en ignorant la case
 	 * 
-	 * @param lab
-	 *            le libellé de l'objet recherché
-	 * @return l'objet de l'énumération correspondant au libellé fournit ou null
+	 * @param lab - le libellé de l'objet recherché
+	 * @return l'objet de l'énumération correspondant au libellé fourni ou <code>null</code>
 	 *         si le libellé est inconnu
 	 */
 	public static ParsingErrorType fromLabel(String lab) {
@@ -55,7 +53,7 @@ public enum ParsingErrorType {
 	 * Permet d'obtenir une liste des valeurs de l'énumération
 	 * {@link ParsingErrorType}.
 	 * 
-	 * @return la liste des valeur de l'énumération {@link ParsingErrorType}
+	 * @return la liste des valeurs de l'énumération {@link ParsingErrorType}
 	 */
 	public static List<ParsingErrorType> valuesAsList() {
 		return Arrays.asList(values());

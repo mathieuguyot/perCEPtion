@@ -37,7 +37,7 @@ public enum ActivationErrorType {
      *
      * @param lab
      *            le libellé de l'objet recherché
-     * @return l'objet de l'énumération correspondant au libellé fournit ou null
+     * @return l'objet de l'énumération correspondant au libellé fourni ou null
      *         si le libellé est inconnu
      */
     public static ActivationErrorType fromLabel(String lab) {

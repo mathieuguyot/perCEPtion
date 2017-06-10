@@ -3,24 +3,24 @@ package perception.core;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * Class that allow to wrap flink environment run in a thread to allow interactions while
- * perCEPtion is monitoring a system.
- * This class is a thread so it extends of Thread class.
+ * Classe permettant d'encapsuler le {@link FlinkEnvRunner} pour dans un thrad
+ * pour autoriser l'utilisateur à effectuer des modifications pendant l'exécution du système de perCEPtion.
+ * Cette classe est un thread, donc il s'agit d'une extension de la classe {@link Thread}.
  */
 public class FlinkEnvRunner extends Thread {
 
-    private StreamExecutionEnvironment env; //The apache flink environement
+    private StreamExecutionEnvironment env; //L'environnement Apache Flink
 
     /**
-     * Constructor of the Flink env runner
-     * @param env The apache flink environement
+     * Constructeur de la classe {@link FlinkEnvRunner}
+     * @param env - L'environnement Apache Flink
      */
     public FlinkEnvRunner(StreamExecutionEnvironment env) {
         this.env = env;
     }
 
     /**
-     * Execute the apache flink env
+     * Exécute l'environnement Apache Flink
      */
     public void run() {
         try {

@@ -7,21 +7,21 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * Class that represent a complex event.
- * This class is an event so it extends from event.
- * A complex event contain one or multiple monitoring information (eg. ram, disk, cpu)
- * of one or multiple cloud resource.
- * A complex event is generated using complex event generators (CEG)
+ * Classe représentant un évènement complexe.
+ * Cette classe est un évènement, donc il s'agit d'une extension de {@link Event}.
+ * Un évènement complexe contient une ou plusieurs informations systèmes (RAM, CPU, Disque, etc.)
+ * de une ou plusieurs ressource de cloud.
+ * Un évènement complexe est généré via un {@link perception.complex_event_generator.ComplexEventGenerator}
  */
 public abstract class ComplexEvent extends Event {
 
-    //List of resources impacted by the event => Triplet(Cloud resources type, name and score)
+    //Liste des ressources impactées par l'évènement => Triplet(Type de la ressource, nom et score)
     private Deque<Triplet<CloudResourceType, String, Integer>> resources;
 
     /**
-     * Constructor of a complex event
+     * Constructeur de la classe {@link ComplexEvent}
      *
-     * @param resources The list of resources that are implied in the complex event
+     * @param resources - La liste des ressources impliquées par l'évènement complexe
      */
     public ComplexEvent(Deque<Triplet<CloudResourceType, String, Integer>> resources) {
         super(EventType.COMPLEX);
@@ -29,11 +29,11 @@ public abstract class ComplexEvent extends Event {
     }
 
     /**
-     * Constructor of a complex event (that focus only one cloud resource)
+     * Constructeur de la classe {@link ComplexEvent} (dédié à une seule ressource)
      *
-     * @param type The type of the cloud resource
-     * @param name The name of the cloud resource
-     * @param score The total score of the cloud resource
+     * @param type - Le type de la ressource
+     * @param name - Le nom de la ressource
+     * @param score - Le score total de la ressource
      */
     public ComplexEvent(CloudResourceType type, String name, Integer score) {
         super(EventType.COMPLEX);
@@ -42,8 +42,8 @@ public abstract class ComplexEvent extends Event {
     }
 
     /**
-     * Getter on all resources impacted by the event
-     * @return All resources impacted by the event
+     * Accesseur des ressources impactées par l'évènement
+     * @return Toutes les ressources impactées par l'évènement
      */
     public Deque<Triplet<CloudResourceType, String, Integer>> getResources() {
         return resources;
