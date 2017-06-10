@@ -2,10 +2,13 @@ package perception.configurator.exec;
 
 import org.xml.sax.SAXException;
 import perception.configurator.activator.manager.ActivationResult;
+import perception.configurator.activator.manager.CEG.CEGActivator;
 import perception.configurator.activator.manager.PEG.PEGActivator;
+import perception.configurator.activator.manager.SEG.SEGActivator;
 import perception.configurator.xml.manager.parser.ResultatParsing;
 import perception.configurator.xml.manager.parser.XMLFileParser;
 import perception.core.PerceptionCore;
+import perception.pluginManager.PluginManager;
 import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
 
@@ -39,11 +42,15 @@ public class ConfigurationLoader {
                 logger.logError(parsingResult.toString());
             } else {
                 // Activation des Event Generators
-                ActivationResult activationResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
+                ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
+                ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventMap(), core);
+                ActivationResult complexResult = CEGActivator.activate(parsingResult.getComplexEventMap(), core);
 
-                if (activationResult.hasErrors()) {
+                if (primitiveResult.hasErrors() || simpleResult.hasErrors() || complexResult.hasErrors()) {
                     // Affichage des erreurs (en rouge) dans la console
-                    logger.logError(activationResult.toString());
+                    logger.logError(primitiveResult.toString());
+                    logger.logError(simpleResult.toString());
+                    logger.logError(complexResult.toString());
                 }
             }
         } catch (ParserConfigurationException e) {

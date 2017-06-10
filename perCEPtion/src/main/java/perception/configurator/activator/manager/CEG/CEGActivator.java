@@ -1,5 +1,7 @@
-package perception.configurator.activator.manager.SEG;
+package perception.configurator.activator.manager.CEG;
 
+import org.apache.commons.lang.ClassUtils;
+import perception.complex_event_generator.ComplexEventGenerator;
 import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
@@ -13,7 +15,6 @@ import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
 import perception.simple_events_generator.SimpleEventGenerator;
 import utils.Pair;
-import org.apache.commons.lang.ClassUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -21,19 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Active les Simple Event Generator déclarés dans le fichier de configuration XML
- * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
+ * Created by asus on 10/06/2017.
  */
-public class SEGActivator {
+public class CEGActivator {
 
     /**
-     * Récupère les objets de configuration des {@link SimpleEventGenerator},
-     * les instancie avec leur paramètres et les ajoute au {@link PerceptionCore}
-     * @param segs - Liste d'objets SACData contenant les informations des SimpleEventGenerator à activer
-     * @param core - PerceptionCore auquel on ajoutera les SEG activés
-     * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
+     * Activates event generators listed in the xml configuration file.
+     * @param cegs - List of SACData objects containing informations about SEGs to activate
+     * @param core - PerceptionCore which will get the new PEG
+     * @return <code>true</code> if all generators could be added, else <code>false</code>
      */
-    public static ActivationResult activate(List<SACData> segs, PerceptionCore core) {
+    public static ActivationResult activate(List<SACData> cegs, PerceptionCore core) {
         // Instanciation du logger
         PerceptionLogger logger = new SysoutPerceptionLogger();
 
@@ -41,21 +40,23 @@ public class SEGActivator {
         ActivationResult activationResult = ActivationResult.FAB();
 
         // Récupération de la banque de SEG
-        EGBank<SimpleEventGenerator> bank = PluginManager.getPluginManager().getSegBank();
+        EGBank<ComplexEventGenerator> bank = PluginManager.getPluginManager().getCegBank();
 
         // Parcours de l'ensemble des Primitive Event Generator trouvé par le module de parcours
-        for (SACData seg : segs) {
+        for (SACData ceg : cegs) {
             try {
                 // Chargement de la classe correspondant au type (nom de la classe) du SEG
-                Class<?> event = bank.getClassForEGName(seg.getEventType());
+                Class<?> event = bank.getClassForEGName(ceg.getEventType());
+
+                List<Object> liste = new ArrayList<Object>();
 
                 // Tableau des types de paramètres
-                int size = seg.getParamsList().size();
+                int size = ceg.getParamsList().size();
                 Class<?> types[] = new Class<?>[size];
                 Object param[] = new Object[size];
                 int elem = 0;
                 // Récupération du constructeur
-                for (Pair<String, String> tuples : seg.getParamsList()) {
+                for (Pair<String, String> tuples : ceg.getParamsList()) {
                     Class<?> classe = ParamTypes.getClassForParamName(tuples.getFirst());
                     if (classe.isPrimitive()) {
                         classe = ClassUtils.primitiveToWrapper(classe);
@@ -74,25 +75,26 @@ public class SEGActivator {
                 Object instance = constructor.newInstance(param);
 
                 // Ajout du PEG au core du framework
-                core.getSimpleEventGeneratorManager().addEventGenerator((SimpleEventGenerator) instance);
-                logger.logMessage("SEG " + seg.getEventName() + " activé");
+                core.getComplexEventGeneratorManager().addEventGenerator((ComplexEventGenerator) instance);
+                logger.logMessage("CEG " + ceg.getEventName() + " activé");
             } catch (ClassNotFoundException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.CLASS_NOT_FOUND);
-                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Classe " + seg.getEventName() + " inexistante. Vérifiez que cet évènement est bien implémentée dans le système.");
+                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Classe " + ceg.getEventName() + " inexistante. Vérifiez que cet évènement est bien implémentée dans le système.");
             } catch (NoSuchMethodException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.WRONG_PARAMETERS);
-                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Constructeur inexistant pour la classe " + seg.getEventName() + " et les paramètres " + seg.getParamsList().toString());
+                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Constructeur inexistant pour la classe " + ceg.getEventName() + " et les paramètres " + ceg.getParamsList().toString());
             } catch (IllegalAccessException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.ACCESS_NOT_GRANTED);
-                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Impossible d'accéder à la méthode de classe " + seg.getEventName() + ".");
+                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Impossible d'accéder à la méthode de classe " + ceg.getEventName() + ".");
             } catch (InvocationTargetException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.WRONG_PARAMETERS);
                 activationResult.setErrorMsg(ex.getMessage());
             } catch (InstantiationException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.WRONG_PARAMETERS);
-                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Impossible d'instancier la classe " + seg.getEventName() + ".");
+                activationResult.setErrorMsg(ex.getMessage() + "\n" + "Impossible d'instancier la classe " + ceg.getEventName() + ".");
             }
         }
         return activationResult;
     }
+
 }
