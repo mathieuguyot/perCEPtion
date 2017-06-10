@@ -19,6 +19,7 @@ Il suit assez fidèlement les concepts de la thèse de Simon Dupont : ["Gestion 
 
 L'image ci-dessous décrit le fonctionnement global du framework perception:
 
+![PerCEPtion architecture](images/perCEPtion_architecture.png)
 
 Le framework à pour objectif de monitorer un ensemble de composants d'une architecture. Pour attendre cet objectif, perCEPtion utilise le CEP (complex event processing) d'une manière ingénieuse:
 1. La première étape consiste à générer des évènements dis primitifs. Ceux-ci sont générés constaments. Ils sont donc très nombreux mais peu significatifs.
