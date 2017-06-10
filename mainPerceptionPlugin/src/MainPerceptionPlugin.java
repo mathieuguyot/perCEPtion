@@ -1,6 +1,8 @@
+import complex_events_generator.CEG_DeadCpu;
 import perception.pluginManager.PerceptionPlugin;
 import primitive_events_generator.*;
 import simple_events_generator.SEG_Cpu_Drop;
+import simple_events_generator.SEG_Ram_Drop;
 
 public class MainPerceptionPlugin extends PerceptionPlugin {
 
@@ -27,7 +29,11 @@ public class MainPerceptionPlugin extends PerceptionPlugin {
 
         //Register SEGs
         this.registerSEG(SEG_Cpu_Drop.class);
+        this.registerSEG(SEG_Ram_Drop.class);
+        //this.registerSEG(SEG_Cpu_Overload.class);
 
+        //Register CEGs
+        this.registerCEG(CEG_DeadCpu.class);
     }
 
 }
