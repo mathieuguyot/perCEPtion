@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ParsingErrorTypeTest {
 
@@ -62,10 +63,12 @@ public class ParsingErrorTypeTest {
 		List<ParsingErrorType> parsingErrorTypeList = Arrays.asList(
 				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE,
 				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
-				ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME,
+				ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE);
 				//ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
-		assertEquals("valuesAsList - taille", 3, ParsingErrorType.valuesAsList().size());
-		assertEquals("valuesAsList - values", true, ParsingErrorType.valuesAsList().containsAll(parsingErrorTypeList));
+		assertEquals("valuesAsList - taille", 5, ParsingErrorType.valuesAsList().size());
+		assertTrue("valuesAsList - values", ParsingErrorType.valuesAsList().containsAll(parsingErrorTypeList));
 	}
 
 }

@@ -11,12 +11,12 @@
                 <runtime>78000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>MonPEGVmCPU</name>
+                <name>MonPEGPmCPU</name>
                 <type>PEG_Vm_Cpu</type>
                 <runtime>11000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>MonPEGPmCPU</name>
+                <name>MonPEGVmCPU</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>98000</runtime>
             </primitive>

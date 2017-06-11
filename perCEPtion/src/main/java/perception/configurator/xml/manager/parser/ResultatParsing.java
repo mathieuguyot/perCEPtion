@@ -91,7 +91,6 @@ public class ResultatParsing {
     }
 
     /**
-<<<<<<< HEAD:src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java
      * Ajoute une erreur liée au parsing du fichier avec complément d'information.
      *
      * @param parsingErrorType erreur liée au parsing du fichier à ajouter
@@ -99,7 +98,9 @@ public class ResultatParsing {
      */
     public void addParsingErrorTypeWithComplementMessage(ParsingErrorType parsingErrorType, String complementMsg) {
         parsingErrorType.addComplement(complementMsg);
-        this.addParsingErrorType(parsingErrorType);
+        if (!this.getParsingErrorTypes().contains(parsingErrorType)) {
+            this.addParsingErrorType(parsingErrorType);
+        }
     }
 
     /**
@@ -109,6 +110,23 @@ public class ResultatParsing {
      */
     public void addPrimitiveEvent(PEData peData) {
         this.primitiveEventList.add(peData);
+    }
+
+    /**
+     * Teste s'il existe un primitive event avec ce nom dans la liste des primitives events à créer.
+     *
+     * @param name
+     *              le nom recherché dans la liste des primitives events à instancier
+     * @return vrai s'il existe un primitive event avec ce nom dans la liste des primitives events à créer et false dans
+     * le cas contraire
+     */
+    public boolean existingPrimitiveEventListWithName(String name) {
+        for (PEData peData : this.getPrimitiveEventList()) {
+            if (peData.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -223,4 +241,5 @@ public class ResultatParsing {
                 ", primitiveEventList=" + primitiveEventList +
                 "}";
     }
+
 }

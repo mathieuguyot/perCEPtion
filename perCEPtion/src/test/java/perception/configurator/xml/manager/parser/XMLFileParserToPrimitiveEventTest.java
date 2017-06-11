@@ -35,8 +35,8 @@ public class XMLFileParserToPrimitiveEventTest {
 
 	    List<PEData> primitiveEventList = new ArrayList<>();
 		primitiveEventList.add(new PEData("MonPEGCoResponseTime","PEG_Co_ResponseTime", 78000L));
-        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
-        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Pm_Cpu", 98000L));
 
 		ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
 				.parse(TestConstants.XMLFileParserTestFolder + "testParse_valideFile.xml");
@@ -61,8 +61,8 @@ public class XMLFileParserToPrimitiveEventTest {
 
         List<PEData> primitiveEventList = new ArrayList<>();
         primitiveEventList.add(new PEData("MonPEGCoResponseTime","PEG_Co_ResponseTime", 78000L));
-        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
-        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Pm_Cpu", 98000L));
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
 				.parse(TestConstants.XMLFileParserTestFolder +  "testParser_invalidFileFormatTXT.txt");
@@ -90,8 +90,8 @@ public class XMLFileParserToPrimitiveEventTest {
 
         List<PEData> primitiveEventList = new ArrayList<>();
         primitiveEventList.add(new PEData("MonPEGCoResponseTime","PEG_Co_ResponseTime", 78000L));
-        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
         primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
 				.parse(TestConstants.XMLFileParserTestFolder +  "testParser_invalidFileFormatPPT.ppt");
@@ -105,8 +105,8 @@ public class XMLFileParserToPrimitiveEventTest {
 
         List<PEData> primitiveEventList = new ArrayList<>();
         primitiveEventList.add(new PEData("MonPEGCoResponseTime","PEG_Co_ResponseTime", 78000L));
-        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 11000L));
-        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
+        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Pm_Cpu", 98000L));
 
 		String filePath = TestConstants.XMLFileParserTestFolder + "testParsePrimitiveEvents_OK.xml";
 
@@ -169,8 +169,8 @@ public class XMLFileParserToPrimitiveEventTest {
 
         List<PEData> primitiveEventList = new ArrayList<>();
         primitiveEventList.add(new PEData("MonPEGCoResponseTime","PEG_Co_ResponseTime", 78000L));
-        primitiveEventList.add(new PEData("MonPEGPmCPU","PEG_Pm_Cpu", 98000L));
-        primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGVmCpu","PEG_Vm_Cpu", 11000L));
+        primitiveEventList.add(new PEData("MonPEGPmCpu","PEG_Pm_Cpu", 98000L));
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		String filePath = TestConstants.XMLFileParserTestFolder + "testCreateAllPrimitivesEvents_OK.xml";
@@ -212,7 +212,7 @@ public class XMLFileParserToPrimitiveEventTest {
         primitiveEventList.add(new PEData("MonPEGVmCPU","PEG_Vm_Cpu", 1000L));
 
         ResultatParsing resultatParsing = ResultatParsing.FAB();
-        String filePath = TestConstants.XMLFileParserTestFolder + "testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml";
+        String filePath = TestConstants.XMLFileParserTestFolder + "testCreateAllPrimitivesEvents_ParseOnlyEnabledPE.xml";
 
         NodeList listPrimitiveEventExpected = (NodeList) xPath.evaluate("//primitive",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
@@ -223,21 +223,23 @@ public class XMLFileParserToPrimitiveEventTest {
         assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
-
     }
 
     @Test
-    public void createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName() throws IOException, SAXException, ParserConfigurationException {
+    public void testCreateAllPrimitivesEvents_NoParsingOfPrimitiveEventWithSameName() throws IOException, SAXException, ParserConfigurationException {
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEvent
-                .parse(TestConstants.XMLFileParserTestFolder + "createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml");
+                .parse(TestConstants.XMLFileParserTestFolder + "testCreateAllPrimitivesEvents_NoParsingOfPrimitiveEventWithSameName.xml");
 
-        assertTrue("Parsing fichier XML valide", resultatParsing.getPrimitiveEventList().isEmpty());
+        assertFalse("Parsing fichier XML valide", resultatParsing.getPrimitiveEventList().isEmpty());
+        assertEquals("Parsing fichier XML valide", 5, resultatParsing.getPrimitiveEventList().size());
+
         assertEquals("Liste erreurs fichier - taille", 0, resultatParsing.getFileErrorTypes().size());
 
+        System.out.println(resultatParsing.getParsingErrorTypes());
         assertEquals("Liste erreurs parsing - taille", 1, resultatParsing.getParsingErrorTypes().size());
-        assertEquals("Liste erreurs fichier - contenu", Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME), resultatParsing.getFileErrorTypes().size());
-        assertEquals("Liste erreurs fichier - complement erreur", Arrays.asList("monPE1", "MonPE1", "MonPE2", "MonPE2"), ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME.getCompements());
+        assertEquals("Liste erreurs fichier - contenu", Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME), resultatParsing.getParsingErrorTypes());
+        assertEquals("Liste erreurs fichier - complement erreur", Arrays.asList("monPE1", "MonPE1", "MonPE2", "MonPE2"), ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME.getComplements());
 
     }
 
@@ -256,7 +258,7 @@ public class XMLFileParserToPrimitiveEventTest {
 		// Appel de la méthode à tester
         Optional<String> primitiveEventNameActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
 
-		assertEquals("Recupération du nom du primitive event", "PEG_Vm_Disk", primitiveEventNameActual.get());
+		assertEquals("Recupération du nom du primitive event", "MonPEGVmDisk", primitiveEventNameActual.get());
 		assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
 		assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
 		assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
@@ -276,12 +278,7 @@ public class XMLFileParserToPrimitiveEventTest {
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<String> primitiveEventNameActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
 
-        try {
-            primitiveEventNameActual.isPresent();
-            fail("The name of the primitive event has been found.");
-        } catch (NoSuchElementException e) {
-            assertFalse("Recupération du name du primitive event", false);
-        }
+        assertFalse("Recupération du name du primitive event", primitiveEventNameActual.isPresent());
         assertTrue("Liste de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
         assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME)));
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
@@ -319,12 +316,12 @@ public class XMLFileParserToPrimitiveEventTest {
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
         // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(1);
+        Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<String> primitiveEventNameActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
 
         assertFalse("Recupération du type du primitive event", primitiveEventNameActual.isPresent());
         assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME)));
+        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE)));
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }
@@ -343,7 +340,7 @@ public class XMLFileParserToPrimitiveEventTest {
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<String> primitiveEventTypeActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
 
-        assertEquals("Recupération du runtime du primitive event", new Long(900), primitiveEventTypeActual.get());
+        assertEquals("Recupération du runtime du primitive event", "PEG_Vm_Disk", primitiveEventTypeActual.get());
         assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
         assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
@@ -360,7 +357,7 @@ public class XMLFileParserToPrimitiveEventTest {
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
                 this.getElementRootFromFile(filePath), XPathConstants.NODESET);
         // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(1);
+        Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<Long> primitiveEventRuntimeActual = XMLFileParserToPrimitiveEvent.getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
 
         assertFalse("Recupération du runtime du primitive event", primitiveEventRuntimeActual.isPresent());

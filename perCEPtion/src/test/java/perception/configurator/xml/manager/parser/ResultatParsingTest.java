@@ -140,7 +140,7 @@ public class ResultatParsingTest {
 	}
 
 	@Test
-	public void testhasErrors_OnlyParsingErrors() {
+	public void testHasErrors_OnlyParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
 		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
@@ -148,7 +148,7 @@ public class ResultatParsingTest {
 	}
 	
 	@Test
-	public void testhasErrors_OnlyFileErrors() {
+	public void testHasErrors_OnlyFileErrors() {
 		List<FileErrorType> listeFileErrorTypes = Collections.singletonList(FileErrorType.EMPTY_FILE);
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
 		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
@@ -156,7 +156,7 @@ public class ResultatParsingTest {
 	}
 
 	@Test
-	public void testhasErrors_OnlyValidationResult() {
+	public void testHasErrors_OnlyValidationResult() {
 
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
@@ -169,12 +169,37 @@ public class ResultatParsingTest {
 	}
 	
 	@Test
-	public void testhasErrors_FileErrorsAndParsingErrors() {
+	public void testHasErrors_FileErrorsAndParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = Arrays.asList(FileErrorType.EMPTY_FILE, FileErrorType.INVALID_FILE_FORMAT);
 		List<ParsingErrorType> listeParsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
 		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 
+	@Test
+	public void testAddParsingErrorTypeWithComplementMessage() {
+
+		ResultatParsing resultatParsing = ResultatParsing.FAB();
+		resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, "MonEvent1");
+		resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, "MonEvent2");
+		resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, "MonEvent3");
+
+		assertEquals("ParsingErrorType complement content", ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME.getComplements(), Arrays.asList("MonEvent1", "MonEvent2", "MonEvent3"));
+
+        ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME.resetComplements();
+
+	}
+
+	@Test
+	public void testExistingPrimitiveEventListWithName() {
+
+		ResultatParsing resultatParsing = ResultatParsing.FAB();
+		resultatParsing.addPrimitiveEvent(new PEData("UnPE1", "UnType", 45L));
+        resultatParsing.addPrimitiveEvent(new PEData("UnPE2", "UnType", 45L));
+
+        assertTrue(resultatParsing.existingPrimitiveEventListWithName("UnPE1"));
+        assertFalse(resultatParsing.existingPrimitiveEventListWithName("UnPE3"));
+
+	}
 
 }

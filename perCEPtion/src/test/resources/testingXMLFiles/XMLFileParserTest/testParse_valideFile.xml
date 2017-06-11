@@ -6,17 +6,17 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Co_ResponseTime1</name>
+                <name>MonPEGCoResponseTime</name>
                 <type>PEG_Co_ResponseTime</type>
                 <runtime>78000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>PEG_Vm_Cpu1</name>
+                <name>MonPEGPmCPU</name>
                 <type>PEG_Vm_Cpu</type>
                 <runtime>11000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>PEG_Pm_Cpu1</name>
+                <name>MonPEGVmCPU</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>98000</runtime>
             </primitive>

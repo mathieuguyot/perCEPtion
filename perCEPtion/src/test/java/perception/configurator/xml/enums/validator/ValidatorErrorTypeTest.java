@@ -12,7 +12,7 @@ public class ValidatorErrorTypeTest {
 	@Test
 	public void testGetLabel() {
 		assertEquals("getLabel - WARNING", 
-				"Warning du au parsing du fichier XML.", 
+				"Warning lié au parsing du fichier XML.",
 				ValidatorErrorType.WARNING.getLabel());
 	}
 	
@@ -20,12 +20,13 @@ public class ValidatorErrorTypeTest {
 	public void testFromLabel() {
 		assertEquals("fromLabel - FATAL_ERROR",
 				ValidatorErrorType.FATAL_ERROR,
-				ValidatorErrorType.fromLabel("Le fichier XML ne respect pas les règles de formatage XML."));
+				ValidatorErrorType.fromLabel("Le fichier XML ne respecte pas les règles de formatage XML."));
 	}
 	
 	@Test
 	public void testFromLabelIgnoreCase() {
-		ValidatorErrorType res = ValidatorErrorType.fromLabel("La grammaire du Fichier XML n'esT pAS conforme au spécification du schéma XSD.");
+		ValidatorErrorType res = ValidatorErrorType.fromLabel("" +
+				"La grammaire du fichier XmL n'est Pas confOrme à la spécification du schéma XSD.");
 		assertEquals("FromLibelle IgnoreCase - ERROR ", ValidatorErrorType.ERROR, res);
 	}
 	

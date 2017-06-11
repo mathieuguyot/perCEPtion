@@ -172,19 +172,11 @@ class XMLFileParserToPrimitiveEvent {
     /**
      * Récupére le nom donné dans le fichier XML pour le primitive event spécifié.
      *
-<<<<<<< HEAD:src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java
      * @param xPath           le XPath
      * @param node            le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
      * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
-=======
-     * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au primitive event
-     * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return le nom du primitive event ou <code>null</code> s'il est impossible de trouver l'information dans le fichier, dans ce cas,
-     * le {@link ResultatParsing} est mis à jour
->>>>>>> 20a1d8951fe421773b080bfe727d79b791c50fac:perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java
      */
     protected static Optional<String> getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<String> nameOp = Optional.empty();
@@ -194,9 +186,11 @@ class XMLFileParserToPrimitiveEvent {
             if(name.equals("")) {
                 throw new XPathExpressionException("Missing primitive event name.");
             }
-            nameOp = Optional.of(name);
-            if(resultatParsing.getPrimitiveEventList().contains(nameOp.get())) {
-                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, nameOp.get());
+            else if(resultatParsing.existingPrimitiveEventListWithName(name)) {
+                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, name);
+            }
+            else {
+                nameOp = Optional.of(name);
             }
         } catch (XPathExpressionException e) {
             resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME);
@@ -220,7 +214,11 @@ class XMLFileParserToPrimitiveEvent {
         try {
             String strSelectName = XMLFileStructure.PRIMITIVE_TYPE.getLabel();
             String type = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
-            typeOp = Optional.of(type);
+            if(type.equals("")) {
+                throw new XPathExpressionException("Missing primitive event type.");
+            } else {
+                typeOp = Optional.of(type);
+            }
         } catch (XPathExpressionException e) {
             resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE);
             // System.out.println("Impossible de trouver le nom du primitive event : " + node);
@@ -251,7 +249,11 @@ class XMLFileParserToPrimitiveEvent {
         try {
             String strSelectName = XMLFileStructure.PRIMITIVE_RUNTIME.getLabel();
             Long runtTime = ((Double) xPath.evaluate(strSelectName, node, XPathConstants.NUMBER)).longValue();
-            runtTimeOp = Optional.of(runtTime);
+            if (runtTime <= 0) {
+                resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
+            } else {
+                runtTimeOp = Optional.of(runtTime);
+            }
         } catch (XPathExpressionException e) {
             resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
             // System.out.println("Impossible de trouver le nom du primitive event : " + node);

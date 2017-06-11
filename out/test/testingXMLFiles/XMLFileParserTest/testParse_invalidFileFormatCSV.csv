@@ -6,12 +6,12 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>e1</name>
-                <type>PEG_Blank</type>
+                <name>MonPEGCoResponseTime</name>
+                <type>PEG_Co_ResponseTime</type>
                 <runtime>78945</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>e2</name>
+                <name>MonPEGPmCPU</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>12000</runtime>
             </primitive>

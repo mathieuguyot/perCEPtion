@@ -32,6 +32,7 @@ public class ValidationResultTest {
 	public void testHasError_OnlyValidationError() {
 		ValidationError validationError = ValidationError.FAB("Un message d'erreur inutile", ValidatorErrorType.WARNING);
 		ValidationResult validationResult = ValidationResult.FAB();
+		validationResult.setValidationError(validationError);
 		assertTrue(validationResult.hasErrors());
 	}
 	
@@ -39,6 +40,7 @@ public class ValidationResultTest {
 	public void testHasError_OnlyFileErrorType() {
 		FileErrorType fileErrorType = FileErrorType.INVALID_FILE_FORMAT;
 		ValidationResult validationResult = ValidationResult.FAB();
+		validationResult.setFileErrorType(fileErrorType);
 		assertTrue(validationResult.hasErrors());
 	}
 	

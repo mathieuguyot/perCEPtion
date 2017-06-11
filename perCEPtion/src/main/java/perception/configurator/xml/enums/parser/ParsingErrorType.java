@@ -1,5 +1,6 @@
 package perception.configurator.xml.enums.parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public enum ParsingErrorType {
 
     PRIMITIVES_EVENT_INVALID_RUNTIME("Impossible de trouver le runtime du primitive event."),
 
-    PRIMITIVES_EVENT_DUPLICATED_NAME("Un même nom a été renseigné pour deux primitives events.");
+    PRIMITIVES_EVENT_DUPLICATED_NAME("Un même nom a été renseigné pour deux primitives events. Seul le première élément avec ce nom sera pris en compte.");
 
 	// Si l'attribut enabled de la balise <primitive> est abs on considère que le primitive event est à activer
 	//INVALID_PRIMITIVE_ENABLED_ATTR("Impossible de trouver l'attribut enabled du primitive event.");
@@ -37,6 +38,7 @@ public enum ParsingErrorType {
 	 */
 	ParsingErrorType(String errorInfo) {
 		this.errorInfo = errorInfo;
+		this.complements = new ArrayList<>();
 	}
 
 	// Services
@@ -71,8 +73,12 @@ public enum ParsingErrorType {
 		return errorInfo;
 	}
 
-    public List<String> getCompements() {
+    public List<String> getComplements() {
         return complements;
+    }
+
+    public void resetComplements() {
+        this.complements = new ArrayList<>();
     }
 
     public void addComplement(String complement) {

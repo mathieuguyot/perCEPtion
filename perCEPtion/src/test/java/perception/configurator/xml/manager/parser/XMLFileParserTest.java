@@ -18,8 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 public class XMLFileParserTest {
 
-	private static final String xSDFilePath = "resources/schema.xsd";
-
 	@Test
 	public void testParse_XMLFileParser_OK() throws ParserConfigurationException, SAXException, IOException {
 		
@@ -35,7 +33,7 @@ public class XMLFileParserTest {
 		expectedResultatParsing.setPrimitiveEventList(expectedPedataList);
 
 		// Actual
-		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, xSDFilePath);
+		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);
 		
 		assertEquals(expectedResultatParsing, actualResultat);
 		
@@ -54,10 +52,10 @@ public class XMLFileParserTest {
 
 		expectedResultatParsing.setPrimitiveEventList(expectedPrimitiveEvents);
 
-		ValidationResult expectedValidationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
+		ValidationResult expectedValidationResult = XMLFileValidator.validate(xMLFilePath, TestConstants.XMLFileXSD);
 		expectedResultatParsing.setValidationResult(expectedValidationResult);
 		
-		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, xSDFilePath);
+		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);
 		
 		assertEquals(expectedResultatParsing, actualResultat);
 		
@@ -69,7 +67,7 @@ public class XMLFileParserTest {
 		
 		String filePath = TestConstants.XMLFileParserTestFolder + "testDoNotParseIfInvalidPatternFile.xml";
 		
-		ResultatParsing actualRes = XMLFileParser.parse(filePath, xSDFilePath);
+		ResultatParsing actualRes = XMLFileParser.parse(filePath, TestConstants.XMLFileXSD);
 		
 		assertEquals(new ArrayList<PEData>(), actualRes.getPrimitiveEventList());
 		
