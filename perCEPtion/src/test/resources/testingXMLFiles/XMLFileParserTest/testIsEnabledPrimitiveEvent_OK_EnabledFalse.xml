@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<perception
+        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <events>
+        <primitives>
+            <primitive enabled="false">
+                <name>e1</name>
+                <type>PEG_Vm_Disk</type>
+                <runtime>700</runtime>
+            </primitive>
+            <primitive enabled="true">
+                <name>e2</name>
+                <type>PEG_Vm_Cpu</type>
+                <runtime>1100</runtime>
+            </primitive>
+        </primitives>
+    </events>
+</perception>

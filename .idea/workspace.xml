@@ -1,0 +1,2038 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="306506de-a45e-46c3-a661-686ab105f415" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/perception/perception.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/mainPerceptionPlugin.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/MainPerceptionPlugin.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Co_ResponseTime.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Pm_Cpu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Pm_Disk.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Pm_Ram.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Vm_Cpu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Vm_Disk.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/primitive_events_generator/PEG_Vm_Ram.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/CloudResource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/enums/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/CEG/CEGActivator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/CEG/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/parser/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/validator/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/validator/package-info.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/FlinkEnvRunner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/ComplexEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/Event.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/pluginManager/EGBank.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/pluginManager/PerceptionPlugin.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/pluginManager/PluginManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/services/PerceptionLogger.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/services/PerceptionRunResource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/test/schema.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/test/valideXMLFIle.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/graph/CloudResource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/enums/events/SEGTypes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/exec/ConfigurationLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/general/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/parser/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/validator/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/FlinkEnvRunner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/ComplexEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/Event.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/pluginManager/PEGBank.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/pluginManager/PerceptionPlugin.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/pluginManager/PluginManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/services/PerceptionLogger.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/perception/services/PerceptionRunResource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/1test.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_KO.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_OK.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/perception.iml" afterPath="$PROJECT_DIR$/perCEPtion/perception.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/schema.xsd" afterPath="$PROJECT_DIR$/perCEPtion/resources/schema.xsd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/Main.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/Appli.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/Appli.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/CloudResourceHolder.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/CloudResourceHolder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/CloudResourceType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/CloudResourceType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/Co.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/Co.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/PM.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/PM.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/Tier.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/Tier.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/graph/VM.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/graph/VM.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/complex_event_generator/ComplexEventGenerator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/complex_event_generator/ComplexEventGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/complex_event_generator/implementations/CEG_DeadCpu.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/complex_events_generator/CEG_DeadCpu.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/enums/constructors/ParamTypes.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/enums/constructors/ParamTypes.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/enums/errors/ActivationErrorType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/enums/errors/ActivationErrorType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/ActivationResult.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/ActivationResult.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/PEG/PEGActivator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/PEG/PEGActivator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/PEG/package-info.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/PEG/package-info.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/SEG/SEGActivator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/SEG/SEGActivator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/SEG/package-info.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/SEG/package-info.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/exec/package-info.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/package-info.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/general/FileErrorType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/FileErrorType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/general/XMLFileStructure.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/XMLFileStructure.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/validator/ValidatorErrorType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/validator/ValidatorErrorType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/model/PEData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/PEData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/model/SACData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SACData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/package-info.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/package-info.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/ValidationError.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/validator/ValidationError.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/ValidationResult.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/validator/ValidationResult.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLValidatorErrorHandler.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/validator/XMLValidatorErrorHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/CloudResourcesAccess.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/CloudResourcesAccess.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/EventGenerator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/EventGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/EventGeneratorManager.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/EventGeneratorManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/PASACEventStream.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/PASACEventStream.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/PerceptionCore.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/PerceptionCore.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/PerceptionRunContext.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/PerceptionRunContext.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/PrimitiveEventStream.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/PrimitiveEventStream.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/SACEventStream.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/SACEventStream.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/core/SymptomQueue.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/core/SymptomQueue.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/EventType.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/EventType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/PrimitiveEvent.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/PrimitiveEvent.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/SimpleEvent.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/SimpleEvent.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/Symptom.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/events/Symptom.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/complex_events/CE_Cpu_Dead.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/complex_events/CE_Cpu_Dead.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/primitive_events/PE_Cpu.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/primitive_events/PE_Cpu.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/primitive_events/PE_Disk.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/primitive_events/PE_Disk.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/primitive_events/PE_Ram.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/primitive_events/PE_Ram.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/primitive_events/PE_ResponseTime.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/primitive_events/PE_ResponseTime.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/simple_events/SE_Cpu_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/simple_events/SE_Cpu_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/simple_events/SE_Ram_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/simple_events/SE_Ram_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/symptoms/SY_Cpu_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/symptoms/SY_Cpu_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/symptoms/SY_Cpu_Overload.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/symptoms/SY_Cpu_Overload.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/events/symptoms/SY_Ram_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/events/symptoms/SY_Ram_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/primitive_events_generator/PrimitiveEventGenerator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/primitive_events_generator/PrimitiveEventGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/primitive_events_generator/implementations/PEG_Blank.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/primitive_events_generator/implementations/PEG_Blank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/services/implementations/SysoutPerceptionLogger.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/services/implementations/SysoutPerceptionLogger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/simple_events_generator/SimpleEventGenerator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/simple_events_generator/SimpleEventGenerator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/simple_events_generator/implementations/SEG_Blank.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/simple_events_generator/implementations/SEG_Blank.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/simple_events_generator/implementations/SEG_Cpu_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/simple_events_generator/SEG_Cpu_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/simple_events_generator/implementations/SEG_Cpu_Overload.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/simple_events_generator/SEG_Cpu_Overload.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/perception/simple_events_generator/implementations/SEG_Ram_Drop.java" afterPath="$PROJECT_DIR$/mainPerceptionPlugin/src/simple_events_generator/SEG_Ram_Drop.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/Pair.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/utils/Pair.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/Triplet.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/utils/Triplet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/ConfiguratorTestAllSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/ConfiguratorTestAllSuite.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/TestConstants.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/EnumsTestSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/EnumsTestSuite.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/general/FileErrorTypeTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/general/FileErrorTypeTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/general/XMLFileStructureTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/general/XMLFileStructureTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/parser/ParsingErrorTypeTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/parser/ParsingErrorTypeTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/validator/ValidatorErrorTypeTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/validator/ValidatorErrorTypeTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/XMLManagerTestSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/XMLManagerTestSuite.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLParserTestSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLParserTestSuite.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/validator/ValidationErrorTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/ValidationErrorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/validator/ValidationResultTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/ValidationResultTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/validator/XMLFileValidatorTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/XMLFileValidatorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorErrorHandlerTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorErrorHandlerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorTestSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorTestSuite.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/utils/CompareXMLFiles.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/utils/CompareXMLFiles.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/perception/configurator/xml/utils/JDD.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/utils/JDD.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_KO.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatPPT.ppt" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatPPT.ppt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/plugins/mainPerceptionPlugin.jar" afterPath="$PROJECT_DIR$/lib/plugins/mainPerceptionPlugin.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml" afterPath="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="XMLFileParserToPrimitiveEventTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="396" column="50" lean-forward="false" selection-start-line="396" selection-start-column="50" selection-end-line="396" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestConstants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="63" lean-forward="false" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testGetPrimitiveEventTypeFromFile_KO.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_KO.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testGetPrimitiveEventTypeFromFile_OK.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_OK.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testCreateAllPrimitivesEvents_OK.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testDoNotParseIfInvalidPatternFile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>main.java.</find>
+      <find>hasE</find>
+      <find>XMLFileStructure</find>
+      <find>getPrimitiveEventRuntimeFromFile</find>
+      <find>createAllPrimitivesEvents</find>
+      <find>parsePrimitivesEvent</find>
+      <find>FileStr</find>
+      <find>Str</find>
+      <find>XMLFileStructure.P</find>
+      <find>null</find>
+      <find>of</find>
+      <find>INVALID_PRIMITIVE_ENABLED_ATTR</find>
+      <find>getPrimitivesEventInFile</find>
+      <find>addParsingErrorTyp</find>
+      <find>INVALID_PRIMITIVES_NODE</find>
+      <find>Recupération primitives events du fichier</find>
+      <find>getPrimitiveEventRuntime</find>
+      <find>primitive</find>
+      <find>primitives</find>
+      <find>getPrimitiveEventTypeFromFile</find>
+      <find>getPrimitiveEventNameFromFile</find>
+      <find>Optional</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\src\main\java\perception</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/coucouTest.groovy" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/CoucouTest.groovy" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/ConfiguratorTestAllSuite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/activator/PEG/PEG_Activator.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/pluginManager/MainPerceptionPlugin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_KO.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/enums/parser/ParsingErrorTypeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/general/XMLFileStructure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/exec/ConfigurationLoader.java" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_KO.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/model/PEData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Test.java" />
+        <option value="$PROJECT_DIR$/resources/schema.xsd" />
+        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/1test.xml" />
+        <option value="$PROJECT_DIR$/resources/test/schema.xsd" />
+        <option value="$PROJECT_DIR$/resources/test/valideXMLFIle.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLFileParserTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLFileParserTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main/java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perception/configurator/xml">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perception/configurator/xml">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="manager">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perception/configurator/xml">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="enums">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perception/configurator/xml">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="enums">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="validator">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perCEPtion">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="perception/configurator/xml">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="enums">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="parser">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestProj" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="perception.configurator.xml" />
+      <recent name="perception.configurator.xml.enums.general" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="org.junit.runners.JUnit4" />
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="perception.configurator.xml.manager.model" />
+      <recent name="perception.configurator.xml" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="perception.configurator.xml.enums" />
+      <recent name="perception.configurator.xml.enums.validator" />
+      <recent name="perception.configurator.xml.enums.parser" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\resources\test" />
+      <recent name="C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\src\test\resources\testingXMLFiles\XMLFileParserTest" />
+      <recent name="C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\test\perception\configurator\xml" />
+      <recent name="C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\test\perception\configurator\xml\enums\general" />
+      <recent name="C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\test\perception\configurator\xml\enums" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="perception.pluginManager" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.XMLFileParserToPrimitiveEventTest">
+    <configuration default="false" name="XMLFileParserToPrimitiveEventTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="perception.configurator.xml.manager.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="perCEPtion" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="perception.configurator.xml.manager.parser" />
+      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLFileParserToPrimitiveEventTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="XMLParserTestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="perception.configurator.xml.manager.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="perCEPtion" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="perception.configurator.xml.manager.parser" />
+      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLParserTestSuite" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="XMLFileParserTest.testParse_XMLFileParser_OK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="perception.configurator.xml.manager.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="perCEPtion" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="perception.configurator.xml.manager.parser" />
+      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLFileParserTest" />
+      <option name="METHOD_NAME" value="testParse_XMLFileParser_OK" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="XMLFileParserToPrimitiveEventTest.testGetPrimitiveEventNameFromFile_KO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="perception.configurator.xml.manager.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="perCEPtion" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="perception.configurator.xml.manager.parser" />
+      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLFileParserToPrimitiveEventTest" />
+      <option name="METHOD_NAME" value="testGetPrimitiveEventNameFromFile_KO" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="perCEPtion" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="perCEPtion" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.XMLFileParserToPrimitiveEventTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.XMLParserTestSuite" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.XMLFileParserTest.testParse_XMLFileParser_OK" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.XMLFileParserToPrimitiveEventTest.testGetPrimitiveEventNameFromFile_KO" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Test" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.XMLFileParserToPrimitiveEventTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.XMLFileParserToPrimitiveEventTest.testGetPrimitiveEventNameFromFile_KO" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.XMLParserTestSuite" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.XMLFileParserTest.testParse_XMLFileParser_OK" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="306506de-a45e-46c3-a661-686ab105f415" name="Default" comment="" />
+      <created>1496071026700</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1496071026700</updated>
+      <workItem from="1496071029125" duration="3087000" />
+      <workItem from="1496156875077" duration="2441000" />
+      <workItem from="1496389494219" duration="6557000" />
+      <workItem from="1496759834744" duration="4298000" />
+      <workItem from="1497010503508" duration="9891000" />
+      <workItem from="1497028770936" duration="6299000" />
+      <workItem from="1497099720639" duration="11801000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.10 at 16h 55m 28s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.10 at 16h 56m 18s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.10 at 16h 58m 30s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.10 at 17h 03m 36s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.10 at 21h 21m 40s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.11 at 09h 22m 34s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.11 at 09h 26m 34s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.11 at 09h 27m 52s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest - 2017.06.11 at 09h 44m 44s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="XMLFileParserToPrimitiveEventTest_testGetPrimitiveEventNameFromFile_KO - 2017.06.10 at 21h 20m 49s.xml">
+      <configuration name="XMLFileParserToPrimitiveEventTest.testGetPrimitiveEventNameFromFile_KO" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="44374000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31096563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22844176" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31096563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26928896" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java</url>
+          <line>92</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java</url>
+          <line>95</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java</url>
+          <line>120</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>342</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java</url>
+          <line>145</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java</url>
+          <line>236</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>363</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java</url>
+          <line>123</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>113</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>423</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Test.java</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java</url>
+          <line>276</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="42" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/activator/manager/PEG/PEGActivator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/exec/ConfigurationLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="108" column="38" lean-forward="false" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/PEData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/validator/XMLFileValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/valideXMLFIle.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/schema.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="32" column="77" lean-forward="false" selection-start-line="32" selection-start-column="77" selection-end-line="32" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="190" column="57" lean-forward="false" selection-start-line="190" selection-start-column="57" selection-end-line="190" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="282" column="24" lean-forward="true" selection-start-line="282" selection-start-column="24" selection-end-line="282" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/1test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLParserTestSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/XMLFileStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/FileErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="168" column="77" lean-forward="false" selection-start-line="168" selection-start-column="77" selection-end-line="168" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/test/schema.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/createAllPrimitivesEvents_ParseOnlyOneAPrimitiveEventWithSameName.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_ParseOnlyEnabledPrimitiveEvents.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_KO.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_OK.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="396" column="50" lean-forward="false" selection-start-line="396" selection-start-column="50" selection-end-line="396" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="63" lean-forward="false" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>perCEPtion</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>flink-cep_2.10-1.4-SNAPSHOT</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

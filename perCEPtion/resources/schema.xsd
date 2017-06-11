@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+	<!-- Création de type personnalisé -->
+	
+	<!-- Nom d'event -->
+	<xsd:simpleType name="event_type_type">
+    	<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PEG_Blank"/>
+			<xsd:enumeration value="PEG_Co_ResponseTime"/>
+			<xsd:enumeration value="PEG_Pm_Cpu"/>
+			<xsd:enumeration value="PEG_Pm_Disk"/>
+			<xsd:enumeration value="PEG_Pm_Ram"/>
+			<xsd:enumeration value="PEG_Vm_Cpu"/>
+			<xsd:enumeration value="PEG_Vm_Disk"/>
+			<xsd:enumeration value="PEG_Vm_Ram"/>
+    	</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- Temps d'intervalle entre deux exécutions -->
+	<xsd:simpleType name="event_name_runtime">
+    	<xsd:restriction base="xsd:positiveInteger"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="event_name_type">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="event_activated">
+		<xsd:restriction base="xsd:boolean"/>
+	</xsd:simpleType>
+	
+	
+	<!-- Schéma XML -->
+
+	<xsd:element name="primitive">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="type" type="event_type_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="runtime" type="event_name_runtime" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+            <xsd:attribute name="enabled" use="required" type="event_activated"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="primitives">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="primitive" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="events">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="primitives"  minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="perception">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="events" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
