@@ -5,7 +5,7 @@
 >
     <events>
         <primitives>
-            <primitive enabled="false">
+            <primitive>
                 <name>PEG_Vm_Disk</name>
                 <runtime>700</runtime>
             </primitive>

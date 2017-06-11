@@ -2,6 +2,7 @@ package perception.configurator.xml.manager.parser;
 
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.PEData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class ResultatParsing {
     private ValidationResult validationResult;
 
         // Tableau association contenant les informations d'instanciation des primitives events
-    private Map<String, Long> primitiveEventMap;
+    private List<PEData> primitiveEventList;
 
     // Constructeur
 
@@ -47,14 +48,14 @@ public class ResultatParsing {
      *
      * @param fileErrorTypes    liste des erreurs liées au traitement de fichier
      * @param parsingErrorTypes liste des erreurs liées au parsing du fichier
-     * @param primitiveEventMap tableau associatif contenant les éléments permettant l'initialisation
+     * @param primitiveEventList tableau contenant les éléments permettant l'initialisation
      *                          des primitives events
      */
     private ResultatParsing(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                            Map<String, Long> primitiveEventMap) {
+                            List<PEData> primitiveEventList) {
         this.fileErrorTypes = fileErrorTypes;
         this.parsingErrorTypes = parsingErrorTypes;
-        this.primitiveEventMap = primitiveEventMap;
+        this.primitiveEventList = primitiveEventList;
     }
 
     /**
@@ -65,7 +66,7 @@ public class ResultatParsing {
     private ResultatParsing() {
         this.fileErrorTypes = new ArrayList<>();
         this.parsingErrorTypes = new ArrayList<>();
-        this.primitiveEventMap = new HashMap<>();
+        this.primitiveEventList = new ArrayList<>();
 
     }
 
@@ -90,13 +91,23 @@ public class ResultatParsing {
     }
 
     /**
+     * Ajoute une erreur liée au parsing du fichier avec complément d'information.
+     *
+     * @param parsingErrorType erreur liée au parsing du fichier à ajouter
+     * @param complementMsg message complémentaire
+     */
+    public void addParsingErrorTypeWithComplementMessage(ParsingErrorType parsingErrorType, String complementMsg) {
+        parsingErrorType.addComplement(complementMsg);
+        this.addParsingErrorType(parsingErrorType);
+    }
+
+    /**
      * Ajoute les informations pour l'instanciation d'un primitives events.
      *
-     * @param eventName    nom de du primitive event
-     * @param eventRunTime runtime du primitive event
+     * @param peData information de primitive event à ajouter à la liste pour instanciation
      */
-    public void addPrimitiveEvent(String eventName, Long eventRunTime) {
-        this.getPrimitiveEventMap().put(eventName, eventRunTime);
+    public void addPrimitiveEvent(PEData peData) {
+        this.primitiveEventList.add(peData);
     }
 
     /**
@@ -124,8 +135,8 @@ public class ResultatParsing {
         return parsingErrorTypes;
     }
 
-    public Map<String, Long> getPrimitiveEventMap() {
-        return this.primitiveEventMap;
+    public List<PEData> getPrimitiveEventList() {
+        return primitiveEventList;
     }
 
     public void setFileErrorTypes(List<FileErrorType> fileErrorTypes) {
@@ -136,8 +147,8 @@ public class ResultatParsing {
         this.parsingErrorTypes = parsingErrorTypes;
     }
 
-    public void setPrimitiveEventMap(Map<String, Long> primitiveEventMap) {
-        this.primitiveEventMap = primitiveEventMap;
+    public void setPrimitiveEventList(List<PEData> primitiveEventList) {
+        this.primitiveEventList = primitiveEventList;
     }
 
     public ValidationResult getValidationResult() {
@@ -155,12 +166,12 @@ public class ResultatParsing {
      *
      * @param fileErrorTypes    liste des erreurs liées au traitement de fichier
      * @param parsingErrorTypes liste des erreurs liées au parsing du fichier
-     * @param primitiveEventMap map permetttant l'instanciation des primitives events extrait du fichier XML
+     * @param primitiveEventList liste permetttant l'instanciation des primitives events extrait du fichier XML
      * @return instance de {@link ResultatParsing}
      */
     public static ResultatParsing FAB(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                                      Map<String, Long> primitiveEventMap) {
-        return new ResultatParsing(fileErrorTypes, parsingErrorTypes, primitiveEventMap);
+                                      List<PEData> primitiveEventList) {
+        return new ResultatParsing(fileErrorTypes, parsingErrorTypes, primitiveEventList);
     }
 
     /**
@@ -189,10 +200,10 @@ public class ResultatParsing {
                 return false;
         } else if (!fileErrorTypes.equals(other.fileErrorTypes))
             return false;
-        if (primitiveEventMap == null) {
-            if (other.primitiveEventMap != null)
+        if (primitiveEventList == null) {
+            if (other.primitiveEventList != null)
                 return false;
-        } else if (!primitiveEventMap.equals(other.primitiveEventMap))
+        } else if (!primitiveEventList.equals(other.primitiveEventList))
             return false;
         if (parsingErrorTypes == null) {
             if (other.parsingErrorTypes != null)
@@ -208,7 +219,7 @@ public class ResultatParsing {
                 "fileErrorTypes=" + fileErrorTypes +
                 ", parsingErrorTypes=" + parsingErrorTypes +
                 ", validationResult=" + validationResult +
-                ", primitiveEventMap=" + primitiveEventMap +
+                ", primitiveEventList=" + primitiveEventList +
                 "}";
     }
 }

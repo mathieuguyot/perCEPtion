@@ -6,15 +6,18 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Blank</name>
+                <name>MonPEGBlank</name>
+                <type>PEG_Blank</type>
                 <runtime>coucouJeSuisUneBelleErreur</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>PEG_Pm_Cpu</name>
+                <name>MonPEGPmCpu</name>
+                <type>PEG_Pm_Cpu</type>
                 <runtime>12000</runtime>
             </primitive>
             <primitive enabled="false">
-                <name>PEG_Pm_Disk</name>
+                <name>MonPEGPmDisk</name>
+                <type>PEG_Pm_Disk</type>
                 <runtime>89100</runtime>
             </primitive>
         </primitives>

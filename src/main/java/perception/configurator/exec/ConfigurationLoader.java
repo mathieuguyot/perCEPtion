@@ -39,12 +39,12 @@ public class ConfigurationLoader {
                 logger.logError(parsingResult.toString());
             } else {
                 // Activation des Event Generators
-                ActivationResult activationResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
+                /*ActivationResult activationResult = PEGActivator.activate(parsingResult.getPrimitiveEventList(), core);
 
                 if (activationResult.hasErrors()) {
                     // Affichage des erreurs (en rouge) dans la console
                     logger.logError(activationResult.toString());
-                }
+                }*/
             }
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

@@ -5,7 +5,7 @@
 	<!-- Création de type personnalisé -->
 	
 	<!-- Nom d'event -->
-	<xsd:simpleType name="event_name_type">
+	<xsd:simpleType name="event_type_type">
     	<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="PEG_Blank"/>
 			<xsd:enumeration value="PEG_Co_ResponseTime"/>
@@ -23,6 +23,10 @@
     	<xsd:restriction base="xsd:positiveInteger"/>
 	</xsd:simpleType>
 
+	<xsd:simpleType name="event_name_type">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
 	<xsd:simpleType name="event_activated">
 		<xsd:restriction base="xsd:boolean"/>
 	</xsd:simpleType>
@@ -34,6 +38,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="type" type="event_type_type" minOccurs="1" maxOccurs="1"/>
 				<xsd:element name="runtime" type="event_name_runtime" minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
             <xsd:attribute name="enabled" use="required" type="event_activated"/>

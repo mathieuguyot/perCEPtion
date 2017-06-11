@@ -11,17 +11,23 @@ import java.util.List;
  */
 public enum ParsingErrorType {
 
-	INVALID_PRIMITIVES_NODE(
+	PRIMITIVES_EVENT_INVALID_NODE(
 			"Impossible de trouver les primitives events dans le fichier XML fournit. Arrêt du traitement du fichier."),
 
-	INVALID_PRIMITIVE_NAME("Impossible de trouver le nom du primitive event."),
+    PRIMITIVES_EVENT_INVALID_NAME("Impossible de trouver le nom du primitive event."),
 
-	INVALID_PRIMITIVE_RUNTIME("Impossible de trouver le runtime du primitive event."),
+    PRIMITIVES_EVENT_INVALID_TYPE("Impossible de trouver le type du primitive event."),
 
-	INVALID_PRIMITIVE_ENABLED_ATTR("Impossible de trouver l'attribut enabled du primitive event.");
+    PRIMITIVES_EVENT_INVALID_RUNTIME("Impossible de trouver le runtime du primitive event."),
 
-	// Attributs
+    PRIMITIVES_EVENT_DUPLICATED_NAME("Un même nom a été renseigné pour deux primitives events.");
+
+	// Si l'attribut enabled de la balise <primitive> est abs on considère que le primitive event est à activer
+	//INVALID_PRIMITIVE_ENABLED_ATTR("Impossible de trouver l'attribut enabled du primitive event.");
+
+    // Attributs
 	private String errorInfo;
+    private List<String> complements;
 
 	// Constructeur
 	/**
@@ -67,4 +73,24 @@ public enum ParsingErrorType {
 		return errorInfo;
 	}
 
+    public List<String> getCompements() {
+        return complements;
+    }
+
+    public void addComplement(String complement) {
+	    this.complements.add(complement);
+    }
+
+    @Override
+    public String toString() {
+	    String toStr = "ParsingErrorType{" +
+                "errorInfo='" + errorInfo + '\'';
+	    if(!complements.isEmpty()) {
+	        toStr += ", pour : ";
+            for (String str : complements) {
+                toStr += "\n" + str;
+            }
+        }
+        return toStr + '}';
+    }
 }

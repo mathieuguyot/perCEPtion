@@ -6,11 +6,13 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Vm_Disk</name>
+                <name>e1</name>
+                <type>PEG_Vm_Disk</type>
                 <runtime>700</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>PEG_Vm_Cpu</name>
+                <name>e2</name>
+                <type>PEG_Vm_Cpu</type>
                 <runtime>1100</runtime>
             </primitive>
         </primitives>

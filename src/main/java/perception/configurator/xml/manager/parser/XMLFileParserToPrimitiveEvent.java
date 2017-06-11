@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.PEData;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,6 +20,7 @@ import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Classe utilitaire permettant la transformation d'un fichier XML en objet
@@ -96,12 +98,10 @@ class XMLFileParserToPrimitiveEvent {
      */
     protected static void parsePrimitivesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
-        NodeList primitiveEventFromFile = getPrimitivesEventInFile(xPath, root, resultatParsing);
+        Optional<NodeList> primitiveEventFromFileOp = getPrimitivesEventInFile(xPath, root, resultatParsing);
 
-        // Si la liste est null c'est que le fichier ne comporte pas de primitives events
-        if (primitiveEventFromFile != null) {
-            createAllPrimitivesEvents(xPath, primitiveEventFromFile, resultatParsing);
-        }
+        // Si la liste est absente c'est que le fichier ne comporte pas de primitives events
+        primitiveEventFromFileOp.ifPresent(nodeList -> createAllPrimitivesEvents(xPath, nodeList, resultatParsing));
 
     }
 
@@ -112,22 +112,23 @@ class XMLFileParserToPrimitiveEvent {
      * @param xPath           le xPath
      * @param root            l'élément racine du fichier XML
      * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return une liste de primitive events ou null si le fichier n'en comporte pas, dans ce cas, le
+     * @return un optional contenant éventuellement la liste de primitive events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
      * {@link ResultatParsing} est mis à jour
      */
-    protected static NodeList getPrimitivesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
+    protected static Optional<NodeList> getPrimitivesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
         // Récupération de tout les primitives events du fichier avec XPath
         String expXPathJeuxDeDonnees = "//" + XMLFileStructure.PRIMITIVE.getLabel();
-        NodeList listPrimitiveEvent = null;
+        Optional<NodeList> listPrimitiveEventOp = Optional.empty();
         try {
-            listPrimitiveEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
+            NodeList listPrimitiveEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
+            listPrimitiveEventOp = Optional.of(listPrimitiveEvent);
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVES_NODE);
+            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
             e.printStackTrace();
         }
 
-        return listPrimitiveEvent;
+        return listPrimitiveEventOp;
 
     }
 
@@ -146,16 +147,24 @@ class XMLFileParserToPrimitiveEvent {
 
             Node node = listPrimitiveEventsFromFile.item(i);
 
+            Optional<String> primitiveEventName = Optional.empty();
+            Optional<String> primitiveEventType = Optional.empty();
+            Optional<Long> primitiveEventRuntime = Optional.empty();
+
             // Récupération des éléments du primitive event actuel
             boolean primitiveEventEnabled = isEnabledPrimitiveEvent(xPath, node, resultatParsing);
             if (primitiveEventEnabled) {
-                String primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
-                Long primitiveEventRuntime = getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
-                resultatParsing.addPrimitiveEvent(primitiveEventName, primitiveEventRuntime);
+                primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
+                primitiveEventType = getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
+                primitiveEventRuntime = getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
             }
 
             // Si on a aucune erreur dans le fichier les informations d'instanciation du primitive event courant est
             // ajouté au résultat du parsing
+            if (primitiveEventName.isPresent() && primitiveEventRuntime.isPresent() && primitiveEventType.isPresent()) {
+                PEData peData = new PEData(primitiveEventName.get(), primitiveEventType.get(), primitiveEventRuntime.get());
+                resultatParsing.addPrimitiveEvent(peData);
+            }
 
         }
 
@@ -167,20 +176,50 @@ class XMLFileParserToPrimitiveEvent {
      * @param xPath           le XPath
      * @param node            le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return le nom du primitive event ou null s'il est impossible de trouver l'information dans le fichier, dans ce cas,
-     * le {@link ResultatParsing} est mis à jour
+     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static String getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        String name = null;
+    protected static Optional<String> getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+        Optional<String> nameOp = Optional.empty();
         try {
             String strSelectName = XMLFileStructure.PRIMITIVE_NAME.getLabel();
-            name = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
+            String name = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
+            if(name.equals("")) {
+                throw new XPathExpressionException("Missing primitive event name.");
+            }
+            nameOp = Optional.of(name);
+            if(resultatParsing.getPrimitiveEventList().contains(nameOp.get())) {
+                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, nameOp.get());
+            }
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVE_NAME);
+            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME);
             // System.out.println("Impossible de trouver le nom du primitive event : " + node);
             e.printStackTrace();
         }
-        return name;
+        return nameOp;
+    }
+
+    /**
+     * Récupére le type donnée dans le fichier XML pour le primitive event spécifié.
+     *
+     * @param xPath           le XPath
+     * @param node            le noeud dans le fichier correspondant au primitive event
+     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
+     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
+     */
+    protected static Optional<String> getPrimitiveEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+        Optional<String> typeOp = Optional.empty();
+        try {
+            String strSelectName = XMLFileStructure.PRIMITIVE_TYPE.getLabel();
+            String type = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
+            typeOp = Optional.of(type);
+        } catch (XPathExpressionException e) {
+            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE);
+            // System.out.println("Impossible de trouver le nom du primitive event : " + node);
+            e.printStackTrace();
+        }
+        return typeOp;
     }
 
     /**
@@ -189,20 +228,21 @@ class XMLFileParserToPrimitiveEvent {
      * @param xPath           le XPath
      * @param node            le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing le résultat du parsing
-     * @return le nom du primitive event ou null s'il est impossible de trouver l'information dans le fichier, dans ce
-     * cas, le {@link ResultatParsing} est mis à jour
+     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static Long getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Long runtTime = null;
+    protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+        Optional<Long> runtTimeOp = Optional.empty();
         try {
             String strSelectName = XMLFileStructure.PRIMITIVE_RUNTIME.getLabel();
-            runtTime = ((Double) xPath.evaluate(strSelectName, node, XPathConstants.NUMBER)).longValue();
+            Long runtTime = ((Double) xPath.evaluate(strSelectName, node, XPathConstants.NUMBER)).longValue();
+            runtTimeOp = Optional.of(runtTime);
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVE_RUNTIME);
+            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
             // System.out.println("Impossible de trouver le nom du primitive event : " + node);
             e.printStackTrace();
         }
-        return runtTime;
+        return runtTimeOp;
     }
 
     /**
@@ -219,7 +259,7 @@ class XMLFileParserToPrimitiveEvent {
         boolean enabled = false;
         try {
             String primitiveEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.PRIMITIVE_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
-            if (primitiveEventEnabled.equals("true")) {
+            if (primitiveEventEnabled.equals("true") || primitiveEventEnabled.equals("")) {
                 enabled = true;
             }
         } catch (XPathExpressionException e) {

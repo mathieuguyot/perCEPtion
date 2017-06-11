@@ -19,6 +19,7 @@ public enum XMLFileStructure {
 	PRIMITIVE("primitive"),
 	PRIMITIVE_ATTR_ENABLED("enabled"),
 	PRIMITIVE_NAME("name"),
+	PRIMITIVE_TYPE("type"),
 	PRIMITIVE_RUNTIME("runtime"),
 
 	// Valeur d'attributs lié au schéma

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+        xs:noNamespaceSchemaLocation="schema.xsd"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <scenario>
+        <jeudedonnees periode="pleine">
+            <duree>
+                <heures>12</heures>
+                <minutes>45</minutes>
+            </duree>
+            <consomation>76.65</consomation>
+            <production>89.12</production>
+        </jeudedonnees>
+        <jeudedonnees periode="creuse">
+            <duree>
+                <heures>10</heures>
+                <minutes>60</minutes>
+            </duree>
+            <consomation>678</consomation>
+            <production>431.90</production>
+        </jeudedonnees>
+    </scenario>
+</data>

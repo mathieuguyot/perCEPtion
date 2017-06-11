@@ -11,44 +11,44 @@ public class ParsingErrorTypeTest {
 
 	@Test
 	public void testGetLabel() {
-		assertEquals("getLabel - INVALID_PRIMITIVES_NODE",
+		assertEquals("getLabel - PRIMITIVES_EVENT_INVALID_NODE",
 				"Impossible de trouver les primitives events dans le fichier XML fournit. Arrêt du traitement du fichier.",
-				ParsingErrorType.INVALID_PRIMITIVES_NODE.getLabel());
-		assertEquals("getLabel - INVALID_PRIMITIVE_NAME",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE.getLabel());
+		assertEquals("getLabel - PRIMITIVES_EVENT_INVALID_NAME",
 				"Impossible de trouver le nom du primitive event.",
-				ParsingErrorType.INVALID_PRIMITIVE_NAME.getLabel());
-		assertEquals("getLabel - INVALID_PRIMITIVE_RUNTIME",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME.getLabel());
+		assertEquals("getLabel - PRIMITIVES_EVENT_INVALID_RUNTIME",
 				"Impossible de trouver le runtime du primitive event.",
-				ParsingErrorType.INVALID_PRIMITIVE_RUNTIME.getLabel());
-		assertEquals("getLabel - INVALID_PRIMITIVE_ENABLED_ATTR",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME.getLabel());
+		/*assertEquals("getLabel - INVALID_PRIMITIVE_ENABLED_ATTR",
 				"Impossible de trouver l'attribut enabled du primitive event.",
-				ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR.getLabel());
+				ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR.getLabel());*/
 	}
 	
 	@Test
 	public void testFromLabel() {
-		assertEquals("fromLabel - INVALID_PRIMITIVES_NODE",
-				ParsingErrorType.INVALID_PRIMITIVES_NODE,
+		assertEquals("fromLabel - PRIMITIVES_EVENT_INVALID_NODE",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE,
 				ParsingErrorType.fromLabel("Impossible de trouver les primitives events dans le fichier XML fournit. Arrêt du traitement du fichier."));
 		
-		assertEquals("fromLabel - INVALID_PRIMITIVE_NAME",
-				ParsingErrorType.INVALID_PRIMITIVE_NAME,
+		assertEquals("fromLabel - PRIMITIVES_EVENT_INVALID_NAME",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
 				ParsingErrorType.fromLabel("Impossible de trouver le nom du primitive event."));
 		
-		assertEquals("fromLabel - INVALID_PRIMITIVE_RUNTIME",
-				ParsingErrorType.INVALID_PRIMITIVE_RUNTIME,
+		assertEquals("fromLabel - PRIMITIVES_EVENT_INVALID_RUNTIME",
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME,
 				ParsingErrorType.fromLabel("Impossible de trouver le runtime du primitive event."));
 		
-		assertEquals("fromLabel - INVALID_PRIMITIVE_ENABLED_ATTR",
+		/*assertEquals("fromLabel - INVALID_PRIMITIVE_ENABLED_ATTR",
 				ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR,
-				ParsingErrorType.fromLabel("Impossible de trouver l'attribut enabled du primitive event."));
+				ParsingErrorType.fromLabel("Impossible de trouver l'attribut enabled du primitive event."));*/
 		
 	}
 	
 	@Test
 	public void testFromLabelIgnoreCase() {
-		ParsingErrorType res = ParsingErrorType.fromLabel("Impossible de trouver l'attribut enabled du primitive event.");
-		assertEquals("FromLibelle IgnoreCase INVALID_PRIMITIVE_ENABLED_ATTR ", ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR, res);
+		ParsingErrorType res = ParsingErrorType.fromLabel("Impossible de trouver les primitIves EventS dans le fichier XML fournit. Arrêt du traitement du fichier.");
+		assertEquals("FromLibelle IgnoreCase PRIMITIVES_EVENT_INVALID_NODE ", ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, res);
 	}
 	
 	@Test
@@ -60,11 +60,11 @@ public class ParsingErrorTypeTest {
 	@Test
 	public void testValuesAsList() {
 		List<ParsingErrorType> parsingErrorTypeList = Arrays.asList(
-				ParsingErrorType.INVALID_PRIMITIVES_NODE,
-				ParsingErrorType.INVALID_PRIMITIVE_NAME,
-				ParsingErrorType.INVALID_PRIMITIVE_RUNTIME,
-				ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
-		assertEquals("valuesAsList - taille", 4, ParsingErrorType.valuesAsList().size());
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
+				//ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
+		assertEquals("valuesAsList - taille", 3, ParsingErrorType.valuesAsList().size());
 		assertEquals("valuesAsList - values", true, ParsingErrorType.valuesAsList().containsAll(parsingErrorTypeList));
 	}
 

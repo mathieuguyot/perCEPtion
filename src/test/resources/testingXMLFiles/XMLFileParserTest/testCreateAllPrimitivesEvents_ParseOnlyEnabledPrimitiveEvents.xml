@@ -6,18 +6,24 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <type>PEG_Vm_Disk</type>
-                <runtime>7800</runtime>
+                <name>MonPEGCoResponseTime</name>
+                <type>PEG_Co_ResponseTime</type>
+                <runtime>78000</runtime>
             </primitive>
             <primitive enabled="true">
                 <name>MonPEGVmCpu</name>
                 <type>PEG_Vm_Cpu</type>
-                <runtime>11000</runtime>
+                <runtime>1000</runtime>
             </primitive>
             <primitive enabled="false">
+                <name>MonPEGBlank</name>
+                <type>PEG_Blank</type>
+                <runtime>81000</runtime>
+            </primitive>
+            <primitive enabled="true">
                 <name>MonPEGPmCpu</name>
                 <type>PEG_Pm_Cpu</type>
-                <runtime>98000</runtime>
+                <runtime>9000</runtime>
             </primitive>
         </primitives>
     </events>

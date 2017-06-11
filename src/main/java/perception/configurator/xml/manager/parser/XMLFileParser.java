@@ -1,11 +1,13 @@
 package perception.configurator.xml.manager.parser;
 
 import org.xml.sax.SAXException;
+import perception.configurator.xml.manager.model.PEData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,8 +45,8 @@ public class XMLFileParser {
         // Si le fichier n'est pas valide, on ne réalise pas de parsing
         if (!resultatParsing.hasErrors()) {
             resultatParsing = XMLFileParserToPrimitiveEvent.parse(xMLFilePath);
-            Map<String, Long> listeJDD = resultatParsing.getPrimitiveEventMap();
-            resultatParsing.setPrimitiveEventMap(listeJDD);
+            List<PEData> listeJDD = resultatParsing.getPrimitiveEventList();
+            resultatParsing.setPrimitiveEventList(listeJDD);
         }
 
         return resultatParsing;

@@ -6,7 +6,7 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <type>PEG_Vm_Disk</type>
+                <name>Coucou</name>
                 <runtime>7800</runtime>
             </primitive>
             <primitive enabled="true">

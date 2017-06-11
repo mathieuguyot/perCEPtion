@@ -6,7 +6,8 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Co_ResponseTime</name>
+                <name>MonPEG Co ResponseTime</name>
+                <type>PEG_Co_ResponseTime</type>
                 <runtime>900</runtime>
             </primitive>
             <primitive enabled="true">

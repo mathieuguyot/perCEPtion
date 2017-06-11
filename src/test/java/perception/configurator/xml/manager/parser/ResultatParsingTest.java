@@ -3,9 +3,9 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.PEData;
 import perception.configurator.xml.manager.validator.ValidationError;
 import perception.configurator.xml.manager.validator.ValidationResult;
-import scopt.Validation;
 
 import java.util.*;
 
@@ -17,17 +17,17 @@ public class ResultatParsingTest {
 	public void testResultatParsing_WithParams() {
 		
 		List<FileErrorType> fileErrorTypes = Arrays.asList(FileErrorType.FILE_NOT_FOUND, FileErrorType.FILE_NOT_FOUND);
-		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR,
-				ParsingErrorType.INVALID_PRIMITIVES_NODE, ParsingErrorType.INVALID_PRIMITIVE_RUNTIME);
+		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
 
-		HashMap<String, Long> primitiveEventMap = new HashMap<>();
-		primitiveEventMap.put("PM_CPU", 4500L);
-        primitiveEventMap.put("PM_RAM", 4000L);
-		
-		ResultatParsing resultatParsing = ResultatParsing.FAB(fileErrorTypes, parsingErrorTypes, primitiveEventMap);
+        List<PEData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PEData("MonPmCpu", "PM_CPU", 4500L));
+		primitiveEventList.add(new PEData("MonPmRam", "PM_RAM", 4500L));
+
+		ResultatParsing resultatParsing = ResultatParsing.FAB(fileErrorTypes, parsingErrorTypes, primitiveEventList);
 		assertEquals("Constructeur - fileErrorTypes", fileErrorTypes, resultatParsing.getFileErrorTypes());
 		assertEquals("Constructeur - primitiveEventMap", parsingErrorTypes, resultatParsing.getParsingErrorTypes());
-		assertEquals("Constructeur - listJeuDeDonnees", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
+		assertEquals("Constructeur - listJeuDeDonnees", primitiveEventList, resultatParsing.getPrimitiveEventList());
 		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
 		
 	}
@@ -38,7 +38,7 @@ public class ResultatParsingTest {
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		assertTrue("Constructeur - fileErrorTypes", resultatParsing.getFileErrorTypes().isEmpty());
 		assertTrue("Constructeur - parsingErrorTypes", resultatParsing.getParsingErrorTypes().isEmpty());
-		assertTrue("Constructeur - primitiveEventMap", resultatParsing.getPrimitiveEventMap().isEmpty());
+		assertTrue("Constructeur - primitiveEventMap", resultatParsing.getPrimitiveEventList().isEmpty());
 		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
 		
 	}
@@ -47,24 +47,24 @@ public class ResultatParsingTest {
 	public void testSets() {
 		
 		List<FileErrorType> fileErrorTypes = Arrays.asList(FileErrorType.FILE_NOT_FOUND, FileErrorType.FILE_NOT_FOUND);
-		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.INVALID_PRIMITIVE_RUNTIME,
-				ParsingErrorType.INVALID_PRIMITIVE_NAME, ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
+		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME, ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
 
-        Map<String, Long> primitiveEventMap = new HashMap<>();
-        primitiveEventMap.put("PM_CPU", 4500L);
-        primitiveEventMap.put("PM_RAM", 4000L);
+        List<PEData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PEData("MonPmCpu", "PM_CPU", 4500L));
+		primitiveEventList.add(new PEData("MonPmRam", "PM_RAM", 4000L));
 
 		ValidationResult validationResult = ValidationResult.FAB();
 		
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		resultatParsing.setFileErrorTypes(fileErrorTypes);
-		resultatParsing.setPrimitiveEventMap(primitiveEventMap);
+		resultatParsing.setPrimitiveEventList(primitiveEventList);
 		resultatParsing.setParsingErrorTypes(parsingErrorTypes);
 		resultatParsing.setValidationResult(validationResult);
 		
 		assertEquals("Constructeur - fileErrorTypes", fileErrorTypes, resultatParsing.getFileErrorTypes());
 		assertEquals("Constructeur - parsingErrorTypes", parsingErrorTypes, resultatParsing.getParsingErrorTypes());
-		assertEquals("Constructeur - primitiveEventMap", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
+		assertEquals("Constructeur - primitiveEventMap", primitiveEventList, resultatParsing.getPrimitiveEventList());
 		assertEquals("Constructeur - validationResult", validationResult, resultatParsing.getValidationResult());
 		
 	}
@@ -87,12 +87,12 @@ public class ResultatParsingTest {
 		
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		
-		List<ParsingErrorType> expectedListParsingErrorType = Arrays.asList(ParsingErrorType.INVALID_PRIMITIVE_NAME,
-				ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR, ParsingErrorType.INVALID_PRIMITIVE_RUNTIME);
+		List<ParsingErrorType> expectedListParsingErrorType = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
+				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
 
-		resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVE_NAME);
-		resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
-		resultatParsing.addParsingErrorType(ParsingErrorType.INVALID_PRIMITIVE_RUNTIME);
+		resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME);
+		resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
+		resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
 		
 		assertEquals("Ajout - parsingErrorTypes", expectedListParsingErrorType, resultatParsing.getParsingErrorTypes());
 		
@@ -103,16 +103,16 @@ public class ResultatParsingTest {
 		
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 
-        Map<String, Long> primitiveEventMap = new HashMap<>();
-        primitiveEventMap.put("Event1", 45000L);
-        primitiveEventMap.put("Event2", 56000L);
-        primitiveEventMap.put("Event3", 56000L);
+		List<PEData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PEData("MonEvent1", "Event1", 45000L));
+		primitiveEventList.add(new PEData("MonEvent2", "Event2", 56000L));
+		primitiveEventList.add(new PEData("MonEvent3", "Event3", 56000L));
 
-		resultatParsing.addPrimitiveEvent("Event1", 45000L);
-		resultatParsing.addPrimitiveEvent("Event2", 56000L);
-		resultatParsing.addPrimitiveEvent("Event3", 56000L);
+		resultatParsing.addPrimitiveEvent(new PEData("MonEvent1", "Event1", 45000L));
+		resultatParsing.addPrimitiveEvent(new PEData("MonEvent2", "Event2", 56000L));
+		resultatParsing.addPrimitiveEvent(new PEData("MonEvent3", "Event3", 56000L));
 		
-		assertEquals("Ajout - listJeuDeDonnees", primitiveEventMap, resultatParsing.getPrimitiveEventMap());
+		assertEquals("Ajout - listJeuDeDonnees", primitiveEventList, resultatParsing.getPrimitiveEventList());
 		
 	}
 	
@@ -126,7 +126,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_NoErrors2() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		assertFalse(resultatParsing.hasErrors());
 	}
 
@@ -134,7 +134,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_NoErrors3() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		resultatParsing.setValidationResult(ValidationResult.FAB());
 		assertFalse(resultatParsing.hasErrors());
 	}
@@ -142,8 +142,8 @@ public class ResultatParsingTest {
 	@Test
 	public void testhasErrors_OnlyParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
-		List<ParsingErrorType> listeParsingErrorTypes = Collections.singletonList(ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		List<ParsingErrorType> listeParsingErrorTypes = Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 	
@@ -151,7 +151,7 @@ public class ResultatParsingTest {
 	public void testhasErrors_OnlyFileErrors() {
 		List<FileErrorType> listeFileErrorTypes = Collections.singletonList(FileErrorType.EMPTY_FILE);
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 
@@ -161,7 +161,7 @@ public class ResultatParsingTest {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
 
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		resultatParsing.setValidationResult(ValidationResult.FAB(ValidationError.FAB(), FileErrorType.EMPTY_FILE));
 
 		assertTrue(resultatParsing.hasErrors());
@@ -171,8 +171,8 @@ public class ResultatParsingTest {
 	@Test
 	public void testhasErrors_FileErrorsAndParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = Arrays.asList(FileErrorType.EMPTY_FILE, FileErrorType.INVALID_FILE_FORMAT);
-		List<ParsingErrorType> listeParsingErrorTypes = Arrays.asList(ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR, ParsingErrorType.INVALID_PRIMITIVE_RUNTIME);
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new HashMap<>());
+		List<ParsingErrorType> listeParsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 

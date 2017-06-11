@@ -3,6 +3,7 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 import perception.configurator.xml.TestConstants;
+import perception.configurator.xml.manager.model.PEData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
 
@@ -10,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -24,15 +26,13 @@ public class XMLFileParserTest {
 		String xMLFilePath = TestConstants.XMLFileParserTestFolder + "testParse_XMLFileParser_OK.xml";
 
 		// Expected
-		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
+		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
-		Map<String, Long> expectedPrimitiveEvents = new HashMap<>();
-		expectedPrimitiveEvents.put("PEG_Blank", 78945L);
-		expectedPrimitiveEvents.put("PEG_Pm_Cpu", 12000L);
+		List<PEData> expectedPedataList = new ArrayList<>();
+		expectedPedataList.add(new PEData("PEG_Blank1", "PEG_Blank", 78945L));
+		expectedPedataList.add(new PEData("PEG_Pm_Cpu1", "PEG_Pm_Cpu", 12000L));
 
-		expectedResultatParsing.setPrimitiveEventMap(expectedPrimitiveEvents);
-		ValidationResult validationResult = ValidationResult.FAB();
-		expectedResultatParsing.setValidationResult(validationResult);
+		expectedResultatParsing.setPrimitiveEventList(expectedPedataList);
 
 		// Actual
 		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, xSDFilePath);
@@ -46,13 +46,13 @@ public class XMLFileParserTest {
 
 		String xMLFilePath = TestConstants.XMLFileParserTestFolder + "testInvalidFile_NoParsing.xml";
 		
-		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new HashMap<>());
+		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
-        Map<String, Long> expectedPrimitiveEvents = new HashMap<>();
+        List<PEData> expectedPrimitiveEvents = new ArrayList<>();
         //expectedPrimitiveEvents.put("PEG_Blank", 78945L);
         //expectedPrimitiveEvents.put("PEG_Pm_Cpu", 12000L);
 
-		expectedResultatParsing.setPrimitiveEventMap(expectedPrimitiveEvents);
+		expectedResultatParsing.setPrimitiveEventList(expectedPrimitiveEvents);
 
 		ValidationResult expectedValidationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
 		expectedResultatParsing.setValidationResult(expectedValidationResult);
@@ -71,7 +71,7 @@ public class XMLFileParserTest {
 		
 		ResultatParsing actualRes = XMLFileParser.parse(filePath, xSDFilePath);
 		
-		assertEquals(new HashMap<String, Long>(), actualRes.getPrimitiveEventMap());
+		assertEquals(new ArrayList<PEData>(), actualRes.getPrimitiveEventList());
 		
 	}
 
