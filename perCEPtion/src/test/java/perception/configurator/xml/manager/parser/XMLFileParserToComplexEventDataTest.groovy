@@ -1,7 +1,14 @@
 package perception.configurator.xml.manager.parser
 
-/**
- * Created by Chloe on 11/06/2017.
- */
+import org.junit.Test
+
+import static org.junit.Assert.fail
+
 class XMLFileParserToComplexEventDataTest {
+
+    @Test
+    public void test() {
+        fail("TODO");
+    }
+
 }

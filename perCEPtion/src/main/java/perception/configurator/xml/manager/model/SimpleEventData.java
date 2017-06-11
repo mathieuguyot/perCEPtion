@@ -6,7 +6,7 @@ package perception.configurator.xml.manager.model;
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class SimpleEventData extends SimpleAndComplexeEventData {
+public class SimpleEventData extends SimpleAndComplexEventData {
 
     /**
      * Constructeur de la classe {@link SimpleEventData}

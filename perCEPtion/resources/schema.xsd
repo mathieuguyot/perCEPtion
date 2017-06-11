@@ -4,8 +4,8 @@
 
 	<!-- Création de type personnalisé -->
 	
-	<!-- Nom d'event -->
-	<xsd:simpleType name="event_type_type">
+	<!-- Type d'event -->
+	<xsd:simpleType name="primitive_event_type_type">
     	<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="PEG_Blank"/>
 			<xsd:enumeration value="PEG_Co_ResponseTime"/>
@@ -16,6 +16,13 @@
 			<xsd:enumeration value="PEG_Vm_Disk"/>
 			<xsd:enumeration value="PEG_Vm_Ram"/>
     	</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="simple_event_type_type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SimpleEvent1"/>
+            <xsd:enumeration value="SimpleEvent2"/>
+		</xsd:restriction>
 	</xsd:simpleType>
 
 	<!-- Temps d'intervalle entre deux exécutions -->
@@ -34,17 +41,18 @@
 	
 	<!-- Schéma XML -->
 
+		<!-- Primitive events -->
 	<xsd:element name="primitive">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
-				<xsd:element name="type" type="event_type_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="type" type="primitive_event_type_type" minOccurs="1" maxOccurs="1"/>
 				<xsd:element name="runtime" type="event_name_runtime" minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
             <xsd:attribute name="enabled" use="required" type="event_activated"/>
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="primitives">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -52,11 +60,74 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+
+		<!-- Simple and complex events -->
+	<xsd:element name="param">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="tag" use="required" type="xsd:string"/>
+					<xsd:attribute name="type" use="required" type="xsd:string"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="params">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="param" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+		<!-- Simple events -->
+	<xsd:element name="simple">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="type" type="simple_event_type_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="params" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="enabled" use="required" type="event_activated"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="simples">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="simple" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+		<!-- Complex events -->
+	<xsd:element name="complex">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="type" type="simple_event_type_type" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="params" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="enabled" use="required" type="event_activated"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="complexes">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="complex" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Events -->
 	<xsd:element name="events">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="primitives"  minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="simples"  minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="complexes"  minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

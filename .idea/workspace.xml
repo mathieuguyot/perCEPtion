@@ -2,49 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="306506de-a45e-46c3-a661-686ab105f415" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexeEventData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleEventData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventDataTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/PEData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/PrimitiveEventData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SACData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexeEventData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventDataTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_NoParsingOfPrimitiveEventWithSameName.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testCreateAllPrimitivesEvents_NoParsingOfPEWithSameName.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testCreateAllPrimitivesEvents_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testCreateAllPrimitivesEvents_ParseOnlyEnabledPE.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testCreateAllPrimitivesEvents_ParseOnlyEnabledPE.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testDoNotParseIfInvalidPatternFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testDoNotParseIfInvalidPatternFile.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventInFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventInFile_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventNameFromFile_KO.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventNameFromFile_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventRuntimeFromFile_KO.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventRuntimeFromFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventRuntimeFromFile_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventTypeFromFile_KO.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventTypeFromFile_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventTypeFromFile_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testInvalidFile_NoParsing.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testInvalidFile_NoParsing.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_KO.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testIsEnabledPrimitiveEvent_KO.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParsePrimitiveEvents_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParse_XMLFileParser_OK.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParse_invalidFileFormatCSV.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParse_valideFile.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatPPT.ppt" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParser_invalidFileFormatPPT.ppt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testParser_invalidFileFormatTXT.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventDataTest.groovy" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexeEventData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexEventData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexeEventData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexEventData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/resources/schema.xsd" afterPath="$PROJECT_DIR$/perCEPtion/resources/schema.xsd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/CEG/CEGActivator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/CEG/CEGActivator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/SEG/SEGActivator.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/activator/manager/SEG/SEGActivator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleEventData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleEventData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLParserTestSuite.java" afterPath="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLParserTestSuite.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/workspace.xml" afterPath="$PROJECT_DIR$/perCEPtion/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java" afterPath="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml" afterPath="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,61 +32,84 @@
       <file leaf-file-name="XMLFileParserToSimpleEventData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="38" column="70" lean-forward="false" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
+            <state relative-caret-position="176">
+              <caret line="156" column="37" lean-forward="false" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XMLFileParser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testParse_valideFile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="schema.xsd" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/resources/schema.xsd">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XMLFileParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="87" column="28" lean-forward="false" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+            <state relative-caret-position="118">
+              <caret line="70" column="72" lean-forward="false" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultatParsing.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java">
+      <file leaf-file-name="XMLFileParserToComplexEventData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="37" selection-end-column="56" />
+            <state relative-caret-position="4318">
+              <caret line="274" column="71" lean-forward="false" selection-start-line="274" selection-start-column="71" selection-end-line="274" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleAndComplexeEventData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexeEventData.java">
+      <file leaf-file-name="XMLFileParserToComplexEventDataTest.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventDataTest.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#52#73#0" expanded="true" />
+                <element signature="n#!!block;n#test#0;n#!!block;n#XMLFileParserToComplexEventDataTest#0" expanded="false" />
+                <element signature="n#!!block;n#test#0;n#!!block;n#XMLFileParserToComplexEventDataTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XMLFileParserToPrimitiveEventDataTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventDataTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XMLFileParserToSimpleEventDataTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventDataTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrimitiveEventData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/PrimitiveEventData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleEventData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleEventData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
               <folding>
-                <element signature="e#620#621#0" expanded="true" />
-                <element signature="e#663#664#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,53 +118,10 @@
       <file leaf-file-name="XMLFileParserToPrimitiveEventData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+            <state relative-caret-position="305">
+              <caret line="87" column="5" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComplexeEventData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexeEventData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="e#637#638#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XMLValidatorTestSuite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorTestSuite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XMLFileParserTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2941#2942#0" expanded="true" />
-                <element signature="e#2960#2961#0" expanded="true" />
-                <element signature="e#3010#3011#0" expanded="true" />
-                <element signature="e#3029#3030#0" expanded="true" />
-                <element signature="e#3076#3077#0" expanded="true" />
-                <element signature="e#3095#3096#0" expanded="true" />
-                <element signature="e#3158#3159#0" expanded="true" />
-                <element signature="e#3177#3178#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>main.java.</find>
       <find>hasE</find>
       <find>XMLFileStructure</find>
       <find>getPrimitiveEventRuntimeFromFile</find>
@@ -206,7 +155,6 @@
       <find>INVALID_PRIMITIVES_NODE</find>
       <find>Recupération primitives events du fichier</find>
       <find>getPrimitiveEventRuntime</find>
-      <find>primitive</find>
       <find>primitives</find>
       <find>getPrimitiveEventTypeFromFile</find>
       <find>Optional</find>
@@ -218,6 +166,9 @@
       <find>MonEvent</find>
       <find>MonEvent1</find>
       <find>MonEven</find>
+      <find>PEG_Co_ResponseTime</find>
+      <find>event_type_type</find>
+      <find>primitive</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -225,6 +176,7 @@
     <dirStrings>
       <dir>C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\src\main\java\perception</dir>
       <dir>C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\perCEPtion\src\test\java</dir>
+      <dir>C:\Users\Chloe\Documents\1-Chloe\1-Cours\3-IMTAtlantique_EcoleDesMines\1-Annee1-Periode4\PerCEPtion\perCEPtion\perCEPtion</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -238,14 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_invalidFileFormatCSV.csv" />
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_XMLFileParser_OK.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParser_invalidFileFormatTXT.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/perception/configurator/xml/manager/model/PEData.java" />
-        <option value="$PROJECT_DIR$/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/testingXMLFiles/XMLFileParserTest/testGetPrimitiveEventNameFromFile_KO.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Test.java" />
@@ -270,7 +214,6 @@
         <option value="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParse_valideFile.xml" />
         <option value="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/testParsePrimitiveEvents_OK.xml" />
         <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventTest.java" />
-        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/ResultatParsingTest.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/parser/ParsingErrorType.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/enums/general/XMLFileStructureTest.java" />
@@ -288,7 +231,16 @@
         <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/CEData.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexeEventData.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserTest.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java" />
         <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToEvent.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventDataTest.groovy" />
+        <option value="$PROJECT_DIR$/perCEPtion/resources/schema.xsd" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToEventData.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventData.java" />
+        <option value="$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java" />
       </list>
     </option>
   </component>
@@ -342,6 +294,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XMLFileParserTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SimpleEvents" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -604,6 +590,294 @@
               <option name="myItemId" value="perception" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simple_events_generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simple_events_generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="implementations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="implementations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primitive_events_generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primitive_events_generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="implementations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pluginManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -829,6 +1103,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="complex_event_generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perCEPtion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1030,6 +1338,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="perception.configurator.xml.manager.parser" />
       <recent name="perception.configurator.xml" />
       <recent name="perception.configurator.xml.enums.general" />
     </key>
@@ -1605,7 +1914,7 @@
       <workItem from="1496759834744" duration="4298000" />
       <workItem from="1497010503508" duration="9891000" />
       <workItem from="1497028770936" duration="6299000" />
-      <workItem from="1497099720639" duration="23024000" />
+      <workItem from="1497099720639" duration="26387000" />
     </task>
     <servers />
   </component>
@@ -1642,7 +1951,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55597000" />
+    <option name="totallyTimeSpent" value="58960000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1667,7 +1976,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3747954" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1676,11 +1985,12 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4091653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3343419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1707,7 +2017,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3747954" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1715,10 +2025,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4091653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18305598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3343419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1880,48 +2190,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/enums/general/FileErrorType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/exec/ConfigurationLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/test/schema.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testDoNotParseIfInvalidPatternFile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testGetPrimitiveEventInFile_NoPrimitiveEventInFile.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2074,14 +2342,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/resources/schema.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/testCreateAllPrimitivesEvents_NoParsingOfPEWithSameName.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -2181,26 +2441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/TestConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="96" lean-forward="true" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2213,30 +2457,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#227#228#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/validator/XMLValidatorTestSuite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="38" column="70" lean-forward="false" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -2249,21 +2473,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexeEventData.java">
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/ComplexEventData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexeEventData.java">
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/model/SimpleAndComplexEventData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -2273,18 +2497,8 @@
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
           <folding>
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2307,18 +2521,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/ResultatParsing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="37" selection-end-column="56" />
+        <state relative-caret-position="84">
+          <caret line="254" column="0" lean-forward="true" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding>
+            <element signature="e#6195#6196#0" expanded="true" />
+            <element signature="e#6252#6253#0" expanded="true" />
+            <element signature="e#6882#6883#0" expanded="true" />
+            <element signature="e#6941#6942#0" expanded="true" />
+            <element signature="e#9495#9496#0" expanded="true" />
+            <element signature="e#9533#9534#0" expanded="true" />
+            <element signature="e#9592#9593#0" expanded="true" />
+            <element signature="e#9631#9632#0" expanded="true" />
+            <element signature="e#9708#9709#0" expanded="true" />
+            <element signature="e#9762#9763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="87" column="28" lean-forward="false" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+        <state relative-caret-position="118">
+          <caret line="70" column="72" lean-forward="false" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventDataTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#52#73#0" expanded="true" />
+            <element signature="n#!!block;n#test#0;n#!!block;n#XMLFileParserToComplexEventDataTest#0" expanded="false" />
+            <element signature="n#!!block;n#test#0;n#!!block;n#XMLFileParserToComplexEventDataTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/resources/schema.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/testParse_valideFile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToEventData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="985">
+          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToSimpleEventData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="156" column="37" lean-forward="false" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToComplexEventData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4318">
+          <caret line="274" column="71" lean-forward="false" selection-start-line="274" selection-start-column="71" selection-end-line="274" selection-end-column="71" />
           <folding />
         </state>
       </provider>

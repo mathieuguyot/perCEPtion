@@ -25,18 +25,18 @@ import java.util.Optional;
 /**
  * Classe utilitaire permettant la transformation d'un fichier XML en objet
  * métier. Il s'agit ici de parser un fichier XML en un tableau associatif
- * permettant l'instanciation des simples events extrait du fichier XML.
+ * permettant l'instanciation des complexes events extrait du fichier XML.
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-class XMLFileParserToSimpleEventData {
+class XMLFileParserToComplexEventData {
 
     /**
-     * Extrait les informations pour l'instanciation des simples events.
+     * Extrait les informations pour l'instanciation des complexes events.
      * Permet de passer d'un fichier XML à des objets métiers.
      *
      * @return {@link ResultatParsing} comprenant les informations résultant du traitement du fichier, de sa validation
-     * et le tableau associatif permettant l'instanciation des simples events
+     * et le tableau associatif permettant l'instanciation des complexes events
      * @throws ParserConfigurationException {@link ParserConfigurationException}
      * @throws IOException                  {@link IOException}
      * @throws SAXException                 {@link SAXException}
@@ -80,7 +80,7 @@ class XMLFileParserToSimpleEventData {
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xPath = xpf.newXPath();
 
-            XMLFileParserToSimpleEventData.parsePrimitivesEvent(xPath, root, resultatParsing);
+            XMLFileParserToComplexEventData.parseComplexesEvent(xPath, root, resultatParsing);
         }
 
         return resultatParsing;
@@ -88,24 +88,24 @@ class XMLFileParserToSimpleEventData {
     }
 
     /**
-     * Parse tous les primitives events du fichier XML fourni de configuration des évènements du sytème. Un
+     * Parse tous les complexes events du fichier XML fourni de configuration des évènements du sytème. Un
      * {@link ResultatParsing} est passé en paramètre et sera mis à jour au cours du traitement.
      *
      * @param xPath           - le xPath
      * @param root            - la racine du fichier XML de configuration des modules du système
      * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
      */
-    protected static void parsePrimitivesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
+    protected static void parseComplexesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
         Optional<NodeList> primitiveEventFromFileOp = getPrimitivesEventInFile(xPath, root, resultatParsing);
 
-        // Si la liste est absente c'est que le fichier ne comporte pas de primitives events
+        // Si la liste est absente c'est que le fichier ne comporte pas de complexes events
         primitiveEventFromFileOp.ifPresent(nodeList -> createAllPrimitivesEvents(xPath, nodeList, resultatParsing));
 
     }
 
     /**
-     * Récupération de tous les primitives events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
+     * Récupération de tous les complexes events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
      * paramètre et sera mis à jour au cours du traitement.
      *
      * @param xPath           le xPath
@@ -116,7 +116,7 @@ class XMLFileParserToSimpleEventData {
      */
     protected static Optional<NodeList> getPrimitivesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
-        // Récupération de tout les primitives events du fichier avec XPath
+        // Récupération de tout les complexes events du fichier avec XPath
         String expXPathJeuxDeDonnees = "//" + XMLFileStructure.PRIMITIVE.getLabel();
         Optional<NodeList> listPrimitiveEventOp = Optional.empty();
         try {
@@ -132,10 +132,10 @@ class XMLFileParserToSimpleEventData {
     }
 
     /**
-     * Création de toutes les informations permettant l'instanciation des primitives events à partir du fichier XML.
+     * Création de toutes les informations permettant l'instanciation des complexes events à partir du fichier XML.
      *
      * @param xPath                       - le xPath
-     * @param listPrimitiveEventsFromFile - la liste des primitives events du fichier
+     * @param listPrimitiveEventsFromFile - la liste des complexes events du fichier
      * @param resultatParsing             - le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
      *                                    le {@link ResultatParsing} est mis à jour
      */
@@ -150,7 +150,7 @@ class XMLFileParserToSimpleEventData {
             Optional<String> primitiveEventType = Optional.empty();
             Optional<Long> primitiveEventRuntime = Optional.empty();
 
-            // Récupération des éléments du primitive event actuel
+            // Récupération des éléments du complex event actuel
             boolean primitiveEventEnabled = isEnabledPrimitiveEvent(xPath, node, resultatParsing);
             if (primitiveEventEnabled) {
                 primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
@@ -170,12 +170,12 @@ class XMLFileParserToSimpleEventData {
     }
 
     /**
-     * Récupére le nom donné dans le fichier XML pour le primitive event spécifié.
+     * Récupére le nom donné dans le fichier XML pour le complex event spécifié.
      *
      * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au primitive event
+     * @param node            le noeud dans le fichier correspondant au complex event
      * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
     protected static Optional<String> getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -194,19 +194,19 @@ class XMLFileParserToSimpleEventData {
             }
         } catch (XPathExpressionException e) {
             resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME);
-            // System.out.println("Impossible de trouver le nom du primitive event : " + node);
+            // System.out.println("Impossible de trouver le nom du complex event : " + node);
             e.printStackTrace();
         }
         return nameOp;
     }
 
     /**
-     * Récupére le type donnée dans le fichier XML pour le primitive event spécifié.
+     * Récupére le type donnée dans le fichier XML pour le complex event spécifié.
      *
      * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au primitive event
+     * @param node            le noeud dans le fichier correspondant au complex event
      * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
     protected static Optional<String> getPrimitiveEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -221,19 +221,19 @@ class XMLFileParserToSimpleEventData {
             }
         } catch (XPathExpressionException e) {
             resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE);
-            // System.out.println("Impossible de trouver le nom du primitive event : " + node);
+            // System.out.println("Impossible de trouver le nom du complex event : " + node);
             e.printStackTrace();
         }
         return typeOp;
     }
 
     /**
-     * Récupére le runtime donné dans le fichier XML pour le primitive event spécifié.
+     * Récupére le runtime donné dans le fichier XML pour le complex event spécifié.
      *
      * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au primitive event
+     * @param node            le noeud dans le fichier correspondant au complex event
      * @param resultatParsing le résultat du parsing
-     * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
+     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
     protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -255,13 +255,13 @@ class XMLFileParserToSimpleEventData {
     }
 
     /**
-     * Indique si le primitive event est enabled ou non. Si l'attribut n'est pas présent, le primitive event est
+     * Indique si le complex event est enabled ou non. Si l'attribut n'est pas présent, le complex event est
      * considéré comme actif.
      *
      * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au primitive event
+     * @param node            - le noeud dans le fichier correspondant au complex event
      * @param resultatParsing - le résultat du parsing
-     * @return <code>true</code> si le primitive event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
+     * @return <code>true</code> si le complex event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
      * {@link ResultatParsing} n'est pas mis à jour
      */
     protected static boolean isEnabledPrimitiveEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
@@ -272,7 +272,7 @@ class XMLFileParserToSimpleEventData {
                 enabled = true;
             }
         } catch (XPathExpressionException e) {
-            // L'attribut n'est pas présent on considère que le primitive event est à activer
+            // L'attribut n'est pas présent on considère que le complex event est à activer
             enabled = true;
         }
         return enabled;

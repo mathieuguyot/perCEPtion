@@ -1,8 +1,11 @@
 package perception.configurator.xml.manager.parser;
 
+import org.apache.commons.math3.complex.Complex;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.ComplexEventData;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 
 import java.util.ArrayList;
@@ -34,8 +37,14 @@ public class ResultatParsing {
         // Résultat de validation
     private ValidationResult validationResult;
 
-        // Tableau association contenant les informations d'instanciation des primitives events
+        // Tableau contenant les informations d'instanciation des primitives events
     private List<PrimitiveEventData> primitiveEventList;
+
+        // Tableau contenant les informations d'instanciation des simples events
+    private List<SimpleEventData> simpleEventList;
+
+        // Tableau contenant les informations d'instanciation des complexes events
+    private List<ComplexEventData> complexEventList;
 
     // Constructeur
 
@@ -50,10 +59,13 @@ public class ResultatParsing {
      *                          des primitives events
      */
     private ResultatParsing(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                            List<PrimitiveEventData> primitiveEventList) {
+                            List<PrimitiveEventData> primitiveEventList, List<SimpleEventData> simpleEventList,
+                            List<ComplexEventData> complexEventList) {
         this.fileErrorTypes = fileErrorTypes;
         this.parsingErrorTypes = parsingErrorTypes;
         this.primitiveEventList = primitiveEventList;
+        this.simpleEventList = simpleEventList;
+        this.complexEventList = complexEventList;
     }
 
     /**
@@ -65,7 +77,8 @@ public class ResultatParsing {
         this.fileErrorTypes = new ArrayList<>();
         this.parsingErrorTypes = new ArrayList<>();
         this.primitiveEventList = new ArrayList<>();
-
+        this.simpleEventList = new ArrayList<>();
+        this.complexEventList = new ArrayList<>();
     }
 
     // Services
@@ -80,12 +93,31 @@ public class ResultatParsing {
     }
 
     /**
+     * Ajoute la liste d'erreurs liée au traitement de fichier.
+     *
+     * @param fileErrorTypeList liste d'erreurs liées au traitement de fichier à ajouter
+     */
+    public void addAllFileErrorTypes(List<FileErrorType> fileErrorTypeList) {
+        this.getFileErrorTypes().addAll(fileErrorTypeList);
+    }
+
+
+    /**
      * Ajoute une erreur liée au parsing du fichier.
      *
      * @param parsingErrorType erreur liée au parsing du fichier à ajouter
      */
     public void addParsingErrorType(ParsingErrorType parsingErrorType) {
         this.getParsingErrorTypes().add(parsingErrorType);
+    }
+
+    /**
+     * Ajoute toute les erreurs fournit liées au parsing du fichier.
+     *
+     * @param parsingErrorTypeList liste d'erreurs liées au parsing du fichier à ajouter
+     */
+    public void addAllParsingErrorTypes(List<ParsingErrorType> parsingErrorTypeList) {
+        this.getParsingErrorTypes().addAll(parsingErrorTypeList);
     }
 
     /**
@@ -108,6 +140,51 @@ public class ResultatParsing {
      */
     public void addPrimitiveEvent(PrimitiveEventData primitiveEventData) {
         this.primitiveEventList.add(primitiveEventData);
+    }
+
+    /**
+     * Ajoute toutes les informations pour l'instanciation d'un primitives events.
+     *
+     * @param primitiveEventDataList liste d'informations de primitives events à ajouter à la liste pour instanciation
+     */
+    public void addAllPrimitivesEvents(List<PrimitiveEventData> primitiveEventDataList) {
+        this.primitiveEventList.addAll(primitiveEventDataList);
+    }
+
+    /**
+     * Ajoute les informations pour l'instanciation d'un simples events.
+     *
+     * @param simpleEventData information de simples events à ajouter à la liste pour instanciation
+     */
+    public void addSimpleEvent(SimpleEventData simpleEventData) {
+        this.simpleEventList.add(simpleEventData);
+    }
+
+    /**
+     * Ajoute toutes les informations pour l'instanciation d'un simple events.
+     *
+     * @param simpleEventDataList liste d'informations de simples events à ajouter à la liste pour instanciation
+     */
+    public void addAllSimpleEvents(List<SimpleEventData> simpleEventDataList) {
+        this.simpleEventList.addAll(simpleEventDataList);
+    }
+
+    /**
+     * Ajoute les informations pour l'instanciation d'un complexe events.
+     *
+     * @param complexEventData information de complexes events à ajouter à la liste pour instanciation
+     */
+    public void addComplexEvent(ComplexEventData complexEventData) {
+        this.complexEventList.add(complexEventData);
+    }
+
+    /**
+     * Ajoute toutes les informations pour l'instanciation d'un complexe events.
+     *
+     * @param complexEventDataList liste d'informations de complexes events à ajouter à la liste pour instanciation
+     */
+    public void addAllComplexEvents(List<ComplexEventData> complexEventDataList) {
+        this.complexEventList.addAll(complexEventDataList);
     }
 
     /**
@@ -176,6 +253,22 @@ public class ResultatParsing {
         this.validationResult = validationResult;
     }
 
+    public List<SimpleEventData> getSimpleEventList() {
+        return simpleEventList;
+    }
+
+    public List<ComplexEventData> getComplexEventList() {
+        return complexEventList;
+    }
+
+    public void setSimpleEventList(List<SimpleEventData> simpleEventList) {
+        this.simpleEventList = simpleEventList;
+    }
+
+    public void setComplexEventList(List<ComplexEventData> complexEventList) {
+        this.complexEventList = complexEventList;
+    }
+
     // Fabrique
 
     /**
@@ -187,8 +280,9 @@ public class ResultatParsing {
      * @return instance de {@link ResultatParsing}
      */
     public static ResultatParsing FAB(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                                      List<PrimitiveEventData> primitiveEventList) {
-        return new ResultatParsing(fileErrorTypes, parsingErrorTypes, primitiveEventList);
+                                      List<PrimitiveEventData> primitiveEventList, List<SimpleEventData> simpleEventList,
+                                      List<ComplexEventData> complexEventList) {
+        return new ResultatParsing(fileErrorTypes, parsingErrorTypes, primitiveEventList, simpleEventList, complexEventList);
     }
 
     /**
@@ -237,7 +331,9 @@ public class ResultatParsing {
                 ", parsingErrorTypes=" + parsingErrorTypes +
                 ", validationResult=" + validationResult +
                 ", primitiveEventList=" + primitiveEventList +
-                "}";
+                ", simpleEventList=" + simpleEventList +
+                ", complexEventList=" + complexEventList +
+                '}';
     }
 
 }
