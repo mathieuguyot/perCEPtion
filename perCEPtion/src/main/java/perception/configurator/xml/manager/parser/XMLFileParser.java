@@ -1,14 +1,15 @@
 package perception.configurator.xml.manager.parser;
 
 import org.xml.sax.SAXException;
-import perception.configurator.xml.manager.model.PEData;
+import perception.configurator.xml.enums.general.FileErrorType;
+import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Classe utilitaire permettant la transformation d'un fichier XML en objet métier. Il s'agit ici de parser un fichier
@@ -37,19 +38,54 @@ public class XMLFileParser {
         ValidationResult validationResult = XMLFileValidator.validate(xMLFilePath, xSDFilePath);
 
         // Instanciation du l'objet contenant les résultats de parsing
-        ResultatParsing resultatParsing = ResultatParsing.FAB();
+        ResultatParsing mainResultatParsing = ResultatParsing.FAB();
 
         // Enregistrement du résultat de validation
-        resultatParsing.setValidationResult(validationResult);
+        mainResultatParsing.setValidationResult(validationResult);
 
         // Si le fichier n'est pas valide, on ne réalise pas de parsing
-        if (!resultatParsing.hasErrors()) {
-            resultatParsing = XMLFileParserToPrimitiveEvent.parse(xMLFilePath);
-            List<PEData> listeJDD = resultatParsing.getPrimitiveEventList();
-            resultatParsing.setPrimitiveEventList(listeJDD);
+        if (!mainResultatParsing.hasErrors()) {
+
+            ResultatParsing resultatParsingPEData = parsePrimitiveEvents(xMLFilePath, mainResultatParsing);
+            ResultatParsing resultatParsingSEData = parseSimpleEvents(xMLFilePath, mainResultatParsing);
+            ResultatParsing resultatParsingCEData = parseSimpleEvents(xMLFilePath, mainResultatParsing);
+
+            mergeResultatsParsingsWithMainOne(mainResultatParsing, resultatParsingPEData, resultatParsingSEData, resultatParsingCEData);
+
         }
 
+        return mainResultatParsing;
+
+    }
+
+    private static ResultatParsing parsePrimitiveEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
+        ResultatParsing resultatParsing = XMLFileParserToPrimitiveEventData.parse(xMLFilePath);
+        List<PrimitiveEventData> listePrimitiveEventData = resultatParsing.getPrimitiveEventList();
+        resultatParsing.setPrimitiveEventList(listePrimitiveEventData);
         return resultatParsing;
+    }
+
+    private static ResultatParsing parseSimpleEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
+        ResultatParsing resultatParsing = XMLFileParserToSimpleEventData.parse(xMLFilePath);
+        List<PrimitiveEventData> listePrimitiveEventData = resultatParsing.getPrimitiveEventList();
+        resultatParsing.setPrimitiveEventList(listePrimitiveEventData);
+        return resultatParsing;
+    }
+
+    private static ResultatParsing mergeResultatsParsingsWithMainOne(ResultatParsing mainResultatParsing, ResultatParsing
+            resultatParsingPEData, ResultatParsing resultatParsingSEData, ResultatParsing resultatParsingCEData) {
+
+        addFileErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingPEData);
+        addFileErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingSEData);
+        addFileErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingCEData);
+
+        addParsingErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingPEData);
+        addParsingErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingSEData);
+        addParsingErrorTypesToMainResultatParsing(mainResultatParsing, resultatParsingCEData);
+
+        addPrimitiveEventListToMainResultatParsing(mainResultatParsing, resultatParsingPEData);
+        addSimpleEventListToMainResultatParsing(mainResultatParsing, resultatParsingSEData);
+        addComplexeEventListToMainResultatParsing(mainResultatParsing, resultatParsingCEData);
 
     }
 

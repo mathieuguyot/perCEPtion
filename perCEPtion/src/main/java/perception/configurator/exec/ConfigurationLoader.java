@@ -44,7 +44,7 @@ public class ConfigurationLoader {
             } else {
                 // Activation des Event Generators
 
-                // TODO : correct this part with the new PEData object
+                // TODO : correct this part with the new PrimitiveEventData object
                 // ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
                // ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventMap(), core);
                // ActivationResult complexResult = CEGActivator.activate(parsingResult.getComplexEventMap(), core);

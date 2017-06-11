@@ -1,14 +1,12 @@
 package perception.configurator.xml.manager.model;
 
-import perception.configurator.xml.manager.validator.ValidationResult;
-
 /**
  * Classe permettant l'enregistrement des informations pour l'instanciation des
  * primitives events à partir des éléments du fichier de configuration XML.
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class PEData {
+public class PrimitiveEventData {
 
     // Attributs
     private String name;
@@ -16,7 +14,7 @@ public class PEData {
     private Long runTime;
 
     /**
-     * Constructeur de la classe {@link PEData}.
+     * Constructeur de la classe {@link PrimitiveEventData}.
      *
      * @param name
      *              nom unique du primitive event
@@ -25,7 +23,7 @@ public class PEData {
      * @param runTime
      *              runtime à appliquer au primitive event
      */
-    public PEData(String name, String type, Long runTime) {
+    public PrimitiveEventData(String name, String type, Long runTime) {
         this.name = name;
         this.type = type;
         this.runTime = runTime;
@@ -46,7 +44,7 @@ public class PEData {
 
     @Override
     public String toString() {
-        return "PEData{" +
+        return "PrimitiveEventData{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", runTime=" + runTime +
@@ -58,11 +56,11 @@ public class PEData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PEData peData = (PEData) o;
+        PrimitiveEventData primitiveEventData = (PrimitiveEventData) o;
 
-        if (name != null ? !name.equals(peData.name) : peData.name != null) return false;
-        if (type != null ? !type.equals(peData.type) : peData.type != null) return false;
-        return runTime != null ? runTime.equals(peData.runTime) : peData.runTime == null;
+        if (name != null ? !name.equals(primitiveEventData.name) : primitiveEventData.name != null) return false;
+        if (type != null ? !type.equals(primitiveEventData.type) : primitiveEventData.type != null) return false;
+        return runTime != null ? runTime.equals(primitiveEventData.runTime) : primitiveEventData.runTime == null;
     }
 
 }

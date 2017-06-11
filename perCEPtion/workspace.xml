@@ -1574,7 +1574,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="perception.configurator.xml.manager.parser" />
-      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLFileParserToPrimitiveEventTest" />
+      <option name="MAIN_CLASS_NAME" value="perception.configurator.xml.manager.parser.XMLFileParserToPrimitiveEventDataTest" />
       <option name="METHOD_NAME" value="testGetPrimitiveEventRuntimeFromFile_KO" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />

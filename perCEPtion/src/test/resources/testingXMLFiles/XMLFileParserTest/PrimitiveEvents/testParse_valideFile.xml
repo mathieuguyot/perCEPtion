@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <perception
-        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
+        xs:noNamespaceSchemaLocation="../../../../../../resources/schema.xsd"
         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 >
     <events>
@@ -11,12 +11,12 @@
                 <runtime>78000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>MonPEGVmCpu</name>
+                <name>MonPEGPmCPU</name>
                 <type>PEG_Vm_Cpu</type>
                 <runtime>11000</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>MonPEGPmCpu</name>
+                <name>MonPEGVmCPU</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>98000</runtime>
             </primitive>

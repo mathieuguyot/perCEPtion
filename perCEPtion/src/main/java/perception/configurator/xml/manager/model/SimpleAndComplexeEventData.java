@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Conteneur pour le paramétrage des Simple et Complex Event Generator. Générés lors du parsing et fourni aux Activator.
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class SACData {
+public abstract class SimpleAndComplexeEventData {
 
     // Attributs
     private String eventType;
@@ -16,11 +16,11 @@ public class SACData {
     private ArrayList<Pair<String, String>> params;
 
     /**
-     * Constructeur de la classe {@link SACData}
+     * Constructeur de la classe {@link SimpleAndComplexeEventData}
      * @param eventType - Classe correspondant à l'Event Generator à activer
      * @param eventName - Nom que l'on souhaite donner à l'Event Generator
      */
-    public SACData(String eventType, String eventName) {
+    public SimpleAndComplexeEventData(String eventType, String eventName) {
         this.eventName = eventName;
         this.eventType = eventType;
         this.params = new ArrayList<>();

@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
-import perception.configurator.xml.manager.model.PEData;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,18 +25,18 @@ import java.util.Optional;
 /**
  * Classe utilitaire permettant la transformation d'un fichier XML en objet
  * métier. Il s'agit ici de parser un fichier XML en un tableau associatif
- * permettant l'instanciation des primitives events extrait du fichier XML.
+ * permettant l'instanciation des simples events extrait du fichier XML.
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-class XMLFileParserToPrimitiveEvent {
+class XMLFileParserToSimpleEventData {
 
     /**
-     * Extrait les informations pour l'instanciation des primitives events.
+     * Extrait les informations pour l'instanciation des simples events.
      * Permet de passer d'un fichier XML à des objets métiers.
      *
      * @return {@link ResultatParsing} comprenant les informations résultant du traitement du fichier, de sa validation
-     * et le tableau associatif permettant l'instanciation des primitives events
+     * et le tableau associatif permettant l'instanciation des simples events
      * @throws ParserConfigurationException {@link ParserConfigurationException}
      * @throws IOException                  {@link IOException}
      * @throws SAXException                 {@link SAXException}
@@ -80,7 +80,7 @@ class XMLFileParserToPrimitiveEvent {
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xPath = xpf.newXPath();
 
-            XMLFileParserToPrimitiveEvent.parsePrimitivesEvent(xPath, root, resultatParsing);
+            XMLFileParserToSimpleEventData.parsePrimitivesEvent(xPath, root, resultatParsing);
         }
 
         return resultatParsing;
@@ -161,8 +161,8 @@ class XMLFileParserToPrimitiveEvent {
             // Si on a aucune erreur dans le fichier les informations d'instanciation du primitive event courant est
             // ajouté au résultat du parsing
             if (primitiveEventName.isPresent() && primitiveEventRuntime.isPresent() && primitiveEventType.isPresent()) {
-                PEData peData = new PEData(primitiveEventName.get(), primitiveEventType.get(), primitiveEventRuntime.get());
-                resultatParsing.addPrimitiveEvent(peData);
+                PrimitiveEventData primitiveEventData = new PrimitiveEventData(primitiveEventName.get(), primitiveEventType.get(), primitiveEventRuntime.get());
+                resultatParsing.addPrimitiveEvent(primitiveEventData);
             }
 
         }
@@ -230,7 +230,7 @@ class XMLFileParserToPrimitiveEvent {
     /**
      * Récupére le runtime donné dans le fichier XML pour le primitive event spécifié.
      *
-<<<<<<< HEAD:src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java
+<<<<<<< HEAD:src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java
      * @param xPath           le XPath
      * @param node            le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing le résultat du parsing
@@ -242,7 +242,7 @@ class XMLFileParserToPrimitiveEvent {
      * @param resultatParsing - le résultat du parsing
      * @return le nom du primitive event ou <code>null</code> s'il est impossible de trouver l'information dans le fichier, dans ce
      * cas, le {@link ResultatParsing} est mis à jour
->>>>>>> 20a1d8951fe421773b080bfe727d79b791c50fac:perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEvent.java
+>>>>>>> 20a1d8951fe421773b080bfe727d79b791c50fac:perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java
      */
     protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<Long> runtTimeOp = Optional.empty();

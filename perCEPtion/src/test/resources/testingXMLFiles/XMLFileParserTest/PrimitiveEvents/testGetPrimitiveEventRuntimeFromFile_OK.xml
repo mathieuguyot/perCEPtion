@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <perception
-        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
+        xs:noNamespaceSchemaLocation="../../../../../../resources/schema.xsd"
         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 >
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>MonPEGVmDisk</name>
-                <type>PEG_Vm_Disk</type>
-                <runtime>78000</runtime>
+                <name>MonPEG Co ResponseTime</name>
+                <type>PEG_Co_ResponseTime</type>
+                <runtime>900</runtime>
             </primitive>
             <primitive enabled="true">
-                <name>MonPEGVmCpu</name>
                 <name>PEG_Vm_Cpu</name>
                 <runtime>11000</runtime>
             </primitive>
             <primitive enabled="false">
-                <name>MonPEGPmCpu</name>
-                <type>PEG_Pm_Cpu</type>
+                <name>PEG_Pm_Cpu</name>
                 <runtime>98000</runtime>
             </primitive>
         </primitives>

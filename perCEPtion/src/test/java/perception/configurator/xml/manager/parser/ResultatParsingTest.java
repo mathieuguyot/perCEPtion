@@ -3,7 +3,7 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
-import perception.configurator.xml.manager.model.PEData;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.manager.validator.ValidationError;
 import perception.configurator.xml.manager.validator.ValidationResult;
 
@@ -20,9 +20,9 @@ public class ResultatParsingTest {
 		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME,
 				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE, ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
 
-        List<PEData> primitiveEventList = new ArrayList<>();
-		primitiveEventList.add(new PEData("MonPmCpu", "PM_CPU", 4500L));
-		primitiveEventList.add(new PEData("MonPmRam", "PM_RAM", 4500L));
+        List<PrimitiveEventData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PrimitiveEventData("MonPmCpu", "PM_CPU", 4500L));
+		primitiveEventList.add(new PrimitiveEventData("MonPmRam", "PM_RAM", 4500L));
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB(fileErrorTypes, parsingErrorTypes, primitiveEventList);
 		assertEquals("Constructeur - fileErrorTypes", fileErrorTypes, resultatParsing.getFileErrorTypes());
@@ -50,9 +50,9 @@ public class ResultatParsingTest {
 		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME,
 				ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME, ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
 
-        List<PEData> primitiveEventList = new ArrayList<>();
-		primitiveEventList.add(new PEData("MonPmCpu", "PM_CPU", 4500L));
-		primitiveEventList.add(new PEData("MonPmRam", "PM_RAM", 4000L));
+        List<PrimitiveEventData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PrimitiveEventData("MonPmCpu", "PM_CPU", 4500L));
+		primitiveEventList.add(new PrimitiveEventData("MonPmRam", "PM_RAM", 4000L));
 
 		ValidationResult validationResult = ValidationResult.FAB();
 		
@@ -103,14 +103,14 @@ public class ResultatParsingTest {
 		
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 
-		List<PEData> primitiveEventList = new ArrayList<>();
-		primitiveEventList.add(new PEData("MonEvent1", "Event1", 45000L));
-		primitiveEventList.add(new PEData("MonEvent2", "Event2", 56000L));
-		primitiveEventList.add(new PEData("MonEvent3", "Event3", 56000L));
+		List<PrimitiveEventData> primitiveEventList = new ArrayList<>();
+		primitiveEventList.add(new PrimitiveEventData("MonEvent1", "Event1", 45000L));
+		primitiveEventList.add(new PrimitiveEventData("MonEvent2", "Event2", 56000L));
+		primitiveEventList.add(new PrimitiveEventData("MonEvent3", "Event3", 56000L));
 
-		resultatParsing.addPrimitiveEvent(new PEData("MonEvent1", "Event1", 45000L));
-		resultatParsing.addPrimitiveEvent(new PEData("MonEvent2", "Event2", 56000L));
-		resultatParsing.addPrimitiveEvent(new PEData("MonEvent3", "Event3", 56000L));
+		resultatParsing.addPrimitiveEvent(new PrimitiveEventData("MonEvent1", "Event1", 45000L));
+		resultatParsing.addPrimitiveEvent(new PrimitiveEventData("MonEvent2", "Event2", 56000L));
+		resultatParsing.addPrimitiveEvent(new PrimitiveEventData("MonEvent3", "Event3", 56000L));
 		
 		assertEquals("Ajout - listJeuDeDonnees", primitiveEventList, resultatParsing.getPrimitiveEventList());
 		
@@ -194,8 +194,8 @@ public class ResultatParsingTest {
 	public void testExistingPrimitiveEventListWithName() {
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
-		resultatParsing.addPrimitiveEvent(new PEData("UnPE1", "UnType", 45L));
-        resultatParsing.addPrimitiveEvent(new PEData("UnPE2", "UnType", 45L));
+		resultatParsing.addPrimitiveEvent(new PrimitiveEventData("UnPE1", "UnType", 45L));
+        resultatParsing.addPrimitiveEvent(new PrimitiveEventData("UnPE2", "UnType", 45L));
 
         assertTrue(resultatParsing.existingPrimitiveEventListWithName("UnPE1"));
         assertFalse(resultatParsing.existingPrimitiveEventListWithName("UnPE3"));

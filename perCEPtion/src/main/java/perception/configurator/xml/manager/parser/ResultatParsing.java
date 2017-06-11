@@ -2,13 +2,11 @@ package perception.configurator.xml.manager.parser;
 
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
-import perception.configurator.xml.manager.model.PEData;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Représentation du résultat du parsing d'un fichier XML comprenant les
@@ -37,7 +35,7 @@ public class ResultatParsing {
     private ValidationResult validationResult;
 
         // Tableau association contenant les informations d'instanciation des primitives events
-    private List<PEData> primitiveEventList;
+    private List<PrimitiveEventData> primitiveEventList;
 
     // Constructeur
 
@@ -52,7 +50,7 @@ public class ResultatParsing {
      *                          des primitives events
      */
     private ResultatParsing(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                            List<PEData> primitiveEventList) {
+                            List<PrimitiveEventData> primitiveEventList) {
         this.fileErrorTypes = fileErrorTypes;
         this.parsingErrorTypes = parsingErrorTypes;
         this.primitiveEventList = primitiveEventList;
@@ -106,10 +104,10 @@ public class ResultatParsing {
     /**
      * Ajoute les informations pour l'instanciation d'un primitives events.
      *
-     * @param peData information de primitive event à ajouter à la liste pour instanciation
+     * @param primitiveEventData information de primitive event à ajouter à la liste pour instanciation
      */
-    public void addPrimitiveEvent(PEData peData) {
-        this.primitiveEventList.add(peData);
+    public void addPrimitiveEvent(PrimitiveEventData primitiveEventData) {
+        this.primitiveEventList.add(primitiveEventData);
     }
 
     /**
@@ -121,8 +119,8 @@ public class ResultatParsing {
      * le cas contraire
      */
     public boolean existingPrimitiveEventListWithName(String name) {
-        for (PEData peData : this.getPrimitiveEventList()) {
-            if (peData.getName().equals(name)) {
+        for (PrimitiveEventData primitiveEventData : this.getPrimitiveEventList()) {
+            if (primitiveEventData.getName().equals(name)) {
                 return true;
             }
         }
@@ -154,7 +152,7 @@ public class ResultatParsing {
         return parsingErrorTypes;
     }
 
-    public List<PEData> getPrimitiveEventList() {
+    public List<PrimitiveEventData> getPrimitiveEventList() {
         return primitiveEventList;
     }
 
@@ -166,7 +164,7 @@ public class ResultatParsing {
         this.parsingErrorTypes = parsingErrorTypes;
     }
 
-    public void setPrimitiveEventList(List<PEData> primitiveEventList) {
+    public void setPrimitiveEventList(List<PrimitiveEventData> primitiveEventList) {
         this.primitiveEventList = primitiveEventList;
     }
 
@@ -189,7 +187,7 @@ public class ResultatParsing {
      * @return instance de {@link ResultatParsing}
      */
     public static ResultatParsing FAB(List<FileErrorType> fileErrorTypes, List<ParsingErrorType> parsingErrorTypes,
-                                      List<PEData> primitiveEventList) {
+                                      List<PrimitiveEventData> primitiveEventList) {
         return new ResultatParsing(fileErrorTypes, parsingErrorTypes, primitiveEventList);
     }
 

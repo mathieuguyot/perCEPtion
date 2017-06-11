@@ -6,7 +6,8 @@ package perception.configurator.xml;
  */
 public class TestConstants {
 
-    public static String XMLFileParserTestFolder = "perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/";
     public static String XMLFileXSD = "perCEPtion/resources/schema.xsd";
+    public static String XMLFileParserPrimitiveEventsTestFolder = "perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/PrimitiveEvents/";
+    public static String XMLFileParserSimpleEventsTestFolder = "perCEPtion/src/test/resources/testingXMLFiles/XMLFileParserTest/SimpleEvents/";
 
 }
