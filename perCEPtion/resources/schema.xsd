@@ -34,7 +34,9 @@
 
 	<!-- Temps d'intervalle entre deux exécutions -->
 	<xsd:simpleType name="event_name_runtime">
-    	<xsd:restriction base="xsd:positiveInteger"/>
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
 	</xsd:simpleType>
 
 	<xsd:simpleType name="event_name_type">

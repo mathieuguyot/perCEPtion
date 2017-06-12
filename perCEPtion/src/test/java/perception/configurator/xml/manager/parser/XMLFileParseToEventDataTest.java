@@ -76,7 +76,7 @@ public class XMLFileParseToEventDataTest {
         boolean primitiveEventEnabledActual = XMLFileParseToEventData.isEnabledEvent(xPath, node);
 
         assertTrue("Recupération de l'attribut enabled du primitive event", primitiveEventEnabledActual);
-        assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
+        assertTrue("Liste de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
         assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
