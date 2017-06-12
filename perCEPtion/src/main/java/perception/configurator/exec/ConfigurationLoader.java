@@ -44,22 +44,17 @@ public class ConfigurationLoader {
             } else {
                 // Activation des Event Generators
 
-<<<<<<< HEAD
-                // TODO : correct this part with the new PrimitiveEventData object
-                // ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
-=======
-                // TODO : décommenter cette partie lorsque le parsing de Simple et Complex Event sera opérationnel
-                ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventList(), core);
->>>>>>> d1aad0fac17d0a0bd72f167c34ca46b99e7aab18
-               // ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventMap(), core);
+            // TODO : correct this part with the new PrimitiveEventData object
+            // ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
+                // ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventMap(), core);
                // ActivationResult complexResult = CEGActivator.activate(parsingResult.getComplexEventMap(), core);
 
-                if (primitiveResult.hasErrors() /*|| simpleResult.hasErrors() || complexResult.hasErrors()*/) {
+                //if (primitiveResult.hasErrors() /*|| simpleResult.hasErrors() || complexResult.hasErrors()*/) {
                     // Affichage des erreurs (en rouge) dans la console
-                    logger.logError(primitiveResult.toString());
+                    //logger.logError(primitiveResult.toString());
                     //logger.logError(simpleResult.toString());
                     //logger.logError(complexResult.toString());
-                }
+                //}
 
             }
         } catch (ParserConfigurationException e) {

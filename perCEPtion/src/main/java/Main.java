@@ -37,12 +37,14 @@ public class Main {
         Map<String, Long> map = new HashMap<>();
         map.put("PEG_Pm_Cpu", 1000L);
         map.put("PEG_Pm_Ram", 1000L);
-        ActivationResult activationResult = PEGActivator.activate(map, core);
+
+        // TODO : Correct this part with the new parsing format
+        /*ActivationResult activationResult = PEGActivator.activate(map, core);
         if(activationResult.hasErrors()) {
             System.out.println("Activation errors !!!");
             activationResult.getErrorMsg();
             return;
-        }
+        }*/
 
         //PEG_Activator peg_activator = new PEG_Activator();
         //Map<String, Long> myPEGS = new HashMap<>();

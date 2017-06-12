@@ -27,7 +27,7 @@ public class XMLFileParseToEventData {
      * @return <code>true</code> si l'event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
      * {@link ResultatParsing} n'est pas mis à jour
      */
-    protected static boolean isEnabledEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static boolean isEnabledEvent(XPath xPath, Node node) {
         boolean enabled = false;
         try {
             String primitiveEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);

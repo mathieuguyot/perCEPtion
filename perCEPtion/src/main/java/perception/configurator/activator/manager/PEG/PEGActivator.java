@@ -2,20 +2,17 @@ package perception.configurator.activator.manager.PEG;
 
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
-import perception.configurator.xml.manager.model.PEData;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
 import perception.core.PerceptionCore;
-import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.services.PerceptionLogger;
 import perception.services.implementations.SysoutPerceptionLogger;
-import perception.simple_events_generator.SimpleEventGenerator;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * Active les Primitive Event Generator déclarés dans le fichier de configuration XML
@@ -26,11 +23,11 @@ public class PEGActivator {
     /**
      * Récupère les objets de configuration des {@link PrimitiveEventGenerator},
      * les instancie avec leur paramètres et les ajoute au {@link PerceptionCore}
-     * @param primitiveEventList - Liste d'objets {@link PEData} obtenus lors du parsing
+     * @param primitiveEventList - Liste d'objets {@link PrimitiveEventData} obtenus lors du parsing
      * @param core - PerceptionCore auquel on ajoutera les PEG activés
      * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
      */
-    public static ActivationResult activate(List<PEData> primitiveEventList, PerceptionCore core) {
+    public static ActivationResult activate(List<PrimitiveEventData> primitiveEventList, PerceptionCore core) {
         // Instanciation du logger
         PerceptionLogger logger = new SysoutPerceptionLogger();
 
@@ -38,7 +35,7 @@ public class PEGActivator {
         ActivationResult activationResult = ActivationResult.FAB();
 
         // Parcours de l'ensemble des Primitive Event Generator trouvés par le module de parcours
-        for (PEData peg : primitiveEventList) {
+        for (PrimitiveEventData peg : primitiveEventList) {
             try {
                 // Chargement de la classe correspondant au nom du PEG
                 Class<? extends PrimitiveEventGenerator> event = PluginManager.getPluginManager().getPegBank().getClassForEGName(peg.getType());

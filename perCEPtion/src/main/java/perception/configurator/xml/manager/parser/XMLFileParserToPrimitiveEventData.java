@@ -151,7 +151,7 @@ class XMLFileParserToPrimitiveEventData {
             Optional<Long> primitiveEventRuntime = Optional.empty();
 
             // Récupération des éléments du primitive event actuel
-            boolean primitiveEventEnabled = isEnabledPrimitiveEvent(xPath, node, resultatParsing);
+            boolean primitiveEventEnabled = XMLFileParseToEventData.isEnabledEvent(xPath, node);
             if (primitiveEventEnabled) {
                 primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
                 primitiveEventType = getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
@@ -230,20 +230,12 @@ class XMLFileParserToPrimitiveEventData {
     /**
      * Récupére le runtime donné dans le fichier XML pour le primitive event spécifié.
      *
-<<<<<<< HEAD:src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java
      * @param xPath           le XPath
      * @param node            le noeud dans le fichier correspondant au primitive event
      * @param resultatParsing le résultat du parsing
      * @return un optional contenant le nom du primitive event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
-=======
-     * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au primitive event
-     * @param resultatParsing - le résultat du parsing
-     * @return le nom du primitive event ou <code>null</code> s'il est impossible de trouver l'information dans le fichier, dans ce
-     * cas, le {@link ResultatParsing} est mis à jour
->>>>>>> 20a1d8951fe421773b080bfe727d79b791c50fac:perCEPtion/src/main/java/perception/configurator/xml/manager/parser/XMLFileParserToPrimitiveEventData.java
-     */
+     **/
     protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<Long> runtTimeOp = Optional.empty();
         try {
@@ -260,30 +252,6 @@ class XMLFileParserToPrimitiveEventData {
             e.printStackTrace();
         }
         return runtTimeOp;
-    }
-
-    /**
-     * Indique si le primitive event est enabled ou non. Si l'attribut n'est pas présent, le primitive event est
-     * considéré comme actif.
-     *
-     * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au primitive event
-     * @param resultatParsing - le résultat du parsing
-     * @return <code>true</code> si le primitive event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
-     * {@link ResultatParsing} n'est pas mis à jour
-     */
-    protected static boolean isEnabledPrimitiveEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        boolean enabled = false;
-        try {
-            String primitiveEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
-            if (primitiveEventEnabled.equals("true") || primitiveEventEnabled.equals("")) {
-                enabled = true;
-            }
-        } catch (XPathExpressionException e) {
-            // L'attribut n'est pas présent on considère que le primitive event est à activer
-            enabled = true;
-        }
-        return enabled;
     }
 
 }

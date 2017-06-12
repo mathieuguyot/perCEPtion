@@ -23,7 +23,7 @@ public class XMLFileParserTest {
 		String xMLFilePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testParse_XMLFileParser_OK.xml";
 
 		// Expected
-		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		ResultatParsing expectedResultatParsing = ResultatParsing.FAB();
 
 		List<PrimitiveEventData> expectedPedataList = new ArrayList<>();
 		expectedPedataList.add(new PrimitiveEventData("PEG_Blank1", "PEG_Blank", 78945L));
@@ -43,7 +43,7 @@ public class XMLFileParserTest {
 
 		String xMLFilePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testInvalidFile_NoParsing.xml";
 		
-		ResultatParsing expectedResultatParsing = ResultatParsing.FAB(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		ResultatParsing expectedResultatParsing = ResultatParsing.FAB();
 
         List<PrimitiveEventData> expectedPrimitiveEvents = new ArrayList<>();
         //expectedPrimitiveEvents.put("PEG_Blank", 78945L);

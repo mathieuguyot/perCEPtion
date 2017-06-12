@@ -3,9 +3,12 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
+import perception.configurator.xml.manager.model.ComplexEventData;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.configurator.xml.manager.validator.ValidationError;
 import perception.configurator.xml.manager.validator.ValidationResult;
+import utils.Pair;
 
 import java.util.*;
 
@@ -15,7 +18,7 @@ public class ResultatParsingTest {
 
 	@Test
 	public void testResultatParsing_WithParams() {
-		
+
 		List<FileErrorType> fileErrorTypes = Arrays.asList(FileErrorType.FILE_NOT_FOUND, FileErrorType.FILE_NOT_FOUND);
 		List<ParsingErrorType> parsingErrorTypes = Arrays.asList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NAME,
 				ParsingErrorType.EVENT_PRIMITIVES_INVALID_NODE, ParsingErrorType.EVENT_PRIMITIVES_INVALID_RUNTIME);
@@ -24,12 +27,24 @@ public class ResultatParsingTest {
 		primitiveEventList.add(new PrimitiveEventData("MonPmCpu", "PM_CPU", 4500L));
 		primitiveEventList.add(new PrimitiveEventData("MonPmRam", "PM_RAM", 4500L));
 
-		ResultatParsing resultatParsing = ResultatParsing.FAB(fileErrorTypes, parsingErrorTypes, primitiveEventList);
+		List<SimpleEventData> simpleEventDataList = new ArrayList<>();
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList(new Pair<>("SE_typeParam1", "SE_valueParam1"), new Pair<>("SE_typeParam2", "SE_valueParam2"))));
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList(new Pair<>("SE_typeParam1", "SE_valueParam1"), new Pair<>("SE_typeParam2", "SE_valueParam2"), new Pair<>("SE_typeParam3", "SE_valueParam3"))));
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList()));
+
+		List<ComplexEventData> complexEventDataList = new ArrayList<>();
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList(new Pair<>("CE_typeParam1", "CE_valueParam1"), new Pair<>("CE_typeParam2", "CE_valueParam2"))));
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList(new Pair<>("CE_typeParam1", "CE_valueParam1"), new Pair<>("CE_typeParam2", "CE_valueParam2"), new Pair<>("CE_typeParam3", "CE_valueParam3"))));
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList()));
+
+		ResultatParsing resultatParsing = ResultatParsing.FAB(fileErrorTypes, parsingErrorTypes, primitiveEventList, simpleEventDataList, complexEventDataList);
 		assertEquals("Constructeur - fileErrorTypes", fileErrorTypes, resultatParsing.getFileErrorTypes());
-		assertEquals("Constructeur - primitiveEventMap", parsingErrorTypes, resultatParsing.getParsingErrorTypes());
-		assertEquals("Constructeur - listJeuDeDonnees", primitiveEventList, resultatParsing.getPrimitiveEventList());
+		assertEquals("Constructeur - parsingErrorTypes", parsingErrorTypes, resultatParsing.getParsingErrorTypes());
+		assertEquals("Constructeur - primitiveEventList", primitiveEventList, resultatParsing.getPrimitiveEventList());
+		assertEquals("Constructeur - simpleEventDataList", simpleEventDataList, resultatParsing.getSimpleEventList());
+		assertEquals("Constructeur - complexEventDataList", complexEventDataList, resultatParsing.getComplexEventList());
 		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
-		
+
 	}
 
 	@Test
@@ -39,6 +54,8 @@ public class ResultatParsingTest {
 		assertTrue("Constructeur - fileErrorTypes", resultatParsing.getFileErrorTypes().isEmpty());
 		assertTrue("Constructeur - parsingErrorTypes", resultatParsing.getParsingErrorTypes().isEmpty());
 		assertTrue("Constructeur - primitiveEventMap", resultatParsing.getPrimitiveEventList().isEmpty());
+		assertTrue("Constructeur - simpleEventDataList", resultatParsing.getSimpleEventList().isEmpty());
+		assertTrue("Constructeur - complexEventDataList", resultatParsing.getComplexEventList().isEmpty());
 		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
 		
 	}
@@ -54,6 +71,16 @@ public class ResultatParsingTest {
 		primitiveEventList.add(new PrimitiveEventData("MonPmCpu", "PM_CPU", 4500L));
 		primitiveEventList.add(new PrimitiveEventData("MonPmRam", "PM_RAM", 4000L));
 
+		List<SimpleEventData> simpleEventDataList = new ArrayList<>();
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList(new Pair<>("SE_typeParam1", "SE_valueParam1"), new Pair<>("SE_typeParam2", "SE_valueParam2"))));
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList(new Pair<>("SE_typeParam1", "SE_valueParam1"), new Pair<>("SE_typeParam2", "SE_valueParam2"), new Pair<>("SE_typeParam3", "SE_valueParam3"))));
+		simpleEventDataList.add(new SimpleEventData("SimpleEventName1", "SimpleEventType1", Arrays.asList()));
+
+		List<ComplexEventData> complexEventDataList = new ArrayList<>();
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList(new Pair<>("CE_typeParam1", "CE_valueParam1"), new Pair<>("CE_typeParam2", "CE_valueParam2"))));
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList(new Pair<>("CE_typeParam1", "CE_valueParam1"), new Pair<>("CE_typeParam2", "CE_valueParam2"), new Pair<>("CE_typeParam3", "CE_valueParam3"))));
+		complexEventDataList.add(new ComplexEventData("ComplexEventName1", "ComplexEventType1", Arrays.asList()));
+
 		ValidationResult validationResult = ValidationResult.FAB();
 		
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
@@ -61,12 +88,17 @@ public class ResultatParsingTest {
 		resultatParsing.setPrimitiveEventList(primitiveEventList);
 		resultatParsing.setParsingErrorTypes(parsingErrorTypes);
 		resultatParsing.setValidationResult(validationResult);
-		
+		resultatParsing.setSimpleEventList(simpleEventDataList);
+		resultatParsing.setComplexEventList(complexEventDataList);
+
 		assertEquals("Constructeur - fileErrorTypes", fileErrorTypes, resultatParsing.getFileErrorTypes());
 		assertEquals("Constructeur - parsingErrorTypes", parsingErrorTypes, resultatParsing.getParsingErrorTypes());
-		assertEquals("Constructeur - primitiveEventMap", primitiveEventList, resultatParsing.getPrimitiveEventList());
-		assertEquals("Constructeur - validationResult", validationResult, resultatParsing.getValidationResult());
-		
+		assertEquals("Constructeur - primitiveEventList", primitiveEventList, resultatParsing.getPrimitiveEventList());
+		assertEquals("Constructeur - simpleEventDataList", simpleEventDataList, resultatParsing.getSimpleEventList());
+		assertEquals("Constructeur - complexEventDataList", complexEventDataList, resultatParsing.getComplexEventList());
+		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
+
+
 	}
 	
 	@Test
@@ -126,7 +158,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_NoErrors2() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		assertFalse(resultatParsing.hasErrors());
 	}
 
@@ -134,7 +166,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_NoErrors3() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		resultatParsing.setValidationResult(ValidationResult.FAB());
 		assertFalse(resultatParsing.hasErrors());
 	}
@@ -143,7 +175,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_OnlyParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = Collections.singletonList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NODE);
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 	
@@ -151,7 +183,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_OnlyFileErrors() {
 		List<FileErrorType> listeFileErrorTypes = Collections.singletonList(FileErrorType.EMPTY_FILE);
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 
@@ -161,7 +193,7 @@ public class ResultatParsingTest {
 		List<FileErrorType> listeFileErrorTypes = new ArrayList<>();
 		List<ParsingErrorType> listeParsingErrorTypes = new ArrayList<>();
 
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		resultatParsing.setValidationResult(ValidationResult.FAB(ValidationError.FAB(), FileErrorType.EMPTY_FILE));
 
 		assertTrue(resultatParsing.hasErrors());
@@ -172,7 +204,7 @@ public class ResultatParsingTest {
 	public void testHasErrors_FileErrorsAndParsingErrors() {
 		List<FileErrorType> listeFileErrorTypes = Arrays.asList(FileErrorType.EMPTY_FILE, FileErrorType.INVALID_FILE_FORMAT);
 		List<ParsingErrorType> listeParsingErrorTypes = Arrays.asList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NODE, ParsingErrorType.EVENT_PRIMITIVES_INVALID_RUNTIME);
-		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>());
+		ResultatParsing resultatParsing = ResultatParsing.FAB(listeFileErrorTypes, listeParsingErrorTypes, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		assertTrue(resultatParsing.hasErrors());
 	}
 

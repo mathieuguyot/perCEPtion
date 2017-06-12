@@ -31,6 +31,7 @@ public abstract class SimpleAndComplexEventData {
      * Constructeur de la classe {@link SimpleAndComplexEventData}
      * @param eventType - Classe correspondant à l'Event Generator à activer
      * @param eventName - Nom que l'on souhaite donner à l'Event Generator
+     * @param params - Liste de tuple comportant les types et valeur de paramètres
      */
     public SimpleAndComplexEventData(String eventType, String eventName, List<Pair<String, String>> params) {
         this.eventName = eventName;

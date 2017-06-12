@@ -10,6 +10,7 @@ import perception.configurator.xml.TestConstants;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.utils.XMLManager;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -111,7 +112,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 		String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testParsePrimitiveEvents_OK.xml";
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
-		XMLFileParserToPrimitiveEventData.parsePrimitivesEvent(xPath, this.getElementRootFromFile(filePath), resultatParsing);
+		XMLFileParserToPrimitiveEventData.parsePrimitivesEvent(xPath, XMLManager.getElementRootFromFile(filePath), resultatParsing);
 
 		assertEquals("Parsing des primitives events d'un fichier xml valide", primitiveEventList,
 				resultatParsing.getPrimitiveEventList());
@@ -128,11 +129,11 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 		NodeList listPrimitiveEventsExpected = (NodeList) xPath.evaluate("//primitive",
-				this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
         Optional<NodeList> listPrimitiveEventsExpectedOptional = Optional.of(listPrimitiveEventsExpected);
 
 		Optional<NodeList> listPrimitiveEventsActualOptional = XMLFileParserToPrimitiveEventData.getPrimitivesEventInFile(xPath,
-				this.getElementRootFromFile(filePath), resultatParsing);
+                XMLManager.getElementRootFromFile(filePath), resultatParsing);
 
 		assertEquals("Recupération primitives events du fichier", listPrimitiveEventsExpectedOptional.get().getLength(), listPrimitiveEventsActualOptional.get().getLength());
 		assertTrue("Parsing des primitives events d'un fichier xml valide",
@@ -150,10 +151,10 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
         ResultatParsing resultatParsing = ResultatParsing.FAB();
         NodeList listPrimitiveEventsExpected = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
         Optional<NodeList> listPrimitiveEventsActual = XMLFileParserToPrimitiveEventData.getPrimitivesEventInFile(xPath,
-                this.getElementRootFromFile(filePath), resultatParsing);
+                XMLManager.getElementRootFromFile(filePath), resultatParsing);
 
         assertEquals("Recupération primitives events du fichier", listPrimitiveEventsExpected.getLength(), listPrimitiveEventsActual.get().getLength());
         assertTrue("Parsing des primitives events d'un fichier xml valide",
@@ -176,7 +177,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 		String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testCreateAllPrimitivesEvents_OK.xml";
 
 		NodeList listPrimitiveEventExpected = (NodeList) xPath.evaluate("//primitive",
-				this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
 		XMLFileParserToPrimitiveEventData.createAllPrimitivesEvents(xPath, listPrimitiveEventExpected, resultatParsing);
 
@@ -193,7 +194,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder +  "testCreateAllPrimitivesEvents_KO_NoPrimitivesNode.xml";
 
         NodeList listExpected = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
         XMLFileParserToPrimitiveEventData.createAllPrimitivesEvents(xPath, listExpected, resultatParsing);
 
@@ -215,7 +216,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testCreateAllPrimitivesEvents_ParseOnlyEnabledPE.xml";
 
         NodeList listPrimitiveEventExpected = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
         XMLFileParserToPrimitiveEventData.createAllPrimitivesEvents(xPath, listPrimitiveEventExpected, resultatParsing);
 
@@ -251,7 +252,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 		ResultatParsing resultatParsing = ResultatParsing.FAB();
 
 		NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-				this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 		// Récupération du premier primitive event
 		Node node = nodeListJeuxDeDonneesFromFile.item(0);
 
@@ -273,7 +274,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
         // Récupération du premier primitive event
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<String> primitiveEventNameActual = XMLFileParserToPrimitiveEventData.getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
@@ -293,7 +294,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
         // Récupération du premier primitive event
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
@@ -314,7 +315,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
         // Récupération du premier primitive event
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<String> primitiveEventNameActual = XMLFileParserToPrimitiveEventData.getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
@@ -334,7 +335,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
 
         // Récupération du premier primitive event
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
@@ -355,7 +356,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
         ResultatParsing resultatParsing = ResultatParsing.FAB();
 
         NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
+                XMLManager.getElementRootFromFile(filePath), XPathConstants.NODESET);
         // Récupération du premier primitive event
         Node node = nodeListJeuxDeDonneesFromFile.item(0);
         Optional<Long> primitiveEventRuntimeActual = XMLFileParserToPrimitiveEventData.getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
@@ -366,86 +367,5 @@ public class XMLFileParserToPrimitiveEventDataTest {
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }
-
-    @Test
-    public void testIsEnabledPrimitiveEvent_OK_EnabledTrue()
-            throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
-
-        String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testIsEnabledPrimitiveEvent_OK_EnabledTrue.xml";
-        ResultatParsing resultatParsing = ResultatParsing.FAB();
-
-        NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
-        // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(1);
-        boolean primitiveEventEnabledActual = XMLFileParserToPrimitiveEventData.isEnabledPrimitiveEvent(xPath, node, resultatParsing);
-
-        assertTrue("Recupération du runtime du primitive event", primitiveEventEnabledActual);
-        assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
-        assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
-
-    }
-
-    @Test
-    public void testIsEnabledPrimitiveEvent_OK_EnabledFalse()
-            throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
-
-        String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testIsEnabledPrimitiveEvent_OK_EnabledFalse.xml";
-        ResultatParsing resultatParsing = ResultatParsing.FAB();
-
-        NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
-        // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(1);
-        boolean primitiveEventEnabledActual = XMLFileParserToPrimitiveEventData.isEnabledPrimitiveEvent(xPath, node, resultatParsing);
-
-        assertTrue("Recupération du runtime du primitive event", primitiveEventEnabledActual);
-        assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
-        assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
-
-    }
-
-    @Test
-    public void testIsEnabledPrimitiveEvent_NoEnableAttribut_ActivatePrimitiveEvent()
-            throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
-
-        String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testIsEnabledPrimitiveEvent_KO.xml";
-        ResultatParsing resultatParsing = ResultatParsing.FAB();
-
-        NodeList nodeListJeuxDeDonneesFromFile = (NodeList) xPath.evaluate("//primitive",
-                this.getElementRootFromFile(filePath), XPathConstants.NODESET);
-        // Récupération du premier primitive event
-        Node node = nodeListJeuxDeDonneesFromFile.item(0);
-        boolean primitiveEventEnabledActual = XMLFileParserToPrimitiveEventData.isEnabledPrimitiveEvent(xPath, node, resultatParsing);
-
-        assertTrue("Recupération de l'attribut enabled du primitive event", primitiveEventEnabledActual);
-        assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().isEmpty());
-        assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
-
-    }
-
-
-	/**
-	 * Recupère l'élément racine du fichier XML.
-	 * 
-	 * @param filePath
-	 *            - le chemin vers le fichier
-	 * @return l'élément racine du fichier XML
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
-	 */
-	Element getElementRootFromFile(String filePath) throws ParserConfigurationException, SAXException, IOException {
-		File fileXML = new File(filePath);
-		// Recupération de la racine du document
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document xml = builder.parse(fileXML);
-		Element root = xml.getDocumentElement();
-		return root;
-	}
 
 }

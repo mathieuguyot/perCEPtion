@@ -155,7 +155,7 @@ class XMLFileParserToSimpleEventData {
             Optional<List<Pair<String, String>>> simpleEventParamList = Optional.empty();
 
             // Récupération des éléments du simple event actuel
-            boolean primitiveEventEnabled = XMLFileParseToEventData.isEnabledEvent(xPath, node, resultatParsing);
+            boolean primitiveEventEnabled = XMLFileParseToEventData.isEnabledEvent(xPath, node);
             if (primitiveEventEnabled) {
                 simpleEventName = getSimpleEventNameFromFile(xPath, node, resultatParsing);
                 simpleEventType = getSimpleEventTypeFromFile(xPath, node, resultatParsing);
