@@ -12,16 +12,27 @@ import java.util.List;
  */
 public enum ParsingErrorType {
 
-	PRIMITIVES_EVENT_INVALID_NODE(
+	// Primitives events
+	EVENT_PRIMITIVES_INVALID_NODE(
 			"Impossible de trouver les primitives events dans le fichier XML fournit. Arrêt du traitement du fichier."),
 
-    PRIMITIVES_EVENT_INVALID_NAME("Impossible de trouver le nom du primitive event."),
+    EVENT_PRIMITIVES_INVALID_NAME("Impossible de trouver le nom du primitive event."),
 
-    PRIMITIVES_EVENT_INVALID_TYPE("Impossible de trouver le type du primitive event."),
+    EVENT_PRIMITIVES_INVALID_TYPE("Impossible de trouver le type du primitive event."),
 
-    PRIMITIVES_EVENT_INVALID_RUNTIME("Impossible de trouver le runtime du primitive event."),
+    EVENT_PRIMITIVES_INVALID_RUNTIME("Impossible de trouver le runtime du primitive event."),
 
-    PRIMITIVES_EVENT_DUPLICATED_NAME("Un même nom a été renseigné pour deux primitives events. Seul le première élément avec ce nom sera pris en compte.");
+    EVENT_PRIMITIVES_DUPLICATED_NAME("Un même nom a été renseigné pour deux primitives events. Seul le première élément avec ce nom sera pris en compte."),
+
+	// Simples events
+	EVENT_SIMPLES_INVALID_NODE(
+			"Impossible de trouver les simples events dans le fichier XML fournit. Arrêt du traitement du fichier."),
+
+	EVENT_SIMPLES_DUPLICATED_NAME("Un même nom a été renseigné pour deux simples events. Seul le première élément avec ce nom sera pris en compte."),
+
+	EVENT_SIMPLES_INVALID_NAME("Impossible de trouver le nom du simple event."),
+
+	EVENT_SIMPLES_INVALID_TYPE("Impossible de trouver le type du simple event.");
 
 	// Si l'attribut enabled de la balise <primitive> est abs on considère que le primitive event est à activer
 	//INVALID_PRIMITIVE_ENABLED_ATTR("Impossible de trouver l'attribut enabled du primitive event.");

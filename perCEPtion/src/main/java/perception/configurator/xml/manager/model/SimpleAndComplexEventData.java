@@ -3,6 +3,7 @@ package perception.configurator.xml.manager.model;
 import utils.Pair;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Conteneur pour le paramétrage des Simple et Complex Event Generator. Générés lors du parsing et fourni aux Activator.
@@ -13,7 +14,7 @@ public abstract class SimpleAndComplexEventData {
     // Attributs
     private String eventType;
     private String eventName;
-    private ArrayList<Pair<String, String>> params;
+    private List<Pair<String, String>> params;
 
     /**
      * Constructeur de la classe {@link SimpleAndComplexEventData}
@@ -26,6 +27,17 @@ public abstract class SimpleAndComplexEventData {
         this.params = new ArrayList<>();
     }
 
+    /**
+     * Constructeur de la classe {@link SimpleAndComplexEventData}
+     * @param eventType - Classe correspondant à l'Event Generator à activer
+     * @param eventName - Nom que l'on souhaite donner à l'Event Generator
+     */
+    public SimpleAndComplexEventData(String eventType, String eventName, List<Pair<String, String>> params) {
+        this.eventName = eventName;
+        this.eventType = eventType;
+        this.params = params;
+    }
+
 
     /**
      * Ajoute un couple {@link Pair} (Nom de l'attribut, Valeur de l'attribut) à la liste des paramètres
@@ -36,7 +48,7 @@ public abstract class SimpleAndComplexEventData {
         params.add(new Pair<String, String>(name, value));
     }
 
-    public ArrayList<Pair<String, String>> getParamsList() {
+    public List<Pair<String, String>> getParamsList() {
         return params;
     }
 

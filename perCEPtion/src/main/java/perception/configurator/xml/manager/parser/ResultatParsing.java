@@ -205,6 +205,40 @@ public class ResultatParsing {
     }
 
     /**
+     * Teste s'il existe un simple event avec ce nom dans la liste des primitives events à créer.
+     *
+     * @param name
+     *              le nom recherché dans la liste des simples events à instancier
+     * @return vrai s'il existe un simple event avec ce nom dans la liste des simples events à créer et false dans
+     * le cas contraire
+     */
+    public boolean existingSimpleEventListWithName(String name) {
+        for (SimpleEventData simpleEventData: this.getSimpleEventList()) {
+            if (simpleEventData.getEventName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Teste s'il existe un complex event avec ce nom dans la liste des primitives events à créer.
+     *
+     * @param name
+     *              le nom recherché dans la liste des complexes events à instancier
+     * @return vrai s'il existe un complex event avec ce nom dans la liste des simples events à créer et false dans
+     * le cas contraire
+     */
+    public boolean existingComplexEventListWithName(String name) {
+        for (SimpleEventData simpleEventData: this.getSimpleEventList()) {
+            if (simpleEventData.getEventName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Indique si des erreurs de parsing ont eues lieu.
      *
      * @return <code>true</code> si des erreurs sont survenues et <code>false</code> dans le cas contraire.

@@ -238,8 +238,8 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
         System.out.println(resultatParsing.getParsingErrorTypes());
         assertEquals("Liste erreurs parsing - taille", 1, resultatParsing.getParsingErrorTypes().size());
-        assertEquals("Liste erreurs fichier - contenu", Arrays.asList(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME), resultatParsing.getParsingErrorTypes());
-        assertEquals("Liste erreurs fichier - complement erreur", Arrays.asList("monPE1", "MonPE1", "MonPE2", "MonPE2"), ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME.getComplements());
+        assertEquals("Liste erreurs fichier - contenu", Arrays.asList(ParsingErrorType.EVENT_PRIMITIVES_DUPLICATED_NAME), resultatParsing.getParsingErrorTypes());
+        assertEquals("Liste erreurs fichier - complement erreur", Arrays.asList("monPE1", "MonPE1", "MonPE2", "MonPE2"), ParsingErrorType.EVENT_PRIMITIVES_DUPLICATED_NAME.getComplements());
 
     }
 
@@ -280,7 +280,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
         assertFalse("Recupération du name du primitive event", primitiveEventNameActual.isPresent());
         assertTrue("Liste de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME)));
+        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NAME)));
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }
@@ -321,7 +321,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
         assertFalse("Recupération du type du primitive event", primitiveEventNameActual.isPresent());
         assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE)));
+        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_TYPE)));
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }
@@ -362,7 +362,7 @@ public class XMLFileParserToPrimitiveEventDataTest {
 
         assertFalse("Recupération du runtime du primitive event", primitiveEventRuntimeActual.isPresent());
         assertTrue("Map de primitive events", resultatParsing.getPrimitiveEventList().isEmpty());
-        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME)));
+        assertTrue("Liste erreur parsing", resultatParsing.getParsingErrorTypes().containsAll(Collections.singletonList(ParsingErrorType.EVENT_PRIMITIVES_INVALID_RUNTIME)));
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }

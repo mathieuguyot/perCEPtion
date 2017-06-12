@@ -13,13 +13,31 @@ public enum XMLFileStructure {
 
 	// Balise du fichier XML
 	RACINE_PERCEPTION("perception"),
+
+	// Events
 	EVENTS("events"),
-	PRIMITIVES("primitives"),
-	PRIMITIVE("primitive"),
-	PRIMITIVE_ATTR_ENABLED("enabled"),
-	PRIMITIVE_NAME("name"),
-	PRIMITIVE_TYPE("type"),
-	PRIMITIVE_RUNTIME("runtime"),
+	EVENT_ATTR_ENABLED("enabled"),
+	EVENT_NAME("name"),
+	EVENT_TYPE("type"),
+
+	// Primitives events
+	EVENT_PRIMITIVES("primitives"),
+	EVENT_PRIMITIVE("primitive"),
+	EVENT_PRIMITIVE_RUNTIME("runtime"),
+
+	// Simples and complexes events
+	EVENT_PARAMS("params"),
+	EVENT_PARAM("param"),
+	EVENT_PARAM_ATTR_TAG("tag"),
+	EVENT_PARAM_ATTR_TYPE("type"),
+
+	// Simple events
+	EVENT_SIMPLES("simples"),
+	EVENT_SIMPLE("simple"),
+
+	// Complex events
+	EVENT_COMPLEXES("complexes"),
+	EVENT_COMPLEXE("complexe"),
 
 	// Valeur d'attribut liée au schéma
 	NAMESPACE("http://www.w3.org/2001/XMLSchema-instance");

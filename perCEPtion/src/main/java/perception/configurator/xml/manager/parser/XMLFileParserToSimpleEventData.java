@@ -9,6 +9,8 @@ import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
+import utils.Pair;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,6 +22,8 @@ import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -80,7 +84,7 @@ class XMLFileParserToSimpleEventData {
             XPathFactory xpf = XPathFactory.newInstance();
             XPath xPath = xpf.newXPath();
 
-            XMLFileParserToSimpleEventData.parsePrimitivesEvent(xPath, root, resultatParsing);
+            XMLFileParserToSimpleEventData.parseSimpleEvents(xPath, root, resultatParsing);
         }
 
         return resultatParsing;
@@ -95,12 +99,12 @@ class XMLFileParserToSimpleEventData {
      * @param root            - la racine du fichier XML de configuration des modules du système
      * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
      */
-    protected static void parsePrimitivesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
+    protected static void parseSimpleEvents(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
-        Optional<NodeList> primitiveEventFromFileOp = getPrimitivesEventInFile(xPath, root, resultatParsing);
+        Optional<NodeList> simpleEventFromFileOp = getSimpleEventsInFile(xPath, root, resultatParsing);
 
         // Si la liste est absente c'est que le fichier ne comporte pas de simples events
-        primitiveEventFromFileOp.ifPresent(nodeList -> createAllPrimitivesEvents(xPath, nodeList, resultatParsing));
+        simpleEventFromFileOp.ifPresent(nodeList -> createAllSimpleEvents(xPath, nodeList, resultatParsing));
 
     }
 
@@ -114,20 +118,20 @@ class XMLFileParserToSimpleEventData {
      * @return un optional contenant éventuellement la liste de simple events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
     * {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<NodeList> getPrimitivesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
+    protected static Optional<NodeList> getSimpleEventsInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
         // Récupération de tout les simples events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.PRIMITIVE.getLabel();
-        Optional<NodeList> listPrimitiveEventOp = Optional.empty();
+        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_SIMPLE.getLabel();
+        Optional<NodeList> listSimpleEventOp = Optional.empty();
         try {
             NodeList listPrimitiveEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
-            listPrimitiveEventOp = Optional.of(listPrimitiveEvent);
+            listSimpleEventOp = Optional.of(listPrimitiveEvent);
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NODE);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
             e.printStackTrace();
         }
 
-        return listPrimitiveEventOp;
+        return listSimpleEventOp;
 
     }
 
@@ -135,34 +139,34 @@ class XMLFileParserToSimpleEventData {
      * Création de toutes les informations permettant l'instanciation des simples events à partir du fichier XML.
      *
      * @param xPath                       - le xPath
-     * @param listPrimitiveEventsFromFile - la liste des simples events du fichier
+     * @param listSimpleEventsFromFile - la liste des simples events du fichier
      * @param resultatParsing             - le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
      *                                    le {@link ResultatParsing} est mis à jour
      */
-    protected static void createAllPrimitivesEvents(XPath xPath, NodeList listPrimitiveEventsFromFile,
-                                                    ResultatParsing resultatParsing) {
+    protected static void createAllSimpleEvents(XPath xPath, NodeList listSimpleEventsFromFile,
+                                                ResultatParsing resultatParsing) {
 
-        for (int i = 0; i < listPrimitiveEventsFromFile.getLength(); i++) {
+        for (int i = 0; i < listSimpleEventsFromFile.getLength(); i++) {
 
-            Node node = listPrimitiveEventsFromFile.item(i);
+            Node node = listSimpleEventsFromFile.item(i);
 
-            Optional<String> primitiveEventName = Optional.empty();
-            Optional<String> primitiveEventType = Optional.empty();
-            Optional<Long> primitiveEventRuntime = Optional.empty();
+            Optional<String> simpleEventName = Optional.empty();
+            Optional<String> simpleEventType = Optional.empty();
+            Optional<List<Pair<String, String>>> simpleEventParamList = Optional.empty();
 
             // Récupération des éléments du simple event actuel
-            boolean primitiveEventEnabled = isEnabledPrimitiveEvent(xPath, node, resultatParsing);
+            boolean primitiveEventEnabled = XMLFileParseToEventData.isEnabledEvent(xPath, node, resultatParsing);
             if (primitiveEventEnabled) {
-                primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
-                primitiveEventType = getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
-                primitiveEventRuntime = getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
+                simpleEventName = getSimpleEventNameFromFile(xPath, node, resultatParsing);
+                simpleEventType = getSimpleEventTypeFromFile(xPath, node, resultatParsing);
+                simpleEventParamList = getSimpleEventParamListFromFile(xPath, node, resultatParsing);
             }
 
             // Si on a aucune erreur dans le fichier les informations d'instanciation du simple event courant est
             // ajouté au résultat du parsing
-            if (primitiveEventName.isPresent() && primitiveEventRuntime.isPresent() && primitiveEventType.isPresent()) {
-                PrimitiveEventData primitiveEventData = new PrimitiveEventData(primitiveEventName.get(), primitiveEventType.get(), primitiveEventRuntime.get());
-                resultatParsing.addPrimitiveEvent(primitiveEventData);
+            if (simpleEventName.isPresent() && simpleEventType.isPresent() && simpleEventParamList.isPresent()) {
+                SimpleEventData simpleEventData = new SimpleEventData(simpleEventName.get(), simpleEventType.get(), simpleEventParamList.get());
+                resultatParsing.addSimpleEvent(simpleEventData);
             }
 
         }
@@ -178,22 +182,22 @@ class XMLFileParserToSimpleEventData {
      * @return un optional contenant le nom du simple event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<String> getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static Optional<String> getSimpleEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<String> nameOp = Optional.empty();
         try {
-            String strSelectName = XMLFileStructure.PRIMITIVE_NAME.getLabel();
+            String strSelectName = XMLFileStructure.EVENT_NAME.getLabel();
             String name = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
             if(name.equals("")) {
-                throw new XPathExpressionException("Missing primitive event name.");
+                throw new XPathExpressionException("Missing simple event name.");
             }
-            else if(resultatParsing.existingPrimitiveEventListWithName(name)) {
-                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.PRIMITIVES_EVENT_DUPLICATED_NAME, name);
+            else if(resultatParsing.existingSimpleEventListWithName(name)) {
+                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.EVENT_SIMPLES_DUPLICATED_NAME, name);
             }
             else {
                 nameOp = Optional.of(name);
             }
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_NAME);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NAME);
             // System.out.println("Impossible de trouver le nom du simple event : " + node);
             e.printStackTrace();
         }
@@ -209,18 +213,18 @@ class XMLFileParserToSimpleEventData {
      * @return un optional contenant le nom du simple event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<String> getPrimitiveEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static Optional<String> getSimpleEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<String> typeOp = Optional.empty();
         try {
-            String strSelectName = XMLFileStructure.PRIMITIVE_TYPE.getLabel();
+            String strSelectName = XMLFileStructure.EVENT_TYPE.getLabel();
             String type = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
             if(type.equals("")) {
-                throw new XPathExpressionException("Missing primitive event type.");
+                throw new XPathExpressionException("Missing simple event type.");
             } else {
                 typeOp = Optional.of(type);
             }
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_TYPE);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
             // System.out.println("Impossible de trouver le nom du simple event : " + node);
             e.printStackTrace();
         }
@@ -228,54 +232,105 @@ class XMLFileParserToSimpleEventData {
     }
 
     /**
-     * Récupére le runtime donné dans le fichier XML pour le simple event spécifié.
+     * Récupération de tous les params events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
+     * paramètre et sera mis à jour au cours du traitement.
      *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au simple event
-     * @param resultatParsing le résultat du parsing
-     * @return un optional contenant le nom du simple event ou étant vide s'il est impossible de trouver l'information
-     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
+     * @param xPath           le xPath
+     * @param node            le noeud corespondant à un simple event du fichier XML de configuration
+     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
+     * @return un optional contenant éventuellement la liste d'events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
+     * {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Optional<Long> runtTimeOp = Optional.empty();
+    protected static Optional<List<Pair<String, String>>> getSimpleEventParamListFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+
+        // Récupération de tout les simples events du fichier avec XPath
+        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_PARAM.getLabel();
+        Optional<List<Pair<String, String>>> listParamEventOp = Optional.empty();
         try {
-            String strSelectName = XMLFileStructure.PRIMITIVE_RUNTIME.getLabel();
-            Long runtTime = ((Double) xPath.evaluate(strSelectName, node, XPathConstants.NUMBER)).longValue();
-            if (runtTime <= 0) {
-                resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
-            } else {
-                runtTimeOp = Optional.of(runtTime);
-            }
+
+            NodeList listParamEventNode = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, node, XPathConstants.NODESET);
+
+            List<Pair<String, String>> eventParamList = getEventParams(xPath, listParamEventNode, resultatParsing);
+
+            listParamEventOp = Optional.of(eventParamList);
+
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.PRIMITIVES_EVENT_INVALID_RUNTIME);
-            // System.out.println("Impossible de trouver le nom du simple event : " + node);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
             e.printStackTrace();
         }
-        return runtTimeOp;
+
+        return listParamEventOp;
+
     }
 
     /**
-     * Indique si le simple event est enabled ou non. Si l'attribut n'est pas présent, le simple event est
-     * considéré comme actif.
+     * Permet la récupération des paramètres pour l'event à partir des informations du fichier XML de configuration.
      *
-     * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au simple event
-     * @param resultatParsing - le résultat du parsing
-     * @return <code>true</code> si le simple event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
-     * {@link ResultatParsing} n'est pas mis à jour
+     * @param xPath                     le xPath
+     * @param listParamsEventsFromFile  la liste des paramètres de l'event
+     * @param resultatParsing           le résultat de parsing qui sera mit à jour au cours du traitement en cas d'erreur de parsing
+     * @return une liste de tuples comportant le type et la valeur du paramètre
      */
-    protected static boolean isEnabledPrimitiveEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        boolean enabled = false;
+    protected static List<Pair<String, String>> getEventParams(XPath xPath, NodeList listParamsEventsFromFile,
+                                                               ResultatParsing resultatParsing) {
+
+        List<Pair<String, String>> listEventParams = new ArrayList<>();
+
+        for (int i = 0; i < listParamsEventsFromFile.getLength(); i++) {
+
+            Node node = listParamsEventsFromFile.item(i);
+
+            // Récupération des éléments du simple event actuel
+            Optional<String> eventParamTypeOp = getSimpleEventParamTypeFromFile(xPath, node, resultatParsing);
+            String eventParamValue = getSimpleEventParamValueFromFile(node);
+
+            // Si on a aucune erreur dans le fichier les informations d'instanciation du simple event courant est
+            // ajouté au résultat du parsing
+            if (eventParamTypeOp.isPresent()) {
+                Pair<String, String> param = new Pair<>(eventParamTypeOp.get(), eventParamValue);
+                listEventParams.add(param);
+            }
+
+        }
+
+        return listEventParams;
+
+    }
+
+    /**
+     * Permet la récupération de la valeur du type du paramètre du simple event fournit en entrée.
+     *
+     * @param xPath             le xPath
+     * @param node              le noeud corespondant à un simple event du fichier XML de configuration
+     * @param resultatParsing   le résultat de parsing qui sera mit à jour au cours du traitement en cas d'erreur de parsing
+     * @return le type du paramètre du simple event fournit en entrée
+     */
+    protected static Optional<String> getSimpleEventParamTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+        Optional<String> eventParamTypeOp = Optional.empty();
         try {
-            String primitiveEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.PRIMITIVE_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
-            if (primitiveEventEnabled.equals("true") || primitiveEventEnabled.equals("")) {
-                enabled = true;
+            String eventParamType = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_PARAM_ATTR_TYPE.getLabel(), node, XPathConstants.STRING);
+            if (eventParamType.equals("")) {
+                resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
+            } else {
+                eventParamTypeOp = Optional.of(eventParamType);
             }
         } catch (XPathExpressionException e) {
-            // L'attribut n'est pas présent on considère que le simple event est à activer
-            enabled = true;
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
         }
-        return enabled;
+        return eventParamTypeOp;
     }
+
+    /**
+     * Permet la récupération de la valeur du paramètre du simple event fournit en entrée.
+     *
+     * @param node      le noeud corespondant à un simple event du fichier XML de configuration
+     * @return la valeur du paramètre du simple event fournit en entrée
+     */
+    protected static String getSimpleEventParamValueFromFile(Node node) {
+        String eventParamValue = node.getNodeValue();
+        return eventParamValue;
+    }
+
+
 
 }

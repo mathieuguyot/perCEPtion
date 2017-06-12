@@ -1,5 +1,9 @@
 package perception.configurator.xml.manager.model;
 
+import utils.Pair;
+
+import java.util.List;
+
 /**
  * Classe permettant l'enregistrement des informations du fichier de configuration pour l'instanciation des
  * simples events.
@@ -13,9 +17,10 @@ public class SimpleEventData extends SimpleAndComplexEventData {
      *
      * @param eventType - Classe correspondant à l'Event Generator à activer
      * @param eventName - Nom que l'on souhaite donner à l'Event Generator
+     * @param params - Liste des types et valeurs de param
      */
-    public SimpleEventData(String eventType, String eventName) {
-        super(eventType, eventName);
+    public SimpleEventData(String eventType, String eventName, List<Pair<String, String>> params) {
+        super(eventType, eventName, params);
     }
 
 }

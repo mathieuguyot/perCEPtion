@@ -14,11 +14,11 @@ public class XMLFileStructureTest {
     public void testGetLabel() {
         assertEquals("getLabel - RACINE_PERCEPTION", "perception", XMLFileStructure.RACINE_PERCEPTION.getLabel());
         assertEquals("getLabel - EVENTS", "events", XMLFileStructure.EVENTS.getLabel());
-        assertEquals("getLabel - PRIMITIVES", "primitives", XMLFileStructure.PRIMITIVES.getLabel());
-        assertEquals("getLabel - PRIMITIVE", "primitive", XMLFileStructure.PRIMITIVE.getLabel());
-        assertEquals("getLabel - PRIMITIVE_ATTR_ENABLED", "enabled", XMLFileStructure.PRIMITIVE_ATTR_ENABLED.getLabel());
-        assertEquals("getLabel - PRIMITIVE_NAME", "name", XMLFileStructure.PRIMITIVE_NAME.getLabel());
-        assertEquals("getLabel - PRIMITIVE_RUNTIME", "runtime", XMLFileStructure.PRIMITIVE_RUNTIME.getLabel());
+        assertEquals("getLabel - EVENT_PRIMITIVES", "primitives", XMLFileStructure.EVENT_PRIMITIVES.getLabel());
+        assertEquals("getLabel - EVENT_PRIMITIVE", "primitive", XMLFileStructure.EVENT_PRIMITIVE.getLabel());
+        assertEquals("getLabel - EVENT_ATTR_ENABLED", "enabled", XMLFileStructure.EVENT_ATTR_ENABLED.getLabel());
+        assertEquals("getLabel - EVENT_NAME", "name", XMLFileStructure.EVENT_NAME.getLabel());
+        assertEquals("getLabel - EVENT_PRIMITIVE_RUNTIME", "runtime", XMLFileStructure.EVENT_PRIMITIVE_RUNTIME.getLabel());
         assertEquals("getLabel - NAMESPACE", "http://www.w3.org/2001/XMLSchema-instance", XMLFileStructure.NAMESPACE.getLabel());
     }
 
@@ -26,11 +26,11 @@ public class XMLFileStructureTest {
     public void testFromLabel() {
         assertEquals("fromLabel - RACINE_PERCEPTION", XMLFileStructure.RACINE_PERCEPTION, XMLFileStructure.fromLabel("perception"));
         assertEquals("fromLabel - EVENTS", XMLFileStructure.EVENTS, XMLFileStructure.fromLabel("events"));
-        assertEquals("fromLabel - PRIMITIVES", XMLFileStructure.PRIMITIVES, XMLFileStructure.fromLabel("primitives"));
-        assertEquals("fromLabel - PRIMITIVE", XMLFileStructure.PRIMITIVE, XMLFileStructure.fromLabel("primitive"));
-        assertEquals("fromLabel - PRIMITIVE_ATTR_ENABLED", XMLFileStructure.PRIMITIVE_ATTR_ENABLED, XMLFileStructure.fromLabel("enabled"));
-        assertEquals("fromLabel - PRIMITIVE_NAME", XMLFileStructure.PRIMITIVE_NAME, XMLFileStructure.fromLabel("name"));
-        assertEquals("fromLabel - PRIMITIVE_RUNTIME", XMLFileStructure.PRIMITIVE_RUNTIME, XMLFileStructure.fromLabel("runtime"));
+        assertEquals("fromLabel - EVENT_PRIMITIVES", XMLFileStructure.EVENT_PRIMITIVES, XMLFileStructure.fromLabel("primitives"));
+        assertEquals("fromLabel - EVENT_PRIMITIVE", XMLFileStructure.EVENT_PRIMITIVE, XMLFileStructure.fromLabel("primitive"));
+        assertEquals("fromLabel - EVENT_ATTR_ENABLED", XMLFileStructure.EVENT_ATTR_ENABLED, XMLFileStructure.fromLabel("enabled"));
+        assertEquals("fromLabel - EVENT_NAME", XMLFileStructure.EVENT_NAME, XMLFileStructure.fromLabel("name"));
+        assertEquals("fromLabel - EVENT_PRIMITIVE_RUNTIME", XMLFileStructure.EVENT_PRIMITIVE_RUNTIME, XMLFileStructure.fromLabel("runtime"));
         assertEquals("fromLabel - NAMESPACE", XMLFileStructure.NAMESPACE, XMLFileStructure.fromLabel("http://www.w3.org/2001/XMLSchema-instance"));
     }
 
@@ -50,9 +50,9 @@ public class XMLFileStructureTest {
     public void testValuesAsList() {
         List<XMLFileStructure> xMLFileStructureList = Arrays.asList(
                 XMLFileStructure.RACINE_PERCEPTION, XMLFileStructure.EVENTS,
-                XMLFileStructure.PRIMITIVES, XMLFileStructure.PRIMITIVE,
-                XMLFileStructure.PRIMITIVE_ATTR_ENABLED, XMLFileStructure.PRIMITIVE_NAME,
-                XMLFileStructure.PRIMITIVE_RUNTIME, XMLFileStructure.NAMESPACE);
+                XMLFileStructure.EVENT_PRIMITIVES, XMLFileStructure.EVENT_PRIMITIVE,
+                XMLFileStructure.EVENT_ATTR_ENABLED, XMLFileStructure.EVENT_NAME,
+                XMLFileStructure.EVENT_PRIMITIVE_RUNTIME, XMLFileStructure.NAMESPACE);
         assertEquals("valuesAsList - taille", 9, XMLFileStructure.valuesAsList().size());
         assertTrue("valuesAsList - values", XMLFileStructure.valuesAsList().containsAll(xMLFileStructureList));
     }
