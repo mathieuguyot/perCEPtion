@@ -36,26 +36,23 @@ public class ConfigurationLoader {
             PerceptionLogger logger = new SysoutPerceptionLogger();
 
             // Validation et Parcours du fichier XML
-            ResultatParsing parsingResult = XMLFileParser.parse(xmlFilePath,"schema.xsd");
+            ResultatParsing parsingResult = XMLFileParser.parse(xmlFilePath,"perCEPtion/resources/schema.xsd");
 
             if (parsingResult.hasErrors()) {
                 // Affichage des erreurs (en rouge) dans la console
                 logger.logError(parsingResult.toString());
             } else {
                 // Activation des Event Generators
+                ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventList(), core);
+                ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventList(), core);
+                ActivationResult complexResult = CEGActivator.activate(parsingResult.getComplexEventList(), core);
 
-            // TODO : correct this part with the new PrimitiveEventData object
-            // ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventMap(), core);
-                // ActivationResult simpleResult = SEGActivator.activate(parsingResult.getSimpleEventMap(), core);
-               // ActivationResult complexResult = CEGActivator.activate(parsingResult.getComplexEventMap(), core);
-
-                //if (primitiveResult.hasErrors() /*|| simpleResult.hasErrors() || complexResult.hasErrors()*/) {
+                if (primitiveResult.hasErrors() || simpleResult.hasErrors() || complexResult.hasErrors()) {
                     // Affichage des erreurs (en rouge) dans la console
-                    //logger.logError(primitiveResult.toString());
-                    //logger.logError(simpleResult.toString());
-                    //logger.logError(complexResult.toString());
-                //}
-
+                    logger.logError(primitiveResult.toString());
+                    logger.logError(simpleResult.toString());
+                    logger.logError(complexResult.toString());
+                }
             }
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

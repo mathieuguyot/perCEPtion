@@ -1,10 +1,12 @@
 package perception.configurator.activator.manager.PEG;
 
+import perception.complex_event_generator.ComplexEventGenerator;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
 import perception.core.PerceptionCore;
+import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;
 import perception.primitive_events_generator.PrimitiveEventGenerator;
 import perception.services.PerceptionLogger;
@@ -37,8 +39,11 @@ public class PEGActivator {
         // Parcours de l'ensemble des Primitive Event Generator trouvés par le module de parcours
         for (PrimitiveEventData peg : primitiveEventList) {
             try {
+                // Récupération de la banque de SEG
+                EGBank<PrimitiveEventGenerator> bank = PluginManager.getPluginManager().getPegBank();
+
                 // Chargement de la classe correspondant au nom du PEG
-                Class<? extends PrimitiveEventGenerator> event = PluginManager.getPluginManager().getPegBank().getClassForEGName(peg.getType());
+                Class<? extends PrimitiveEventGenerator> event = bank.getClassForEGName(peg.getType());
 
                 // Récupération du constructeur
                 Constructor<?> constructor = event.getConstructor(String.class, long.class);
@@ -48,7 +53,7 @@ public class PEGActivator {
 
                 // Ajout du PEG au core du framework
                 core.getPrimitiveEventGeneratorManager().addEventGenerator((PrimitiveEventGenerator) instance);
-                System.out.println("PEG " + peg + " activé");
+                logger.logMessage("PEG " + peg + " activé");
             } catch (NoSuchMethodException ex) {
                 activationResult.setActivationErrorType(ActivationErrorType.WRONG_PARAMETERS);
                 activationResult.setErrorMsg(ex.getMessage() + "\n" + "Constructeur inexistant pour la classe " + peg.getType() + " et les paramètres " + peg.getRunTime());

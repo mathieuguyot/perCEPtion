@@ -6,6 +6,7 @@ import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.core.PerceptionCore;
 import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;
@@ -30,7 +31,7 @@ public class CEGActivator {
      * @param core - PerceptionCore auquel on ajoutera les SEG activés
      * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
      */
-    public static ActivationResult activate(List<SimpleAndComplexEventData> cegs, PerceptionCore core) {
+    public static ActivationResult activate(List<? extends SimpleAndComplexEventData> cegs, PerceptionCore core) {
         // Instanciation du logger
         PerceptionLogger logger = new SysoutPerceptionLogger();
 
