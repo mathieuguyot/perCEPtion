@@ -1,7 +1,9 @@
 package perception.configurator.xml.manager.parser;
 
 import org.xml.sax.SAXException;
+import perception.configurator.xml.manager.model.ComplexEventData;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
 
@@ -69,8 +71,8 @@ public class XMLFileParser {
     private static ResultatParsing parseSimpleEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
 
         ResultatParsing resultatParsing = XMLFileParserToSimpleEventData.parse(xMLFilePath);
-        List<PrimitiveEventData> listePrimitiveEventData = resultatParsing.getPrimitiveEventList();
-        resultatParsing.setPrimitiveEventList(listePrimitiveEventData);
+        List<SimpleEventData> listeSimpleEventData = resultatParsing.getSimpleEventList();
+        resultatParsing.setSimpleEventList(listeSimpleEventData);
 
         return resultatParsing;
     }
@@ -78,8 +80,8 @@ public class XMLFileParser {
     private static ResultatParsing parseComplexEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
 
         ResultatParsing resultatParsing = XMLFileParserToComplexEventData.parse(xMLFilePath);
-        List<PrimitiveEventData> listePrimitiveEventData = resultatParsing.getPrimitiveEventList();
-        resultatParsing.setPrimitiveEventList(listePrimitiveEventData);
+        List<ComplexEventData> listeComplexEventData = resultatParsing.getComplexEventList();
+        resultatParsing.setComplexEventList(listeComplexEventData);
 
         return resultatParsing;
     }

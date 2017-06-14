@@ -8,7 +8,8 @@ import org.xml.sax.SAXException;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
-import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.ComplexEventData;
+import utils.Pair;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,6 +21,8 @@ import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -97,11 +100,10 @@ class XMLFileParserToComplexEventData {
      */
     protected static void parseComplexesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
-        Optional<NodeList> primitiveEventFromFileOp = getPrimitivesEventInFile(xPath, root, resultatParsing);
+        Optional<NodeList> complexeEventFromFileOp = getComplexesEventInFile(xPath, root, resultatParsing);
 
         // Si la liste est absente c'est que le fichier ne comporte pas de complexes events
-        primitiveEventFromFileOp.ifPresent(nodeList -> createAllPrimitivesEvents(xPath, nodeList, resultatParsing));
-
+        complexeEventFromFileOp.ifPresent(nodeList -> createAllComplexesEvents(xPath, nodeList, resultatParsing));
     }
 
     /**
@@ -114,20 +116,20 @@ class XMLFileParserToComplexEventData {
      * @return un optional contenant éventuellement la liste de primitive events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
     * {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<NodeList> getPrimitivesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
+    protected static Optional<NodeList> getComplexesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
-        // Récupération de tout les complexes events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_PRIMITIVE.getLabel();
-        Optional<NodeList> listPrimitiveEventOp = Optional.empty();
+        // Récupération de tout les simples events du fichier avec XPath
+        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_COMPLEXE.getLabel();
+        Optional<NodeList> listComplexEventOp = Optional.empty();
         try {
-            NodeList listPrimitiveEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
-            listPrimitiveEventOp = Optional.of(listPrimitiveEvent);
+            NodeList listComplexEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
+            listComplexEventOp = Optional.of(listComplexEvent);
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NODE);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
             e.printStackTrace();
         }
 
-        return listPrimitiveEventOp;
+        return listComplexEventOp;
 
     }
 
@@ -135,34 +137,34 @@ class XMLFileParserToComplexEventData {
      * Création de toutes les informations permettant l'instanciation des complexes events à partir du fichier XML.
      *
      * @param xPath                       - le xPath
-     * @param listPrimitiveEventsFromFile - la liste des complexes events du fichier
+     * @param listComplexEventsFromFile - la liste des complexes events du fichier
      * @param resultatParsing             - le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
      *                                    le {@link ResultatParsing} est mis à jour
      */
-    protected static void createAllPrimitivesEvents(XPath xPath, NodeList listPrimitiveEventsFromFile,
-                                                    ResultatParsing resultatParsing) {
+    protected static void createAllComplexesEvents(XPath xPath, NodeList listComplexEventsFromFile,
+                                                   ResultatParsing resultatParsing) {
 
-        for (int i = 0; i < listPrimitiveEventsFromFile.getLength(); i++) {
+        for (int i = 0; i < listComplexEventsFromFile.getLength(); i++) {
 
-            Node node = listPrimitiveEventsFromFile.item(i);
+            Node node = listComplexEventsFromFile.item(i);
 
-            Optional<String> primitiveEventName = Optional.empty();
-            Optional<String> primitiveEventType = Optional.empty();
-            Optional<Long> primitiveEventRuntime = Optional.empty();
+            Optional<String> complexEventName = Optional.empty();
+            Optional<String> complexEventType = Optional.empty();
+            Optional<List<Pair<String, String>>> complexEventParamList = Optional.empty();
 
             // Récupération des éléments du complex event actuel
-            boolean primitiveEventEnabled = isEnabledPrimitiveEvent(xPath, node, resultatParsing);
-            if (primitiveEventEnabled) {
-                primitiveEventName = getPrimitiveEventNameFromFile(xPath, node, resultatParsing);
-                primitiveEventType = getPrimitiveEventTypeFromFile(xPath, node, resultatParsing);
-                primitiveEventRuntime = getPrimitiveEventRuntimeFromFile(xPath, node, resultatParsing);
+            boolean complexEventEnabled = isEnabledComplexEvent(xPath, node, resultatParsing);
+            if (complexEventEnabled) {
+                complexEventName = getComplexEventNameFromFile(xPath, node, resultatParsing);
+                complexEventType = getComplexEventTypeFromFile(xPath, node, resultatParsing);
+                complexEventParamList = getComplexEventParamListFromFile(xPath, node, resultatParsing);
             }
 
             // Si on a aucune erreur dans le fichier les informations d'instanciation du primitive event courant est
             // ajouté au résultat du parsing
-            if (primitiveEventName.isPresent() && primitiveEventRuntime.isPresent() && primitiveEventType.isPresent()) {
-                PrimitiveEventData primitiveEventData = new PrimitiveEventData(primitiveEventName.get(), primitiveEventType.get(), primitiveEventRuntime.get());
-                resultatParsing.addPrimitiveEvent(primitiveEventData);
+            if (complexEventName.isPresent() && complexEventParamList.isPresent() && complexEventType.isPresent()) {
+                ComplexEventData complexEventData = new ComplexEventData(complexEventName.get(), complexEventType.get(), complexEventParamList.get());
+                resultatParsing.addComplexEvent(complexEventData);
             }
 
         }
@@ -178,15 +180,15 @@ class XMLFileParserToComplexEventData {
      * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<String> getPrimitiveEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static Optional<String> getComplexEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<String> nameOp = Optional.empty();
         try {
             String strSelectName = XMLFileStructure.EVENT_NAME.getLabel();
             String name = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
             if(name.equals("")) {
-                throw new XPathExpressionException("Missing primitive event name.");
+                throw new XPathExpressionException("Missing complex event name.");
             }
-            else if(resultatParsing.existingPrimitiveEventListWithName(name)) {
+            else if(resultatParsing.existingComplexEventListWithName(name)) {
                 resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.EVENT_PRIMITIVES_DUPLICATED_NAME, name);
             }
             else {
@@ -209,13 +211,13 @@ class XMLFileParserToComplexEventData {
      * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
      * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<String> getPrimitiveEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static Optional<String> getComplexEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
         Optional<String> typeOp = Optional.empty();
         try {
             String strSelectName = XMLFileStructure.EVENT_TYPE.getLabel();
             String type = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
             if(type.equals("")) {
-                throw new XPathExpressionException("Missing primitive event type.");
+                throw new XPathExpressionException("Missing complex event type.");
             } else {
                 typeOp = Optional.of(type);
             }
@@ -228,30 +230,103 @@ class XMLFileParserToComplexEventData {
     }
 
     /**
-     * Récupére le runtime donné dans le fichier XML pour le complex event spécifié.
+     * Récupération de tous les params events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
+     * paramètre et sera mis à jour au cours du traitement.
      *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au complex event
-     * @param resultatParsing le résultat du parsing
-     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
-     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
+     * @param xPath           le xPath
+     * @param node            le noeud corespondant à un complex event du fichier XML de configuration
+     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
+     * @return un optional contenant éventuellement la liste d'events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
+     * {@link ResultatParsing} est mis à jour
      */
-    protected static Optional<Long> getPrimitiveEventRuntimeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Optional<Long> runtTimeOp = Optional.empty();
+    protected static Optional<List<Pair<String, String>>> getComplexEventParamListFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+
+        // Récupération de tout les simples events du fichier avec XPath
+        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_PARAM.getLabel();
+        Optional<List<Pair<String, String>>> listParamEventOp = Optional.empty();
         try {
-            String strSelectName = XMLFileStructure.EVENT_PRIMITIVE_RUNTIME.getLabel();
-            Long runtTime = ((Double) xPath.evaluate(strSelectName, node, XPathConstants.NUMBER)).longValue();
-            if (runtTime <= 0) {
-                resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_PRIMITIVES_INVALID_RUNTIME);
-            } else {
-                runtTimeOp = Optional.of(runtTime);
-            }
+
+            NodeList listParamEventNode = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, node, XPathConstants.NODESET);
+
+            List<Pair<String, String>> eventParamList = getEventParams(xPath, listParamEventNode, resultatParsing);
+
+            listParamEventOp = Optional.of(eventParamList);
+
         } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_PRIMITIVES_INVALID_RUNTIME);
-            // System.out.println("Impossible de trouver le nom du primitive event : " + node);
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
             e.printStackTrace();
         }
-        return runtTimeOp;
+
+        return listParamEventOp;
+
+    }
+
+    /**
+     * Permet la récupération des paramètres pour l'event à partir des informations du fichier XML de configuration.
+     *
+     * @param xPath                     le xPath
+     * @param listParamsEventsFromFile  la liste des paramètres de l'event
+     * @param resultatParsing           le résultat de parsing qui sera mit à jour au cours du traitement en cas d'erreur de parsing
+     * @return une liste de tuples comportant le type et la valeur du paramètre
+     */
+    protected static List<Pair<String, String>> getEventParams(XPath xPath, NodeList listParamsEventsFromFile,
+                                                               ResultatParsing resultatParsing) {
+
+        List<Pair<String, String>> listEventParams = new ArrayList<>();
+
+        for (int i = 0; i < listParamsEventsFromFile.getLength(); i++) {
+
+            Node node = listParamsEventsFromFile.item(i);
+
+            // Récupération des éléments du simple event actuel
+            Optional<String> eventParamTypeOp = getComplexEventParamTypeFromFile(xPath, node, resultatParsing);
+            String eventParamValue = getComplexEventParamValueFromFile(node);
+
+            // Si on a aucune erreur dans le fichier les informations d'instanciation du simple event courant est
+            // ajouté au résultat du parsing
+            if (eventParamTypeOp.isPresent()) {
+                Pair<String, String> param = new Pair<>(eventParamTypeOp.get(), eventParamValue);
+                listEventParams.add(param);
+            }
+
+        }
+
+        return listEventParams;
+
+    }
+
+    /**
+     * Permet la récupération de la valeur du type du paramètre du complex event fourni en entrée.
+     *
+     * @param xPath             le xPath
+     * @param node              le noeud corespondant à un complex event du fichier XML de configuration
+     * @param resultatParsing   le résultat de parsing qui sera mis à jour au cours du traitement en cas d'erreur de parsing
+     * @return le type du paramètre du complex event fourni en entrée
+     */
+    protected static Optional<String> getComplexEventParamTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
+        Optional<String> eventParamTypeOp = Optional.empty();
+        try {
+            String eventParamType = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_PARAM_ATTR_TYPE.getLabel(), node, XPathConstants.STRING);
+            if (eventParamType.equals("")) {
+                resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
+            } else {
+                eventParamTypeOp = Optional.of(eventParamType);
+            }
+        } catch (XPathExpressionException e) {
+            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
+        }
+        return eventParamTypeOp;
+    }
+
+    /**
+     * Permet la récupération de la valeur du paramètre du complex event fourni en entrée.
+     *
+     * @param node      le noeud corespondant à un simple event du fichier XML de configuration
+     * @return la valeur du paramètre du complex event fourni en entrée
+     */
+    protected static String getComplexEventParamValueFromFile(Node node) {
+        String eventParamValue = node.getNodeValue();
+        return eventParamValue;
     }
 
     /**
@@ -264,11 +339,11 @@ class XMLFileParserToComplexEventData {
      * @return <code>true</code> si le complex event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
      * {@link ResultatParsing} n'est pas mis à jour
      */
-    protected static boolean isEnabledPrimitiveEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
+    protected static boolean isEnabledComplexEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
         boolean enabled = false;
         try {
-            String primitiveEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
-            if (primitiveEventEnabled.equals("true") || primitiveEventEnabled.equals("")) {
+            String complexEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
+            if (complexEventEnabled.equals("true") || complexEventEnabled.equals("")) {
                 enabled = true;
             }
         } catch (XPathExpressionException e) {

@@ -1,6 +1,7 @@
 import graph.PM;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.activator.manager.PEG.PEGActivator;
+import perception.configurator.exec.ConfigurationLoader;
 import perception.core.CloudResourcesAccess;
 import perception.core.PerceptionCore;
 import perception.pluginManager.PluginManager;
@@ -30,13 +31,13 @@ public class Main {
 
         PerceptionCore core = new PerceptionCore();
 
-        //PluginManager.getPluginManager().registerPlugin(MainPerceptionPlugin.getPlugin());
+        PluginManager.getPluginManager().registerPlugin(MainPerceptionPlugin.getPlugin());
 
         //Activation of PEG
         core.getPrimitiveEventGeneratorManager().setLogStream(true);
-        Map<String, Long> map = new HashMap<>();
+        /*Map<String, Long> map = new HashMap<>();
         map.put("PEG_Pm_Cpu", 1000L);
-        map.put("PEG_Pm_Ram", 1000L);
+        map.put("PEG_Pm_Ram", 1000L);*/
 
         // TODO : Correct this part with the new parsing format
         /*ActivationResult activationResult = PEGActivator.activate(map, core);
@@ -67,6 +68,8 @@ public class Main {
 
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
+
+        ConfigurationLoader.loadConfiguration("perCEPtion/resources/test.xml",core);
 /*
         KeyedStream<PrimitiveEvent, String> kStream = core.getPrimitiveEventStream().getStream().keyBy(
                 new KeySelector<PrimitiveEvent, String>() {

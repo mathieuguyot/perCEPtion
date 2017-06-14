@@ -6,64 +6,54 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>MonPEGBlank</name>
-                <type>PEG_Blank</type>
-                <runtime>60000</runtime>
-            </primitive>
-            <primitive enabled="true">
                 <name>MonPEGPmCpu</name>
                 <type>PEG_Pm_Cpu</type>
-                <runtime>12000</runtime>
+                <runtime>1000</runtime>
             </primitive>
             <primitive enabled="false">
                 <name>MonPEGPmDisk</name>
                 <type>PEG_Pm_Disk</type>
-                <runtime>89100</runtime>
+                <runtime>1000</runtime>
+            </primitive>
+            <primitive enabled="true">
+                <name>MonPEGPmDiskActivated</name>
+                <type>PEG_Pm_Disk</type>
+                <runtime>2000</runtime>
             </primitive>
         </primitives>
         <simples>
             <simple enabled="true">
                 <name>MonSimpleEvent1</name>
-                <type>SE_Cpu_Drop</type>
+                <type>SEG_Cpu_Drop</type>
                 <params>
                     <param tag="tag1" type="Long">45958</param>
                     <param tag="tag2" type="String">Param1</param>
                     <param tag="tag3" type="String">param2</param>
                     <param tag="tag4" type="Integer">78</param>
-                </params>
-            </simple>
-            <simple enabled="true">
-                <name>MonSimpleEvent2</name>
-                <type>SEG_Cpu_Overload</type>
-                <params>
-                    <param tag="ip4" type="Long">1245</param>
-                    <param tag="port" type="String">localhost:8080</param>
-                    <param tag="monParam3" type="String">param3</param>
-                    <param tag="monParam4" type="Integer">45</param>
                 </params>
             </simple>
         </simples>
         <complexes>
-            <complex enabled="true">
+            <complexe enabled="true">
                 <name>MonSimpleEvent1</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_Cpu_Dead</type>
                 <params>
                     <param tag="tag1" type="Long">45958</param>
                     <param tag="tag2" type="String">Param1</param>
                     <param tag="tag3" type="String">param2</param>
                     <param tag="tag4" type="Integer">78</param>
                 </params>
-            </complex>
-            <complex enabled="true">
+            </complexe>
+            <complexe enabled="true">
                 <name>MonSimpleEvent2</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_Cpu_Dead</type>
                 <params>
                     <param tag="ip4" type="Long">1245</param>
                     <param tag="port" type="String">localhost:8080</param>
                     <param tag="monParam3" type="String">param3</param>
                     <param tag="monParam4" type="Integer">45</param>
                 </params>
-            </complex>
+            </complexe>
         </complexes>
     </events>
 </perception>

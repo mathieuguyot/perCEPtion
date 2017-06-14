@@ -20,7 +20,7 @@
 
 	<xsd:simpleType name="simple_event_type_type">
 		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="SE_Cpu_Drop"/>
+			<xsd:enumeration value="SEG_Cpu_Drop"/>
             <xsd:enumeration value="SEG_Cpu_Overload"/>
 			<xsd:enumeration value="SEG_Ram_Drop"/>
 		</xsd:restriction>
@@ -28,7 +28,7 @@
 
 	<xsd:simpleType name="complex_event_type_type">
 		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="CE_Cpu_Dead"/>
+			<xsd:enumeration value="CEG_Cpu_Dead"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 
@@ -111,7 +111,7 @@
 	</xsd:element>
 
 		<!-- Complex events -->
-	<xsd:element name="complex">
+	<xsd:element name="complexe">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
@@ -125,7 +125,7 @@
 	<xsd:element name="complexes">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="complex" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="complexe" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

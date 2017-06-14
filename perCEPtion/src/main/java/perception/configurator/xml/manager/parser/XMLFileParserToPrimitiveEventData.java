@@ -101,6 +101,7 @@ class XMLFileParserToPrimitiveEventData {
 
         // Si la liste est absente c'est que le fichier ne comporte pas de primitives events
         primitiveEventFromFileOp.ifPresent(nodeList -> createAllPrimitivesEvents(xPath, nodeList, resultatParsing));
+        resultatParsing.getPrimitiveEventList().size();
 
     }
 
@@ -141,7 +142,6 @@ class XMLFileParserToPrimitiveEventData {
      */
     protected static void createAllPrimitivesEvents(XPath xPath, NodeList listPrimitiveEventsFromFile,
                                                     ResultatParsing resultatParsing) {
-
         for (int i = 0; i < listPrimitiveEventsFromFile.getLength(); i++) {
 
             Node node = listPrimitiveEventsFromFile.item(i);
