@@ -63,7 +63,19 @@ public class ValidationError {
 	public static ValidationError FAB() {
 		return new ValidationError();
 	}
-	
+
+	// Services
+
+	/**
+	 * Permet l'impression de l'erreur de validation.
+	 * @return une chaîne de caractère l'erreur de validation
+	 */
+	public String printError() {
+		return "Validation error : " +
+				"\n\t" + this.validatorErrorType.printError() +
+				"\n\t" + this.errorMsg;
+	}
+
 	// Services universels
 	
 	@Override
@@ -89,7 +101,5 @@ public class ValidationError {
 			return false;
 		return true;
 	}
-
-	
 
 }

@@ -5,7 +5,7 @@
 	<!-- Création de type personnalisé -->
 	
 	<!-- Type d'event -->
-	<xsd:simpleType name="primitive_event_type_type">
+	<!--<xsd:simpleType name="primitive_event_type_type">
     	<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="PEG_Blank"/>
 			<xsd:enumeration value="PEG_Co_ResponseTime"/>
@@ -30,6 +30,18 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="CEG_Cpu_Dead"/>
 		</xsd:restriction>
+	</xsd:simpleType>-->
+
+	<xsd:simpleType name="primitive_event_type_type">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="simple_event_type_type">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="complex_event_type_type">
+		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
 
 	<!-- Temps d'intervalle entre deux exécutions -->

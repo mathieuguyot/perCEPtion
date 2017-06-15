@@ -59,8 +59,13 @@ public enum ValidatorErrorType {
 		return label;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
-	}
+	// Services
 
+	/**
+	 * Permet l'impression du type d'erreur de validation.
+	 * @return une chaîne de caractère du type de l'erreur de validation
+	 */
+	public String printError() {
+		return "Validation error type - " + this.toString() + " : " + this.getLabel();
+	}
 }

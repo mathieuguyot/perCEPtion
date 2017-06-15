@@ -104,6 +104,25 @@ public class ValidationResult {
 		return ((this.getFileErrorType() != null) || (this.getValidationError() != null));
 	}
 
+	/**
+	 * Permet l'impression des erreurs résultantes de la validation de fichier de configuration XML.
+	 * @return une chaîne de caractère comprenant les erreurs résultantes de la validation
+	 */
+	public String printErrors() {
+		String str = "Erreurs de validation :";
+		if (this.hasErrors()) {
+			if (this.validationError != null) {
+				str += "\t" + this.validationError.printError();
+			}
+			if (this.fileErrorType != null) {
+				str += "\t" + this.fileErrorType.printError();
+			}
+			return str;
+		}
+		return "Aucune erreur de validation.";
+	}
+
+
 	// Services universels
 	@Override
 	public String toString() {

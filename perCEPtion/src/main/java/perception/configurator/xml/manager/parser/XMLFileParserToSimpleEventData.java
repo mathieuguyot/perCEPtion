@@ -331,6 +331,4 @@ class XMLFileParserToSimpleEventData {
         return eventParamValue;
     }
 
-
-
 }

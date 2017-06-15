@@ -40,7 +40,7 @@ public class ConfigurationLoader {
 
             if (parsingResult.hasErrors()) {
                 // Affichage des erreurs (en rouge) dans la console
-                logger.logError(parsingResult.toString());
+                logger.logError(parsingResult.printErrors());
             } else {
                 // Activation des Event Generators
                 ActivationResult primitiveResult = PEGActivator.activate(parsingResult.getPrimitiveEventList(), core);

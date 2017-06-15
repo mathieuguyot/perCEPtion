@@ -63,4 +63,14 @@ public enum FileErrorType {
 		return errorInfo;
 	}
 
+	// Services
+
+	/**
+	 * Permet l'impression le type de l'erreur de traitement du fichier de configuration XML.
+	 * @return une chaîne de caractère comprenant le type de l'erreur de traitement de fichier
+	 */
+	public String printErrors() {
+		return "File error type : " + this.toString() + " : " + this.getLabel();
+	}
+
 }

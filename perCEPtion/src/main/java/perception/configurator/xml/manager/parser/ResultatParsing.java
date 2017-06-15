@@ -8,6 +8,7 @@ import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -251,6 +252,33 @@ public class ResultatParsing {
         }
         return (test ||
                 (this.getValidationResult().hasErrors()));
+    }
+
+    /**
+     * Permet l'impression est erreurs résultantes du parsing du fichier de configuration XML.
+     * @return une chaîne de caractère comprenant les erreurs résultantes du parsing
+     */
+    public String printErrors() {
+        String str = "Erreurs de parsing :";
+        if (this.hasErrors()) {
+            if(!this.fileErrorTypes.isEmpty()) {
+                str += "\n\tErreurs de traitement du fichier XML de configuration :";
+                for (FileErrorType fileErrorType : this.fileErrorTypes) {
+                    str += "\n\t\t- " + fileErrorType;
+                }
+            }
+            if(!this.parsingErrorTypes.isEmpty()) {
+                str += "\n\tErreurs de parsing du fichier XML de configuration :";
+                for (ParsingErrorType parsingErrorType : this.parsingErrorTypes) {
+                    str += "\n\t\t- " + parsingErrorType;
+                }
+            }
+            if(this.validationResult.hasErrors()) {
+                str += this.validationResult.printErrors();
+            }
+            return str;
+        }
+        return "Aucune erreur de parsing.";
     }
 
     // Accesseurs
