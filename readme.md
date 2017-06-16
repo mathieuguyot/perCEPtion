@@ -1,10 +1,10 @@
 # Framework perCEPtion
-Bienvenu sur le dépot officiel du framework perCEPtion !
+Bienvenue sur le dépot officiel du framework perCEPtion !
 
 ***
 PerCEPTion est un framework de monitoring basé sur le traitement des événements complexes (Complex Event Processing - CEP) permettant de mettre en place une surveillance avancée d'une architecture matérielle et logicielle (Cloud par exemple). En outre, il permet de détecter des signes d'incohérence au sein d'un ensemble de composants d'une architecture. Si des incohérences sont détectées par le framework, celui-ci fournit un ensemble d'informations permettant d'aider à la reconfiguration des composants affectés.
 ***
-Ce Framework à été redesigné à partir d'un framework développé par Simon Dupont et des chercheurs et étudiants de l'Institut Mines-Télécom Atlantique. Apache Flink est utilisé dans la nouvelle version du framework.
+Ce Framework a été redesigné à partir d'un framework développé par Simon Dupont et des chercheurs et étudiants de l'Institut Mines-Télécom Atlantique. Apache Flink est utilisé dans la nouvelle version du framework.
 Il suit assez fidèlement les concepts de la thèse de Simon Dupont : ["Gestion autonomique de l'élasticité multi-couche des applications dans le Cloud : vers une utilisation efficiente des ressources et des services du Cloud"](https://tel.archives-ouvertes.fr/tel-01344377/)
 
 >La dernière version de framework a été conçue par 4 étudiants de l'Institut Mines-Télécom Atlantique :
@@ -21,15 +21,15 @@ L'image ci-dessous décrit le fonctionnement global du framework perception:
 
 ![PerCEPtion architecture](images/perCEPtion_architecture.png)
 
-Le framework à pour objectif de monitorer un ensemble de composants d'une architecture. Pour attendre cet objectif, perCEPtion utilise le CEP (complex event processing) d'une manière ingénieuse:
-1. La première étape consiste à générer des évènements dis primitifs. Ceux-ci sont générés constaments. Ils sont donc très nombreux mais peu significatifs.
-2. La seconde étape consiste a étudier le flux constant d'évènements primitifs pour essayer d'extraire des informations significatives. De cette étape, sont générés des évènements dis simples et complexes (le premier contient des informations significatives d'une resources, le second d'une ou plusieurs resources).
-3. La troisième étape consiste a étudier le flux constant d'évènements simples et complexes afin de sélectionner les plus significatifs et de les considérer comme des symtomes porteurs d'une information sur une anomalie d'une partie du système surveillé.
-4. Enfin la pile des symptomes est triée et permet de faire remonter les anomalies du système les plus grave.
+Le framework a pour objectif de monitorer un ensemble de composants d'une architecture. Pour atteindre cet objectif, perCEPtion utilise le CEP (complex event processing) d'une manière ingénieuse:
+1. La première étape consiste à générer des évènements dits primitifs. Ceux-ci sont générés constamment. Ils sont donc très nombreux mais peu significatifs.
+2. La seconde étape consiste à étudier le flux constant d'évènements primitifs pour essayer d'extraire des informations significatives. De cette étape, sont générés des évènements dis simples et complexes (le premier contient des informations significatives d'une resources, le second d'une ou plusieurs resources).
+3. La troisième étape consiste à étudier le flux constant d'évènements simples et complexes afin de sélectionner les plus significatifs et de les considérer comme des symptômes porteurs d'une information sur une anomalie d'une partie du système surveillé.
+4. Enfin la pile des symptômes est triée et permet de faire remonter les anomalies du système les plus graves.
 
 > Tous les évènements générés par le système de monitoring embarquent avec eux un
-score qui permet de faire remoter les maladies du systèmes en fonction de leur
-gravité. En outre, les scores des évènements permettent de trier la pile des symptomes.
+score qui permet de faire remonter les maladies du système en fonction de leur
+gravité. En outre, les scores des évènements permettent de trier la pile des symptômes.
 
 Tous les composants de cette image sont décrits en détail ci-dessous.
 
@@ -39,16 +39,16 @@ Voici les différents types d’événements qui sont utilisés dans perCEPtion:
 
 |Type d'évènement| Description |
 |---|---|
-| Primitif event(PE) |  Un événement primitif contient une information sur un seul composant de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés primitive events generator (PEG). |
+| Primitive event(PE) |  Un événement primitif contient une information sur un seul composant de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés primitive events generator (PEG). |
 | Simple event (SE) | Un événement simple contient une ou plusieurs informations sur un seul composant de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés simple events generator (SEG). |
 | Complex event (CE) | Un événement complexe contient une ou plusieurs informations sur un ou plusieurs composants de l'architecture qui est surveillée. Il est obtenu grâce à des composants appelés complex events generator (CEG). |
-| Symptom (Sy) | Tout comme un évènement complexe, un symptome contient  une ou plusieurs informations sur un ou plusieurs composants de l'architecture qui est surveillée. Il est obtenu par les SEGs, CEGs, ou bien les symtoms extractors.|
+| Symptom (Sy) | Tout comme un évènement complexe, un symptôme contient  une ou plusieurs informations sur un ou plusieurs composants de l'architecture qui est surveillée. Il est obtenu par les SEGs, CEGs, ou bien les symtoms extractors.|
 
 ### Générateurs d'évènements primitifs
 
 Pour générer des évènements primitifs, nous utilisons des générateurs d'évènements primtifs ! (PEG pour Primitive event generator).
 
-Chaque PEG observe le graphe de resources à une cadence x donnée (en millisecondes), et passe en revue chaque resources de ce graphe.
+Chaque PEG observe le graphe de ressources à une cadence x donnée (en millisecondes), et passe en revue chaque ressource de ce graphe.
 Lors de ce passage en revue, un évènement primitif peut être généré ou non.
 
 Si un évènement primitif est créé, il est envoyé vers la primitive event stream.
@@ -98,8 +98,8 @@ public class PEG_Pm_Cpu extends PrimitiveEventGenerator {
 
 Pour générer des évènements simples, nous utilisons des générateurs d'évènements simples ! (SEG pour Simple event generator).
 
-Chaque SEG observe en continue la primitive event stream, et essaye de détecter un pattern (une liste de PE) défini par le concepteur du SEG.
-Si un pattern est reconu, il est traité par le SEG et un Simple event peut être créé. (Voir même un symptome si l'information récupérée est très significative).
+Chaque SEG observe en continu la primitive event stream, et essaye de détecter un pattern (une liste de PE) défini par le concepteur du SEG.
+Si un pattern est reconu, il est traité par le SEG et un Simple event peut être créé. (Voir même un symptôme si l'information récupérée est très significative).
 
 Voici un exemple de SEG pouvant être créé par un admistrateur réseau.
 Comme vous pouvez le voir, créer son propre SEG est très simple, il suffit
@@ -207,13 +207,21 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
 }
 ```
 
-### Générateurs d'évènements compexes
+### Générateurs d'évènements complexes
 
-### Extracteurs de symptomes
+### Extracteurs de symptômes
 
 ## Utilisation du Framework
 
 Nous avons fait en sorte que l'utilisation du framework soit le plus simple possible !
 Les sections ci-dessous détaillent comment utiliser perCEPtion.
+
+### Configuration des EG via le fichier XML
+
+Il suffit de créer un fichier XML, respectant le schéma xsd défini et fourni dans l'archive.
+
+Il faut définir le type, qui correspond à la classe d'implémentation de l'Event Generator, le nom qui sera donné à l'EG, et pour les SEG et les CEG, il faudra donner l'ensemble des paramètres à envoyer au constructeur de la classe.
+
+/!\ ATTENTION : la liste des paramètres et le leur types doivent être fournis dans le même ordre que dans le constructeur. /!\
 
 # En travaux !
