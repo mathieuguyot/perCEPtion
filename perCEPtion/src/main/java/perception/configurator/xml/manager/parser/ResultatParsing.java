@@ -359,31 +359,25 @@ public class ResultatParsing {
 
     // Services universels
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ResultatParsing that = (ResultatParsing) o;
+
+        if (fileErrorTypes != null ? !fileErrorTypes.equals(that.fileErrorTypes) : that.fileErrorTypes != null)
             return false;
-        if (getClass() != obj.getClass())
+        if (parsingErrorTypes != null ? !parsingErrorTypes.equals(that.parsingErrorTypes) : that.parsingErrorTypes != null)
             return false;
-        ResultatParsing other = (ResultatParsing) obj;
-        if (fileErrorTypes == null) {
-            if (other.fileErrorTypes != null)
-                return false;
-        } else if (!fileErrorTypes.equals(other.fileErrorTypes))
+        if (validationResult != null ? !validationResult.equals(that.validationResult) : that.validationResult != null)
             return false;
-        if (primitiveEventList == null) {
-            if (other.primitiveEventList != null)
-                return false;
-        } else if (!primitiveEventList.equals(other.primitiveEventList))
+        if (primitiveEventList != null ? !primitiveEventList.equals(that.primitiveEventList) : that.primitiveEventList != null)
             return false;
-        if (parsingErrorTypes == null) {
-            if (other.parsingErrorTypes != null)
-                return false;
-        } else if (!parsingErrorTypes.equals(other.parsingErrorTypes))
+        if (simpleEventList != null ? !simpleEventList.equals(that.simpleEventList) : that.simpleEventList != null)
             return false;
-        return true;
+        return complexEventList != null ? complexEventList.equals(that.complexEventList) : that.complexEventList == null;
     }
 
     @Override
@@ -392,9 +386,9 @@ public class ResultatParsing {
                 "fileErrorTypes=" + fileErrorTypes +
                 ", parsingErrorTypes=" + parsingErrorTypes +
                 ", validationResult=" + validationResult +
-                ", primitiveEventList=" + primitiveEventList +
-                ", simpleEventList=" + simpleEventList +
-                ", complexEventList=" + complexEventList +
+                ", \nprimitiveEventList=" + primitiveEventList +
+                ", \nsimpleEventList=" + simpleEventList +
+                ", \ncomplexEventList=" + complexEventList +
                 '}';
     }
 

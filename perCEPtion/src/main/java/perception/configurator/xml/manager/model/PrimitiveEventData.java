@@ -44,7 +44,7 @@ public class PrimitiveEventData {
 
     @Override
     public String toString() {
-        return "PrimitiveEventData{" +
+        return "\n\tPrimitiveEventData{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", runTime=" + runTime +

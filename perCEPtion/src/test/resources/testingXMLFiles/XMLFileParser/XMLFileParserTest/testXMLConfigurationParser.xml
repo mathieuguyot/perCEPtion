@@ -45,23 +45,23 @@
         </simples>
         <complexes>
             <complex enabled="true">
-                <name>MonSimpleEvent1</name>
+                <name>MonComplexEvent1</name>
                 <type>CE_Cpu_Dead</type>
                 <params>
-                    <param tag="tag1" type="Long">45958</param>
-                    <param tag="tag2" type="String">Param1</param>
-                    <param tag="tag3" type="String">param2</param>
+                    <param tag="tag1" type="Long">12</param>
+                    <param tag="tag2" type="String">Param4</param>
+                    <param tag="tag3" type="String">param5</param>
                     <param tag="tag4" type="Integer">78</param>
                 </params>
             </complex>
             <complex enabled="true">
-                <name>MonSimpleEvent2</name>
+                <name>MonComplexEvent2</name>
                 <type>CE_Cpu_Dead</type>
                 <params>
-                    <param tag="ip4" type="Long">1245</param>
-                    <param tag="port" type="String">localhost:8080</param>
-                    <param tag="monParam3" type="String">param3</param>
-                    <param tag="monParam4" type="Integer">45</param>
+                    <param tag="ip4" type="Long">5</param>
+                    <param tag="port" type="String">Kikou Toi</param>
+                    <param tag="monParam3" type="String">param6</param>
+                    <param tag="monParam4" type="Integer">4</param>
                 </params>
             </complex>
         </complexes>

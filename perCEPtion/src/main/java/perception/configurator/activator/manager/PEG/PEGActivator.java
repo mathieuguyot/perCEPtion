@@ -1,10 +1,8 @@
 package perception.configurator.activator.manager.PEG;
 
-import perception.complex_event_generator.ComplexEventGenerator;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
-import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
 import perception.core.PerceptionCore;
 import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;

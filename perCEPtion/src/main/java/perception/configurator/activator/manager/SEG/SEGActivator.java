@@ -3,8 +3,7 @@ package perception.configurator.activator.manager.SEG;
 import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
-import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
-import perception.configurator.xml.manager.model.SimpleEventData;
+import perception.configurator.xml.manager.model.EventData;
 import perception.core.PerceptionCore;
 import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;
@@ -27,11 +26,11 @@ public class SEGActivator {
     /**
      * Récupère les objets de configuration des {@link SimpleEventGenerator},
      * les instancie avec leur paramètres et les ajoute au {@link PerceptionCore}
-     * @param segs - Liste d'objets SimpleAndComplexEventData contenant les informations des SimpleEventGenerator à activer
+     * @param segs - Liste d'objets EventData contenant les informations des SimpleEventGenerator à activer
      * @param core - PerceptionCore auquel on ajoutera les SEG activés
      * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
      */
-    public static ActivationResult activate(List<? extends SimpleAndComplexEventData> segs, PerceptionCore core) {
+    public static ActivationResult activate(List<? extends EventData> segs, PerceptionCore core) {
         // Instanciation du logger
         PerceptionLogger logger = new SysoutPerceptionLogger();
 
@@ -42,7 +41,7 @@ public class SEGActivator {
         EGBank<SimpleEventGenerator> bank = PluginManager.getPluginManager().getSegBank();
 
         // Parcours de l'ensemble des Simple Event Generator trouvés par le module de parcours
-        for (SimpleAndComplexEventData seg : segs) {
+        for (EventData seg : segs) {
             try {
                 // Chargement de la classe correspondant au type (nom de la classe) du SEG
                 Class<?> event = bank.getClassForEGName(seg.getEventType());

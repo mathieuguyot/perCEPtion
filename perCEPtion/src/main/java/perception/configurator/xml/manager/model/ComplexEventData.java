@@ -10,16 +10,21 @@ import java.util.List;
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class ComplexEventData extends SimpleAndComplexEventData {
+public class ComplexEventData extends EventData {
 
     /**
      * Constructeur de la classe {@link ComplexEventData}
      * @param eventType - Classe correspondant à l'Event Generator à activer
      * @param eventName - Nom que l'on souhaite donner à l'Event Generator
-     * @param params - Liste de tuple comportant les types et valeur de paramètres
+     * @param params - Liste de tuple comportant les types et valeur de paramètres (dans cet ordre)
      */
     public ComplexEventData(String eventType, String eventName, List<Pair<String, String>> params) {
         super(eventType, eventName, params);
+    }
+
+    @Override
+    public String toString() {
+        return "\n\tComplexEventData{" + super.toString() + "}";
     }
 
 }

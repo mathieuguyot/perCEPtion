@@ -8,7 +8,6 @@ import org.xml.sax.SAXException;
 import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
-import perception.configurator.xml.manager.model.SimpleEventData;
 import utils.Pair;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -31,23 +30,32 @@ import java.util.Optional;
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class XMLFileParseToEventData<T> {
+public abstract class XMLFileParseToEventData {
 
+    // Element commun aux parsers
     private static String xmlNodeParamAttrType = XMLFileStructure.EVENT_PARAM_ATTR_TYPE.getLabel();
 
-    private String xmlNodePluralEventLabel;
+    // Element propre aux parsers courant
+
+        // La balise du fichier XML définisant un event
+        // ex : simple
+    private String xmlNodeSingularEventLabel;
+
+        // Erreur de parsing propre à l'event
     private ParsingErrorType parsingErrorType_pluralEventLabel;
     private ParsingErrorType parsingErrorType_pluralEventDuplicated;
     private ParsingErrorType parsingErrorType_pluralEventInvalidName;
     private ParsingErrorType parsingErrorType_pluralEventInvalidType;
 
     public XMLFileParseToEventData(
-            String xmlNodePluralEventLabel,
+            //XMLFileParserElement elementToParse,
+            String xmlNodeSingularEventLabel,
             ParsingErrorType parsingErrorType_pluralEventLabel,
             ParsingErrorType parsingErrorType_pluralEventDuplicated,
             ParsingErrorType parsingErrorType_pluralEventInvalidName,
             ParsingErrorType parsingErrorType_pluralEventInvalidType) {
-        this.xmlNodePluralEventLabel = xmlNodePluralEventLabel;
+        //this.elementToParse = elementToParse;
+        this.xmlNodeSingularEventLabel = xmlNodeSingularEventLabel;
         this.parsingErrorType_pluralEventLabel = parsingErrorType_pluralEventLabel;
         this.parsingErrorType_pluralEventDuplicated = parsingErrorType_pluralEventDuplicated;
         this.parsingErrorType_pluralEventInvalidName = parsingErrorType_pluralEventInvalidName;
@@ -76,21 +84,9 @@ public class XMLFileParseToEventData<T> {
         // Parsing du fichier xml via un objet File et récupération d'un objet
         // Document qui permet de représenter la hiérarchie d'objet créée pendant le
         // parsing
-        Document xml = null;
-        boolean test = true;
-
-        try {
-            // Création du parser
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            File fileXML = new File(filePath);
-
-            xml = builder.parse(fileXML);
-
-        } catch (FileNotFoundException ex) {
-            resultatParsing.addFileErrorType(FileErrorType.FILE_NOT_FOUND);
-            ex.printStackTrace();
-            test = false;
-        }
+        Pair<Boolean, Document> createdParser = XMLFileParseToEventData.createParser(factory, filePath, resultatParsing);
+        Boolean test = createdParser.getFirst();
+        Document xml = createdParser.getSecond();
 
         // Si le ficher est introuvable, le parsing est arrêté
         if (test) {
@@ -107,6 +103,42 @@ public class XMLFileParseToEventData<T> {
         }
 
         return resultatParsing;
+
+    }
+
+    /**
+     * Permet la création du parser de fichier XML
+     * @param factory   {@link DocumentBuilderFactory}
+     * @param filePath  le chemin vers le fichier de configuration XML
+     * @param resultatParsing le résultat du parsing
+     * @return un tuble comprenant
+     *              - un boolean à vrai si le parsing a été possible et false dans le cas contraire
+     *              - l'objet représentatif du fichier XML
+     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     * @throws IOException {@link IOException}
+     * @throws SAXException {@link SAXException}
+     */
+    public static Pair<Boolean, Document> createParser(
+            DocumentBuilderFactory factory, String filePath, ResultatParsing resultatParsing)
+            throws ParserConfigurationException, IOException, SAXException {
+
+        Document xml = null;
+        boolean test = true;
+
+        try {
+            // Création du parser
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            File fileXML = new File(filePath);
+
+            xml = builder.parse(fileXML);
+
+        } catch (FileNotFoundException ex) {
+            resultatParsing.addFileErrorType(FileErrorType.FILE_NOT_FOUND);
+            ex.printStackTrace();
+            test = false;
+        }
+
+        return new Pair<Boolean, Document>(test, xml);
 
     }
 
@@ -140,7 +172,7 @@ public class XMLFileParseToEventData<T> {
     protected Optional<NodeList> getSimpleEventsInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
 
         // Récupération de tout les simples events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + xmlNodePluralEventLabel;
+        String expXPathJeuxDeDonnees = "//" + xmlNodeSingularEventLabel;
         Optional<NodeList> listSimpleEventOp = Optional.empty();
         try {
             NodeList listPrimitiveEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
@@ -184,8 +216,7 @@ public class XMLFileParseToEventData<T> {
             // Si on a aucune erreur dans le fichier les informations d'instanciation du simple event courant est
             // ajouté au résultat du parsing
             if (simpleEventName.isPresent() && simpleEventType.isPresent() && simpleEventParamList.isPresent()) {
-                SimpleEventData simpleEventData = new SimpleEventData(simpleEventName.get(), simpleEventType.get(), simpleEventParamList.get());
-                resultatParsing.addSimpleEvent(simpleEventData);
+                this.addEventData(simpleEventName.get(), simpleEventType.get(), simpleEventParamList.get(), resultatParsing);
             }
 
         }
@@ -209,7 +240,7 @@ public class XMLFileParseToEventData<T> {
             if(name.equals("")) {
                 throw new XPathExpressionException("Missing simple event name.");
             }
-            else if(resultatParsing.existingSimpleEventListWithName(name)) {
+            else if(existingEventWithNameInResultatParsing(name, resultatParsing)) {
                 resultatParsing.addParsingErrorTypeWithComplementMessage(parsingErrorType_pluralEventDuplicated, name);
             }
             else {
@@ -263,14 +294,11 @@ public class XMLFileParseToEventData<T> {
     protected Optional<List<Pair<String, String>>> getSimpleEventParamListFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
 
         // Récupération de tout les simples events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_PARAM.getLabel();
+        String expXPathJeuxDeDonnees = XMLFileStructure.EVENT_PARAMS.getLabel() + "/" + XMLFileStructure.EVENT_PARAM.getLabel();
         Optional<List<Pair<String, String>>> listParamEventOp = Optional.empty();
         try {
-
             NodeList listParamEventNode = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, node, XPathConstants.NODESET);
-
             List<Pair<String, String>> eventParamList = getEventParams(xPath, listParamEventNode, resultatParsing);
-
             listParamEventOp = Optional.of(eventParamList);
 
         } catch (XPathExpressionException e) {
@@ -346,7 +374,7 @@ public class XMLFileParseToEventData<T> {
      * @return la valeur du paramètre du simple event fournit en entrée
      */
     protected String getSimpleEventParamValueFromFile(Node node) {
-        String eventParamValue = node.getNodeValue();
+        String eventParamValue = node.getFirstChild().getNodeValue();
         return eventParamValue;
     }
 
@@ -373,5 +401,28 @@ public class XMLFileParseToEventData<T> {
         }
         return enabled;
     }
+
+    /**
+     * Permet l'enregistrement des informations extrait du fichier de configuration concernant l'event au {@link ResultatParsing}.
+     * @param eventName
+     *                  le nom de l'event
+     * @param eventType
+     *                  le type de l'event
+     * @param pairs
+     *                  un tuple contenant le type du paramètre suivit de sa valeur
+     * @param resultatParsing
+     *                  l'objet résultat du parsing qui sera mit à jour
+     */
+    abstract void addEventData(String eventName, String eventType, List<Pair<String, String>> pairs, ResultatParsing resultatParsing);
+
+    /**
+     * Méthode vérifiant qu'il n'existe pas d'event (simple ou complexe) présentant un nom déjà connu dans le résultat du parsing.
+     * @param name
+     *              le nom de l'event concerné
+     * @param resultatParsing
+     *              l'objet résultat du parsing qui sera mit à jour
+     * @return vrai s'il existe un event dans le resultat du parsing présentant le nom fournit et false dans le cas contraire.
+     */
+    abstract boolean existingEventWithNameInResultatParsing(String name, ResultatParsing resultatParsing);
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Classe utilitaire permettant la transformation d'un fichier XML en objet métier. Il s'agit ici de parser un fichier
- * XML en un tableau associatif permettant l'instanciation des évenements primitifs.
+ * XML en un tableau permettant l'instanciation des évenements (enregistrement d'informations).
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
@@ -58,6 +58,15 @@ public class XMLFileParser {
 
     }
 
+    /**
+     * Premet le parsing pour les primitives events.
+     * @param xMLFilePath
+     *              le chemin vers le fichier de configuration XML
+     * @return un objet représentant le resultat du parsing
+     * @throws IOException {@link IOException}
+     * @throws SAXException {@link SAXException}
+     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     */
     private static ResultatParsing parsePrimitiveEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
 
         ResultatParsing resultatParsing = XMLFileParserToPrimitiveEventData.parse(xMLFilePath);
@@ -68,24 +77,55 @@ public class XMLFileParser {
 
     }
 
+    /**
+     * Premet le parsing pour les simples events.
+     * @param xMLFilePath
+     *              le chemin vers le fichier de configuration XML
+     * @return un objet représentant le resultat du parsing
+     * @throws IOException {@link IOException}
+     * @throws SAXException {@link SAXException}
+     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     */
     private static ResultatParsing parseSimpleEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
 
-        ResultatParsing resultatParsing = XMLFileParserToSimpleEventData.parse(xMLFilePath);
+        XMLFileParserToSimpleEventData xmlFileParserToSimpleEventData = new XMLFileParserToSimpleEventData();
+        ResultatParsing resultatParsing = xmlFileParserToSimpleEventData.parse(xMLFilePath);
+
         List<SimpleEventData> listeSimpleEventData = resultatParsing.getSimpleEventList();
         resultatParsing.setSimpleEventList(listeSimpleEventData);
 
         return resultatParsing;
     }
 
+    /**
+     * Premet le parsing pour les complexes events.
+     * @param xMLFilePath
+     *              le chemin vers le fichier de configuration XML
+     * @return un objet représentant le resultat du parsing
+     * @throws IOException {@link IOException}
+     * @throws SAXException {@link SAXException}
+     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     */
     private static ResultatParsing parseComplexEvents(String xMLFilePath) throws IOException, SAXException, ParserConfigurationException {
 
-        ResultatParsing resultatParsing = XMLFileParserToComplexEventData.parse(xMLFilePath);
+        XMLFileParserToComplexEventData xmlFileParserToComplexEventData = new XMLFileParserToComplexEventData();
+        ResultatParsing resultatParsing = xmlFileParserToComplexEventData.parse(xMLFilePath);
+
         List<ComplexEventData> listeComplexEventData = resultatParsing.getComplexEventList();
         resultatParsing.setComplexEventList(listeComplexEventData);
 
         return resultatParsing;
     }
 
+    /**
+     * Permet la fusion
+     * @param xMLFilePath
+     *              le chemin vers le fichier de configuration XML
+     * @return un objet représentant le resultat du parsing
+     * @throws IOException {@link IOException}
+     * @throws SAXException {@link SAXException}
+     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     */
     private static ResultatParsing mergeResultatsParsingsWithTheMainOne(ResultatParsing mainResultatParsing, ResultatParsing
             resultatParsingPEData, ResultatParsing resultatParsingSEData, ResultatParsing resultatParsingCEData) {
 

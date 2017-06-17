@@ -3,38 +3,89 @@ package perception.configurator.xml.manager.parser;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 import perception.configurator.xml.TestConstants;
+import perception.configurator.xml.manager.model.ComplexEventData;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import perception.configurator.xml.manager.model.SimpleEventData;
 import perception.configurator.xml.manager.validator.ValidationResult;
 import perception.configurator.xml.manager.validator.XMLFileValidator;
+import utils.Pair;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class XMLFileParserTest {
 
 	@Test
-	public void testXMLConfigurationParser_PrimitiveSimpleComplexEvents() {
+	public void testXMLConfigurationParser_PrimitiveSimpleComplexEvents() throws IOException, SAXException, ParserConfigurationException {
 
-		String xMLFilePath = TestConstants.XMLFileParserEventsTestFolder + "testParse_XMLFileParser_OK.xml";
+		String xMLFilePath = TestConstants.XMLFileParserEventsTestFolder + "testXMLConfigurationParser.xml";
 
 		// Expected
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB();
+		expectedResultatParsing.setValidationResult(ValidationResult.FAB());
 
 		List<PrimitiveEventData> expectedPedataList = new ArrayList<>();
-		expectedPedataList.add(new PrimitiveEventData("PEG_Blank1", "PEG_Blank", 78945L));
-		expectedPedataList.add(new PrimitiveEventData("PEG_Pm_Cpu1", "PEG_Pm_Cpu", 12000L));
+		expectedPedataList.add(new PrimitiveEventData("MonPEGBlank", "PEG_Blank", 60000L));
+		expectedPedataList.add(new PrimitiveEventData("MonPEGPmCpu", "PEG_Pm_Cpu", 12000L));
+
+		List<SimpleEventData> expectedSEdataList = new ArrayList<>();
+		expectedSEdataList.add(new SimpleEventData(
+				"MonSimpleEvent1",
+				"SE_Cpu_Drop",
+				Arrays.asList(
+						new Pair<>("Long", "45958"),
+						new Pair<>("String", "Param1"),
+						new Pair<>("String", "param2"),
+						new Pair<>("Integer", "78")
+				)));
+		expectedSEdataList.add(new SimpleEventData(
+				"MonSimpleEvent2",
+				"SEG_Cpu_Overload",
+				Arrays.asList(
+						new Pair<>("Long", "1245"),
+						new Pair<>("String", "localhost:8080"),
+						new Pair<>("String", "param3"),
+						new Pair<>("Integer", "45")
+				)));
+
+		List<ComplexEventData> expectedCEdataList = new ArrayList<>();
+		expectedCEdataList.add(new ComplexEventData(
+				"MonComplexEvent1",
+				"CE_Cpu_Dead",
+				Arrays.asList(
+						new Pair<>("Long", "12"),
+						new Pair<>("String", "Param4"),
+						new Pair<>("String", "param5"),
+						new Pair<>("Integer", "78")
+				)));
+		expectedCEdataList.add(new ComplexEventData(
+				"MonComplexEvent2",
+				"CE_Cpu_Dead",
+				Arrays.asList(
+						new Pair<>("Long", "5"),
+						new Pair<>("String", "Kikou Toi"),
+						new Pair<>("String", "param6"),
+						new Pair<>("Integer", "4")
+				)));
 
 		expectedResultatParsing.setPrimitiveEventList(expectedPedataList);
+        expectedResultatParsing.setSimpleEventList(expectedSEdataList);
+        expectedResultatParsing.setComplexEventList(expectedCEdataList);
 
 		// Actual
-		//ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);
+		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);
 
-		//assertEquals(expectedResultatParsing, actualResultat);
+		assertEquals("Primitive events - parsing result", expectedResultatParsing.getPrimitiveEventList(), actualResultat.getPrimitiveEventList());
+		assertEquals("Simple events - parsing result", expectedResultatParsing.getSimpleEventList(), actualResultat.getSimpleEventList());
+		assertEquals("Complex events - parsing result", expectedResultatParsing.getComplexEventList(), actualResultat.getComplexEventList());
+		assertEquals("Résultat de parsing de primitives, simples et complexes events", expectedResultatParsing, actualResultat);
 
 	}
 
@@ -91,11 +142,6 @@ public class XMLFileParserTest {
 		
 		assertEquals(new ArrayList<PrimitiveEventData>(), actualRes.getPrimitiveEventList());
 		
-	}
-
-	@Test
-	public void testParseCompleXMLConfiguratorFile() {
-		fail("TODO");
 	}
 
 	@Test

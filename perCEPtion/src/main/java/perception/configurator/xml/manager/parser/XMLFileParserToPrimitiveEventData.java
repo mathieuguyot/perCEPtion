@@ -9,6 +9,7 @@ import perception.configurator.xml.enums.general.FileErrorType;
 import perception.configurator.xml.enums.general.XMLFileStructure;
 import perception.configurator.xml.enums.parser.ParsingErrorType;
 import perception.configurator.xml.manager.model.PrimitiveEventData;
+import utils.Pair;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -53,21 +54,9 @@ class XMLFileParserToPrimitiveEventData {
         // Parsing du fichier xml via un objet File et récupération d'un objet
         // Document qui permet de représenter la hiérarchie d'objet créée pendant le
         // parsing
-        Document xml = null;
-        boolean test = true;
-
-        try {
-            // Création du parser
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            File fileXML = new File(filePath);
-
-            xml = builder.parse(fileXML);
-
-        } catch (FileNotFoundException ex) {
-            resultatParsing.addFileErrorType(FileErrorType.FILE_NOT_FOUND);
-            ex.printStackTrace();
-            test = false;
-        }
+        Pair<Boolean, Document> createdParser = XMLFileParseToEventData.createParser(factory, filePath, resultatParsing);
+        Boolean test = createdParser.getFirst();
+        Document xml = createdParser.getSecond();
 
         // Si le ficher est introuvable, le parsing est arrêté
         if (test) {

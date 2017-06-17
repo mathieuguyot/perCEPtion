@@ -13,31 +13,15 @@ public class Pair<A, B> implements Serializable {
         this.second = second;
     }
 
-    public int hashCode() {
-        int hFirst = 0;
-        if(first != null) {
-            hFirst = first.hashCode();
-        }
-        int hSecond = 0;
-        if(second != null) {
-            hSecond = second.hashCode();
-        }
-        return (hFirst + hSecond) * hSecond + hFirst;
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    public boolean equals(Object other) {
-        if (other instanceof Pair) {
-            Pair otherPair = (Pair) other;
-            return (
-                    (this.first == otherPair.first ||
-                            (this.first != null && otherPair.first != null
-                            && this.first.equals(otherPair.first)))
-                    && (this.second == otherPair.second
-                            || (this.second != null && otherPair.second != null
-                            && this.second.equals(otherPair.second)))
-            );
-        }
-        return false;
+        Pair<?, ?> pair = (Pair<?, ?>) o;
+
+        if (first != null ? !first.equals(pair.first) : pair.first != null) return false;
+        return second != null ? second.equals(pair.second) : pair.second == null;
     }
 
     public A getFirst() {
@@ -46,6 +30,14 @@ public class Pair<A, B> implements Serializable {
 
     public B getSecond() {
         return second;
+    }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "first=" + first +
+                ", second=" + second +
+                '}';
     }
 
 }

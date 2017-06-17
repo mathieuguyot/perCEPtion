@@ -5,8 +5,7 @@ import perception.complex_event_generator.ComplexEventGenerator;
 import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
-import perception.configurator.xml.manager.model.SimpleAndComplexEventData;
-import perception.configurator.xml.manager.model.SimpleEventData;
+import perception.configurator.xml.manager.model.EventData;
 import perception.core.PerceptionCore;
 import perception.pluginManager.EGBank;
 import perception.pluginManager.PluginManager;
@@ -27,11 +26,11 @@ public class CEGActivator {
 
     /**
      * Active les Complex Event Generator listés dans le fichier XML en fonction des paramètres fournis
-     * @param cegs - Liste d'objets SimpleAndComplexEventData contenant les informations des SimpleEventGenerator à activer
+     * @param cegs - Liste d'objets EventData contenant les informations des SimpleEventGenerator à activer
      * @param core - PerceptionCore auquel on ajoutera les SEG activés
      * @return {@link ActivationResult} contenant les éventuels messages d'erreurs
      */
-    public static ActivationResult activate(List<? extends SimpleAndComplexEventData> cegs, PerceptionCore core) {
+    public static ActivationResult activate(List<? extends EventData> cegs, PerceptionCore core) {
         // Instanciation du logger
         PerceptionLogger logger = new SysoutPerceptionLogger();
 
@@ -42,7 +41,7 @@ public class CEGActivator {
         EGBank<ComplexEventGenerator> bank = PluginManager.getPluginManager().getCegBank();
 
         // Parcours de l'ensemble des Complex Event Generator trouvés par le module de parcours
-        for (SimpleAndComplexEventData ceg : cegs) {
+        for (EventData ceg : cegs) {
             try {
                 // Chargement de la classe correspondant au type (nom de la classe) du CEG
                 Class<?> event = bank.getClassForEGName(ceg.getEventType());

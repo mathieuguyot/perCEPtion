@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Chloé GUILBAUD, Léo PARIS, Kendall FOREST, Mathieu GUYOT
  */
-public class SimpleEventData extends SimpleAndComplexEventData {
+public class SimpleEventData extends EventData {
 
     /**
      * Constructeur de la classe {@link SimpleEventData}
@@ -21,6 +21,11 @@ public class SimpleEventData extends SimpleAndComplexEventData {
      */
     public SimpleEventData(String eventType, String eventName, List<Pair<String, String>> params) {
         super(eventType, eventName, params);
+    }
+
+    @Override
+    public String toString() {
+        return "\n\tSimpleEventData{" + super.toString() + "}";
     }
 
 }
