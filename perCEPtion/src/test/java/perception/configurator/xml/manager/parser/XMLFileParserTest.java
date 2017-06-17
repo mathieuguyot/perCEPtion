@@ -18,6 +18,27 @@ import static org.junit.Assert.fail;
 public class XMLFileParserTest {
 
 	@Test
+	public void testXMLConfigurationParser_PrimitiveSimpleComplexEvents() {
+
+		String xMLFilePath = TestConstants.XMLFileParserEventsTestFolder + "testParse_XMLFileParser_OK.xml";
+
+		// Expected
+		ResultatParsing expectedResultatParsing = ResultatParsing.FAB();
+
+		List<PrimitiveEventData> expectedPedataList = new ArrayList<>();
+		expectedPedataList.add(new PrimitiveEventData("PEG_Blank1", "PEG_Blank", 78945L));
+		expectedPedataList.add(new PrimitiveEventData("PEG_Pm_Cpu1", "PEG_Pm_Cpu", 12000L));
+
+		expectedResultatParsing.setPrimitiveEventList(expectedPedataList);
+
+		// Actual
+		//ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);
+
+		//assertEquals(expectedResultatParsing, actualResultat);
+
+	}
+
+	@Test
 	public void testParse_XMLFileParser_OK() throws ParserConfigurationException, SAXException, IOException {
 		
 		String xMLFilePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testParse_XMLFileParser_OK.xml";

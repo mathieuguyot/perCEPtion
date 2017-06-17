@@ -4,7 +4,7 @@ perCEPtion/target/
 mainPerceptionPlugin/.idea/
 mainPerceptionPlugin/out/
 mainPerceptionPlugin/target/
-/.idea/
-/out/
-/perCEPtion/workspace.xml
-/perCEPtion/perception.iml
+.idea/
+out/
+perCEPtion/workspace.xml
+perCEPtion/perception.iml

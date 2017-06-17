@@ -5,6 +5,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import perception.configurator.xml.TestConstants;
+import perception.configurator.xml.manager.model.PrimitiveEventData;
 import perception.configurator.xml.utils.XMLManager;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,7 +14,10 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class XMLFileParseToEventDataTest {
@@ -81,4 +85,6 @@ public class XMLFileParseToEventDataTest {
         assertTrue("Liste erreur fichier", resultatParsing.getFileErrorTypes().isEmpty());
 
     }
+
+
 }

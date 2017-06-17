@@ -37,7 +37,7 @@ public enum XMLFileStructure {
 
 	// Complex events
 	EVENT_COMPLEXES("complexes"),
-	EVENT_COMPLEXE("complexe"),
+	EVENT_COMPLEXE("complex"),
 
 	// Valeur d'attribut liée au schéma
 	NAMESPACE("http://www.w3.org/2001/XMLSchema-instance");

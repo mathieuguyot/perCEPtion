@@ -32,7 +32,17 @@ public enum ParsingErrorType {
 
 	EVENT_SIMPLES_INVALID_NAME("Impossible de trouver le nom du simple event."),
 
-	EVENT_SIMPLES_INVALID_TYPE("Impossible de trouver le type du simple event.");
+	EVENT_SIMPLES_INVALID_TYPE("Impossible de trouver le type du simple event."),
+
+	// Complexes events
+	EVENT_COMPLEXES_INVALID_NODE(
+			"Impossible de trouver les complexes events dans le fichier XML fournit. Arrêt du traitement du fichier."),
+
+	EVENT_COMPLEXES_DUPLICATED_NAME("Un même nom a été renseigné pour deux complexes events. Seul le première élément avec ce nom sera pris en compte."),
+
+	EVENT_COMPLEXES_INVALID_NAME("Impossible de trouver le nom du complex event."),
+
+	EVENT_COMPLEXES_INVALID_TYPE("Impossible de trouver le type du complex event.");
 
 	// Si l'attribut enabled de la balise <primitive> est abs on considère que le primitive event est à activer
 	//INVALID_PRIMITIVE_ENABLED_ATTR("Impossible de trouver l'attribut enabled du primitive event.");

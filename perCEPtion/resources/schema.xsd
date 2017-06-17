@@ -125,7 +125,7 @@
 	</xsd:element>
 
 		<!-- Complex events -->
-	<xsd:element name="complexe">
+	<xsd:element name="complex">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
@@ -139,7 +139,7 @@
 	<xsd:element name="complexes">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="complexe" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="complex" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

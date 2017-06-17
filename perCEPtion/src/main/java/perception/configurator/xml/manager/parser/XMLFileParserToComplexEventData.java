@@ -34,12 +34,18 @@ import java.util.Optional;
  */
 class XMLFileParserToComplexEventData {
 
+    private static String xmlNodePluralEventLabel = XMLFileStructure.EVENT_COMPLEXE.getLabel();
+    private static ParsingErrorType parsingErrorType_pluralEventLabel = ParsingErrorType.EVENT_COMPLEXES_INVALID_NODE;
+    private static ParsingErrorType parsingErrorType_pluralEventDuplicated = ParsingErrorType.EVENT_COMPLEXES_DUPLICATED_NAME;
+    private static ParsingErrorType parsingErrorType_pluralEventInvalidName = ParsingErrorType.EVENT_COMPLEXES_INVALID_NAME;
+    private static ParsingErrorType parsingErrorType_pluralEventInvalidType = ParsingErrorType.EVENT_COMPLEXES_INVALID_TYPE;
+
     /**
-     * Extrait les informations pour l'instanciation des complexes events.
+     * Extrait les informations pour l'instanciation des simples events.
      * Permet de passer d'un fichier XML à des objets métiers.
      *
      * @return {@link ResultatParsing} comprenant les informations résultant du traitement du fichier, de sa validation
-     * et le tableau associatif permettant l'instanciation des complexes events
+     * et le tableau associatif permettant l'instanciation des simples events
      * @throws ParserConfigurationException {@link ParserConfigurationException}
      * @throws IOException                  {@link IOException}
      * @throws SAXException                 {@link SAXException}
@@ -47,310 +53,16 @@ class XMLFileParserToComplexEventData {
     public static ResultatParsing parse(String filePath)
             throws ParserConfigurationException, SAXException, IOException {
 
-        // Initialisation de l'objet résultant du parsing
-        ResultatParsing resultatParsing = ResultatParsing.FAB();
+        XMLFileParseToEventData<XMLFileParserToComplexEventData> xmlFileParseToEventData =
+                new XMLFileParseToEventData(
+                        xmlNodePluralEventLabel,
+                        parsingErrorType_pluralEventLabel,
+                        parsingErrorType_pluralEventDuplicated,
+                        parsingErrorType_pluralEventInvalidName,
+                        parsingErrorType_pluralEventInvalidType
+                );
 
-        // Récupération d'une instance de factory qui fournira un parser
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-        // Parsing du fichier xml via un objet File et récupération d'un objet
-        // Document qui permet de représenter la hiérarchie d'objet créée pendant le
-        // parsing
-        Document xml = null;
-        boolean test = true;
-
-        try {
-            // Création du parser
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            File fileXML = new File(filePath);
-
-            xml = builder.parse(fileXML);
-
-        } catch (FileNotFoundException ex) {
-            resultatParsing.addFileErrorType(FileErrorType.FILE_NOT_FOUND);
-            ex.printStackTrace();
-            test = false;
-        }
-
-        // Si le ficher est introuvable, le parsing est arrêté
-        if (test) {
-            // Récupération d'un objet Element qui représente un élément XML
-            // Ici, cet élément sera la racine du document
-                Element root = xml.getDocumentElement();
-
-            // Récupération d'une instance de factory qui fournira un objet
-            // permettant d'utiliser le languge xpath
-            XPathFactory xpf = XPathFactory.newInstance();
-            XPath xPath = xpf.newXPath();
-
-            XMLFileParserToComplexEventData.parseComplexesEvent(xPath, root, resultatParsing);
-        }
-
-        return resultatParsing;
-
-    }
-
-    /**
-     * Parse tous les complexes events du fichier XML fourni de configuration des évènements du sytème. Un
-     * {@link ResultatParsing} est passé en paramètre et sera mis à jour au cours du traitement.
-     *
-     * @param xPath           - le xPath
-     * @param root            - la racine du fichier XML de configuration des modules du système
-     * @param resultatParsing - le résultat du parsing qui sera mis à jour au cours du traitement
-     */
-    protected static void parseComplexesEvent(XPath xPath, Element root, ResultatParsing resultatParsing) {
-
-        Optional<NodeList> complexeEventFromFileOp = getComplexesEventInFile(xPath, root, resultatParsing);
-
-        // Si la liste est absente c'est que le fichier ne comporte pas de complexes events
-        complexeEventFromFileOp.ifPresent(nodeList -> createAllComplexesEvents(xPath, nodeList, resultatParsing));
-    }
-
-    /**
-     * Récupération de tous les complexes events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
-     * paramètre et sera mis à jour au cours du traitement.
-     *
-     * @param xPath           le xPath
-     * @param root            l'élément racine du fichier XML
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant éventuellement la liste de primitive events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
-    * {@link ResultatParsing} est mis à jour
-     */
-    protected static Optional<NodeList> getComplexesEventInFile(XPath xPath, Element root, ResultatParsing resultatParsing) {
-
-        // Récupération de tout les simples events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_COMPLEXE.getLabel();
-        Optional<NodeList> listComplexEventOp = Optional.empty();
-        try {
-            NodeList listComplexEvent = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, root, XPathConstants.NODESET);
-            listComplexEventOp = Optional.of(listComplexEvent);
-        } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
-            e.printStackTrace();
-        }
-
-        return listComplexEventOp;
-
-    }
-
-    /**
-     * Création de toutes les informations permettant l'instanciation des complexes events à partir du fichier XML.
-     *
-     * @param xPath                       - le xPath
-     * @param listComplexEventsFromFile - la liste des complexes events du fichier
-     * @param resultatParsing             - le résultat du parsing qui sera mis à jour au cours du traitement, dans ce cas,
-     *                                    le {@link ResultatParsing} est mis à jour
-     */
-    protected static void createAllComplexesEvents(XPath xPath, NodeList listComplexEventsFromFile,
-                                                   ResultatParsing resultatParsing) {
-
-        for (int i = 0; i < listComplexEventsFromFile.getLength(); i++) {
-
-            Node node = listComplexEventsFromFile.item(i);
-
-            Optional<String> complexEventName = Optional.empty();
-            Optional<String> complexEventType = Optional.empty();
-            Optional<List<Pair<String, String>>> complexEventParamList = Optional.empty();
-
-            // Récupération des éléments du complex event actuel
-            boolean complexEventEnabled = isEnabledComplexEvent(xPath, node, resultatParsing);
-            if (complexEventEnabled) {
-                complexEventName = getComplexEventNameFromFile(xPath, node, resultatParsing);
-                complexEventType = getComplexEventTypeFromFile(xPath, node, resultatParsing);
-                complexEventParamList = getComplexEventParamListFromFile(xPath, node, resultatParsing);
-            }
-
-            // Si on a aucune erreur dans le fichier les informations d'instanciation du primitive event courant est
-            // ajouté au résultat du parsing
-            if (complexEventName.isPresent() && complexEventParamList.isPresent() && complexEventType.isPresent()) {
-                ComplexEventData complexEventData = new ComplexEventData(complexEventName.get(), complexEventType.get(), complexEventParamList.get());
-                resultatParsing.addComplexEvent(complexEventData);
-            }
-
-        }
-
-    }
-
-    /**
-     * Récupére le nom donné dans le fichier XML pour le complex event spécifié.
-     *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au complex event
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
-     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
-     */
-    protected static Optional<String> getComplexEventNameFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Optional<String> nameOp = Optional.empty();
-        try {
-            String strSelectName = XMLFileStructure.EVENT_NAME.getLabel();
-            String name = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
-            if(name.equals("")) {
-                throw new XPathExpressionException("Missing complex event name.");
-            }
-            else if(resultatParsing.existingComplexEventListWithName(name)) {
-                resultatParsing.addParsingErrorTypeWithComplementMessage(ParsingErrorType.EVENT_PRIMITIVES_DUPLICATED_NAME, name);
-            }
-            else {
-                nameOp = Optional.of(name);
-            }
-        } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_PRIMITIVES_INVALID_NAME);
-            // System.out.println("Impossible de trouver le nom du complex event : " + node);
-            e.printStackTrace();
-        }
-        return nameOp;
-    }
-
-    /**
-     * Récupére le type donnée dans le fichier XML pour le complex event spécifié.
-     *
-     * @param xPath           le XPath
-     * @param node            le noeud dans le fichier correspondant au complex event
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant le nom du complex event ou étant vide s'il est impossible de trouver l'information
-     * dans le fichier, dans ce cas, le {@link ResultatParsing} est mis à jour
-     */
-    protected static Optional<String> getComplexEventTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Optional<String> typeOp = Optional.empty();
-        try {
-            String strSelectName = XMLFileStructure.EVENT_TYPE.getLabel();
-            String type = "" + xPath.evaluate(strSelectName, node, XPathConstants.STRING);
-            if(type.equals("")) {
-                throw new XPathExpressionException("Missing complex event type.");
-            } else {
-                typeOp = Optional.of(type);
-            }
-        } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_PRIMITIVES_INVALID_TYPE);
-            // System.out.println("Impossible de trouver le nom du complex event : " + node);
-            e.printStackTrace();
-        }
-        return typeOp;
-    }
-
-    /**
-     * Récupération de tous les params events dans le fichier XML fourni. Un {@link ResultatParsing} est passé en
-     * paramètre et sera mis à jour au cours du traitement.
-     *
-     * @param xPath           le xPath
-     * @param node            le noeud corespondant à un complex event du fichier XML de configuration
-     * @param resultatParsing le résultat du parsing qui sera mis à jour au cours du traitement
-     * @return un optional contenant éventuellement la liste d'events. Il est vide si le fichier n'en comporte pas, dans ce cas, le
-     * {@link ResultatParsing} est mis à jour
-     */
-    protected static Optional<List<Pair<String, String>>> getComplexEventParamListFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-
-        // Récupération de tout les simples events du fichier avec XPath
-        String expXPathJeuxDeDonnees = "//" + XMLFileStructure.EVENT_PARAM.getLabel();
-        Optional<List<Pair<String, String>>> listParamEventOp = Optional.empty();
-        try {
-
-            NodeList listParamEventNode = (NodeList) xPath.evaluate(expXPathJeuxDeDonnees, node, XPathConstants.NODESET);
-
-            List<Pair<String, String>> eventParamList = getEventParams(xPath, listParamEventNode, resultatParsing);
-
-            listParamEventOp = Optional.of(eventParamList);
-
-        } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_NODE);
-            e.printStackTrace();
-        }
-
-        return listParamEventOp;
-
-    }
-
-    /**
-     * Permet la récupération des paramètres pour l'event à partir des informations du fichier XML de configuration.
-     *
-     * @param xPath                     le xPath
-     * @param listParamsEventsFromFile  la liste des paramètres de l'event
-     * @param resultatParsing           le résultat de parsing qui sera mit à jour au cours du traitement en cas d'erreur de parsing
-     * @return une liste de tuples comportant le type et la valeur du paramètre
-     */
-    protected static List<Pair<String, String>> getEventParams(XPath xPath, NodeList listParamsEventsFromFile,
-                                                               ResultatParsing resultatParsing) {
-
-        List<Pair<String, String>> listEventParams = new ArrayList<>();
-
-        for (int i = 0; i < listParamsEventsFromFile.getLength(); i++) {
-
-            Node node = listParamsEventsFromFile.item(i);
-
-            // Récupération des éléments du simple event actuel
-            Optional<String> eventParamTypeOp = getComplexEventParamTypeFromFile(xPath, node, resultatParsing);
-            String eventParamValue = getComplexEventParamValueFromFile(node);
-
-            // Si on a aucune erreur dans le fichier les informations d'instanciation du simple event courant est
-            // ajouté au résultat du parsing
-            if (eventParamTypeOp.isPresent()) {
-                Pair<String, String> param = new Pair<>(eventParamTypeOp.get(), eventParamValue);
-                listEventParams.add(param);
-            }
-
-        }
-
-        return listEventParams;
-
-    }
-
-    /**
-     * Permet la récupération de la valeur du type du paramètre du complex event fourni en entrée.
-     *
-     * @param xPath             le xPath
-     * @param node              le noeud corespondant à un complex event du fichier XML de configuration
-     * @param resultatParsing   le résultat de parsing qui sera mis à jour au cours du traitement en cas d'erreur de parsing
-     * @return le type du paramètre du complex event fourni en entrée
-     */
-    protected static Optional<String> getComplexEventParamTypeFromFile(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        Optional<String> eventParamTypeOp = Optional.empty();
-        try {
-            String eventParamType = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_PARAM_ATTR_TYPE.getLabel(), node, XPathConstants.STRING);
-            if (eventParamType.equals("")) {
-                resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
-            } else {
-                eventParamTypeOp = Optional.of(eventParamType);
-            }
-        } catch (XPathExpressionException e) {
-            resultatParsing.addParsingErrorType(ParsingErrorType.EVENT_SIMPLES_INVALID_TYPE);
-        }
-        return eventParamTypeOp;
-    }
-
-    /**
-     * Permet la récupération de la valeur du paramètre du complex event fourni en entrée.
-     *
-     * @param node      le noeud corespondant à un simple event du fichier XML de configuration
-     * @return la valeur du paramètre du complex event fourni en entrée
-     */
-    protected static String getComplexEventParamValueFromFile(Node node) {
-        String eventParamValue = node.getNodeValue();
-        return eventParamValue;
-    }
-
-    /**
-     * Indique si le complex event est enabled ou non. Si l'attribut n'est pas présent, le complex event est
-     * considéré comme actif.
-     *
-     * @param xPath           - le XPath
-     * @param node            - le noeud dans le fichier correspondant au complex event
-     * @param resultatParsing - le résultat du parsing
-     * @return <code>true</code> si le complex event est activé et <code>false</code> dans le cas contraire, dans ce cas, le
-     * {@link ResultatParsing} n'est pas mis à jour
-     */
-    protected static boolean isEnabledComplexEvent(XPath xPath, Node node, ResultatParsing resultatParsing) {
-        boolean enabled = false;
-        try {
-            String complexEventEnabled = (String) xPath.evaluate("@" + XMLFileStructure.EVENT_ATTR_ENABLED.getLabel(), node, XPathConstants.STRING);
-            if (complexEventEnabled.equals("true") || complexEventEnabled.equals("")) {
-                enabled = true;
-            }
-        } catch (XPathExpressionException e) {
-            // L'attribut n'est pas présent on considère que le complex event est à activer
-            enabled = true;
-        }
-        return enabled;
+        return xmlFileParseToEventData.parse(filePath);
     }
 
 }
