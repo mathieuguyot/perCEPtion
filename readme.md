@@ -211,6 +211,99 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
 
 ### Extracteurs de symptômes
 
+## Système de configuration dynamique des events
+
+### Format du fichier XML
+
+- schéma
+- exemple
+
+### Principe de fonctionnement
+
+- transformation données en objets métier
+- objets résultats
+- enregistrement des events
+
+### Remontée et traitement des erreurs
+
+### Ajouter un system de parse
+
+L'architecture du projet perCEPtion permet d'ajouter un système de parse pour un nouvel
+élement de façon très simple. Il est possible de créer un nouvel élement présentant le
+même format de configuration que celui est simple ou complex events. Pour ce faire, deux 
+étapes sont à réaliser.
+
+#### Mise à jour du schéma XSD
+Tout d'abord, il est nécessaire de modifier le schéma XSD du module de configuration 
+dynamique. Celui-ci est disponible dans `resources/schema.xsd`. 
+
+Voici la structure utilisé pour les simples events : 
+```XML
+<xsd:element name="simple">
+	<xsd:complexType>
+	    <xsd:sequence>
+		    <xsd:element name="name" type="event_name_type" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="type" type="simple_event_type_type" minOccurs="1" maxOccurs="1"/>
+			<xsd:element ref="params" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="enabled" use="required" type="event_activated"/>
+	</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="simples">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element ref="simple" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:element>
+```
+
+Il suffit d'ajouter la nouvelle structure au schéma selon l'exemple précédent et puis
+d'ajouter cet élément à la liste des events du schéma XSD dans l'élément suivant :
+
+```XML
+<!-- Events -->
+<xsd:element name="events">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element ref="primitives"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element ref="simples"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element ref="complexes"  minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+```
+
+#### Implémentation du parser
+
+Maintenant que le shéma XSD est en mesure de traiter notre nouvelle élément, nous
+allons pouvoir implémenter le parser.
+
+Lors du parse du fichier de configuration, un objet de type `ResultatParsing` est mit
+à disposition. Celui comprend les éventuelles erreur lié au traitement ou à la validation
+du fichier mais aussi l'ensembles des informations figurant dans le XML et qui permettrons
+l'imnstanciation des generator events. Ces éléments sont enregistré sous forme de liste 
+de `EventData`. Il faut donc créer une classe implémentant cette classe abstraite.
+Il suffit de redefinir la méthode `toString()`.
+
+Prenons l'exemple des simple events, une classe `SimpleEventData` qui implémente
+`EventData`. En ce qui concerne le `ResultatParsing` une liste de `SimpleEventData`
+ a été ajouté en attribut. Les méthodes suivante sont aussi à ajouter :
+- `addSimpleEvent(SimpleEventData simpleEventData)`,
+- `addAllSimpleEvents(List<SimpleEventData> simpleEventDataList)`,
+- `existingSimpleEventListWithName(String name)`.
+
+Bien entendu, les getters et setters sont a créer et la méthode `toString()`.
+
+Comme évoqué précédement la classe abstraite `XMLFileParseToEventData` définit l'ensemble 
+des méthodes permettant le parse des éléments présentant un ensemble de paramètres.
+Dans notre exemple, la classe `XMLFileParserToSimpleEventData` hérite de `XMLFileParseToEventData`.
+
+Il suffit de suivre le même cheminement que celui utilisé pour les simples events pour
+permettre le parsing du nouvel élément.
+
+
 ## Utilisation du Framework
 
 Nous avons fait en sorte que l'utilisation du framework soit le plus simple possible !
