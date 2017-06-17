@@ -118,13 +118,12 @@ public class XMLFileParser {
     }
 
     /**
-     * Permet la fusion
-     * @param xMLFilePath
-     *              le chemin vers le fichier de configuration XML
-     * @return un objet représentant le resultat du parsing
-     * @throws IOException {@link IOException}
-     * @throws SAXException {@link SAXException}
-     * @throws ParserConfigurationException {@link ParserConfigurationException}
+     * Permet la fusion des resultats de parsing obtenu pour les différents events avec l'objet resultat du parsing principal.
+     * @param mainResultatParsing l'objet resultat de parsing principal
+     * @param resultatParsingPEData l'objet resultat de parsing pour les primitives events
+     * @param resultatParsingSEData l'objet resultat de parsing pour les simples events
+     * @param resultatParsingCEData l'objet resultat de parsing pour les complexes events
+     * @return l'objet resultat de parsing principal mit à jour
      */
     private static ResultatParsing mergeResultatsParsingsWithTheMainOne(ResultatParsing mainResultatParsing, ResultatParsing
             resultatParsingPEData, ResultatParsing resultatParsingSEData, ResultatParsing resultatParsingCEData) {

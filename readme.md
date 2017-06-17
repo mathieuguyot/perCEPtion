@@ -215,10 +215,86 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
 
 ### Format du fichier XML
 
-- schéma
-- exemple
+Le format du fichier XML a été définit à l'aide du schéma XSD suivant disponible dans 
+le dossier `resources/schema.xsd`. Il est bien de lié l'ensemble des fichiers de configuration
+crées à ce shéma pour en valider le bon formatage.
+
+Voici un exemple simple de fihcier de configuration XML :
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<perception
+        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <events>
+        <primitives>
+            <primitive enabled="true">
+                <name>MonPEGBlank</name>
+                <type>PEG_Blank</type>
+                <runtime>60000</runtime>
+            </primitive>
+            <primitive enabled="true">
+                <name>MonPEGPmCpu</name>
+                <type>PEG_Pm_Cpu</type>
+                <runtime>12000</runtime>
+            </primitive>
+            <primitive enabled="false">
+                <name>MonPEGPmDisk</name>
+                <type>PEG_Pm_Disk</type>
+                <runtime>89100</runtime>
+            </primitive>
+        </primitives>
+        <simples>
+            <simple enabled="true">
+                <name>MonSimpleEvent1</name>
+                <type>SE_Cpu_Drop</type>
+                <params>
+                    <param tag="tag1" type="Long">45958</param>
+                    <param tag="tag2" type="String">Param1</param>
+                    <param tag="tag3" type="String">param2</param>
+                    <param tag="tag4" type="Integer">78</param>
+                </params>
+            </simple>
+            <simple enabled="true">
+                <name>MonSimpleEvent2</name>
+                <type>SEG_Cpu_Overload</type>
+                <params>
+                    <param tag="ip4" type="Long">1245</param>
+                    <param tag="port" type="String">localhost:8080</param>
+                    <param tag="monParam3" type="String">param3</param>
+                    <param tag="monParam4" type="Integer">45</param>
+                </params>
+            </simple>
+        </simples>
+        <complexes>
+            <complex enabled="true">
+                <name>MonSimpleEvent1</name>
+                <type>CE_Cpu_Dead</type>
+                <params>
+                    <param tag="tag1" type="Long">45958</param>
+                    <param tag="tag2" type="String">Param1</param>
+                    <param tag="tag3" type="String">param2</param>
+                    <param tag="tag4" type="Integer">78</param>
+                </params>
+            </complex>
+            <complex enabled="true">
+                <name>MonSimpleEvent2</name>
+                <type>CE_Cpu_Dead</type>
+                <params>
+                    <param tag="ip4" type="Long">1245</param>
+                    <param tag="port" type="String">localhost:8080</param>
+                    <param tag="monParam3" type="String">param3</param>
+                    <param tag="monParam4" type="Integer">45</param>
+                </params>
+            </complex>
+        </complexes>
+    </events>
+</perception>
+```
 
 ### Principe de fonctionnement
+
+Le moteur de parse du fichier de configuration dynamique d'event est 
 
 - transformation données en objets métier
 - objets résultats
@@ -303,6 +379,7 @@ Dans notre exemple, la classe `XMLFileParserToSimpleEventData` hérite de `XMLFi
 Il suffit de suivre le même cheminement que celui utilisé pour les simples events pour
 permettre le parsing du nouvel élément.
 
+La classe utilitaire `XMLFileParser` doit aussi être mise à jour.  
 
 ## Utilisation du Framework
 
@@ -316,5 +393,9 @@ Il suffit de créer un fichier XML, respectant le schéma xsd défini et fourni 
 Il faut définir le type, qui correspond à la classe d'implémentation de l'Event Generator, le nom qui sera donné à l'EG, et pour les SEG et les CEG, il faudra donner l'ensemble des paramètres à envoyer au constructeur de la classe.
 
 /!\ ATTENTION : la liste des paramètres et le leur types doivent être fournis dans le même ordre que dans le constructeur. /!\
+
+- conf ces propre Events
+- primitive events
+- simple et complexes
 
 # En travaux !
