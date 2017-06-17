@@ -13,8 +13,11 @@ import java.util.Map;
 
 public class CEG_DeadCpu extends ComplexEventGenerator {
 
-    public CEG_DeadCpu(String name) {
+    private Integer deadValue;
+
+    public CEG_DeadCpu(String name, Integer deadValue) {
         super(name);
+        this.deadValue = deadValue;
     }
 
     @Override
@@ -25,7 +28,7 @@ public class CEG_DeadCpu extends ComplexEventGenerator {
                 .where(new IterativeCondition<SE_Cpu_Drop>() {
                     @Override
                     public boolean filter(SE_Cpu_Drop se, Context<SE_Cpu_Drop> context) throws Exception {
-                        if(se.getCpuValueAfterDrop() == 0) {
+                        if(se.getCpuValueAfterDrop() == deadValue) {
                             return true;
                         }
                         return false;

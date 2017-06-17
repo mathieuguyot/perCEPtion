@@ -36,7 +36,7 @@ public class ConfigurationLoader {
             PerceptionLogger logger = new SysoutPerceptionLogger();
 
             // Validation et Parcours du fichier XML
-            ResultatParsing parsingResult = XMLFileParser.parse(xmlFilePath,"perCEPtion/resources/schema.xsd");
+            ResultatParsing parsingResult = XMLFileParser.parse(xmlFilePath,"resources/schema.xsd");
 
             if (parsingResult.hasErrors()) {
                 // Affichage des erreurs (en rouge) dans la console

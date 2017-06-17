@@ -69,7 +69,7 @@ public class Main {
         //primitiveEventStream.addPEG(new PEG_Pm_Disk(100));
         //TEST SECTION
 
-        ConfigurationLoader.loadConfiguration("perCEPtion/resources/test.xml",core);
+        ConfigurationLoader.loadConfiguration("resources/test.xml",core);
 /*
         KeyedStream<PrimitiveEvent, String> kStream = core.getPrimitiveEventStream().getStream().keyBy(
                 new KeySelector<PrimitiveEvent, String>() {

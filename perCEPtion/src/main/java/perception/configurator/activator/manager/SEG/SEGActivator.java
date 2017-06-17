@@ -1,6 +1,6 @@
 package perception.configurator.activator.manager.SEG;
 
-import perception.configurator.activator.enums.constructors.ParamTypes;
+//import perception.configurator.activator.enums.constructors.ParamTypes;
 import perception.configurator.activator.enums.errors.ActivationErrorType;
 import perception.configurator.activator.manager.ActivationResult;
 import perception.configurator.xml.manager.model.EventData;
@@ -46,21 +46,26 @@ public class SEGActivator {
                 // Chargement de la classe correspondant au type (nom de la classe) du SEG
                 Class<?> event = bank.getClassForEGName(seg.getEventType());
 
-                // Tableau des types de paramètres
+                // Tableau des types de paramètres (on rajoute le nom de l'EG en premier paramètre)
                 int size = seg.getParamsList().size();
-                Class<?> types[] = new Class<?>[size];
-                Object param[] = new Object[size];
-                int elem = 0;
+                Class<?> types[] = new Class<?>[size+1];
+                Object param[] = new Object[size+1];
+                types[0] = String.class;
+                param[0] = seg.getEventName();
+                int elem = 1;
                 // Récupération du constructeur
                 for (Pair<String, String> tuples : seg.getParamsList()) {
-                    Class<?> classe = ParamTypes.getClassForParamName(tuples.getFirst());
+
+                    Class<?> classe = ClassUtils.getClass(tuples.getFirst());//.getClassForParamName(tuples.getFirst());
                     if (classe.isPrimitive()) {
+                        types[elem] = classe;
                         classe = ClassUtils.primitiveToWrapper(classe);
                         Constructor<?> constructor = classe.getConstructor(String.class);
                         param[elem] = constructor.newInstance(tuples.getSecond());
                     } else {
                         Constructor<?> constructor = classe.getConstructor(String.class);
                         param[elem] = constructor.newInstance(tuples.getSecond());
+                        types[elem] = classe;
                     }
                     types[elem] = classe;
                     elem++;

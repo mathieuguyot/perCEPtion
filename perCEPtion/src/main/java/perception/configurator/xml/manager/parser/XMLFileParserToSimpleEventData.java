@@ -36,7 +36,7 @@ class XMLFileParserToSimpleEventData extends XMLFileParseToEventData {
 
     @Override
     public void addEventData(String eventName, String eventType, List<Pair<String, String>> pairs, ResultatParsing resultatParsing) {
-        SimpleEventData simpleEventData = new SimpleEventData(eventName, eventType, pairs);
+        SimpleEventData simpleEventData = new SimpleEventData(eventType, eventName, pairs);
         resultatParsing.addSimpleEvent(simpleEventData);
     }
 

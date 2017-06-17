@@ -215,76 +215,57 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
 
 ### Format du fichier XML
 
-Le format du fichier XML a été définit à l'aide du schéma XSD suivant disponible dans 
-le dossier `resources/schema.xsd`. Il est bien de lié l'ensemble des fichiers de configuration
-crées à ce shéma pour en valider le bon formatage.
+Le format du fichier XML a été défini à l'aide du schéma XSD suivant disponible dans 
+le dossier `resources/schema.xsd`. Il est bien de lier l'ensemble des fichiers de configuration
+créés à partir de ce shéma pour en valider le bon formatage.
 
-Voici un exemple simple de fihcier de configuration XML :
+Voici un exemple simple de fichier de configuration XML :
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <perception
-        xs:noNamespaceSchemaLocation="../../../../../resources/schema.xsd"
+        xs:noNamespaceSchemaLocation="schema.xsd"
         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 >
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>MonPEGBlank</name>
-                <type>PEG_Blank</type>
-                <runtime>60000</runtime>
-            </primitive>
-            <primitive enabled="true">
                 <name>MonPEGPmCpu</name>
                 <type>PEG_Pm_Cpu</type>
-                <runtime>12000</runtime>
+                <runtime>1000</runtime>
             </primitive>
             <primitive enabled="false">
                 <name>MonPEGPmDisk</name>
                 <type>PEG_Pm_Disk</type>
-                <runtime>89100</runtime>
+                <runtime>1000</runtime>
+            </primitive>
+            <primitive enabled="true">
+                <name>MonPEGPmDiskActivated</name>
+                <type>PEG_Pm_Disk</type>
+                <runtime>2000</runtime>
             </primitive>
         </primitives>
         <simples>
             <simple enabled="true">
                 <name>MonSimpleEvent1</name>
-                <type>SE_Cpu_Drop</type>
+                <type>SEG_Cpu_Drop</type>
                 <params>
-                    <param tag="tag1" type="Long">45958</param>
-                    <param tag="tag2" type="String">Param1</param>
-                    <param tag="tag3" type="String">param2</param>
-                    <param tag="tag4" type="Integer">78</param>
-                </params>
-            </simple>
-            <simple enabled="true">
-                <name>MonSimpleEvent2</name>
-                <type>SEG_Cpu_Overload</type>
-                <params>
-                    <param tag="ip4" type="Long">1245</param>
-                    <param tag="port" type="String">localhost:8080</param>
-                    <param tag="monParam3" type="String">param3</param>
-                    <param tag="monParam4" type="Integer">45</param>
+                    <param tag="runtime" type="long">45958</param>
                 </params>
             </simple>
         </simples>
         <complexes>
             <complex enabled="true">
                 <name>MonSimpleEvent1</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_DeadCpu</type>
                 <params>
-                    <param tag="tag1" type="Long">45958</param>
-                    <param tag="tag2" type="String">Param1</param>
-                    <param tag="tag3" type="String">param2</param>
-                    <param tag="tag4" type="Integer">78</param>
+                    <param tag="deadValue" type="int">2800</param>
                 </params>
             </complex>
             <complex enabled="true">
                 <name>MonSimpleEvent2</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_DeadCpu</type>
                 <params>
-                    <param tag="ip4" type="Long">1245</param>
-                    <param tag="port" type="String">localhost:8080</param>
-                    <param tag="monParam3" type="String">param3</param>
-                    <param tag="monParam4" type="Integer">45</param>
+                    <param tag="deadValue" type="int">1245</param>
                 </params>
             </complex>
         </complexes>
@@ -292,39 +273,43 @@ Voici un exemple simple de fihcier de configuration XML :
 </perception>
 ```
 
-Les primitives events sont définit par un nom unique et le type d'event générator a instancier ainsi que leur runtime.
-Les simples et complexes events présentent une structure commune. Ces deux events cont définit par un nom unique, leurs types
-ainsi qu'une suite de params. Ces paramètres correspondent à ceux employé par le contructeur Java de l'event generator. Les types
-doivent correspondre au paramètre du contructeur. Les tag ne sont pas traitées par le parser mais offre à l'utilisateur le confort
+Les primitives events sont définis par un nom unique et le type d'event générator à instancier ainsi que leur runtime.
+Les simples et complexes events présentent une structure commune. Ces deux events sont définis par un nom unique, leurs types
+ainsi qu'une suite de params. Ces paramètres correspondent à ceux employés par le contructeur Java de l'event generator. Les types
+doivent correspondre au paramètre du contructeur. Les tags ne sont pas traités par le parser mais offrent à l'utilisateur le confort
 de renseigner des informations complémentaire.
 
-Tout les types d'event comporte un attribut, dans le fichier XML, `enabled` qui indique 
+Le type des paramètres doit ABSOLUMENT être une classe Java. Il n'est donc pas possible d'utiliser un type primitif (int, long, float, etc.)
+vu qu'il n'est pas possible de les instancier à partir d'une chaine de caractères, contrairement à leurs types génériques. Il faut donc utiliser 
+Integer, Long, etc.
+
+Tous les types d'event comportent un attribut, dans le fichier XML, `enabled` qui indique 
 au moteur de configuration si cet event generator doit être activé ou non. Par défaut, 
 si cet élément est absent, l'élément sera instancié.
 
 
-Comme aborder dans la section portant sur le sytème de plugin, il est possible pour 
-l'utilisateur de définir ces propres event generators. Ces nouveaux types peuvent être 
-renseigner dans le fichié de configuration et leur instanciation sera réalisé comme 
-pour les types mit à disposition par perCEPtion.
+Comme abordé dans la section portant sur le sytème de plugin, il est possible pour 
+l'utilisateur de définir ses propres event generators. Ces nouveaux types peuvent être 
+renseignés dans le fichier de configuration et leur instanciation sera réalisé comme 
+pour les types mis à disposition par perCEPtion.
 
 ### Principe de fonctionnement
 
-Le moteur de parse du fichier de configuration dynamique d'event est divisé en trois partie.
-Tout débute par la validation du fichier fournit à l'aide du schéma XSD. S'il est valide, 
-le parsing peux débuter. C'est alors que les informations fournit sont transformées en 
-objet métier. Ces dernier sont fournit à l'activator chargé d'instancier les events generators.
+Le moteur de parse du fichier de configuration dynamique d'event est divisé en trois parties.
+Tout débute par la validation du fichier fourni à l'aide du schéma XSD. S'il est valide, 
+le parsing peut débuter. C'est alors que les informations fournies sont transformées en 
+objets métiers. Ces derniers sont fournis à l'activator chargé d'instancier les events generators.
 
 
 #### Modèle 
 
 La partie modèle du moteur comprend un ensemble de classes permettant 
 l'enregistrement des informations pour l'instanciation des event generators.
-Ces éléments seront ensuite transmise à l'activateur pour lancement.
+Ces éléments seront ensuite transmis à l'activateur pour lancement.
 
 On notera une différence entre le format des primitives events et celui
 employé pour les simples et complexes (voir la section traitant du format du 
-fichier de configuration). Ces deux derniers hérite de `EventData` 
+fichier de configuration). Ces deux derniers héritent de `EventData` 
 définisant leur structure commune.
 
 
@@ -352,21 +337,44 @@ les erreurs rencontrée et de les faire remonter à l'utilisateur.
 
 #### Activator
 
+Tout comme pour la validation et le parse, une énumération permettant de répertorier les erreurs d'instanciation a été 
+créée. Elle est disponible dans ActivationErrorType.
 
+Pour instancier un Event Generator, on utilise une banque d'EventGenerator. En effet, on enregistre chacun des plugins que l'on crée 
+dans une banque appelée EGBank. Ensuite, on récupère la classe d'implémentation de l'EG grâce à son nom, et on l'instancie dynamiquement 
+avec les paramètres fournis dans le fichier de configuration XML.
+
+Pour activer les Event Generator, on récupère les objets métier créés par le parser. Ensuite, s'il s'agit d'un PEG, 
+seul son nom et son temps d'exécution sont récupérés, puis passés en paramètre du constructeur de la classe.
+S'il s'agit d'un SEG ou d'un CEG, on récupère, en plus du nom, une liste de paramètres avec leurs types et leurs valeurs.
+
+Ces paramètres sont instanciés dynamiquement grâce à la librairie ClassUtils, fournie par Apache Commons Lang 3. 
+Cette librairie instancie les classes à partir de leur nom, et seulement les classes, c'est pourquoi on ne peut pas utiliser de types primitifs dans les EG,
+ qui ne sont pas des classes. Il faut donc bien déclarer des types instanciables dans les plugins, et si l'utilisateur essaie de rentrer un type primitif,
+  le moteur le castera automatiquement en type générique.
+  
+  Lorsqu'un EG est activé, un message l'indiquant est affiché dans la console. De même, s'il y a des erreurs, elles sont ajoutées à un objet
+  ActivationResult, qui regroupera toutes les erreurs survenues et qui sera lu par le ConfigurationLoader.
+  
+  Le ConfigurationLoader est le point d'entrée du module de configuration. Cette classe contient une méthode statique loadConfiguration,
+  qui va lancer l'ensemble des moteurs de validation, parse et activation. À l'heure actuelle, le chemin du schéma .xsd est donné en "dur" 
+  dans cette méthode, et il faudra le changer à l'avenir.
+  
+  Si des erreurs sont détectées, l'ensemble des logs d'erreurs des PEG/SEG/CEG est affiché.
 
 
 ### Ajouter un system de parse
 
 L'architecture du projet perCEPtion permet d'ajouter un système de parse pour un nouvel
 élement de façon très simple. Il est possible de créer un nouvel élement présentant le
-même format de configuration que celui est simple ou complex events. Pour ce faire, deux 
+même format de configuration que celui des simple ou complex events. Pour ce faire, deux 
 étapes sont à réaliser.
 
 #### Mise à jour du schéma XSD
 Tout d'abord, il est nécessaire de modifier le schéma XSD du module de configuration 
 dynamique. Celui-ci est disponible dans `resources/schema.xsd`. 
 
-Voici la structure utilisé pour les simples events : 
+Voici la structure utilisée pour les simples events : 
 ```XML
 <xsd:element name="simple">
 	<xsd:complexType>
@@ -406,26 +414,26 @@ d'ajouter cet élément à la liste des events du schéma XSD dans l'élément s
 
 #### Implémentation du parser
 
-Maintenant que le shéma XSD est en mesure de traiter notre nouvelle élément, nous
+Maintenant que le schéma XSD est en mesure de traiter notre nouvel élément, nous
 allons pouvoir implémenter le parser.
 
-Lors du parse du fichier de configuration, un objet de type `ResultatParsing` est mit
-à disposition. Celui comprend les éventuelles erreur lié au traitement ou à la validation
-du fichier mais aussi l'ensembles des informations figurant dans le XML et qui permettrons
-l'imnstanciation des generator events. Ces éléments sont enregistré sous forme de liste 
+Lors du parse du fichier de configuration, un objet de type `ResultatParsing` est mis
+à disposition. Celui-ci comprend les éventuelles erreurs liées au traitement ou à la validation
+du fichier mais aussi l'ensembles des informations figurant dans le XML et qui permettront
+l'instanciation des EG. Ces éléments sont enregistrés sous forme de listes 
 de `EventData`. Il faut donc créer une classe implémentant cette classe abstraite.
-Il suffit de redefinir la méthode `toString()`.
+Il suffit de redéfinir la méthode `toString()`.
 
 Prenons l'exemple des simple events, une classe `SimpleEventData` qui implémente
 `EventData`. En ce qui concerne le `ResultatParsing` une liste de `SimpleEventData`
- a été ajouté en attribut. Les méthodes suivante sont aussi à ajouter :
+ a été ajouté en attribut. Les méthodes suivantes sont aussi à ajouter :
 - `addSimpleEvent(SimpleEventData simpleEventData)`,
 - `addAllSimpleEvents(List<SimpleEventData> simpleEventDataList)`,
 - `existingSimpleEventListWithName(String name)`.
 
-Bien entendu, les getters et setters sont a créer et la méthode `toString()`.
+Bien entendu, les getters et setters sont à créer et la méthode `toString()` également.
 
-Comme évoqué précédement la classe abstraite `XMLFileParseToEventData` définit l'ensemble 
+Comme évoqué précédement, la classe abstraite `XMLFileParseToEventData` définit l'ensemble 
 des méthodes permettant le parse des éléments présentant un ensemble de paramètres.
 Dans notre exemple, la classe `XMLFileParserToSimpleEventData` hérite de `XMLFileParseToEventData`.
 
@@ -436,12 +444,12 @@ La classe utilitaire `XMLFileParser` doit aussi être mise à jour.
 
 #### TU 
 
-... tests unitaires oont été mit en place pour permettre la validation du moteur 
+Des tests unitaires ont été mis en place pour permettre la validation du moteur 
 de configuration dynamique de generator events.
 
 ## Utilisation du Framework
 
-Nous avons fait en sorte que l'utilisation du framework soit le plus simple possible !
+Nous avons fait en sorte que l'utilisation du framework soit la plus simple possible !
 Les sections ci-dessous détaillent comment utiliser perCEPtion.
 
 ### Configuration des EG via le fichier XML
@@ -459,7 +467,7 @@ Il faut définir le type, qui correspond à la classe d'implémentation de l'Eve
 En terme d'évolution du framework perCEPtion, il serait bien de finaliser la conception
  et la rédaction des tests unitaires du moteur de configuration dynamique d'event generator.
  Pour valider le bon fonctionnement du système dans son ensemble, des TU devront être
- mit en place.
+ mis en place.
 
 
 # En travaux !

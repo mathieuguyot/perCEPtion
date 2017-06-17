@@ -36,7 +36,7 @@ class XMLFileParserToComplexEventData extends XMLFileParseToEventData {
 
     @Override
     public void addEventData(String eventName, String eventType, List<Pair<String, String>> pairs, ResultatParsing resultatParsing) {
-        ComplexEventData complexEventData = new ComplexEventData(eventName, eventType, pairs);
+        ComplexEventData complexEventData = new ComplexEventData(eventType, eventName, pairs);
         resultatParsing.addComplexEvent(complexEventData);
     }
 

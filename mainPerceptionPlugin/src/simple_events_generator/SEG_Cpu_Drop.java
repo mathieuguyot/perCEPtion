@@ -15,8 +15,11 @@ import java.util.Map;
 
 public class SEG_Cpu_Drop extends SimpleEventGenerator {
 
-    public SEG_Cpu_Drop(String name) {
+    private Long runtime;
+
+    public SEG_Cpu_Drop(String name, Long runtime) {
         super(name);
+        this.runtime = runtime;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class SEG_Cpu_Drop extends SimpleEventGenerator {
                         return false;
                     }
                 })
-                .within(Time.milliseconds(2000));
+                .within(Time.milliseconds(runtime));
     }
 
     @Override
