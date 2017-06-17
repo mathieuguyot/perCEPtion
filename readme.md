@@ -292,15 +292,68 @@ Voici un exemple simple de fihcier de configuration XML :
 </perception>
 ```
 
+Les primitives events sont définit par un nom unique et le type d'event générator a instancier ainsi que leur runtime.
+Les simples et complexes events présentent une structure commune. Ces deux events cont définit par un nom unique, leurs types
+ainsi qu'une suite de params. Ces paramètres correspondent à ceux employé par le contructeur Java de l'event generator. Les types
+doivent correspondre au paramètre du contructeur. Les tag ne sont pas traitées par le parser mais offre à l'utilisateur le confort
+de renseigner des informations complémentaire.
+
+Tout les types d'event comporte un attribut, dans le fichier XML, `enabled` qui indique 
+au moteur de configuration si cet event generator doit être activé ou non. Par défaut, 
+si cet élément est absent, l'élément sera instancié.
+
+
+Comme aborder dans la section portant sur le sytème de plugin, il est possible pour 
+l'utilisateur de définir ces propres event generators. Ces nouveaux types peuvent être 
+renseigner dans le fichié de configuration et leur instanciation sera réalisé comme 
+pour les types mit à disposition par perCEPtion.
+
 ### Principe de fonctionnement
 
-Le moteur de parse du fichier de configuration dynamique d'event est 
+Le moteur de parse du fichier de configuration dynamique d'event est divisé en trois partie.
+Tout débute par la validation du fichier fournit à l'aide du schéma XSD. S'il est valide, 
+le parsing peux débuter. C'est alors que les informations fournit sont transformées en 
+objet métier. Ces dernier sont fournit à l'activator chargé d'instancier les events generators.
 
-- transformation données en objets métier
-- objets résultats
-- enregistrement des events
 
-### Remontée et traitement des erreurs
+#### Modèle 
+
+La partie modèle du moteur comprend un ensemble de classes permettant 
+l'enregistrement des informations pour l'instanciation des event generators.
+Ces éléments seront ensuite transmise à l'activateur pour lancement.
+
+On notera une différence entre le format des primitives events et celui
+employé pour les simples et complexes (voir la section traitant du format du 
+fichier de configuration). Ces deux derniers hérite de `EventData` 
+définisant leur structure commune.
+
+
+#### Validation et parse de fichiers de configuration XML
+
+Dans le but de rendre le sytème facile à faire évoluer, plusieurs énumérations ont été définit et permettent le traitement des éventuelles erreurs
+en définisant une liste d'erreur pouvant survenir.
+Les erreurs liées au traitement de fichier sont lister dans `FileErrorType`.
+Pour la validation, il s'agit de `ValidatorErrorType`.
+C'est `ParsingErrorType` qui est utilisé pour les erreurs liée au parsing du fichier.
+
+Toujours dans une volonté de rendre le système adaptable, l'énumération `XMLFileStructure`,
+comprend les balises attendu dans le fichier XML. Ainsi en cas d'évolution de sont format
+ou de mise à jour des nom employé, il suffit de modifier cette liste sans se sousier
+de leur emploi au sein du moteur.
+
+Validateur comme parseur définsent leur propre points d'entré respectivement à l'aide des classes utilitaires
+`XMLFileValidator` et `XMLFileParser`. Chacun d'eux retourne des objets rprésentatif des résultats obetenu 
+`ValidationResult` et `ResultatParsing`. 
+
+Au final, le moteur de parse retourne un objet de type `ResultatParsing` comprenant l'enseblple des erreurs 
+propres au traitement du ficheir de configuration, à la validation et au parsing.
+Cela permet au module d'activation de récupéré l'ensemble des informations de pour l'instanciation mais aussi 
+les erreurs rencontrée et de les faire remonter à l'utilisateur.
+
+#### Activator
+
+
+
 
 ### Ajouter un system de parse
 
@@ -381,6 +434,11 @@ permettre le parsing du nouvel élément.
 
 La classe utilitaire `XMLFileParser` doit aussi être mise à jour.  
 
+#### TU 
+
+... tests unitaires oont été mit en place pour permettre la validation du moteur 
+de configuration dynamique de generator events.
+
 ## Utilisation du Framework
 
 Nous avons fait en sorte que l'utilisation du framework soit le plus simple possible !
@@ -394,8 +452,20 @@ Il faut définir le type, qui correspond à la classe d'implémentation de l'Eve
 
 /!\ ATTENTION : la liste des paramètres et le leur types doivent être fournis dans le même ordre que dans le constructeur. /!\
 
-- conf ces propre Events
-- primitive events
-- simple et complexes
+
+
+# Axes d'amélioration et évolutions possibles
+
+En terme d'évolution du framework perCEPtion, il serait bien de finaliser la conception
+ et la rédaction des tests unitaires du moteur de configuration dynamique d'event generator.
+ Pour valider le bon fonctionnement du système dans son ensemble, des TU devront être
+ mit en place.
+
 
 # En travaux !
+
+
+- TODO
+    - système de plugin !
+    - c'est ou qu'on le met le fichier de conf pour que perCEPtion le traite tout
+    seul comme un grand ? 
