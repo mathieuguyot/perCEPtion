@@ -21,7 +21,7 @@ L'image ci-dessous décrit le fonctionnement global du framework perception:
 
 ![PerCEPtion architecture](images/perCEPtion_architecture.png)
 
-Le framework a pour objectif de monitorer un ensemble de composants d'une architecture. Pour atteindre cet objectif, perCEPtion utilise le CEP (complex event processing) d'une manière ingénieuse:
+Le framework a pour objectif de monitorer un ensemble de composants d'une architecture. Pour atteindre cet objectif, perCEPtion utilise le CEP (complex event processing) de la manière suivante:
 1. La première étape consiste à générer des évènements dits primitifs. Ceux-ci sont générés constamment. Ils sont donc très nombreux mais peu significatifs.
 2. La seconde étape consiste à étudier le flux constant d'évènements primitifs pour essayer d'extraire des informations significatives. De cette étape, sont générés des évènements dis simples et complexes (le premier contient des informations significatives d'une resources, le second d'une ou plusieurs resources).
 3. La troisième étape consiste à étudier le flux constant d'évènements simples et complexes afin de sélectionner les plus significatifs et de les considérer comme des symptômes porteurs d'une information sur une anomalie d'une partie du système surveillé.
@@ -476,7 +476,8 @@ la classe abstraite correspondant à ce que vous créez :
 
 Une fois toutes ces classes créées, il vous faut créer une nouvelle classe qui servira de point d'entrée, sur le même modèle que `MainPerceptionPlugin`.
 Cette classe doit étendre `PerceptionPlugin`, et contenir une méthode `initPlugin()`, qui va aller enregistrer l'ensemble des Event Generators que vous venez
-de créer.
+de créer. Enfin, une fois que le jar de ce projet est généré, il suffit de l'ajouter dans les librairies du projet principal `perCEPtion`, afin que le framework trouve 
+les Events et Event Generators que vous venez de créer.
 
 ## Emplacement des fichiers de configuration
 
