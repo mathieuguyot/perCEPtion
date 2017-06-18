@@ -92,18 +92,6 @@ public class XMLFileValidatorTest {
     }
 
     @Test
-    public void testValidate_InvalidPrimitiveEventTypeTypeValue() {
-        String xMLFilePath = TestConstants.XMLFileValidationTestFolder + "PrimitiveEvents/testValidate_InvalidPrimitiveEventTypeTypeValue.xml";
-        ValidationResult validationResult = XMLFileValidator.validate(xMLFilePath, TestConstants.XMLFileXSD);
-        assertTrue("HasError", validationResult.hasErrors());
-        assertEquals("Erreur fichier", null, validationResult.getFileErrorType());
-        assertEquals("Renvoie de l'erreur - type", ValidatorErrorType.ERROR, validationResult.getValidationError().getValidatorErrorType());
-        assertEquals("Renvoie de l'erreur - message",
-                "cvc-enumeration-valid : La valeur 'PEG_BlankABC' n'est pas un facet valide par rapport à l'énumération '[PEG_Blank, PEG_Co_ResponseTime, PEG_Pm_Cpu, PEG_Pm_Disk, PEG_Pm_Ram, PEG_Vm_Cpu, PEG_Vm_Disk, PEG_Vm_Ram]'. Il doit s'agir d'une valeur provenant de l'énumération.",
-                validationResult.getValidationError().getErrorMsg());
-    }
-
-    @Test
     public void testValidate_InvalidPrimitiveEventTypePrimitiveValue() {
         String xMLFilePath = TestConstants.XMLFileValidationTestFolder + "PrimitiveEvents/testValidate_InvalidPrimitiveEventTypePrimitiveValue.xml";
         ValidationResult validationResult = XMLFileValidator.validate(xMLFilePath, TestConstants.XMLFileXSD);
@@ -136,18 +124,6 @@ public class XMLFileValidatorTest {
         assertEquals("Renvoie de l'erreur - type", ValidatorErrorType.ERROR, validationResult.getValidationError().getValidatorErrorType());
         assertEquals("Renvoie de l'erreur - message",
                 "cvc-complex-type.2.4.a : Contenu non valide trouvé à partir de l'élément 'simple'. L'une des valeurs '{simples}' est attendue.",
-                validationResult.getValidationError().getErrorMsg());
-    }
-
-    @Test
-    public void testValidate_InvalidSimpleEventTypeTypeValue() {
-        String xMLFilePath = TestConstants.XMLFileValidationTestFolder + "SimpleEvents/testValidate_InvalidSimpleEventTypeTypeValue.xml";
-        ValidationResult validationResult = XMLFileValidator.validate(xMLFilePath, TestConstants.XMLFileXSD);
-        assertTrue("HasError", validationResult.hasErrors());
-        assertEquals("Erreur fichier", null, validationResult.getFileErrorType());
-        assertEquals("Renvoie de l'erreur - type", ValidatorErrorType.ERROR, validationResult.getValidationError().getValidatorErrorType());
-        assertEquals("Renvoie de l'erreur - message",
-                "cvc-enumeration-valid : La valeur 'SE_Cpu_DropBlaBla' n'est pas un facet valide par rapport à l'énumération '[SE_Cpu_Drop, SEG_Cpu_Overload, SEG_Ram_Drop]'. Il doit s'agir d'une valeur provenant de l'énumération.",
                 validationResult.getValidationError().getErrorMsg());
     }
 

@@ -67,7 +67,7 @@ public class ParsingErrorTypeTest {
 				ParsingErrorType.EVENT_PRIMITIVES_DUPLICATED_NAME,
 				ParsingErrorType.EVENT_PRIMITIVES_INVALID_TYPE);
 				//ParsingErrorType.INVALID_PRIMITIVE_ENABLED_ATTR);
-		assertEquals("valuesAsList - taille", 5, ParsingErrorType.valuesAsList().size());
+		assertEquals("valuesAsList - taille", 13, ParsingErrorType.valuesAsList().size());
 		assertTrue("valuesAsList - values", ParsingErrorType.valuesAsList().containsAll(parsingErrorTypeList));
 	}
 

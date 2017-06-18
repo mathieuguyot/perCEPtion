@@ -24,7 +24,7 @@
         <simples>
             <simple enabled="true">
                 <name>MonSimpleEvent1</name>
-                <type>SE_Cpu_Drop</type>
+                <type>SEG_Cpu_Drop</type>
                 <params>
                     <param tag="tag1" type="Long">45958</param>
                     <param tag="tag2" type="String">Param1</param>
@@ -46,7 +46,7 @@
         <complexes>
             <complex enabled="true">
                 <name>MonComplexEvent1</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_Cpu_Dead</type>
                 <params>
                     <param tag="tag1" type="Long">12</param>
                     <param tag="tag2" type="String">Param4</param>
@@ -56,7 +56,7 @@
             </complex>
             <complex enabled="true">
                 <name>MonComplexEvent2</name>
-                <type>CE_Cpu_Dead</type>
+                <type>CEG_Cpu_Dead</type>
                 <params>
                     <param tag="ip4" type="Long">5</param>
                     <param tag="port" type="String">Kikou Toi</param>

@@ -37,8 +37,8 @@ public class XMLFileParserTest {
 
 		List<SimpleEventData> expectedSEdataList = new ArrayList<>();
 		expectedSEdataList.add(new SimpleEventData(
+				"SEG_Cpu_Drop",
 				"MonSimpleEvent1",
-				"SE_Cpu_Drop",
 				Arrays.asList(
 						new Pair<>("Long", "45958"),
 						new Pair<>("String", "Param1"),
@@ -46,8 +46,8 @@ public class XMLFileParserTest {
 						new Pair<>("Integer", "78")
 				)));
 		expectedSEdataList.add(new SimpleEventData(
-				"MonSimpleEvent2",
 				"SEG_Cpu_Overload",
+				"MonSimpleEvent2",
 				Arrays.asList(
 						new Pair<>("Long", "1245"),
 						new Pair<>("String", "localhost:8080"),
@@ -57,8 +57,8 @@ public class XMLFileParserTest {
 
 		List<ComplexEventData> expectedCEdataList = new ArrayList<>();
 		expectedCEdataList.add(new ComplexEventData(
+				"CEG_Cpu_Dead",
 				"MonComplexEvent1",
-				"CE_Cpu_Dead",
 				Arrays.asList(
 						new Pair<>("Long", "12"),
 						new Pair<>("String", "Param4"),
@@ -66,8 +66,8 @@ public class XMLFileParserTest {
 						new Pair<>("Integer", "78")
 				)));
 		expectedCEdataList.add(new ComplexEventData(
+				"CEG_Cpu_Dead",
 				"MonComplexEvent2",
-				"CE_Cpu_Dead",
 				Arrays.asList(
 						new Pair<>("Long", "5"),
 						new Pair<>("String", "Kikou Toi"),
@@ -98,10 +98,12 @@ public class XMLFileParserTest {
 		ResultatParsing expectedResultatParsing = ResultatParsing.FAB();
 
 		List<PrimitiveEventData> expectedPedataList = new ArrayList<>();
-		expectedPedataList.add(new PrimitiveEventData("PEG_Blank1", "PEG_Blank", 78945L));
 		expectedPedataList.add(new PrimitiveEventData("PEG_Pm_Cpu1", "PEG_Pm_Cpu", 12000L));
 
 		expectedResultatParsing.setPrimitiveEventList(expectedPedataList);
+
+		ValidationResult validationResult = ValidationResult.FAB(null,null);
+		expectedResultatParsing.setValidationResult(validationResult);
 
 		// Actual
 		ResultatParsing actualResultat = XMLFileParser.parse(xMLFilePath, TestConstants.XMLFileXSD);

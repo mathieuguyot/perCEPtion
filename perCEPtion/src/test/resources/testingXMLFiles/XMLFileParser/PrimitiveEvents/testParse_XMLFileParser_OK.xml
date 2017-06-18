@@ -6,11 +6,6 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Blank1</name>
-                <type>PEG_Blank</type>
-                <runtime>78945</runtime>
-            </primitive>
-            <primitive enabled="true">
                 <name>PEG_Pm_Cpu1</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>12000</runtime>
@@ -21,5 +16,23 @@
                 <runtime>89100</runtime>
             </primitive>
         </primitives>
+        <simples>
+            <simple enabled="false">
+                <name>SEG_Cpu_Drop1</name>
+                <type>SEG_Cpu_Drop</type>
+                <params>
+                    <param tag="runtime" type="Integer">12</param>
+                </params>
+            </simple>
+        </simples>
+        <complexes>
+            <complex enabled="false">
+                <name>CEG_Dead_Cpu1</name>
+                <type>CEG_Dead_Cpu</type>
+                <params>
+                    <param tag="runtime" type="Integer">12</param>
+                </params>
+            </complex>
+        </complexes>
     </events>
 </perception>

@@ -17,7 +17,7 @@
             </simple>
             <simple enabled="true">
                 <name>MonSimpleEvent2</name>
-                <type>SE_Cpu_Drop</type>
+                <type>SEG_Cpu_Drop</type>
                 <params>
                     <param tag="ip4" type="Long">1245</param>
                     <param tag="port" type="String">localhost:8080</param>

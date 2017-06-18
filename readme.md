@@ -460,7 +460,27 @@ Il faut définir le type, qui correspond à la classe d'implémentation de l'Eve
 
 /!\ ATTENTION : la liste des paramètres et le leur types doivent être fournis dans le même ordre que dans le constructeur. /!\
 
+## Système de plugins
 
+Pour déclarer vos propres Events et Event Generators et pouvoir les utiliser, il vous suffit de créer un projet comme "mainPerceptionPlugin".
+Il vous faut ajouter le jar de PerCEPtion en librairie, et ensuite, il vous suffit de créer vos Events et Event Generators en les faisant hériter de 
+la classe abstraite correspondant à ce que vous créez : 
+
+- PrimitiveEvent 
+- SimpleEvent
+- ComplexEvent
+- Symptom
+- PrimitiveEventGenerator
+- SimpleEventGenerator
+- ComplexEventGenerator
+
+Une fois toutes ces classes créées, il vous faut créer une nouvelle classe qui servira de point d'entrée, sur le même modèle que MainPerceptionPlugin.
+Cette classe doit étendre PerceptionPlugin, et contenir une méthode initPlugin(), qui va aller enregistrer l'ensemble des Event Generators que vous venez
+de créer.
+
+## Emplacement des fichiers de configuration
+
+Pour l'instant, les fichiers de configuration sont placés dans le répertoire "resources" du projet perCEPtion, afin d'être lus par le système.
 
 # Axes d'amélioration et évolutions possibles
 
@@ -471,9 +491,3 @@ En terme d'évolution du framework perCEPtion, il serait bien de finaliser la co
 
 
 # En travaux !
-
-
-- TODO
-    - système de plugin !
-    - c'est ou qu'on le met le fichier de conf pour que perCEPtion le traite tout
-    seul comme un grand ? 

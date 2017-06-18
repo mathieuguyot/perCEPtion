@@ -53,7 +53,7 @@ public class XMLFileStructureTest {
                 XMLFileStructure.EVENT_PRIMITIVES, XMLFileStructure.EVENT_PRIMITIVE,
                 XMLFileStructure.EVENT_ATTR_ENABLED, XMLFileStructure.EVENT_NAME,
                 XMLFileStructure.EVENT_PRIMITIVE_RUNTIME, XMLFileStructure.NAMESPACE);
-        assertEquals("valuesAsList - taille", 9, XMLFileStructure.valuesAsList().size());
+        assertEquals("valuesAsList - taille", 17, XMLFileStructure.valuesAsList().size());
         assertTrue("valuesAsList - values", XMLFileStructure.valuesAsList().containsAll(xMLFileStructureList));
     }
 

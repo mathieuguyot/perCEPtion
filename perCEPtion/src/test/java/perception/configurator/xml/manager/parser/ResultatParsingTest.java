@@ -96,7 +96,7 @@ public class ResultatParsingTest {
 		assertEquals("Constructeur - primitiveEventList", primitiveEventList, resultatParsing.getPrimitiveEventList());
 		assertEquals("Constructeur - simpleEventDataList", simpleEventDataList, resultatParsing.getSimpleEventList());
 		assertEquals("Constructeur - complexEventDataList", complexEventDataList, resultatParsing.getComplexEventList());
-		assertEquals("Constructeur - validationResult", null, resultatParsing.getValidationResult());
+		assertEquals("Constructeur - validationResult", ValidationResult.FAB(null,null), resultatParsing.getValidationResult());
 
 
 	}
