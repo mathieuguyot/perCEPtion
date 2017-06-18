@@ -20,9 +20,6 @@
                 <type>SEG_Cpu_Drop</type>
                 <params>
                     <param tag="ip4" type="Long">1245</param>
-                    <param tag="port" type="String">localhost:8080</param>
-                    <param tag="monParam3" type="String">param3</param>
-                    <param tag="monParam4" type="Integer">45</param>
                 </params>
             </simple>
         </simples>

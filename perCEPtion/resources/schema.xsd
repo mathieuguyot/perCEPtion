@@ -149,8 +149,8 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="primitives"  minOccurs="1" maxOccurs="1"/>
-				<xsd:element ref="simples"  minOccurs="1" maxOccurs="1"/>
-				<xsd:element ref="complexes"  minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="simples"  minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="complexes"  minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

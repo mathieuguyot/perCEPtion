@@ -231,8 +231,8 @@ public class ResultatParsing {
      * le cas contraire
      */
     public boolean existingComplexEventListWithName(String name) {
-        for (SimpleEventData simpleEventData: this.getSimpleEventList()) {
-            if (simpleEventData.getEventName().equals(name)) {
+        for (ComplexEventData complexEventData: this.getComplexEventList()) {
+            if (complexEventData.getEventName().equals(name)) {
                 return true;
             }
         }

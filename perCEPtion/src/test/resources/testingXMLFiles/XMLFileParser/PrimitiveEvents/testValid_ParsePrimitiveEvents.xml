@@ -6,14 +6,14 @@
     <events>
         <primitives>
             <primitive enabled="true">
-                <name>PEG_Pm_Cpu1</name>
+                <name>Mon_PEG_Pm_Cpu</name>
                 <type>PEG_Pm_Cpu</type>
                 <runtime>12000</runtime>
             </primitive>
             <primitive enabled="false">
-                <name>PEG_Pm_Disk1</name>
-                <type>PEG_Pm_Disk</type>
-                <runtime>89100</runtime>
+                <name>MonPEGVmCpu</name>
+                <type>PEG_Vm_Cpu</type>
+                <runtime>11000</runtime>
             </primitive>
         </primitives>
     </events>

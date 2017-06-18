@@ -147,18 +147,77 @@ public class XMLFileParserTest {
 	}
 
 	@Test
-	public void testParsePrimitiveEvents() {
-		fail("TODO");
+	public void testParsePrimitiveEvents()  throws ParserConfigurationException, SAXException, IOException {
+        String filePath = TestConstants.XMLFileParserPrimitiveEventsTestFolder + "testValid_ParsePrimitiveEvents.xml";
+
+        List<PrimitiveEventData> expectedPrimitiveEvents = new ArrayList<>();
+        expectedPrimitiveEvents.add(new PrimitiveEventData("Mon_PEG_Pm_Cpu", "PEG_Pm_Cpu", 12000L));
+
+        ResultatParsing actualRes = XMLFileParser.parse(filePath, TestConstants.XMLFileXSD);
+
+		assertEquals(expectedPrimitiveEvents, actualRes.getPrimitiveEventList());
 	}
 
 	@Test
-	public void testParseSimpleEvents() {
-		fail("TODO");
+	public void testParseSimpleEvents() throws IOException, SAXException, ParserConfigurationException {
+        String filePath = TestConstants.XMLFileParserSimpleEventsTestFolder + "testParseSimpleEvents_OK.xml";
+
+        List<Pair<String,String>> params = new ArrayList<>();
+        params.add(new Pair<String,String>("Long", "1245"));
+
+        List<SimpleEventData> expectedSimpleEvents = new ArrayList<>();
+        expectedSimpleEvents.add(new SimpleEventData("SEG_Cpu_Drop","MonSimpleEvent2", params));
+
+        ResultatParsing actualRes = XMLFileParser.parse(filePath, TestConstants.XMLFileXSD);
+
+        assertEquals(expectedSimpleEvents, actualRes.getSimpleEventList());
 	}
 
 	@Test
-	public void testMergeResultatsParsingsWithMainOne() {
-		fail("TODO");
+	public void testMergeResultatsParsingsWithMainOne() throws IOException, SAXException, ParserConfigurationException {
+		String filePath = TestConstants.XMLFileParserEventsTestFolder + "testXMLConfigurationParser.xml";
+
+		List<Pair<String, String>> paramsSE1 = new ArrayList<>();
+		paramsSE1.add(new Pair<String,String>("Long", "45958"));
+        paramsSE1.add(new Pair<String,String>("String", "Param1"));
+        paramsSE1.add(new Pair<String,String>("String", "param2"));
+        paramsSE1.add(new Pair<String,String>("Integer", "78"));
+
+        List<Pair<String, String>> paramsSE2 = new ArrayList<>();
+        paramsSE2.add(new Pair<String,String>("Long", "1245"));
+        paramsSE2.add(new Pair<String,String>("String", "localhost:8080"));
+        paramsSE2.add(new Pair<String,String>("String", "param3"));
+        paramsSE2.add(new Pair<String,String>("Integer", "45"));
+
+        List<Pair<String, String>> paramsCE1 = new ArrayList<>();
+        paramsCE1.add(new Pair<String,String>("Long", "12"));
+        paramsCE1.add(new Pair<String,String>("String", "Param4"));
+        paramsCE1.add(new Pair<String,String>("String", "param5"));
+        paramsCE1.add(new Pair<String,String>("Integer", "78"));
+
+        List<Pair<String, String>> paramsCE2 = new ArrayList<>();
+        paramsCE2.add(new Pair<String,String>("Long", "5"));
+        paramsCE2.add(new Pair<String,String>("String", "Kikou Toi"));
+        paramsCE2.add(new Pair<String,String>("String", "param6"));
+        paramsCE2.add(new Pair<String,String>("Integer", "4"));
+
+        List<PrimitiveEventData> expectedPrimitiveEvents = new ArrayList<>();
+        expectedPrimitiveEvents.add(new PrimitiveEventData("MonPEGBlank", "PEG_Blank", 60000L));
+        expectedPrimitiveEvents.add(new PrimitiveEventData("MonPEGPmCpu", "PEG_Pm_Cpu", 12000L));
+
+        List<SimpleEventData> expectedSimpleEvents = new ArrayList<>();
+        expectedSimpleEvents.add(new SimpleEventData("SEG_Cpu_Drop", "MonSimpleEvent1", paramsSE1));
+        expectedSimpleEvents.add(new SimpleEventData("SEG_Cpu_Overload", "MonSimpleEvent2", paramsSE2));
+
+        List<ComplexEventData> expectedComplexEvents = new ArrayList<>();
+        expectedComplexEvents.add(new ComplexEventData("CEG_Cpu_Dead", "MonComplexEvent1", paramsCE1));
+        expectedComplexEvents.add(new ComplexEventData("CEG_Cpu_Dead", "MonComplexEvent2", paramsCE2));
+
+        ResultatParsing actualRes = XMLFileParser.parse(filePath, TestConstants.XMLFileXSD);
+
+        assertEquals(expectedPrimitiveEvents, actualRes.getPrimitiveEventList());
+        assertEquals(expectedSimpleEvents, actualRes.getSimpleEventList());
+        assertEquals(expectedComplexEvents, actualRes.getComplexEventList());
 	}
 
 }

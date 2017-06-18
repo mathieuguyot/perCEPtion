@@ -17,7 +17,10 @@ import static org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
         ResultatParsingTest.class,
         XMLFileParserTest.class,
-        XMLFileParserToPrimitiveEventDataTest.class
+        XMLFileParserToPrimitiveEventDataTest.class,
+        XMLFileParserToSimpleEventDataTest.class,
+        XMLFileParserToComplexEventDataTest.class,
+        XMLFileParseToEventDataTest.class
 })
 
 public class XMLParserTestSuite {

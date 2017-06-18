@@ -123,7 +123,7 @@ public class XMLFileValidatorTest {
         assertEquals("Erreur fichier", null, validationResult.getFileErrorType());
         assertEquals("Renvoie de l'erreur - type", ValidatorErrorType.ERROR, validationResult.getValidationError().getValidatorErrorType());
         assertEquals("Renvoie de l'erreur - message",
-                "cvc-complex-type.2.4.a : Contenu non valide trouvé à partir de l'élément 'simple'. L'une des valeurs '{simples}' est attendue.",
+                "cvc-complex-type.2.4.a : Contenu non valide trouvé à partir de l'élément 'simple'. L'une des valeurs '{simples, complexes}' est attendue.",
                 validationResult.getValidationError().getErrorMsg());
     }
 

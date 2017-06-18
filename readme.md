@@ -484,10 +484,7 @@ Pour l'instant, les fichiers de configuration sont placés dans le répertoire `
 
 # Axes d'amélioration et évolutions possibles
 
-En terme d'évolution du framework perCEPtion, il serait bien de finaliser la conception
- et la rédaction des tests unitaires du moteur de configuration dynamique d'event generator.
- Pour valider le bon fonctionnement du système dans son ensemble, des TU devront être
- mis en place.
+Une interface graphique permettant le paramétrage dynamique (avec récupération des fichiers xsd et xml via une fenêtre) des Event Generator,
+monitoring visuel des machines, paramétrage du parc, etc. serait une amélioration intéressante sur ce projet.
 
-
-# En travaux !
+De même, le paramétrage des Symptômes et le développement du catalogue doit être poursuivi, afin d'avoir une plus grande variété dans la supervision.
