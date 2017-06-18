@@ -338,25 +338,25 @@ les erreurs rencontrée et de les faire remonter à l'utilisateur.
 #### Activator
 
 Tout comme pour la validation et le parse, une énumération permettant de répertorier les erreurs d'instanciation a été 
-créée. Elle est disponible dans ActivationErrorType.
+créée. Elle est disponible dans `ActivationErrorType`.
 
 Pour instancier un Event Generator, on utilise une banque d'EventGenerator. En effet, on enregistre chacun des plugins que l'on crée 
-dans une banque appelée EGBank. Ensuite, on récupère la classe d'implémentation de l'EG grâce à son nom, et on l'instancie dynamiquement 
+dans une banque appelée `EGBank`. Ensuite, on récupère la classe d'implémentation de l'EG grâce à son nom, et on l'instancie dynamiquement 
 avec les paramètres fournis dans le fichier de configuration XML.
 
-Pour activer les Event Generator, on récupère les objets métier créés par le parser. Ensuite, s'il s'agit d'un PEG, 
+Pour activer les Event Generator, on récupère les objets métier créés par le parser. Ensuite, s'il s'agit d'un `PEG`, 
 seul son nom et son temps d'exécution sont récupérés, puis passés en paramètre du constructeur de la classe.
-S'il s'agit d'un SEG ou d'un CEG, on récupère, en plus du nom, une liste de paramètres avec leurs types et leurs valeurs.
+S'il s'agit d'un `SEG` ou d'un `CEG`, on récupère, en plus du nom, une liste de paramètres avec leurs types et leurs valeurs.
 
-Ces paramètres sont instanciés dynamiquement grâce à la librairie ClassUtils, fournie par Apache Commons Lang 3. 
+Ces paramètres sont instanciés dynamiquement grâce à la librairie `ClassUtils`, fournie par Apache Commons Lang 3. 
 Cette librairie instancie les classes à partir de leur nom, et seulement les classes, c'est pourquoi on ne peut pas utiliser de types primitifs dans les EG,
  qui ne sont pas des classes. Il faut donc bien déclarer des types instanciables dans les plugins, et si l'utilisateur essaie de rentrer un type primitif,
   le moteur le castera automatiquement en type générique.
   
   Lorsqu'un EG est activé, un message l'indiquant est affiché dans la console. De même, s'il y a des erreurs, elles sont ajoutées à un objet
-  ActivationResult, qui regroupera toutes les erreurs survenues et qui sera lu par le ConfigurationLoader.
+  `ActivationResult`, qui regroupera toutes les erreurs survenues et qui sera lu par le `ConfigurationLoader`.
   
-  Le ConfigurationLoader est le point d'entrée du module de configuration. Cette classe contient une méthode statique loadConfiguration,
+  Le `ConfigurationLoader` est le point d'entrée du module de configuration. Cette classe contient une méthode statique `loadConfiguration`,
   qui va lancer l'ensemble des moteurs de validation, parse et activation. À l'heure actuelle, le chemin du schéma .xsd est donné en "dur" 
   dans cette méthode, et il faudra le changer à l'avenir.
   
@@ -365,7 +365,7 @@ Cette librairie instancie les classes à partir de leur nom, et seulement les cl
 
 ### Ajouter un system de parse
 
-L'architecture du projet perCEPtion permet d'ajouter un système de parse pour un nouvel
+L'architecture du projet `perCEPtion` permet d'ajouter un système de parse pour un nouvel
 élement de façon très simple. Il est possible de créer un nouvel élement présentant le
 même format de configuration que celui des simple ou complex events. Pour ce faire, deux 
 étapes sont à réaliser.
@@ -445,7 +445,7 @@ La classe utilitaire `XMLFileParser` doit aussi être mise à jour.
 #### TU 
 
 Des tests unitaires ont été mis en place pour permettre la validation du moteur 
-de configuration dynamique de generator events.
+de configuration dynamique de generator d'events.
 
 ## Utilisation du Framework
 
@@ -462,25 +462,25 @@ Il faut définir le type, qui correspond à la classe d'implémentation de l'Eve
 
 ## Système de plugins
 
-Pour déclarer vos propres Events et Event Generators et pouvoir les utiliser, il vous suffit de créer un projet comme "mainPerceptionPlugin".
-Il vous faut ajouter le jar de PerCEPtion en librairie, et ensuite, il vous suffit de créer vos Events et Event Generators en les faisant hériter de 
+Pour déclarer vos propres `Events` et `Event Generators` et pouvoir les utiliser, il vous suffit de créer un projet comme `mainPerceptionPlugin`.
+Il vous faut ajouter le jar de `perCEPtion` en librairie, et ensuite, il vous suffit de créer vos Events et Event Generators en les faisant hériter de 
 la classe abstraite correspondant à ce que vous créez : 
 
-- PrimitiveEvent 
-- SimpleEvent
-- ComplexEvent
-- Symptom
-- PrimitiveEventGenerator
-- SimpleEventGenerator
-- ComplexEventGenerator
+- `PrimitiveEvent `
+- `SimpleEvent`
+- `ComplexEvent`
+- `Symptom`
+- `PrimitiveEventGenerator`
+- `SimpleEventGenerator`
+- `ComplexEventGenerator`
 
-Une fois toutes ces classes créées, il vous faut créer une nouvelle classe qui servira de point d'entrée, sur le même modèle que MainPerceptionPlugin.
-Cette classe doit étendre PerceptionPlugin, et contenir une méthode initPlugin(), qui va aller enregistrer l'ensemble des Event Generators que vous venez
+Une fois toutes ces classes créées, il vous faut créer une nouvelle classe qui servira de point d'entrée, sur le même modèle que `MainPerceptionPlugin`.
+Cette classe doit étendre `PerceptionPlugin`, et contenir une méthode `initPlugin()`, qui va aller enregistrer l'ensemble des Event Generators que vous venez
 de créer.
 
 ## Emplacement des fichiers de configuration
 
-Pour l'instant, les fichiers de configuration sont placés dans le répertoire "resources" du projet perCEPtion, afin d'être lus par le système.
+Pour l'instant, les fichiers de configuration sont placés dans le répertoire `resources`du projet `perCEPtion`, afin d'être lus par le système.
 
 # Axes d'amélioration et évolutions possibles
 
